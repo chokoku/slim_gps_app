@@ -1,0 +1,942 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0606B98020DDF82D003536B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B97F20DDF82D003536B1 /* AppDelegate.swift */; };
+		0606B98220DDF82D003536B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B98120DDF82D003536B1 /* ViewController.swift */; };
+		0606B98520DDF82D003536B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0606B98320DDF82D003536B1 /* Main.storyboard */; };
+		0606B98720DDF830003536B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0606B98620DDF830003536B1 /* Assets.xcassets */; };
+		0606B98A20DDF830003536B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0606B98820DDF830003536B1 /* LaunchScreen.storyboard */; };
+		0606B99520DDF830003536B1 /* slim_gps_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B99420DDF830003536B1 /* slim_gps_appTests.swift */; };
+		0606B9A020DDF830003536B1 /* slim_gps_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B99F20DDF830003536B1 /* slim_gps_appUITests.swift */; };
+		0606B9B220DE074B003536B1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B120DE074B003536B1 /* LoginViewController.swift */; };
+		0606B9B420DE0793003536B1 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B320DE0793003536B1 /* LoginWireframe.swift */; };
+		0606B9B620DE07BD003536B1 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B520DE07BC003536B1 /* LoginInteractor.swift */; };
+		0606B9B820DE07E4003536B1 /* LoginWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B720DE07E4003536B1 /* LoginWireframeInterface.swift */; };
+		0606B9BA20DE07F8003536B1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B920DE07F8003536B1 /* LoginPresenter.swift */; };
+		0606B9BC20DE1061003536B1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9BB20DE1061003536B1 /* MainViewController.swift */; };
+		0606B9BE20DE128C003536B1 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0606B9BD20DE128C003536B1 /* SlideMenuControllerSwift.framework */; };
+		0606B9C020DE1325003536B1 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9BF20DE1325003536B1 /* SideMenuViewController.swift */; };
+		0630316020DE38CA009F78EA /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630315F20DE38CA009F78EA /* MainWireframe.swift */; };
+		0630316220DE38DC009F78EA /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630316120DE38DC009F78EA /* MainInteractor.swift */; };
+		0630316420DE38F1009F78EA /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630316320DE38F1009F78EA /* MainPresenter.swift */; };
+		0630316620DE3C6F009F78EA /* MainInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630316520DE3C6F009F78EA /* MainInterface.swift */; };
+		0630316920DE4E1D009F78EA /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630316820DE4E1D009F78EA /* SideMenuPresenter.swift */; };
+		0630316C20DE4E3A009F78EA /* SideMenuWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630316B20DE4E3A009F78EA /* SideMenuWireframe.swift */; };
+		0630316E20DE4E49009F78EA /* SideMenuInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630316D20DE4E49009F78EA /* SideMenuInterface.swift */; };
+		0630317120DE5650009F78EA /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317020DE5650009F78EA /* UserInfoViewController.swift */; };
+		0630317320DE5663009F78EA /* UserInfoWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317220DE5663009F78EA /* UserInfoWireframe.swift */; };
+		0630317520DE5671009F78EA /* UserInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317420DE5671009F78EA /* UserInfoPresenter.swift */; };
+		0630317720DE5680009F78EA /* UserInfoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317620DE5680009F78EA /* UserInfoInterface.swift */; };
+		0630317920DE5691009F78EA /* UserInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317820DE5691009F78EA /* UserInfoInteractor.swift */; };
+		0630317C20DE56E2009F78EA /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317B20DE56E2009F78EA /* ContactUsViewController.swift */; };
+		0630317E20DE56F0009F78EA /* ContactUsInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317D20DE56F0009F78EA /* ContactUsInterface.swift */; };
+		0630318020DE56FE009F78EA /* ContactUsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317F20DE56FE009F78EA /* ContactUsInteractor.swift */; };
+		0630318220DE570F009F78EA /* ContactUsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318120DE570F009F78EA /* ContactUsPresenter.swift */; };
+		0630318420DE571A009F78EA /* ContactUsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318320DE571A009F78EA /* ContactUsWireframe.swift */; };
+		0630318720DE57BF009F78EA /* NotifSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318620DE57BF009F78EA /* NotifSpotViewController.swift */; };
+		0630318920DE57DE009F78EA /* NotifSpotPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318820DE57DE009F78EA /* NotifSpotPresenter.swift */; };
+		0630318B20DE57E8009F78EA /* NotifSpotInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318A20DE57E8009F78EA /* NotifSpotInteractor.swift */; };
+		0630318D20DE57F6009F78EA /* NotifSpotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318C20DE57F6009F78EA /* NotifSpotInterface.swift */; };
+		0630318F20DE5806009F78EA /* NotifSpotWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318E20DE5806009F78EA /* NotifSpotWireframe.swift */; };
+		0630319220DE58A2009F78EA /* AccessAuthReqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319120DE58A2009F78EA /* AccessAuthReqViewController.swift */; };
+		0630319420DE58AF009F78EA /* AccessAuthReqPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319320DE58AF009F78EA /* AccessAuthReqPresenter.swift */; };
+		0630319620DE58BF009F78EA /* AccessAuthReqInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319520DE58BF009F78EA /* AccessAuthReqInteractor.swift */; };
+		0630319820DE58C9009F78EA /* AccessAuthReqInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319720DE58C9009F78EA /* AccessAuthReqInterface.swift */; };
+		0630319A20DE58D5009F78EA /* AccessAuthReqWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319920DE58D5009F78EA /* AccessAuthReqWireframe.swift */; };
+		0630319D20DE5904009F78EA /* TermOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319C20DE5904009F78EA /* TermOfUseViewController.swift */; };
+		55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */; };
+		AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */; };
+		C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0606B99120DDF830003536B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0606B97420DDF82D003536B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0606B97B20DDF82D003536B1;
+			remoteInfo = slim_gps_app;
+		};
+		0606B99C20DDF830003536B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0606B97420DDF82D003536B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0606B97B20DDF82D003536B1;
+			remoteInfo = slim_gps_app;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0606B97C20DDF82D003536B1 /* slim_gps_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slim_gps_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0606B97F20DDF82D003536B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0606B98120DDF82D003536B1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0606B98420DDF82D003536B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0606B98620DDF830003536B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0606B98920DDF830003536B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0606B98B20DDF830003536B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0606B99020DDF830003536B1 /* slim_gps_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = slim_gps_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0606B99420DDF830003536B1 /* slim_gps_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slim_gps_appTests.swift; sourceTree = "<group>"; };
+		0606B99620DDF830003536B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0606B99B20DDF830003536B1 /* slim_gps_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = slim_gps_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0606B99F20DDF830003536B1 /* slim_gps_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slim_gps_appUITests.swift; sourceTree = "<group>"; };
+		0606B9A120DDF830003536B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0606B9B120DE074B003536B1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0606B9B320DE0793003536B1 /* LoginWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
+		0606B9B520DE07BC003536B1 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		0606B9B720DE07E4003536B1 /* LoginWireframeInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireframeInterface.swift; sourceTree = "<group>"; };
+		0606B9B920DE07F8003536B1 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		0606B9BB20DE1061003536B1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0606B9BD20DE128C003536B1 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0606B9BF20DE1325003536B1 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		0630315F20DE38CA009F78EA /* MainWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWireframe.swift; sourceTree = "<group>"; };
+		0630316120DE38DC009F78EA /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		0630316320DE38F1009F78EA /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		0630316520DE3C6F009F78EA /* MainInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInterface.swift; sourceTree = "<group>"; };
+		0630316820DE4E1D009F78EA /* SideMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenter.swift; sourceTree = "<group>"; };
+		0630316B20DE4E3A009F78EA /* SideMenuWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuWireframe.swift; sourceTree = "<group>"; };
+		0630316D20DE4E49009F78EA /* SideMenuInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInterface.swift; sourceTree = "<group>"; };
+		0630317020DE5650009F78EA /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		0630317220DE5663009F78EA /* UserInfoWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoWireframe.swift; sourceTree = "<group>"; };
+		0630317420DE5671009F78EA /* UserInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoPresenter.swift; sourceTree = "<group>"; };
+		0630317620DE5680009F78EA /* UserInfoInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInterface.swift; sourceTree = "<group>"; };
+		0630317820DE5691009F78EA /* UserInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInteractor.swift; sourceTree = "<group>"; };
+		0630317B20DE56E2009F78EA /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		0630317D20DE56F0009F78EA /* ContactUsInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsInterface.swift; sourceTree = "<group>"; };
+		0630317F20DE56FE009F78EA /* ContactUsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsInteractor.swift; sourceTree = "<group>"; };
+		0630318120DE570F009F78EA /* ContactUsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsPresenter.swift; sourceTree = "<group>"; };
+		0630318320DE571A009F78EA /* ContactUsWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsWireframe.swift; sourceTree = "<group>"; };
+		0630318620DE57BF009F78EA /* NotifSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotViewController.swift; sourceTree = "<group>"; };
+		0630318820DE57DE009F78EA /* NotifSpotPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotPresenter.swift; sourceTree = "<group>"; };
+		0630318A20DE57E8009F78EA /* NotifSpotInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotInteractor.swift; sourceTree = "<group>"; };
+		0630318C20DE57F6009F78EA /* NotifSpotInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotInterface.swift; sourceTree = "<group>"; };
+		0630318E20DE5806009F78EA /* NotifSpotWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotWireframe.swift; sourceTree = "<group>"; };
+		0630319120DE58A2009F78EA /* AccessAuthReqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAuthReqViewController.swift; sourceTree = "<group>"; };
+		0630319320DE58AF009F78EA /* AccessAuthReqPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAuthReqPresenter.swift; sourceTree = "<group>"; };
+		0630319520DE58BF009F78EA /* AccessAuthReqInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAuthReqInteractor.swift; sourceTree = "<group>"; };
+		0630319720DE58C9009F78EA /* AccessAuthReqInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAuthReqInterface.swift; sourceTree = "<group>"; };
+		0630319920DE58D5009F78EA /* AccessAuthReqWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAuthReqWireframe.swift; sourceTree = "<group>"; };
+		0630319C20DE5904009F78EA /* TermOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermOfUseViewController.swift; sourceTree = "<group>"; };
+		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
+		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91244785A55EA9E00E0027CF /* Pods-slim_gps_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_app/Pods-slim_gps_app.debug.xcconfig"; sourceTree = "<group>"; };
+		9DA7E8A044DBD5245E8FD97E /* Pods-slim_gps_appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appUITests/Pods-slim_gps_appUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFDD662F3EB156EB8EEF41B1 /* Pods-slim_gps_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_app.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_app/Pods-slim_gps_app.release.xcconfig"; sourceTree = "<group>"; };
+		E89F29B38C13751AD2F76AC0 /* Pods-slim_gps_appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appUITests/Pods-slim_gps_appUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0606B97920DDF82D003536B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0606B9BE20DE128C003536B1 /* SlideMenuControllerSwift.framework in Frameworks */,
+				55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0606B98D20DDF830003536B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0606B99820DDF830003536B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0606B97320DDF82D003536B1 = {
+			isa = PBXGroup;
+			children = (
+				0606B97E20DDF82D003536B1 /* slim_gps_app */,
+				0606B99320DDF830003536B1 /* slim_gps_appTests */,
+				0606B99E20DDF830003536B1 /* slim_gps_appUITests */,
+				0606B97D20DDF82D003536B1 /* Products */,
+				A37E60FB587E19D80A4D1914 /* Pods */,
+				1CB666472DE4F9AF1A10A1AB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0606B97D20DDF82D003536B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0606B97C20DDF82D003536B1 /* slim_gps_app.app */,
+				0606B99020DDF830003536B1 /* slim_gps_appTests.xctest */,
+				0606B99B20DDF830003536B1 /* slim_gps_appUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0606B97E20DDF82D003536B1 /* slim_gps_app */ = {
+			isa = PBXGroup;
+			children = (
+				0606B9AD20DE0594003536B1 /* Common */,
+				0606B9AF20DE0654003536B1 /* Modules */,
+			);
+			path = slim_gps_app;
+			sourceTree = "<group>";
+		};
+		0606B99320DDF830003536B1 /* slim_gps_appTests */ = {
+			isa = PBXGroup;
+			children = (
+				0606B99420DDF830003536B1 /* slim_gps_appTests.swift */,
+				0606B99620DDF830003536B1 /* Info.plist */,
+			);
+			path = slim_gps_appTests;
+			sourceTree = "<group>";
+		};
+		0606B99E20DDF830003536B1 /* slim_gps_appUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0606B99F20DDF830003536B1 /* slim_gps_appUITests.swift */,
+				0606B9A120DDF830003536B1 /* Info.plist */,
+			);
+			path = slim_gps_appUITests;
+			sourceTree = "<group>";
+		};
+		0606B9AD20DE0594003536B1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0606B97F20DDF82D003536B1 /* AppDelegate.swift */,
+				0606B98120DDF82D003536B1 /* ViewController.swift */,
+				0606B98320DDF82D003536B1 /* Main.storyboard */,
+				0606B98620DDF830003536B1 /* Assets.xcassets */,
+				0606B98820DDF830003536B1 /* LaunchScreen.storyboard */,
+				0606B98B20DDF830003536B1 /* Info.plist */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0606B9AE20DE05B3003536B1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0606B9B120DE074B003536B1 /* LoginViewController.swift */,
+				0606B9B320DE0793003536B1 /* LoginWireframe.swift */,
+				0606B9B520DE07BC003536B1 /* LoginInteractor.swift */,
+				0606B9B720DE07E4003536B1 /* LoginWireframeInterface.swift */,
+				0606B9B920DE07F8003536B1 /* LoginPresenter.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0606B9AF20DE0654003536B1 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				0630319B20DE58F8009F78EA /* TermOfUse */,
+				0630319020DE580B009F78EA /* AccessAuthReq */,
+				0630318520DE5775009F78EA /* NotifSpot */,
+				0630316F20DE5634009F78EA /* UserInfo */,
+				0630317A20DE56A5009F78EA /* ContactUs */,
+				0630316720DE4DF8009F78EA /* SideMenu */,
+				0606B9B020DE0687003536B1 /* Main */,
+				0606B9AE20DE05B3003536B1 /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		0606B9B020DE0687003536B1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0606B9BB20DE1061003536B1 /* MainViewController.swift */,
+				0630315F20DE38CA009F78EA /* MainWireframe.swift */,
+				0630316120DE38DC009F78EA /* MainInteractor.swift */,
+				0630316320DE38F1009F78EA /* MainPresenter.swift */,
+				0630316520DE3C6F009F78EA /* MainInterface.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0630316720DE4DF8009F78EA /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				0606B9BF20DE1325003536B1 /* SideMenuViewController.swift */,
+				0630316820DE4E1D009F78EA /* SideMenuPresenter.swift */,
+				0630316B20DE4E3A009F78EA /* SideMenuWireframe.swift */,
+				0630316D20DE4E49009F78EA /* SideMenuInterface.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		0630316F20DE5634009F78EA /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				0630317020DE5650009F78EA /* UserInfoViewController.swift */,
+				0630317220DE5663009F78EA /* UserInfoWireframe.swift */,
+				0630317420DE5671009F78EA /* UserInfoPresenter.swift */,
+				0630317620DE5680009F78EA /* UserInfoInterface.swift */,
+				0630317820DE5691009F78EA /* UserInfoInteractor.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		0630317A20DE56A5009F78EA /* ContactUs */ = {
+			isa = PBXGroup;
+			children = (
+				0630317B20DE56E2009F78EA /* ContactUsViewController.swift */,
+				0630317D20DE56F0009F78EA /* ContactUsInterface.swift */,
+				0630317F20DE56FE009F78EA /* ContactUsInteractor.swift */,
+				0630318120DE570F009F78EA /* ContactUsPresenter.swift */,
+				0630318320DE571A009F78EA /* ContactUsWireframe.swift */,
+			);
+			path = ContactUs;
+			sourceTree = "<group>";
+		};
+		0630318520DE5775009F78EA /* NotifSpot */ = {
+			isa = PBXGroup;
+			children = (
+				0630318620DE57BF009F78EA /* NotifSpotViewController.swift */,
+				0630318820DE57DE009F78EA /* NotifSpotPresenter.swift */,
+				0630318A20DE57E8009F78EA /* NotifSpotInteractor.swift */,
+				0630318C20DE57F6009F78EA /* NotifSpotInterface.swift */,
+				0630318E20DE5806009F78EA /* NotifSpotWireframe.swift */,
+			);
+			path = NotifSpot;
+			sourceTree = "<group>";
+		};
+		0630319020DE580B009F78EA /* AccessAuthReq */ = {
+			isa = PBXGroup;
+			children = (
+				0630319120DE58A2009F78EA /* AccessAuthReqViewController.swift */,
+				0630319720DE58C9009F78EA /* AccessAuthReqInterface.swift */,
+				0630319320DE58AF009F78EA /* AccessAuthReqPresenter.swift */,
+				0630319520DE58BF009F78EA /* AccessAuthReqInteractor.swift */,
+				0630319920DE58D5009F78EA /* AccessAuthReqWireframe.swift */,
+			);
+			path = AccessAuthReq;
+			sourceTree = "<group>";
+		};
+		0630319B20DE58F8009F78EA /* TermOfUse */ = {
+			isa = PBXGroup;
+			children = (
+				0630319C20DE5904009F78EA /* TermOfUseViewController.swift */,
+			);
+			path = TermOfUse;
+			sourceTree = "<group>";
+		};
+		1CB666472DE4F9AF1A10A1AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0606B9BD20DE128C003536B1 /* SlideMenuControllerSwift.framework */,
+				51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */,
+				73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */,
+				B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A37E60FB587E19D80A4D1914 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				91244785A55EA9E00E0027CF /* Pods-slim_gps_app.debug.xcconfig */,
+				BFDD662F3EB156EB8EEF41B1 /* Pods-slim_gps_app.release.xcconfig */,
+				6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */,
+				5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */,
+				E89F29B38C13751AD2F76AC0 /* Pods-slim_gps_appUITests.debug.xcconfig */,
+				9DA7E8A044DBD5245E8FD97E /* Pods-slim_gps_appUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0606B97B20DDF82D003536B1 /* slim_gps_app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0606B9A420DDF830003536B1 /* Build configuration list for PBXNativeTarget "slim_gps_app" */;
+			buildPhases = (
+				3A17A087FA5A1F1E0C5D4347 /* [CP] Check Pods Manifest.lock */,
+				0606B97820DDF82D003536B1 /* Sources */,
+				0606B97920DDF82D003536B1 /* Frameworks */,
+				0606B97A20DDF82D003536B1 /* Resources */,
+				759798D12293556D193F7AC0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = slim_gps_app;
+			productName = slim_gps_app;
+			productReference = 0606B97C20DDF82D003536B1 /* slim_gps_app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0606B98F20DDF830003536B1 /* slim_gps_appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0606B9A720DDF830003536B1 /* Build configuration list for PBXNativeTarget "slim_gps_appTests" */;
+			buildPhases = (
+				8F68D1A3BD3831BBAE16F60F /* [CP] Check Pods Manifest.lock */,
+				0606B98C20DDF830003536B1 /* Sources */,
+				0606B98D20DDF830003536B1 /* Frameworks */,
+				0606B98E20DDF830003536B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0606B99220DDF830003536B1 /* PBXTargetDependency */,
+			);
+			name = slim_gps_appTests;
+			productName = slim_gps_appTests;
+			productReference = 0606B99020DDF830003536B1 /* slim_gps_appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0606B99A20DDF830003536B1 /* slim_gps_appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0606B9AA20DDF830003536B1 /* Build configuration list for PBXNativeTarget "slim_gps_appUITests" */;
+			buildPhases = (
+				600E7EE05C768FB803F0EC70 /* [CP] Check Pods Manifest.lock */,
+				0606B99720DDF830003536B1 /* Sources */,
+				0606B99820DDF830003536B1 /* Frameworks */,
+				0606B99920DDF830003536B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0606B99D20DDF830003536B1 /* PBXTargetDependency */,
+			);
+			name = slim_gps_appUITests;
+			productName = slim_gps_appUITests;
+			productReference = 0606B99B20DDF830003536B1 /* slim_gps_appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0606B97420DDF82D003536B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = yusuke;
+				TargetAttributes = {
+					0606B97B20DDF82D003536B1 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					0606B98F20DDF830003536B1 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 0606B97B20DDF82D003536B1;
+					};
+					0606B99A20DDF830003536B1 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 0606B97B20DDF82D003536B1;
+					};
+				};
+			};
+			buildConfigurationList = 0606B97720DDF82D003536B1 /* Build configuration list for PBXProject "slim_gps_app" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0606B97320DDF82D003536B1;
+			productRefGroup = 0606B97D20DDF82D003536B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0606B97B20DDF82D003536B1 /* slim_gps_app */,
+				0606B98F20DDF830003536B1 /* slim_gps_appTests */,
+				0606B99A20DDF830003536B1 /* slim_gps_appUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0606B97A20DDF82D003536B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0606B98A20DDF830003536B1 /* LaunchScreen.storyboard in Resources */,
+				0606B98720DDF830003536B1 /* Assets.xcassets in Resources */,
+				0606B98520DDF82D003536B1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0606B98E20DDF830003536B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0606B99920DDF830003536B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A17A087FA5A1F1E0C5D4347 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-slim_gps_app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		600E7EE05C768FB803F0EC70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-slim_gps_appUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		759798D12293556D193F7AC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_app/Pods-slim_gps_app-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_app/Pods-slim_gps_app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F68D1A3BD3831BBAE16F60F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-slim_gps_appTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0606B97820DDF82D003536B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0606B9B220DE074B003536B1 /* LoginViewController.swift in Sources */,
+				0606B98220DDF82D003536B1 /* ViewController.swift in Sources */,
+				0630317720DE5680009F78EA /* UserInfoInterface.swift in Sources */,
+				0606B9BA20DE07F8003536B1 /* LoginPresenter.swift in Sources */,
+				0606B9B420DE0793003536B1 /* LoginWireframe.swift in Sources */,
+				0606B9B620DE07BD003536B1 /* LoginInteractor.swift in Sources */,
+				0630318720DE57BF009F78EA /* NotifSpotViewController.swift in Sources */,
+				0630316420DE38F1009F78EA /* MainPresenter.swift in Sources */,
+				0630319220DE58A2009F78EA /* AccessAuthReqViewController.swift in Sources */,
+				0606B9B820DE07E4003536B1 /* LoginWireframeInterface.swift in Sources */,
+				0606B98020DDF82D003536B1 /* AppDelegate.swift in Sources */,
+				0630317E20DE56F0009F78EA /* ContactUsInterface.swift in Sources */,
+				0630316920DE4E1D009F78EA /* SideMenuPresenter.swift in Sources */,
+				0630319D20DE5904009F78EA /* TermOfUseViewController.swift in Sources */,
+				0630317120DE5650009F78EA /* UserInfoViewController.swift in Sources */,
+				0630316C20DE4E3A009F78EA /* SideMenuWireframe.swift in Sources */,
+				0630317320DE5663009F78EA /* UserInfoWireframe.swift in Sources */,
+				0630316020DE38CA009F78EA /* MainWireframe.swift in Sources */,
+				0606B9C020DE1325003536B1 /* SideMenuViewController.swift in Sources */,
+				0606B9BC20DE1061003536B1 /* MainViewController.swift in Sources */,
+				0630317920DE5691009F78EA /* UserInfoInteractor.swift in Sources */,
+				0630316E20DE4E49009F78EA /* SideMenuInterface.swift in Sources */,
+				0630319820DE58C9009F78EA /* AccessAuthReqInterface.swift in Sources */,
+				0630318B20DE57E8009F78EA /* NotifSpotInteractor.swift in Sources */,
+				0630318420DE571A009F78EA /* ContactUsWireframe.swift in Sources */,
+				0630319620DE58BF009F78EA /* AccessAuthReqInteractor.swift in Sources */,
+				0630318D20DE57F6009F78EA /* NotifSpotInterface.swift in Sources */,
+				0630318920DE57DE009F78EA /* NotifSpotPresenter.swift in Sources */,
+				0630319420DE58AF009F78EA /* AccessAuthReqPresenter.swift in Sources */,
+				0630318020DE56FE009F78EA /* ContactUsInteractor.swift in Sources */,
+				0630318F20DE5806009F78EA /* NotifSpotWireframe.swift in Sources */,
+				0630316220DE38DC009F78EA /* MainInteractor.swift in Sources */,
+				0630318220DE570F009F78EA /* ContactUsPresenter.swift in Sources */,
+				0630317520DE5671009F78EA /* UserInfoPresenter.swift in Sources */,
+				0630319A20DE58D5009F78EA /* AccessAuthReqWireframe.swift in Sources */,
+				0630316620DE3C6F009F78EA /* MainInterface.swift in Sources */,
+				0630317C20DE56E2009F78EA /* ContactUsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0606B98C20DDF830003536B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0606B99520DDF830003536B1 /* slim_gps_appTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0606B99720DDF830003536B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0606B9A020DDF830003536B1 /* slim_gps_appUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0606B99220DDF830003536B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0606B97B20DDF82D003536B1 /* slim_gps_app */;
+			targetProxy = 0606B99120DDF830003536B1 /* PBXContainerItemProxy */;
+		};
+		0606B99D20DDF830003536B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0606B97B20DDF82D003536B1 /* slim_gps_app */;
+			targetProxy = 0606B99C20DDF830003536B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0606B98320DDF82D003536B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0606B98420DDF82D003536B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0606B98820DDF830003536B1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0606B98920DDF830003536B1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0606B9A220DDF830003536B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0606B9A320DDF830003536B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0606B9A520DDF830003536B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91244785A55EA9E00E0027CF /* Pods-slim_gps_app.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T26X6QBT6Z;
+				INFOPLIST_FILE = slim_gps_app/Common/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0606B9A620DDF830003536B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFDD662F3EB156EB8EEF41B1 /* Pods-slim_gps_app.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T26X6QBT6Z;
+				INFOPLIST_FILE = slim_gps_app/Common/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0606B9A820DDF830003536B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T26X6QBT6Z;
+				INFOPLIST_FILE = slim_gps_appTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/slim_gps_app.app/slim_gps_app";
+			};
+			name = Debug;
+		};
+		0606B9A920DDF830003536B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T26X6QBT6Z;
+				INFOPLIST_FILE = slim_gps_appTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/slim_gps_app.app/slim_gps_app";
+			};
+			name = Release;
+		};
+		0606B9AB20DDF830003536B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E89F29B38C13751AD2F76AC0 /* Pods-slim_gps_appUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T26X6QBT6Z;
+				INFOPLIST_FILE = slim_gps_appUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = slim_gps_app;
+			};
+			name = Debug;
+		};
+		0606B9AC20DDF830003536B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DA7E8A044DBD5245E8FD97E /* Pods-slim_gps_appUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T26X6QBT6Z;
+				INFOPLIST_FILE = slim_gps_appUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = slim_gps_app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0606B97720DDF82D003536B1 /* Build configuration list for PBXProject "slim_gps_app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0606B9A220DDF830003536B1 /* Debug */,
+				0606B9A320DDF830003536B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0606B9A420DDF830003536B1 /* Build configuration list for PBXNativeTarget "slim_gps_app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0606B9A520DDF830003536B1 /* Debug */,
+				0606B9A620DDF830003536B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0606B9A720DDF830003536B1 /* Build configuration list for PBXNativeTarget "slim_gps_appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0606B9A820DDF830003536B1 /* Debug */,
+				0606B9A920DDF830003536B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0606B9AA20DDF830003536B1 /* Build configuration list for PBXNativeTarget "slim_gps_appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0606B9AB20DDF830003536B1 /* Debug */,
+				0606B9AC20DDF830003536B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0606B97420DDF82D003536B1 /* Project object */;
+}
