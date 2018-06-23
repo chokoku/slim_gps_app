@@ -15,9 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let main_wireframe = MainWireframe()
-        let navigation_controller = main_wireframe.configureModule()
-        self.window?.rootViewController = navigation_controller
+        let mainWireframe = MainWireframe()
+        let navigationController = mainWireframe.configureModule()
+        let sideMenuWireframe = SideMenuWireframe()
+        let leftVC = sideMenuWireframe.configureModule()
+        let slideMenuController = SlideMenuController(mainViewController: navigationController, leftMenuViewController: leftVC)
+        self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
         return true
     }

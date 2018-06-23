@@ -12,7 +12,7 @@ final class SideMenuPresenter {
 }
 
 extension SideMenuPresenter: SideMenuPresenterInterface {
-    func getSideMenuPage(_ index: Int!){
+    func getSideMenuPage(_ index: Int){
         _wireframe.pushSideMenuPage(index)
     }
 }

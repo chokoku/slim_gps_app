@@ -1,28 +1,38 @@
 import UIKit
 
 final class SideMenuWireframe {
-
+    func configureModule() -> UIViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "SideMenu") as! SideMenuViewController
+        let presenter = SideMenuPresenter(wireframe: self, view: viewController)
+        viewController.presenter = presenter
+        return viewController
+    }
 }
 
 extension SideMenuWireframe: SideMenuWireframeInterface {
-    func pushSideMenuPage(_ index: Int!) {
+    func pushSideMenuPage(_ index: Int) {
         let nextVC: UIViewController
             switch index {
-            case 1:
+            case 0:
                 nextVC = UserInfoViewController()
-            case 2:
+            case 1:
                 nextVC = NotifSpotViewController()
-            case 3:
+            case 2:
                 nextVC = AccessAuthReqViewController()
-            case 4:
+            case 3:
                 nextVC = ContactUsViewController()
-            case 5:
+            case 4:
                 nextVC = TermOfUseViewController()
             default:
                 nextVC = UserInfoViewController()
             }
-        
-        let navigationController = UINavigationController()
-        navigationController.pushViewController(nextVC, animated: true)
+//        let navigationController = UINavigationController()
+//        let SlideMenuController = UIApplication.shared.keyWindow?.rootViewController
+//       let nvc = SlideMenuController.mainViewController as! UINavigationController
+//        SlideMenuController.pushViewController(nextVC, animated: true)
+          //navigationController.pushViewController(nextVC, animated: true)
+//        self.slideMenuController()?.closeLeft()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

@@ -2,9 +2,10 @@ import UIKit
 
 class SideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var presenter: SideMenuPresenterInterface!
     @IBOutlet weak var sideMenuTable: UITableView!
     let sidemenu_items:[String] = ["ユーザー情報", "通知スポットの設定", "見守りリクエスト", "お問い合わせ", "利用規約"]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenuTable.dataSource = self
@@ -27,6 +28,11 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        presenter.getSideMenuPage(indexPath.row)
         //self.present(SecondViewController(), animated: true, completion: nil)
     }
+}
+
+extension SideMenuViewController: SideMenuViewInterface {
+    
 }

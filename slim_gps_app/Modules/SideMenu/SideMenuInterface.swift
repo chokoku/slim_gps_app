@@ -4,9 +4,9 @@ protocol SideMenuViewInterface: class {
 }
 
 protocol SideMenuWireframeInterface: class {
-    func pushSideMenuPage(_ index: Int!)
+    func pushSideMenuPage(_ index: Int)
 }
 
 protocol SideMenuPresenterInterface: class {
-    func getSideMenuPage(_ index: Int!)
+    func getSideMenuPage(_ index: Int)
 }
