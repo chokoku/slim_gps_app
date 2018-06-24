@@ -15,10 +15,6 @@
 		0606B99520DDF830003536B1 /* slim_gps_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B99420DDF830003536B1 /* slim_gps_appTests.swift */; };
 		0606B9A020DDF830003536B1 /* slim_gps_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B99F20DDF830003536B1 /* slim_gps_appUITests.swift */; };
 		0606B9B220DE074B003536B1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B120DE074B003536B1 /* LoginViewController.swift */; };
-		0606B9B420DE0793003536B1 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B320DE0793003536B1 /* LoginWireframe.swift */; };
-		0606B9B620DE07BD003536B1 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B520DE07BC003536B1 /* LoginInteractor.swift */; };
-		0606B9B820DE07E4003536B1 /* LoginWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B720DE07E4003536B1 /* LoginWireframeInterface.swift */; };
-		0606B9BA20DE07F8003536B1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9B920DE07F8003536B1 /* LoginPresenter.swift */; };
 		0606B9BC20DE1061003536B1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9BB20DE1061003536B1 /* MainViewController.swift */; };
 		0606B9BE20DE128C003536B1 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0606B9BD20DE128C003536B1 /* SlideMenuControllerSwift.framework */; };
 		0606B9C020DE1325003536B1 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0606B9BF20DE1325003536B1 /* SideMenuViewController.swift */; };
@@ -51,6 +47,8 @@
 		0630319A20DE58D5009F78EA /* AccessAuthReqWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319920DE58D5009F78EA /* AccessAuthReqWireframe.swift */; };
 		0630319D20DE5904009F78EA /* TermOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319C20DE5904009F78EA /* TermOfUseViewController.swift */; };
 		0630319F20DF4C94009F78EA /* BaseWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319E20DF4C93009F78EA /* BaseWireframe.swift */; };
+		063031A120DF80AF009F78EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 063031A020DF80AF009F78EA /* GoogleService-Info.plist */; };
+		063031A620DFC48E009F78EA /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063031A520DFC48E009F78EA /* RegistrationViewController.swift */; };
 		55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */; };
 		AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */; };
 		C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */; };
@@ -88,10 +86,6 @@
 		0606B99F20DDF830003536B1 /* slim_gps_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slim_gps_appUITests.swift; sourceTree = "<group>"; };
 		0606B9A120DDF830003536B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0606B9B120DE074B003536B1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0606B9B320DE0793003536B1 /* LoginWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
-		0606B9B520DE07BC003536B1 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
-		0606B9B720DE07E4003536B1 /* LoginWireframeInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireframeInterface.swift; sourceTree = "<group>"; };
-		0606B9B920DE07F8003536B1 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		0606B9BB20DE1061003536B1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0606B9BD20DE128C003536B1 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0606B9BF20DE1325003536B1 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +118,8 @@
 		0630319920DE58D5009F78EA /* AccessAuthReqWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAuthReqWireframe.swift; sourceTree = "<group>"; };
 		0630319C20DE5904009F78EA /* TermOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermOfUseViewController.swift; sourceTree = "<group>"; };
 		0630319E20DF4C93009F78EA /* BaseWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWireframe.swift; sourceTree = "<group>"; };
+		063031A020DF80AF009F78EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		063031A520DFC48E009F78EA /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +212,7 @@
 		0606B9AD20DE0594003536B1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				063031A020DF80AF009F78EA /* GoogleService-Info.plist */,
 				0606B97F20DDF82D003536B1 /* AppDelegate.swift */,
 				0606B98120DDF82D003536B1 /* ViewController.swift */,
 				0606B98320DDF82D003536B1 /* Main.storyboard */,
@@ -231,10 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				0606B9B120DE074B003536B1 /* LoginViewController.swift */,
-				0606B9B320DE0793003536B1 /* LoginWireframe.swift */,
-				0606B9B520DE07BC003536B1 /* LoginInteractor.swift */,
-				0606B9B720DE07E4003536B1 /* LoginWireframeInterface.swift */,
-				0606B9B920DE07F8003536B1 /* LoginPresenter.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -242,14 +235,15 @@
 		0606B9AF20DE0654003536B1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				0630319B20DE58F8009F78EA /* TermOfUse */,
-				0630319020DE580B009F78EA /* AccessAuthReq */,
-				0630318520DE5775009F78EA /* NotifSpot */,
-				0630316F20DE5634009F78EA /* UserInfo */,
-				0630317A20DE56A5009F78EA /* ContactUs */,
+				0606B9AE20DE05B3003536B1 /* Login */,
+				063031A220DFC40B009F78EA /* Registration */,
 				0630316720DE4DF8009F78EA /* SideMenu */,
 				0606B9B020DE0687003536B1 /* Main */,
-				0606B9AE20DE05B3003536B1 /* Login */,
+				0630316F20DE5634009F78EA /* UserInfo */,
+				0630319020DE580B009F78EA /* AccessAuthReq */,
+				0630318520DE5775009F78EA /* NotifSpot */,
+				0630317A20DE56A5009F78EA /* ContactUs */,
+				0630319B20DE58F8009F78EA /* TermOfUse */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -331,6 +325,14 @@
 				0630319C20DE5904009F78EA /* TermOfUseViewController.swift */,
 			);
 			path = TermOfUse;
+			sourceTree = "<group>";
+		};
+		063031A220DFC40B009F78EA /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				063031A520DFC48E009F78EA /* RegistrationViewController.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		1CB666472DE4F9AF1A10A1AB /* Frameworks */ = {
@@ -466,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0606B98A20DDF830003536B1 /* LaunchScreen.storyboard in Resources */,
+				063031A120DF80AF009F78EA /* GoogleService-Info.plist in Resources */,
 				0606B98720DDF830003536B1 /* Assets.xcassets in Resources */,
 				0606B98520DDF82D003536B1 /* Main.storyboard in Resources */,
 			);
@@ -533,6 +536,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_app/Pods-slim_gps_app-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
@@ -548,6 +552,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
@@ -592,13 +597,9 @@
 				0606B9B220DE074B003536B1 /* LoginViewController.swift in Sources */,
 				0606B98220DDF82D003536B1 /* ViewController.swift in Sources */,
 				0630317720DE5680009F78EA /* UserInfoInterface.swift in Sources */,
-				0606B9BA20DE07F8003536B1 /* LoginPresenter.swift in Sources */,
-				0606B9B420DE0793003536B1 /* LoginWireframe.swift in Sources */,
-				0606B9B620DE07BD003536B1 /* LoginInteractor.swift in Sources */,
 				0630318720DE57BF009F78EA /* NotifSpotViewController.swift in Sources */,
 				0630316420DE38F1009F78EA /* MainPresenter.swift in Sources */,
 				0630319220DE58A2009F78EA /* AccessAuthReqViewController.swift in Sources */,
-				0606B9B820DE07E4003536B1 /* LoginWireframeInterface.swift in Sources */,
 				0606B98020DDF82D003536B1 /* AppDelegate.swift in Sources */,
 				0630317E20DE56F0009F78EA /* ContactUsInterface.swift in Sources */,
 				0630316920DE4E1D009F78EA /* SideMenuPresenter.swift in Sources */,
@@ -622,6 +623,7 @@
 				0630318020DE56FE009F78EA /* ContactUsInteractor.swift in Sources */,
 				0630318F20DE5806009F78EA /* NotifSpotWireframe.swift in Sources */,
 				0630316220DE38DC009F78EA /* MainInteractor.swift in Sources */,
+				063031A620DFC48E009F78EA /* RegistrationViewController.swift in Sources */,
 				0630318220DE570F009F78EA /* ContactUsPresenter.swift in Sources */,
 				0630317520DE5671009F78EA /* UserInfoPresenter.swift in Sources */,
 				0630319A20DE58D5009F78EA /* AccessAuthReqWireframe.swift in Sources */,

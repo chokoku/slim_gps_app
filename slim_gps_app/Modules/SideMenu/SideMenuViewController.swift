@@ -4,7 +4,7 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
 
     var presenter: SideMenuPresenterInterface!
     @IBOutlet weak var sideMenuTable: UITableView!
-    let sidemenu_items:[String] = ["ユーザー情報", "通知スポットの設定", "見守りリクエスト", "お問い合わせ", "利用規約"]
+    let sidemenu_items:[String] = ["ログイン","登録", "ユーザー情報", "通知スポットの設定", "見守りリクエスト", "お問い合わせ", "利用規約"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

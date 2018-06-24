@@ -17,14 +17,18 @@ extension SideMenuWireframe: SideMenuWireframeInterface {
         let nextVC: UIViewController
             switch index {
             case 0:
-                nextVC = storyboard.instantiateViewController(withIdentifier: "UserInfo")
+                nextVC = storyboard.instantiateViewController(withIdentifier: "Login")
             case 1:
-                nextVC = storyboard.instantiateViewController(withIdentifier: "NotifSpot")
+                nextVC = storyboard.instantiateViewController(withIdentifier: "Registration")
             case 2:
-                nextVC = storyboard.instantiateViewController(withIdentifier: "AccessAuthReq")
+                nextVC = storyboard.instantiateViewController(withIdentifier: "UserInfo")
             case 3:
-                nextVC = storyboard.instantiateViewController(withIdentifier: "ContactUs")
+                nextVC = storyboard.instantiateViewController(withIdentifier: "NotifSpot")
             case 4:
+                nextVC = storyboard.instantiateViewController(withIdentifier: "AccessAuthReq")
+            case 5:
+                nextVC = storyboard.instantiateViewController(withIdentifier: "ContactUs")
+            case 6:
                 nextVC = storyboard.instantiateViewController(withIdentifier: "TermOfUse")
             default:
                 nextVC = storyboard.instantiateViewController(withIdentifier: "UserInfo")

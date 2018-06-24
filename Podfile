@@ -8,6 +8,7 @@ target 'slim_gps_app' do
   # Pods for slim_gps_app
   pod 'Firebase/Core'
   pod 'Firebase/Firestore’
+  pod 'Firebase/Auth'
   pod 'Alamofire', '~> 4.0.1'
   pod 'SwiftyJSON'
   pod 'SlideMenuControllerSwift'

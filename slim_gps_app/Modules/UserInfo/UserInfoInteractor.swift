@@ -5,5 +5,7 @@ final class UserInfoInteractor {
 }
 
 extension UserInfoInteractor: UserInfoInteractorInterface {
-    
+    func fetchUserInfo(_ userId: String){
+        
+    }
 }
