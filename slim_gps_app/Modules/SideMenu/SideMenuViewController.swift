@@ -29,7 +29,6 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         presenter.getSideMenuPage(indexPath.row)
-        //self.present(SecondViewController(), animated: true, completion: nil)
     }
 }
 

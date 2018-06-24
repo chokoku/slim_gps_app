@@ -1,9 +1,20 @@
-//
-//  UserInfoPresenter.swift
-//  slim_gps_app
-//
-//  Created by 福原佑介 on 2018/06/23.
-//  Copyright © 2018年 yusuke. All rights reserved.
-//
-
 import Foundation
+
+final class UserInfoPresenter {
+    
+    private weak var _view: UserInfoViewInterface?
+    private var _wireframe: UserInfoWireframeInterface
+    
+    init(wireframe: UserInfoWireframeInterface, view: UserInfoViewInterface, interactor: UserInfoInteractorInterface) {
+        _wireframe = wireframe
+        _view = view
+    }
+}
+
+extension UserInfoPresenter: UserInfoPresenterInterface {
+//    func getSideMenuPage(_ index: Int){
+//        _wireframe.pushSideMenuPage(index)
+//    }
+}
+
+

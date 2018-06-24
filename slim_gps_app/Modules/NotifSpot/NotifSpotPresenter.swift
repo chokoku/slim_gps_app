@@ -1,9 +1,15 @@
-//
-//  NotifSpotPresenter.swift
-//  slim_gps_app
-//
-//  Created by 福原佑介 on 2018/06/23.
-//  Copyright © 2018年 yusuke. All rights reserved.
-//
-
 import Foundation
+
+final class NotifSpotPresenter {
+    
+    private weak var _view: NotifSpotViewInterface?
+    private var _wireframe: NotifSpotWireframeInterface
+    
+    init(wireframe: NotifSpotWireframeInterface, view: NotifSpotViewInterface, interactor: NotifSpotInteractorInterface) {
+        _wireframe = wireframe
+        _view = view
+    }
+}
+
+extension NotifSpotPresenter: NotifSpotPresenterInterface {
+}

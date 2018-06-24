@@ -1,8 +1,10 @@
 import UIKit
+import SlideMenuControllerSwift
 
 final class SideMenuWireframe {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
     func configureModule() -> UIViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SideMenu") as! SideMenuViewController
         let presenter = SideMenuPresenter(wireframe: self, view: viewController)
         viewController.presenter = presenter
@@ -15,24 +17,21 @@ extension SideMenuWireframe: SideMenuWireframeInterface {
         let nextVC: UIViewController
             switch index {
             case 0:
-                nextVC = UserInfoViewController()
+                nextVC = storyboard.instantiateViewController(withIdentifier: "UserInfo")
             case 1:
-                nextVC = NotifSpotViewController()
+                nextVC = storyboard.instantiateViewController(withIdentifier: "NotifSpot")
             case 2:
-                nextVC = AccessAuthReqViewController()
+                nextVC = storyboard.instantiateViewController(withIdentifier: "AccessAuthReq")
             case 3:
-                nextVC = ContactUsViewController()
+                nextVC = storyboard.instantiateViewController(withIdentifier: "ContactUs")
             case 4:
-                nextVC = TermOfUseViewController()
+                nextVC = storyboard.instantiateViewController(withIdentifier: "TermOfUse")
             default:
-                nextVC = UserInfoViewController()
+                nextVC = storyboard.instantiateViewController(withIdentifier: "UserInfo")
             }
-//        let navigationController = UINavigationController()
-//        let SlideMenuController = UIApplication.shared.keyWindow?.rootViewController
-//       let nvc = SlideMenuController.mainViewController as! UINavigationController
-//        SlideMenuController.pushViewController(nextVC, animated: true)
-          //navigationController.pushViewController(nextVC, animated: true)
-//        self.slideMenuController()?.closeLeft()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let sideMenuController: SlideMenuController = appDelegate.window!.rootViewController as! SlideMenuController
+        (sideMenuController.mainViewController as! UINavigationController).pushViewController(nextVC, animated: true)
+        sideMenuController.closeLeft()
     }
 }

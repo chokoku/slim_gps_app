@@ -1,9 +1,15 @@
-//
-//  ContactUsPresenter.swift
-//  slim_gps_app
-//
-//  Created by 福原佑介 on 2018/06/23.
-//  Copyright © 2018年 yusuke. All rights reserved.
-//
-
 import Foundation
+
+final class ContactUsPresenter {
+    
+    private weak var _view: ContactUsViewInterface?
+    private var _wireframe: ContactUsWireframeInterface
+    
+    init(wireframe: ContactUsWireframeInterface, view: ContactUsViewInterface, interactor: ContactUsInteractorInterface) {
+        _wireframe = wireframe
+        _view = view
+    }
+}
+
+extension ContactUsPresenter: ContactUsPresenterInterface {
+}

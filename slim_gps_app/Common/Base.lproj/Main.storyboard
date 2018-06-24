@@ -156,7 +156,7 @@
         <!--Term Of Use View Controller-->
         <scene sceneID="mAA-nA-vfR">
             <objects>
-                <viewController id="u3k-hQ-kuA" customClass="TermOfUseViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermOfUse" id="u3k-hQ-kuA" customClass="TermOfUseViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vap-5P-TjT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +180,7 @@
         <!--Notif Spot View Controller-->
         <scene sceneID="oJm-ak-gPd">
             <objects>
-                <viewController id="Kv4-8L-pz7" customClass="NotifSpotViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotifSpot" id="Kv4-8L-pz7" customClass="NotifSpotViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r63-PX-0xk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,7 +204,7 @@
         <!--Contact Us View Controller-->
         <scene sceneID="JYY-ON-lIj">
             <objects>
-                <viewController id="SOU-h8-lKW" customClass="ContactUsViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactUs" id="SOU-h8-lKW" customClass="ContactUsViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9M9-Sy-JpQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,7 +228,7 @@
         <!--Access Auth Req View Controller-->
         <scene sceneID="9n8-YY-Qcq">
             <objects>
-                <viewController id="jpv-zD-nyh" customClass="AccessAuthReqViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccessAuthReq" id="jpv-zD-nyh" customClass="AccessAuthReqViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Se-Xc-NTU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,20 +252,33 @@
         <!--User Info View Controller-->
         <scene sceneID="7k0-Gx-mqe">
             <objects>
-                <viewController id="ZgG-7p-EwO" customClass="UserInfoViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInfo" id="ZgG-7p-EwO" customClass="UserInfoViewController" customModule="slim_gps_app" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kxf-Ks-vQJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evq-ul-z8Q">
-                                <rect key="frame" x="191" y="323" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dMn-7B-Cyb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vEW-cT-umk">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vEW-cT-umk" id="Z5w-fy-U3T">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dMn-7B-Cyb" firstAttribute="leading" secondItem="dd6-FX-zBr" secondAttribute="leading" id="KAu-CG-A2k"/>
+                            <constraint firstItem="dMn-7B-Cyb" firstAttribute="bottom" secondItem="dd6-FX-zBr" secondAttribute="bottom" id="Vcf-La-LMP"/>
+                            <constraint firstItem="dMn-7B-Cyb" firstAttribute="trailing" secondItem="dd6-FX-zBr" secondAttribute="trailing" id="gpH-Ji-lL5"/>
+                            <constraint firstItem="dMn-7B-Cyb" firstAttribute="top" secondItem="dd6-FX-zBr" secondAttribute="top" id="s8V-EC-0ym"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dd6-FX-zBr"/>
                     </view>
                 </viewController>

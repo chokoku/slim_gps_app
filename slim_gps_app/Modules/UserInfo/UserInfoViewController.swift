@@ -1,23 +1,21 @@
-//
-//  UserInfoViewController.swift
-//  slim_gps_app
-//
-//  Created by 福原佑介 on 2018/06/23.
-//  Copyright © 2018年 yusuke. All rights reserved.
-//
-
 import UIKit
 
 class UserInfoViewController: UIViewController {
+    
+    var presenter: UserInfoPresenterInterface!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = "ユーザー情報"
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
+}
+
+extension UserInfoViewController: UserInfoViewInterface {
+    
 }
