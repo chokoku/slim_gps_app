@@ -11,9 +11,9 @@ extension UserInfoInteractor: UserInfoInteractorInterface {
     func fetchUserInfo(_ uid: String) -> [String:String]{
         var userInfo:[String:String] = [:]
         let db = Firestore.firestore()
-//        let settings = db.settings
-//        settings.areTimestampsInSnapshotsEnabled = true
-//        db.settings = settings
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
 //        let user = Auth.auth().currentUser
 //        print("user:\(user)")
 
