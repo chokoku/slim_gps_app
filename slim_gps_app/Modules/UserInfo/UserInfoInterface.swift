@@ -4,12 +4,12 @@ protocol UserInfoViewInterface: class {
 }
 
 protocol UserInfoPresenterInterface: class {
-    func getUserInfo()
+    func getUserInfo() -> [String:String]
 }
 
 protocol UserInfoWireframeInterface: class {
 }
 
 protocol UserInfoInteractorInterface: class {
-    func fetchUserInfo(_ userId: String)
+    func fetchUserInfo(_ uid: String) -> [String:String]
 }

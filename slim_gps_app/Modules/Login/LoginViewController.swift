@@ -1,6 +1,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import SlideMenuControllerSwift
 
 final class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -35,10 +36,10 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
                 if error == nil {
                     
                     //Print into the console if successfully logged in
-                    print("You have successfully logged in")
-                    
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Main")
-                    self.present(vc!, animated: true, completion: nil)
+//                    print("You have successfully logged in")
+                    self.navigationController!.popToViewController(self.navigationController!.viewControllers[0], animated: true)
+//                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Main")
+//                    self.present(vc!, animated: true, completion: nil)
                     
                 } else {
                     

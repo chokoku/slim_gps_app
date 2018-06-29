@@ -1,4 +1,5 @@
 import Foundation
+import FirebaseAuth
 
 final class UserInfoPresenter {
     
@@ -14,8 +15,20 @@ final class UserInfoPresenter {
 }
 
 extension UserInfoPresenter: UserInfoPresenterInterface {
-    func getUserInfo(){
-//        _interactor.fetchUserInfo()
+    func getUserInfo() -> [String:String]{
+        var userInfo:[String:String] = [:]
+        var userInfoFromCL:[String:String] = [:]
+        let user = Auth.auth().currentUser
+        
+        // get email from firebase authentication
+        userInfo["email"] = user!.email!
+        
+        // get first_name and last_name for cloud functions
+        userInfoFromCL = _interactor.fetchUserInfo(user!.uid)
+        userInfo["first_name"] = userInfoFromCL["first_name"]
+        userInfo["last_name"] = userInfoFromCL["last_name"]
+        
+        return userInfo
     }
 }
 
