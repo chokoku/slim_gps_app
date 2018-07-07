@@ -1,7 +1,7 @@
 import Foundation
 
 final class NotifSpotInteractor {
-    var output: NotifSpotPresenterInterface!
+    var presenter: NotifSpotPresenterInterface!
 }
 
 extension NotifSpotInteractor: NotifSpotInteractorInterface {

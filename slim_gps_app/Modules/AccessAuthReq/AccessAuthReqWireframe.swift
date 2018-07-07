@@ -8,7 +8,7 @@ final class AccessAuthReqWireframe {
         let interactor = AccessAuthReqInteractor()
         let presenter = AccessAuthReqPresenter(wireframe: self, view: viewController, interactor: interactor)
         viewController.presenter = presenter
-        interactor.output = presenter
+        interactor.presenter = presenter
         return viewController
     }}
 

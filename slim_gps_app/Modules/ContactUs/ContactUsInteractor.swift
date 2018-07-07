@@ -1,7 +1,7 @@
 import Foundation
 
 final class ContactUsInteractor {
-    var output: ContactUsPresenterInterface!
+    var presenter: ContactUsPresenterInterface!
 }
 
 extension ContactUsInteractor: ContactUsInteractorInterface {

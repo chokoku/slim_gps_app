@@ -34,13 +34,13 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
-                    
-                    //Print into the console if successfully logged in
-//                    print("You have successfully logged in")
-                    self.navigationController!.popToViewController(self.navigationController!.viewControllers[0], animated: true)
-//                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Main")
-//                    self.present(vc!, animated: true, completion: nil)
-                    
+                    let mainWireframe = MainWireframe()
+                    let navigationController = mainWireframe.configureModule()
+                    let sideMenuWireframe = SideMenuWireframe()
+                    let leftVC = sideMenuWireframe.configureModule()
+                    let slideMenuController = SlideMenuController(mainViewController: navigationController, leftMenuViewController: leftVC)
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.rootViewController = slideMenuController
                 } else {
                     
                     //Tells the user that there is an error and then gets firebase to tell them the error

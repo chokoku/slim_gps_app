@@ -1,7 +1,7 @@
 import UIKit
 
 class UserInfoViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var userInfo: UILabel!
     
@@ -17,6 +17,8 @@ class UserInfoViewCell: UITableViewCell {
     
     /// タイトル・ユーザー情報を設定するメソッド
     func setCell(titleText: String, userInfoText: String) {
+        print("titleText:\(titleText)")
+        print("userInfoText:\(userInfoText)")
         titleLabel.text = titleText
         userInfo.text = userInfoText
     }

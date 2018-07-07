@@ -8,7 +8,7 @@ final class ContactUsWireframe {
         let interactor = ContactUsInteractor()
         let presenter = ContactUsPresenter(wireframe: self, view: viewController, interactor: interactor)
         viewController.presenter = presenter
-        interactor.output = presenter
+        interactor.presenter = presenter
         return viewController
     }
 }

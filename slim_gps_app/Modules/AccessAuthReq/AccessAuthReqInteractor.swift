@@ -1,7 +1,7 @@
 import Foundation
 
 final class AccessAuthReqInteractor {
-    var output: AccessAuthReqPresenterInterface!
+    var presenter: AccessAuthReqPresenterInterface!
 }
 
 extension AccessAuthReqInteractor: AccessAuthReqInteractorInterface {

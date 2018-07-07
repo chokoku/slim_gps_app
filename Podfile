@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+# platform :ios, '9.0'
 
 target 'slim_gps_app' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -12,6 +12,11 @@ target 'slim_gps_app' do
   pod 'Alamofire', '~> 4.0.1'
   pod 'SwiftyJSON'
   pod 'SlideMenuControllerSwift'
+  pod 'GoogleMaps'
+  pod 'GooglePlacePicker'
+  pod 'GooglePlaces'
+  pod 'FontAwesome.swift'
+  pod 'Eureka'
 
   target 'slim_gps_appTests' do
     inherit! :search_paths

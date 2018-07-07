@@ -5,10 +5,10 @@ final class SideMenuWireframe {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
     func configureModule() -> UIViewController {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "SideMenu") as! SideMenuViewController
-        let presenter = SideMenuPresenter(wireframe: self, view: viewController)
-        viewController.presenter = presenter
-        return viewController
+        let sideMenuController = storyboard.instantiateViewController(withIdentifier: "SideMenu") as! SideMenuViewController
+        let presenter = SideMenuPresenter(wireframe: self, view: sideMenuController)
+        sideMenuController.presenter = presenter
+        return sideMenuController
     }
 }
 
@@ -17,11 +17,13 @@ extension SideMenuWireframe: SideMenuWireframeInterface {
         var nextVC: UIViewController?
 
         print("move to \(index) page")
+        
+        // TODO bug here
         switch index {
         case "Login":
-            nextVC = storyboard.instantiateViewController(withIdentifier: "Login")
+            nextVC = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
         case "Registration":
-            nextVC = storyboard.instantiateViewController(withIdentifier: "Registration")
+            nextVC = storyboard.instantiateViewController(withIdentifier: "Registration") as! RegistraionViewController
         case "UserInfo":
             nextVC = UserInfoWireframe().configureModule()
         case "NotifSpot":
@@ -31,7 +33,7 @@ extension SideMenuWireframe: SideMenuWireframeInterface {
         case "ContactUs":
             nextVC = ContactUsWireframe().configureModule()
         case "TermOfUse":
-            nextVC = storyboard.instantiateViewController(withIdentifier: "TermOfUse")
+            nextVC = storyboard.instantiateViewController(withIdentifier: "TermOfUse") as! TermOfUseViewController
         default:
             print("no wireframe setting")
         }

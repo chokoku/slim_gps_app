@@ -9,11 +9,13 @@
 import UIKit
 import SlideMenuControllerSwift
 import Firebase
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let cGoogleMapsAPIKey = "AIzaSyAKFeECyy_5zjoEtaESEQnr2xcQe1Fgb8o"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -24,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let slideMenuController = SlideMenuController(mainViewController: navigationController, leftMenuViewController: leftVC)
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
+        GMSServices.provideAPIKey(cGoogleMapsAPIKey)
         return true
     }
 
