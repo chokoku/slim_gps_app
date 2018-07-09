@@ -75,6 +75,8 @@
 		067FD5D420F26E510047CFC9 /* AccessApprovalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D320F26E510047CFC9 /* AccessApprovalPresenter.swift */; };
 		067FD5D620F26E5D0047CFC9 /* AccessApprovalInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D520F26E5D0047CFC9 /* AccessApprovalInterface.swift */; };
 		067FD5D820F278990047CFC9 /* AccessApprovalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */; };
+		06A0E56120F35B2F002CFEA5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A0E55F20F34E4B002CFEA5 /* CoreLocation.framework */; };
+		06A0E56320F3A75D002CFEA5 /* NotifSpotViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */; };
 		55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */; };
 		AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */; };
 		C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */; };
@@ -172,6 +174,9 @@
 		067FD5D320F26E510047CFC9 /* AccessApprovalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalPresenter.swift; sourceTree = "<group>"; };
 		067FD5D520F26E5D0047CFC9 /* AccessApprovalInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalInterface.swift; sourceTree = "<group>"; };
 		067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalViewCell.swift; sourceTree = "<group>"; };
+		06A0E55D20F34E3D002CFEA5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		06A0E55F20F34E4B002CFEA5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotViewCell.swift; sourceTree = "<group>"; };
 		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06A0E56120F35B2F002CFEA5 /* CoreLocation.framework in Frameworks */,
 				0606B9BE20DE128C003536B1 /* SlideMenuControllerSwift.framework in Frameworks */,
 				55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */,
 			);
@@ -359,6 +365,7 @@
 				0630318A20DE57E8009F78EA /* NotifSpotInteractor.swift */,
 				0630318C20DE57F6009F78EA /* NotifSpotInterface.swift */,
 				0630318E20DE5806009F78EA /* NotifSpotWireframe.swift */,
+				06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */,
 			);
 			path = NotifSpot;
 			sourceTree = "<group>";
@@ -418,7 +425,6 @@
 		067FD5B420EE11FB0047CFC9 /* LatestLocation */ = {
 			isa = PBXGroup;
 			children = (
-				067FD5B520EE126F0047CFC9 /* LatestLocationViewController.swift */,
 				067FD5B720EE127E0047CFC9 /* LatestLocationWireframe.swift */,
 				067FD5B920EE129C0047CFC9 /* LatestLocationInteractor.swift */,
 				067FD5BB20EE12A90047CFC9 /* LatestLocationPresenter.swift */,
@@ -430,6 +436,7 @@
 		067FD5BF20EE1DC20047CFC9 /* DailyLocation */ = {
 			isa = PBXGroup;
 			children = (
+				067FD5B520EE126F0047CFC9 /* LatestLocationViewController.swift */,
 				067FD5C020EE1DE40047CFC9 /* DailyLocationViewController.swift */,
 				067FD5C220EE1DEF0047CFC9 /* DailyLocationWireframe.swift */,
 				067FD5C420EE1DFD0047CFC9 /* DailyLocationInteractor.swift */,
@@ -456,6 +463,8 @@
 		1CB666472DE4F9AF1A10A1AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06A0E55F20F34E4B002CFEA5 /* CoreLocation.framework */,
+				06A0E55D20F34E3D002CFEA5 /* MapKit.framework */,
 				0606B9BD20DE128C003536B1 /* SlideMenuControllerSwift.framework */,
 				51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */,
 				73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */,
@@ -675,7 +684,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_app/Pods-slim_gps_app-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
@@ -683,7 +691,6 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -693,7 +700,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
@@ -701,7 +707,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -742,6 +747,7 @@
 				067FD5CB20EE791B0047CFC9 /* PopupViewController.swift in Sources */,
 				0606B9B220DE074B003536B1 /* LoginViewController.swift in Sources */,
 				0630317720DE5680009F78EA /* UserInfoInterface.swift in Sources */,
+				06A0E56320F3A75D002CFEA5 /* NotifSpotViewCell.swift in Sources */,
 				0630318720DE57BF009F78EA /* NotifSpotViewController.swift in Sources */,
 				067FD5C520EE1DFD0047CFC9 /* DailyLocationInteractor.swift in Sources */,
 				067FD5D220F26E400047CFC9 /* AccessApprovalInteractor.swift in Sources */,

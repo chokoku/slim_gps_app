@@ -7,9 +7,13 @@
 //
 
 import UIKit
+//import UserNotifications
 import SlideMenuControllerSwift
 import Firebase
+//import FirebaseMessaging
 import GoogleMaps
+import CoreLocation
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let cGoogleMapsAPIKey = "AIzaSyAKFeECyy_5zjoEtaESEQnr2xcQe1Fgb8o"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
+        
+        // set up Main page
         let mainWireframe = MainWireframe()
         let navigationController = mainWireframe.configureModule()
         let sideMenuWireframe = SideMenuWireframe()
@@ -51,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (4.0.1)
   - BoringSSL (10.0.5):
     - BoringSSL/Implementation (= 10.0.5)
     - BoringSSL/Interface (= 10.0.5)
@@ -97,10 +96,8 @@ PODS:
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.0)
   - SlideMenuControllerSwift (4.0.0)
-  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.0.1)
   - Eureka
   - Firebase/Auth
   - Firebase/Core
@@ -111,11 +108,9 @@ DEPENDENCIES:
   - GooglePlacePicker
   - GooglePlaces
   - SlideMenuControllerSwift
-  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - BoringSSL
     - Eureka
     - Firebase
@@ -139,10 +134,8 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SlideMenuControllerSwift
-    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   BoringSSL: cf3f1793eb6e3c445c4d150456341f149c268a35
   Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
   Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
@@ -166,8 +159,7 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 0193cb8c996687fa5de1315cc75b1f6284b37a05
+PODFILE CHECKSUM: 09f768f7239f2ff8784a520b8e05c185839e6af0
 
 COCOAPODS: 1.5.3

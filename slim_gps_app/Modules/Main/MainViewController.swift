@@ -13,14 +13,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         scrollView.contentSize = CGSize( width: CGFloat(self.view.bounds.width), height: CGFloat(5+(270+5)*(deviceInfo.count)) )
         self.addLeftBarButtonWithImage(UIImage(named: "menu_icon")!)
         
@@ -32,6 +24,14 @@ class MainViewController: UIViewController {
         } else {
             // No user is signed in.
         }
+    }
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
     }
 
     @objc func settingButtonTapped(sender : AnyObject) {

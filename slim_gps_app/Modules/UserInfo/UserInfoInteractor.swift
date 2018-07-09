@@ -20,7 +20,7 @@ extension UserInfoInteractor: UserInfoInteractorInterface {
         var userInfo:[String:String?] = [:]
         var error: String?
 
-        db.collection("clients").document(uid).getDocument { (document, err) in
+        db.collection("clients").document(uid).addSnapshotListener{ (document, err) in
             if let _ = err {
                 error = "エラーが発生しました"
                 completion(userInfo, error)

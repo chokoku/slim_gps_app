@@ -14,47 +14,65 @@ final class AccessApprovalInteractor {
 }
 
 extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
-    func fetchRequesters(uid:String) -> [(access_auth_id: String, first_name: String?, last_name: String?)]{
-        
-        var requesters = [(access_auth_id: String, first_name: String?, last_name: String?)]()
-        var keepAlive = true
-        let runLoop = RunLoop.current
-        var i = 0
-        
-        // first, get devices which user manages as the admin
+    
+    func fetchRequesters(uid:String){
         db.collection("access_auth")
-            .whereField("owner_id", isEqualTo: uid)
-            .whereField("confirmed", isEqualTo: false)
-            .addSnapshotListener { (accessAuthQuerySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
+            .whereField("client_id", isEqualTo: uid)
+            .whereField("admin", isEqualTo: true)
+            .addSnapshotListener { (accessAuthQuerySnapshot1, err) in
+                if let _ = err {
+                    self.presenter.pushAlert(message:"エラーが発生しました")
                 } else {
-                    if(accessAuthQuerySnapshot!.documents.count == 0){ // the user manages no devices
-                        keepAlive = false
-                    } else {
-                        for accessAuthDocument in accessAuthQuerySnapshot!.documents{
-                            let client_id = accessAuthDocument.data()["client_id"] as! String
-                            self.db.collection("clients").document(client_id)
-                                .addSnapshotListener { (clientDocument, err) in
-                                    if let err = err {
-                                        print("Error getting documents: \(err)")
-                                    } else {
-                                        let first_name = clientDocument!.data()!["first_name"] as? String
-                                        let last_name = clientDocument!.data()!["last_name"] as? String
-                                        requesters += [(accessAuthDocument.documentID, first_name , last_name)]
-                                        i += 1
-                                        if(accessAuthQuerySnapshot!.documents.count == i){ keepAlive = false }
+                    for accessAuthDocument1 in accessAuthQuerySnapshot1!.documents{
+                        let device_id = accessAuthDocument1.data()["device_id"] as! String
+                        self.db.collection("access_auth")
+                            .whereField("device_id", isEqualTo: device_id)
+                            .whereField("admin", isEqualTo: false)
+                            .whereField("confirmed", isEqualTo: false)
+                            .addSnapshotListener { (accessAuthQuerySnapshot2, err) in
+                                if let _ = err {
+                                    self.presenter.pushAlert(message:"エラーが発生しました")
+                                } else {
+                                    for accessAuthDocument2 in accessAuthQuerySnapshot2!.documents{
+                                        let requester_id = accessAuthDocument2.data()["client_id"] as! String
+                                        self.db.collection("clients").document(requester_id)
+                                            .addSnapshotListener { (requesterDocument, err) in
+                                                if let _ = err {
+                                                    self.presenter.pushAlert(message:"エラーが発生しました")
+                                                } else {
+                                                    let first_name = requesterDocument!.data()!["first_name"] as? String
+                                                    let last_name = requesterDocument!.data()!["last_name"] as? String
+                                                    self.presenter.addRequesters(access_auth_id: accessAuthDocument2.documentID, first_name: first_name, last_name: last_name)
+                                                }
+                                        }
                                     }
-                            }
+                                }
                         }
                     }
                 }
         }
         
-        while keepAlive &&
-            runLoop.run(mode: RunLoopMode.defaultRunLoopMode, before: NSDate(timeIntervalSinceNow: 0.1) as Date) {
+    }
+    
+    func approveAccessRequest(access_auth_id: String, completion: @escaping (String?) -> Void){
+        var error: String?
+        db.collection("access_auth").document(access_auth_id).updateData([ "confirmed": true ]){ err in
+            if let _ = err {
+                error = "アクセス権を付与できませんでした"
+            } else {
+                // TODO send notification
+            }
+            completion(error)
         }
-        
-        return requesters
+    }
+    
+    func rejectAccessRequest(access_auth_id: String, completion: @escaping (String?) -> Void){
+        var error: String?
+        db.collection("access_auth").document(access_auth_id).delete(){ err in
+            if let _ = err {
+                error = "アクセスリクエストの拒否に失敗しました"
+            }
+            completion(error)
+        }
     }
 }
