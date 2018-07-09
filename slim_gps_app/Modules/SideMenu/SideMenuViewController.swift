@@ -5,9 +5,10 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
 
     var presenter: SideMenuPresenterInterface!
     @IBOutlet weak var sideMenuTable: UITableView!
-    let sidemenuList:[String:String] = ["Login":"ログイン", "Registration":"登録", "UserInfo":"ユーザー情報", "NotifSpot":"通知スポットの設定", "AccessAuthReq":"見守りリクエスト", "ContactUs":"お問い合わせ", "TermOfUse":"利用規約"]
-    let beforelogin_sidemenuItems:[String] =  ["Login", "Registration", "UserInfo", "NotifSpot", "AccessAuthReq", "ContactUs", "TermOfUse"]
-    let afterlogin_sidemenuItems:[String] =  ["UserInfo", "NotifSpot", "AccessAuthReq", "ContactUs", "TermOfUse"]
+    let sidemenuList:[String:String] = ["Login":"ログイン", "Registration":"登録", "UserInfo":"ユーザー情報", "NotifSpot":"通知スポットの設定", "AccessAuthReq":"アクセスリクエスト",
+                                        "AccessApproval":"アクセスの承認", "ContactUs":"お問い合わせ", "TermOfUse":"利用規約"]
+    let beforelogin_sidemenuItems:[String] =  ["Login", "Registration", "UserInfo", "NotifSpot", "AccessAuthReq", "AccessApproval", "ContactUs", "TermOfUse"]
+    let afterlogin_sidemenuItems:[String] =  ["UserInfo", "NotifSpot", "AccessAuthReq", "AccessApproval", "ContactUs", "TermOfUse"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,7 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         } else if ["Login","Registration","TermOfUse"].contains(beforelogin_sidemenuItems[indexPath.row]) {
             presenter.getSideMenuPage(beforelogin_sidemenuItems[indexPath.row])
         } else {
-            let alertController = UIAlertController(title: "Error", message: "ログイン後にアクセスできます　", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "エラー", message: "ログイン後にアクセスできます　", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)

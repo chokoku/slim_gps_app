@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B13F00CFCA424E47CBB17EFAC6FF0E1A"
+               BlueprintIdentifier = "61CD95F108765457BB0EDA3DE8944E9D"
                BuildableName = "Pods_slim_gps_app.framework"
                BlueprintName = "Pods-slim_gps_app"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B13F00CFCA424E47CBB17EFAC6FF0E1A"
+            BlueprintIdentifier = "61CD95F108765457BB0EDA3DE8944E9D"
             BuildableName = "Pods_slim_gps_app.framework"
             BlueprintName = "Pods-slim_gps_app"
             ReferencedContainer = "container:Pods.xcodeproj">

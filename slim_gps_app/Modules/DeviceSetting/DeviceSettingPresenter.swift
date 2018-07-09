@@ -18,16 +18,34 @@ extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
         return _interactor.fetchAccessAuth(device_id: device_id)
     }
     
-    func removeAccessAuth(access_auth_id: String){
-        _interactor.deleteAccessAuth(access_auth_id: access_auth_id)
+    func removeAccessAuth(access_auth_id: String, completion: @escaping (String?) -> Void){
+        var error: String?
+        _interactor.deleteAccessAuth(access_auth_id: access_auth_id){ (err: String?) in
+            if let err = err {
+                error = err
+            }
+            completion(error)
+        }
     }
     
-    func changeDeviceName(device_id: String, name: String)  -> Bool {
-       return  _interactor.updateDeviceName(device_id: device_id, name: name)
+    func changeDeviceName(device_id: String, name: String, completion: @escaping (String?) -> Void) {
+        var error: String?
+        _interactor.updateDeviceName(device_id: device_id, name: name){ (err: String?) in
+            if let err = err {
+                error = err
+            }
+            completion(error)
+        }
     }
     
-    func changeDeviceSetting(device_id: String, mode: String) {
-        return  _interactor.updateDeviceSetting( device_id: device_id, mode: mode )
+    func changeDeviceSetting(device_id: String, mode: String, completion: @escaping (String?) -> Void) {
+        var error: String?
+        _interactor.updateDeviceSetting( device_id: device_id, mode: mode ){ (err: String?) in
+            if let err = err {
+                error = err
+            }
+            completion(error)
+        }
     }
 }
 

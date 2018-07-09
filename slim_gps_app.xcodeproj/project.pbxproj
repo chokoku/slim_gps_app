@@ -69,6 +69,12 @@
 		067FD5C720EE1E090047CFC9 /* DailyLocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5C620EE1E090047CFC9 /* DailyLocationPresenter.swift */; };
 		067FD5C920EE1E140047CFC9 /* DailyLocationInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5C820EE1E140047CFC9 /* DailyLocationInterface.swift */; };
 		067FD5CB20EE791B0047CFC9 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5CA20EE791B0047CFC9 /* PopupViewController.swift */; };
+		067FD5CE20F26DF70047CFC9 /* AccessApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5CD20F26DF70047CFC9 /* AccessApprovalViewController.swift */; };
+		067FD5D020F26E280047CFC9 /* AccessApprovalWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5CF20F26E280047CFC9 /* AccessApprovalWireframe.swift */; };
+		067FD5D220F26E400047CFC9 /* AccessApprovalInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D120F26E400047CFC9 /* AccessApprovalInteractor.swift */; };
+		067FD5D420F26E510047CFC9 /* AccessApprovalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D320F26E510047CFC9 /* AccessApprovalPresenter.swift */; };
+		067FD5D620F26E5D0047CFC9 /* AccessApprovalInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D520F26E5D0047CFC9 /* AccessApprovalInterface.swift */; };
+		067FD5D820F278990047CFC9 /* AccessApprovalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */; };
 		55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */; };
 		AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */; };
 		C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */; };
@@ -160,6 +166,12 @@
 		067FD5C620EE1E090047CFC9 /* DailyLocationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLocationPresenter.swift; sourceTree = "<group>"; };
 		067FD5C820EE1E140047CFC9 /* DailyLocationInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLocationInterface.swift; sourceTree = "<group>"; };
 		067FD5CA20EE791B0047CFC9 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		067FD5CD20F26DF70047CFC9 /* AccessApprovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalViewController.swift; sourceTree = "<group>"; };
+		067FD5CF20F26E280047CFC9 /* AccessApprovalWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalWireframe.swift; sourceTree = "<group>"; };
+		067FD5D120F26E400047CFC9 /* AccessApprovalInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalInteractor.swift; sourceTree = "<group>"; };
+		067FD5D320F26E510047CFC9 /* AccessApprovalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalPresenter.swift; sourceTree = "<group>"; };
+		067FD5D520F26E5D0047CFC9 /* AccessApprovalInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalInterface.swift; sourceTree = "<group>"; };
+		067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalViewCell.swift; sourceTree = "<group>"; };
 		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -273,6 +285,8 @@
 		0606B9AF20DE0654003536B1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				067FD5CC20F26DD20047CFC9 /* AccessApproval */,
+				0630319020DE580B009F78EA /* AccessAuthReq */,
 				067FD5BF20EE1DC20047CFC9 /* DailyLocation */,
 				067FD5B420EE11FB0047CFC9 /* LatestLocation */,
 				067FD5A920EDBB830047CFC9 /* LocationData */,
@@ -282,7 +296,6 @@
 				0630316720DE4DF8009F78EA /* SideMenu */,
 				0606B9B020DE0687003536B1 /* Main */,
 				0630316F20DE5634009F78EA /* UserInfo */,
-				0630319020DE580B009F78EA /* AccessAuthReq */,
 				0630318520DE5775009F78EA /* NotifSpot */,
 				0630317A20DE56A5009F78EA /* ContactUs */,
 				0630319B20DE58F8009F78EA /* TermOfUse */,
@@ -354,10 +367,10 @@
 			isa = PBXGroup;
 			children = (
 				0630319120DE58A2009F78EA /* AccessAuthReqViewController.swift */,
-				0630319720DE58C9009F78EA /* AccessAuthReqInterface.swift */,
+				0630319920DE58D5009F78EA /* AccessAuthReqWireframe.swift */,
 				0630319320DE58AF009F78EA /* AccessAuthReqPresenter.swift */,
 				0630319520DE58BF009F78EA /* AccessAuthReqInteractor.swift */,
-				0630319920DE58D5009F78EA /* AccessAuthReqWireframe.swift */,
+				0630319720DE58C9009F78EA /* AccessAuthReqInterface.swift */,
 			);
 			path = AccessAuthReq;
 			sourceTree = "<group>";
@@ -425,6 +438,19 @@
 				067FD5CA20EE791B0047CFC9 /* PopupViewController.swift */,
 			);
 			path = DailyLocation;
+			sourceTree = "<group>";
+		};
+		067FD5CC20F26DD20047CFC9 /* AccessApproval */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5CD20F26DF70047CFC9 /* AccessApprovalViewController.swift */,
+				067FD5CF20F26E280047CFC9 /* AccessApprovalWireframe.swift */,
+				067FD5D120F26E400047CFC9 /* AccessApprovalInteractor.swift */,
+				067FD5D320F26E510047CFC9 /* AccessApprovalPresenter.swift */,
+				067FD5D520F26E5D0047CFC9 /* AccessApprovalInterface.swift */,
+				067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */,
+			);
+			path = AccessApproval;
 			sourceTree = "<group>";
 		};
 		1CB666472DE4F9AF1A10A1AB /* Frameworks */ = {
@@ -718,6 +744,8 @@
 				0630317720DE5680009F78EA /* UserInfoInterface.swift in Sources */,
 				0630318720DE57BF009F78EA /* NotifSpotViewController.swift in Sources */,
 				067FD5C520EE1DFD0047CFC9 /* DailyLocationInteractor.swift in Sources */,
+				067FD5D220F26E400047CFC9 /* AccessApprovalInteractor.swift in Sources */,
+				067FD5D020F26E280047CFC9 /* AccessApprovalWireframe.swift in Sources */,
 				067FD5B620EE126F0047CFC9 /* LatestLocationViewController.swift in Sources */,
 				067FD5BE20EE12B60047CFC9 /* LatestLocationInterface.swift in Sources */,
 				0630316420DE38F1009F78EA /* MainPresenter.swift in Sources */,
@@ -727,12 +755,14 @@
 				067FD5C920EE1E140047CFC9 /* DailyLocationInterface.swift in Sources */,
 				0606B98020DDF82D003536B1 /* AppDelegate.swift in Sources */,
 				067FD5AF20EDBBC90047CFC9 /* LocationDataInteractor.swift in Sources */,
+				067FD5D620F26E5D0047CFC9 /* AccessApprovalInterface.swift in Sources */,
 				0630317E20DE56F0009F78EA /* ContactUsInterface.swift in Sources */,
 				063031AB20DFE070009F78EA /* UserInfoViewCell.swift in Sources */,
 				0630316920DE4E1D009F78EA /* SideMenuPresenter.swift in Sources */,
 				0630319D20DE5904009F78EA /* TermOfUseViewController.swift in Sources */,
 				067FD5A820ED13080047CFC9 /* DeviceSettingInterface.swift in Sources */,
 				0630317120DE5650009F78EA /* UserInfoViewController.swift in Sources */,
+				067FD5D820F278990047CFC9 /* AccessApprovalViewCell.swift in Sources */,
 				0630316C20DE4E3A009F78EA /* SideMenuWireframe.swift in Sources */,
 				0630317320DE5663009F78EA /* UserInfoWireframe.swift in Sources */,
 				0630316020DE38CA009F78EA /* MainWireframe.swift in Sources */,
@@ -744,6 +774,7 @@
 				067FD5BA20EE129C0047CFC9 /* LatestLocationInteractor.swift in Sources */,
 				0630319820DE58C9009F78EA /* AccessAuthReqInterface.swift in Sources */,
 				067FD5C720EE1E090047CFC9 /* DailyLocationPresenter.swift in Sources */,
+				067FD5CE20F26DF70047CFC9 /* AccessApprovalViewController.swift in Sources */,
 				0630318B20DE57E8009F78EA /* NotifSpotInteractor.swift in Sources */,
 				067FD5B120EDBBD70047CFC9 /* LocationDataPresenter.swift in Sources */,
 				067FD5A020ED12C00047CFC9 /* DeviceSettingWireframe.swift in Sources */,
@@ -757,6 +788,7 @@
 				0630318020DE56FE009F78EA /* ContactUsInteractor.swift in Sources */,
 				0630318F20DE5806009F78EA /* NotifSpotWireframe.swift in Sources */,
 				0630316220DE38DC009F78EA /* MainInteractor.swift in Sources */,
+				067FD5D420F26E510047CFC9 /* AccessApprovalPresenter.swift in Sources */,
 				063031A620DFC48E009F78EA /* RegistrationViewController.swift in Sources */,
 				067FD5A620ED12F90047CFC9 /* DeviceSettingPresenter.swift in Sources */,
 				0630318220DE570F009F78EA /* ContactUsPresenter.swift in Sources */,

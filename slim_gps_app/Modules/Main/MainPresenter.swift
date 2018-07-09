@@ -26,6 +26,7 @@ extension MainPresenter: MainPresenterInterface {
     func getDeviceInfo(uid: String) -> [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]{
         return _interactor.fetchDeviceInfo(uid: uid)
     }
+    
 }
 
 

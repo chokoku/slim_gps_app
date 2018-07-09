@@ -9,27 +9,38 @@ class LatestLocationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        serial_num = "dfasdfaeadaerq"
-        //          serial_num = "product_1"
 
-        let latestLocationData:(latitude: Double?, longitude: Double?) = presenter.getLatestLocationData( serial_num: serial_num ) // latestLocationData can be nil
-
-        if let lat = latestLocationData.latitude, let long = latestLocationData.longitude{
-            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0)
-            mapView = GMSMapView(frame: CGRect(x:0,y: 0, width:self.view.bounds.width, height:self.view.bounds.height))
-            mapView.camera = camera
-            let marker: GMSMarker = GMSMarker()
-            marker.position = CLLocationCoordinate2DMake(lat, long)
-            marker.map = mapView
-            self.view.addSubview(mapView)
-        } else {
-            presenter.goBackToMainPage()
+        presenter.getLatestLocationData( serial_num: serial_num ){ (latitude: Double?, longitude: Double?, err: String?) in
+            if let err = err {
+                self.showAlert(message: err)
+            } else {
+                let latestLocationData:(latitude: Double?, longitude: Double?) = (latitude: latitude, longitude: longitude)
+                
+                if let lat = latestLocationData.latitude, let long = latestLocationData.longitude{
+                    let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0)
+                    self.mapView = GMSMapView(frame: CGRect(x:0,y: 0, width:self.view.bounds.width, height:self.view.bounds.height))
+                    self.mapView.camera = camera
+                    let marker: GMSMarker = GMSMarker()
+                    marker.position = CLLocationCoordinate2DMake(lat, long)
+                    marker.map = self.mapView
+                    self.view.addSubview(self.mapView)
+                } else {
+                    self.presenter.goBackToMainPage()
+                }
+            }
         }
     }
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func showAlert(message: String){
+        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
+        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
+        alert.addAction(OKAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 

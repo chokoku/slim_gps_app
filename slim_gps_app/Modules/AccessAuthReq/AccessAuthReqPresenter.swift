@@ -1,4 +1,5 @@
 import Foundation
+import FirebaseAuth
 
 final class AccessAuthReqPresenter {
     
@@ -14,4 +15,15 @@ final class AccessAuthReqPresenter {
 }
 
 extension AccessAuthReqPresenter: AccessAuthReqPresenterInterface {
+    func submitSerialNum(serialNum: String, completion: @escaping (String?) -> Void ){
+        var error: String?
+        let user = Auth.auth().currentUser
+        
+        _interactor.updateAccessAuth(serialNum: serialNum, uid: user!.uid) { (err: String?) in
+            if let err = err {
+                error = err
+            }
+            completion(error)
+        }
+    }
 }

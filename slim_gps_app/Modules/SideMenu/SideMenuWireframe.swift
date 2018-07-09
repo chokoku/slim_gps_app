@@ -30,6 +30,8 @@ extension SideMenuWireframe: SideMenuWireframeInterface {
             nextVC = NotifSpotWireframe().configureModule()
         case "AccessAuthReq":
             nextVC = AccessAuthReqWireframe().configureModule()
+        case "AccessApproval":
+            nextVC = AccessApprovalWireframe().configureModule()
         case "ContactUs":
             nextVC = ContactUsWireframe().configureModule()
         case "TermOfUse":

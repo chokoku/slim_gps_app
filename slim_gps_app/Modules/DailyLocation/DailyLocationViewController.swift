@@ -79,7 +79,7 @@ class DailyLocationViewController: UIViewController {
     func showAlert(){
         if alertFlag {
             let alert = UIAlertController(title: "お知らせ", message: "データがありません", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
             alert.addAction(defaultAction)
             self.present(alert, animated: true, completion: nil)
             alertFlag = false

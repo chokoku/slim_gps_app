@@ -1,15 +1,14 @@
 import UIKit
 
 protocol UserInfoViewInterface: class {
-    func showAlert(message: String)
 }
 
 protocol UserInfoPresenterInterface: class {
-    func getUserInfo() -> [String:String]
     func logout()
-    func updateUserInfo(item: String, input: String)
-    func updateUserEmail(email: String, password: String)
-    func showAlert(message: String)
+    
+    func getUserInfo(completion: @escaping ([String:String?], String?) -> Void)
+    func updateUserEmail(email: String, password: String, completion: @escaping (String?) -> Void)
+    func updateUserInfo(item: String, input: String, completion: @escaping (String?) ->Void)
 }
 
 protocol UserInfoWireframeInterface: class {
@@ -17,7 +16,7 @@ protocol UserInfoWireframeInterface: class {
 }
 
 protocol UserInfoInteractorInterface: class {
-    func fetchClientInfo(_ uid: String) -> [String:String]
-    func updateClientEmail(_ email: String)
-    func updateClientInfo(uid: String, item: String, input: String)
+    func fetchClientInfo(uid: String, completion: @escaping ([String:String?], String?) -> Void)
+    func updateClientEmail(email: String, completion: @escaping (String?) ->Void)
+    func updateClientInfo(uid: String, item: String, input: String, completion: @escaping (String?) -> Void)
 }

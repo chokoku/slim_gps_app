@@ -75,7 +75,6 @@ extension MainInteractor: MainInteractorInterface {
                 }
         }
         
-        
         while keepAlive &&
             runLoop.run(mode: RunLoopMode.defaultRunLoopMode, before: NSDate(timeIntervalSinceNow: 0.1) as Date) {
         }

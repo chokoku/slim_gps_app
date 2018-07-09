@@ -7,13 +7,11 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-//    var presenter: LoginPresenterInterface!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-//        _setupUI()
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -22,8 +20,7 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
             
             //Alert to tell the user that there was an error because they didn't fill anything in the textfields because they didn't fill anything in
             
-            let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
-            
+            let alertController = UIAlertController(title: "エラー", message: "Eメールとパスワードを入力してください", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             
@@ -44,16 +41,14 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     
                     //Tells the user that there is an error and then gets firebase to tell them the error
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "エラー", message: error?.localizedDescription, preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
-                    
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
-//        presenter.loginButtonTapped(id: emailTextField.text ?? "", password: passwordTextField.text ?? "")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
@@ -63,20 +58,3 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-// MARK: - Extensions -
-
-//extension LoginViewController {
-//    private func _setupUI() {
-//        emailTextField.delegate = self
-//        passwordTextField.delegate = self
-//    }
-//}
-
-//extension LoginViewController: LoginViewInterface {
-//}
-
-//extension LoginViewController: StoryboardLoadable {
-//    static var storyboardName: String {
-//        return Storyboard.LoginViewController.name
-//    }
-////}

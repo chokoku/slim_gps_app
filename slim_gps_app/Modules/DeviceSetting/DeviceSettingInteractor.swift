@@ -21,7 +21,9 @@ extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
         let runLoop = RunLoop.current
         var i = 0
         
-        db.collection("access_auth").whereField("device_id", isEqualTo: device_id)
+        db.collection("access_auth")
+            .whereField("device_id", isEqualTo: device_id)
+            .order(by: "created_at", descending: false)
             .addSnapshotListener { (access_auth_querySnapshot, error) in
                 if let error = error {
                     print("Error getting documents: \(error)")
@@ -52,32 +54,36 @@ extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
         return accessAuth
     }
     
-    func updateDeviceName(device_id: String, name:String)  -> Bool {
-        var result: Bool = true
+    func updateDeviceName(device_id: String, name:String, completion: @escaping (String?) -> Void) {
+        var error: String?
         
-        var keepAlive = true
-        let runLoop = RunLoop.current
-        
-        db.collection("devices").document(device_id).updateData(["name": name]) { error in
-            if let error = error {
-                result = false
-                print("Error updating document: \(error)")
+        db.collection("devices").document(device_id).updateData(["name": name]) { err in
+            if let _ = err {
+                error = " デバイス情報を更新できませんでした"
             }
-            keepAlive = false
+            completion(error)
         }
-        
-        while keepAlive &&
-            runLoop.run(mode: RunLoopMode.defaultRunLoopMode, before: NSDate(timeIntervalSinceNow: 0.1) as Date) {
-        }
-        
-        return result
     }
     
-    func updateDeviceSetting(device_id: String, mode: String) {
-        db.collection("devices").document(device_id).updateData(["mode": mode])
+    func updateDeviceSetting(device_id: String, mode: String, completion: @escaping (String?) -> Void) {
+        var error: String?
+
+        db.collection("devices").document(device_id).updateData(["mode": mode]){ err in
+            if let _ = err {
+                error = " デバイス情報を更新できませんでした"
+            }
+            completion(error)
+        }
     }
     
-    func deleteAccessAuth(access_auth_id: String) {
-        db.collection("access_auth").document(access_auth_id).delete()
+    func deleteAccessAuth(access_auth_id: String, completion: @escaping (String?) -> Void) {
+        var error: String?
+        
+        db.collection("access_auth").document(access_auth_id).delete(){ err in
+            if let _ = err {
+                error = " アクセス権をを削除できませんでした"
+            }
+            completion(error)
+        }
     }
 }

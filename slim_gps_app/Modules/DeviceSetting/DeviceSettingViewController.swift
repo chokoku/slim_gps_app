@@ -50,8 +50,11 @@ class DeviceSettingViewController: FormViewController {
                         cell.detailTextLabel?.isHidden = false
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
-                        let result = self.presenter.changeDeviceName(device_id: self.serial_num, name: row.value! )
-                        if( !result ){ self.failureAlert(message: "デバイス名の保存に失敗しました") }
+                        self.presenter.changeDeviceName(device_id: self.serial_num, name: row.value! ){ (err: String?) in
+                            if let err = err {
+                                self.showAlert(message: err)
+                            }
+                        }
                     }
             }
             
@@ -64,7 +67,11 @@ class DeviceSettingViewController: FormViewController {
                     cell.detailTextLabel?.textColor = UIColor.black
                 }.onChange { row in
                     let modeLabels:[String:String] = ["見守りモード(省電力)":"watching_powerSaving", "見守りモード(通常)":"watching_normal", "紛失対策モード":"lost_proof"]
-                    self.presenter.changeDeviceSetting( device_id: self.serial_num, mode: modeLabels[row.value!]! )
+                    self.presenter.changeDeviceSetting( device_id: self.serial_num, mode: modeLabels[row.value!]! ){ (err: String?) in
+                        if let err = err {
+                            self.showAlert(message: err)
+                        }
+                    }
             }
         
         
@@ -79,28 +86,33 @@ class DeviceSettingViewController: FormViewController {
                     cell.detailTextLabel?.textColor = UIColor.black
                 }.onCellSelection { cell, row in
                     if(!watcher.admin!){
-                        self.showAlert(name: watcher.last_name!+" "+watcher.first_name!, access_auth_id: watcher.access_auth_id!, row: row)
+                        self.showAccessAuthDeleteAlert(name: watcher.last_name!+" "+watcher.first_name!, access_auth_id: watcher.access_auth_id!, row: row)
                     }
             }
         }
     }
     
-    func showAlert(name: String, access_auth_id: String, row: BaseRow){
+    func showAccessAuthDeleteAlert(name: String, access_auth_id: String, row: BaseRow){
         let alert = UIAlertController( title: "アクセス権の削除", message: "\(name)さんを削除しますか？", preferredStyle: UIAlertControllerStyle.alert )
         let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertActionStyle.cancel, handler:nil )
         let saveAction:UIAlertAction = UIAlertAction( title: "削除", style: UIAlertActionStyle.default,handler:{ (action) in
-            self.presenter.removeAccessAuth(access_auth_id: access_auth_id)
-            row.hidden = true
-            row.evaluateHidden()
+            self.presenter.removeAccessAuth(access_auth_id: access_auth_id){ (err: String?) in
+                if let err = err {
+                    self.showAlert(message: err)
+                } else {
+                    row.hidden = true
+                    row.evaluateHidden()
+                }
+            }
         })
         alert.addAction(cancelAction)
         alert.addAction(saveAction)
         present(alert, animated: true, completion: nil)
     }
     
-    func failureAlert(message: String){
-        let alert = UIAlertController( title: "エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
-        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.default,handler: nil)
+    func showAlert(message: String){
+        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
+        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
         alert.addAction(OKAction)
         present(alert, animated: true, completion: nil)
     }

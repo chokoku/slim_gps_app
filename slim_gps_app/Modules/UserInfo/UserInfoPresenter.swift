@@ -15,20 +15,20 @@ final class UserInfoPresenter {
 }
 
 extension UserInfoPresenter: UserInfoPresenterInterface {
-    func getUserInfo() -> [String:String]{
-        var userInfo:[String:String] = [:]
-        var userInfoFromCL:[String:String] = [:]
+    func getUserInfo(completion: @escaping ([String:String?], String?) -> Void){
+        var userInfo = [String:String?]()
+        var error: String?
         let user = Auth.auth().currentUser
 
-        // get email from firebase authentication
-        userInfo["email"] = user!.email!
-        
-        // get first_name and last_name for cloud functions
-        userInfoFromCL = _interactor.fetchClientInfo(user!.uid)
-        userInfo["last_name"] = userInfoFromCL["last_name"]
-        userInfo["first_name"] = userInfoFromCL["first_name"]
-        
-        return userInfo
+        _interactor.fetchClientInfo(uid: user!.uid){ (userInfoFromCL: [String:String?], err: String?) in
+            if let err = err {
+                error = err
+                completion(userInfo, error)
+            } else {
+                userInfo = ["email": user!.email!, "last_name": userInfoFromCL["last_name"]!, "first_name": userInfoFromCL["first_name"]!]
+                completion(userInfo, nil)
+            }
+        }
     }
     
     func logout(){
@@ -36,29 +36,34 @@ extension UserInfoPresenter: UserInfoPresenterInterface {
         _wireframe.getMainPage()
     }
     
-    func updateUserInfo(item: String, input: String){
+    func updateUserInfo(item: String, input: String, completion: @escaping (String?) ->Void){
+        var error: String?
         let user = Auth.auth().currentUser
-        _interactor.updateClientInfo(uid: user!.uid, item: item, input: input) //first name or last name
-    }
-    
-    func updateUserEmail(email: String, password: String){
-        print("email:\(email)")
-        let user = Auth.auth().currentUser
-
-        Auth.auth().signIn(withEmail: user!.email!, password: password) { (user, error) in
-            if let error = error {
-                print("error:\(error)")
-                self.showAlert(message: "パスワードが間違っています")
-            } else {
-                self._interactor.updateClientEmail(email)
-
+        // update first name or last name
+        _interactor.updateClientInfo(uid: user!.uid, item: item, input: input){ (err: String?) in
+            if let err = err {
+                error = err
             }
+            completion(error)
         }
     }
-
-
-    func showAlert(message: String){
-        _view!.showAlert(message: message)
+    
+    func updateUserEmail(email: String, password: String, completion: @escaping (String?) ->Void){
+        var error: String?
+        
+        let user = Auth.auth().currentUser
+        Auth.auth().signIn(withEmail: user!.email!, password: password) { (user, err) in
+            if let _ = err {
+                completion("パスワードが正しくありません")
+            } else {
+                self._interactor.updateClientEmail(email: email){ (err: String?) in
+                    if let err = err {
+                        error = err
+                    }
+                    completion(error)
+                }
+            }
+        }
     }
 
 }
