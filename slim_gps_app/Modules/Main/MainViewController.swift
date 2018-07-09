@@ -10,28 +10,33 @@ class MainViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     var presenter: MainPresenterInterface!
     var deviceInfo = [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]()
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize = CGSize( width: CGFloat(self.view.bounds.width), height: CGFloat(5+(270+5)*(deviceInfo.count)) )
+        user = Auth.auth().currentUser
         self.addLeftBarButtonWithImage(UIImage(named: "menu_icon")!)
-        
-        let user = Auth.auth().currentUser
-        if let user = user {
-            // deviceInfo = [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
-            deviceInfo = presenter.getDeviceInfo(uid: user.uid)
-            self.addMapView()
-        } else {
-            // No user is signed in.
-        }
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let subViews = self.scrollView.subviews
+        print(subViews)
+        for subview in subViews{
+            subview.removeFromSuperview()
+        }
+        if let user = user {
+            // deviceInfo = [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
+            deviceInfo = presenter.getDeviceInfo(uid: user.uid)
+            scrollView.contentSize = CGSize( width: CGFloat(self.view.bounds.width), height: CGFloat(5+(270+5)*(deviceInfo.count)) ) // scrollView doesn't scroll if this func is removed
+            self.addMapView()
+        } else {
+            // TODO set example views
+            // No user is signed in.
+        }
     }
 
     @objc func settingButtonTapped(sender : AnyObject) {

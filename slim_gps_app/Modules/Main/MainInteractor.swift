@@ -24,6 +24,7 @@ extension MainInteractor: MainInteractorInterface {
         
         db.collection("access_auth")
             .whereField("client_id", isEqualTo: uid)
+            .order(by: "created_at", descending: false)
             .addSnapshotListener { (access_auth_querySnapshot, error) in
                 if( 0 == access_auth_querySnapshot!.documents.count ){ keepAlive = false }
                 if let error = error {

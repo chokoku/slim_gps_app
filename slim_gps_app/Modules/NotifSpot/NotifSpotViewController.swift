@@ -80,6 +80,7 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
         present(alert, animated: true, completion: nil)
     }
     
+    // TODO bug
     // a cell calls this func
     func editNotifSpot(tag: Int){
         let notifSpot = notifSpots[tag]

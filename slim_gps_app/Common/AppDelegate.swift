@@ -1,18 +1,9 @@
-//
-//  AppDelegate.swift
-//  slim_gps_app
-//
-//  Created by 福原佑介 on 2018/06/23.
-//  Copyright © 2018年 yusuke. All rights reserved.
-//
-
 import UIKit
 //import UserNotifications
 import SlideMenuControllerSwift
 import Firebase
 //import FirebaseMessaging
 import GoogleMaps
-import CoreLocation
 
 
 @UIApplicationMain
@@ -24,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        
+
         // set up Main page
         let mainWireframe = MainWireframe()
         let navigationController = mainWireframe.configureModule()
