@@ -15,60 +15,51 @@ final class UserInfoInteractor {
 }
 
 extension UserInfoInteractor: UserInfoInteractorInterface {
-    func fetchClientInfo(uid: String, completion: @escaping ([String:String?], String?) -> Void) {
-        var userInfo:[String:String?] = [:]
+    func getUserInfo(){
+        let user = Auth.auth().currentUser
 
-        db.collection("clients").document(uid).addSnapshotListener{ (document, err) in
+        db.collection("clients").document(user!.uid).addSnapshotListener { (document, err) in
             if let _ = err {
-                completion(userInfo, "エラーが発生しました")
+                self.presenter.showAlert(message:"エラーが発生しました")
             } else if let document = document, document.exists {
-                if let first_name = document.data()!["first_name"] as? String {
-                    userInfo["firstName"] = first_name
+                if let firstName = document.data()!["first_name"] as? String, let lastName = document.data()!["last_name"] as? String {
+                    self.presenter.setUserInfoForm(userInfo: ["email": user!.email! , "firstName": firstName, "lastName": lastName])
+                } else {
+                    self.presenter.showAlert(message:"姓名が空白です")
                 }
-                if let last_name = document.data()!["last_name"] as? String {
-                    userInfo["lastName"] = last_name
-                }
-                print(3)
-                completion(userInfo, nil)
             } else {
-                completion(userInfo, "データがありません")
-
+                self.presenter.showAlert(message:"データがありません")
             }
         }
     }
     
-    func updateClientEmail(email: String, completion: @escaping (String?) ->Void) {
-        var error: String?
+    func updateUserInfo(key: String, value: String){
+        let user = Auth.auth().currentUser
 
+        var key2 = String()
+        if(key == "firstName"){
+            key2 = "first_name"
+        } else if(key == "lastName"){
+            key2 = "last_name"
+        } else {
+            self.presenter.showAlert(message:"姓名が空白です")
+        }
+
+        db.collection("clients").document(user!.uid).updateData([ key2: value ]){ err in
+            if let _ = err {
+                self.presenter.showAlert(message: "ユーザー情報を更新できませんでした")
+            }
+        }
+    }
+    
+    func updateUserEmail(email: String) {
         Auth.auth().currentUser?.updateEmail(to: email) { (err) in
             if let _ = err {
-                error = "パスワードが間違っています"
+                self.presenter.showAlert(message:"ユーザー認証に失敗しました")
+            } else {
+                // TODO bug firebase authentication does not update
+                self.presenter.emailIsUpdated(email: email)
             }
-            completion(error)
-            // TODO bug firebase authentication does not update
-
-        }
-    }
-    
-    func updateClientInfo(uid: String, item: String, input: String, completion: @escaping (String?) ->Void){
-        var error: String?
-        print(9)
-
-        var key = String()
-        if(item == "firstName"){
-            key = "first_name"
-        } else if(item == "lastName"){
-            key = "last_name"
-        } else {
-            completion(error)
-        }
-
-        db.collection("clients").document(uid).updateData([ key: input ]){ err in
-            if let _ = err {
-                error = "ユーザー情報を更新できませんでした"
-            }
-            print(10)
-            completion(error)
         }
     }
 }

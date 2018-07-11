@@ -1,19 +1,23 @@
 import UIKit
 
+protocol MainPresenterInterface: class {
+
+    // To Interactor
+    func getDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
+    
+    // To Wireframe
+    func pushDeviceSettingPage( serialNum: String, name: String, mode: String )
+    func pushLocationDataPage( serialNum: String )
+}
+
 protocol MainViewInterface: class {
+}
+
+protocol MainInteractorInterface: class {
+    func getDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
 }
 
 protocol MainWireframeInterface: class {
     func pushDeviceSettingPage( serialNum: String, name: String, mode: String )
     func pushLocationDataPage( serialNum: String )
-}
-
-protocol MainPresenterInterface: class {
-    func getDeviceSettingPage( serialNum: String, name: String, mode: String )
-    func getLocationDataPage( serialNum: String )
-    func getDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
-}
-
-protocol MainInteractorInterface: class {
-    func fetchDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
 }

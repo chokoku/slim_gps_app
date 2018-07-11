@@ -17,14 +17,14 @@ final class AccessApprovalPresenter {
 extension AccessApprovalPresenter: AccessApprovalPresenterInterface {
     func getRequesters() {
         let user = Auth.auth().currentUser
-        _interactor.fetchRequesters(uid: user!.uid)
+        _interactor.getRequesters(uid: user!.uid)
     }
     
     func addRequesters(accessAuthID: String, firstName: String?, lastName: String?){
         _view!.addRequesters(accessAuthID: accessAuthID, firstName: firstName, lastName: lastName)
     }
     
-    func pushAlert(message:String){
+    func showAlert(message:String){
         _view!.showAlert(message:message)
     }
 

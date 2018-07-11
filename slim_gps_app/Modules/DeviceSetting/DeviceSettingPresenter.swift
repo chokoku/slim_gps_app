@@ -15,10 +15,10 @@ final class DeviceSettingPresenter {
 
 extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
     func getAccessAuth(deviceID: String) -> [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]{
-        return _interactor.fetchAccessAuth(deviceID: deviceID)
+        return _interactor.getAccessAuth(deviceID: deviceID)
     }
     
-    func removeAccessAuth(accessAuthID: String, completion: @escaping (String?) -> Void){
+    func deleteAccessAuth(accessAuthID: String, completion: @escaping (String?) -> Void){
         var error: String?
         _interactor.deleteAccessAuth(accessAuthID: accessAuthID){ (err: String?) in
             if let err = err {
@@ -28,7 +28,7 @@ extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
         }
     }
     
-    func changeDeviceName(deviceID: String, name: String, completion: @escaping (String?) -> Void) {
+    func updateDeviceName(deviceID: String, name: String, completion: @escaping (String?) -> Void) {
         var error: String?
         _interactor.updateDeviceName(deviceID: deviceID, name: name){ (err: String?) in
             if let err = err {
@@ -38,7 +38,7 @@ extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
         }
     }
     
-    func changeDeviceSetting(deviceID: String, mode: String, completion: @escaping (String?) -> Void) {
+    func updateDeviceSetting(deviceID: String, mode: String, completion: @escaping (String?) -> Void) {
         var error: String?
         _interactor.updateDeviceSetting( deviceID: deviceID, mode: mode ){ (err: String?) in
             if let err = err {

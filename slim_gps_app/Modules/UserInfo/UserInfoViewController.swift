@@ -3,47 +3,32 @@ import Eureka
 
 class UserInfoViewController: FormViewController {
     var presenter: UserInfoPresenterInterface!
-    var userInfoValues:[String:String?] = [:]
+    var userInfoValues:[String:String] = [:]
     let userInfoLabels:[String:String] = ["email":"Email", "lastName":"姓", "firstName":"名"]
     let userInfoItems:[String] = ["email", "lastName", "firstName"]
+    let indicator = UIActivityIndicatorView()
     
     @IBOutlet weak var userInfoTable: UITableView!
     
     override func viewDidLoad() {
-        print(1)
         super.viewDidLoad()
         self.navigationItem.title = "ユーザー情報"
-        presenter.getUserInfo(){ (userInfo:[String:String?], err: String?) in
-            if let err = err {
-                self.showAlert(message: err)
-            } else {
-                print(5)
-//                 e.g)[( serialNum: Optional("dfasdfaeadaerq"),
-//                        admin:     Optional(true),
-//                        mode:      Optional("watching_normal"),
-//                        name:      Optional("Drrrrrrddddd"),
-//                        latitude:  Optional(35.637363999999998),
-//                        longitude: Optional(139.69534200000001),
-//                        battery:   Optional(67) )]
-                self.userInfoValues = userInfo
-                self.setUserInfoForm()
-            }
-        }
+        presenter.getUserInfo()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func setUserInfoForm(){
-        print(6)
+    func setUserInfoForm(userInfo: [String:String]){
+        self.userInfoValues = userInfo
         form
             +++ Section("ユーザー情報")
             
             // Set lastName textField
             <<< TextRow(){ row in
                 row.title = userInfoLabels["lastName"]
-                row.value = userInfoValues["lastName"] ?? ""
+                row.value = userInfoValues["lastName"]
                 row.add(rule: RuleRequired(msg: "\(userInfoLabels["lastName"]!)を入力してください"))
                 }.cellSetup { cell, row in
                     cell.titleLabel?.textColor = .black
@@ -59,13 +44,8 @@ class UserInfoViewController: FormViewController {
                         cell.detailTextLabel?.isHidden = false
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
-                        print(7)
-                        self.presenter.updateUserInfo(item: "lastName", input: row.value!){ (err: String?) in
-                            print(12)
-                            if let err = err {
-                                self.showAlert(message: err)
-                            }
-                        }
+                        self.userInfoValues["lastName"] = row.value!
+                        self.presenter.updateUserInfo(key: "lastName", value: row.value!)
                     }
             }
             
@@ -88,18 +68,16 @@ class UserInfoViewController: FormViewController {
                         cell.detailTextLabel?.isHidden = false
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
-                        self.presenter.updateUserInfo(item: "firstName", input: row.value!){ (err: String?) in
-                            if let err = err {
-                                self.showAlert(message: err)
-                            }
-                        }
+                        self.userInfoValues["firstName"] = row.value!
+                        self.presenter.updateUserInfo(key: "firstName", value: row.value!)
                     }
             }
             
             // Set email textField
             <<< LabelRow(){ row in
                 row.title = userInfoLabels["email"]
-                row.value = userInfoValues["email"] ?? ""
+                row.value = userInfoValues["email"]
+                row.tag = "email"
                 }.cellSetup { cell, row in
                     cell.textLabel?.textColor = UIColor.black
                     cell.detailTextLabel?.textColor = UIColor.black
@@ -117,13 +95,11 @@ class UserInfoViewController: FormViewController {
                             if(pass != pass_con){
                                 self.showAlert(message: "パスワードが一致しません")
                             } else {
-                                self.presenter.updateUserEmail(email: email, password: pass){ (err: String?) in
-                                    if let err = err {
-                                        self.showAlert(message: err)
-                                    } else {
-                                        self.userInfoValues["email"] = email
-                                    }
+                                for row in self.form.rows {
+                                    row.baseCell.isUserInteractionEnabled = false
                                 }
+                                self.startIndicator()
+                                self.presenter.updateUserEmail(email: email, password: pass)
                             }
                         }
                     })
@@ -154,13 +130,32 @@ class UserInfoViewController: FormViewController {
         }
     }
     
+    func startIndicator(){
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.center = self.view.center
+        indicator.color = UIColor.black
+        self.view.addSubview(indicator)
+        self.view.bringSubview(toFront: indicator)
+        indicator.startAnimating()
+    }
+}
+
+extension UserInfoViewController: UserInfoViewInterface {
     func showAlert(message: String){
+        indicator.stopAnimating()
         let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
         let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
         alert.addAction(OKAction)
         present(alert, animated: true, completion: nil)
     }
-}
-
-extension UserInfoViewController: UserInfoViewInterface {
+    
+    func emailIsUpdated(email: String){
+        for row in form.rows {
+            row.baseCell.isUserInteractionEnabled = true
+        }
+        indicator.stopAnimating()
+        userInfoValues["email"] = email
+        (form.rowBy(tag: "email") as! LabelRow).value = email
+        self.form.rowBy(tag: "email")?.reload()
+    }
 }

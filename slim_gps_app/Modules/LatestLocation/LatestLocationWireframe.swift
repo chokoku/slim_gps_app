@@ -16,10 +16,4 @@ class LatestLocationWireframe {
 }
 
 extension LatestLocationWireframe: LatestLocationWireframeInterface {
-    func popBackToMainPage(){
-        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let sideMenuController: SlideMenuController = appDelegate.window!.rootViewController as! SlideMenuController
-        let navigationController = sideMenuController.mainViewController as! UINavigationController
-        navigationController.popToViewController(navigationController.viewControllers[0], animated: true)
-    }
 }

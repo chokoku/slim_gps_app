@@ -14,18 +14,16 @@ final class LatestLocationPresenter {
 }
 
 extension LatestLocationPresenter: LatestLocationPresenterInterface {
-    func getLatestLocationData( serialNum: String, completion: @escaping (Double?, Double?, String?) -> Void ){
-        _interactor.fetchLatestLocationData(serialNum: serialNum){ (latitude: Double?, longitude: Double?, err: String?) in
-            if let err = err {
-                completion(nil, nil, err)
-            } else {
-                completion(latitude, longitude, nil)
-            }
-        }
+    func getLatestLocationData( serialNum: String ){
+        _interactor.getLatestLocationData(serialNum: serialNum)
     }
     
-    func goBackToMainPage() {
-        _wireframe.popBackToMainPage()
+    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double){
+        _view!.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius)
+    }
+    
+    func showAlert(message: String){
+        _view!.showAlert(message: message)
     }
 }
 

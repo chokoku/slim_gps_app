@@ -14,16 +14,11 @@ final class DailyLocationInteractor {
 }
 
 extension DailyLocationInteractor: DailyLocationInteractorInterface {
-    func fetchDailyLocation( serialNum: String, date: Date ) -> [(latitude: Double, longitude: Double, createdAt: Date)]{
-        var locationData = [(latitude: Double, longitude: Double, createdAt: Date)]()
+    func getDailyLocation( serialNum: String, date: Date ){
 
         let calendar = Calendar(identifier: .gregorian)
         let beginnigOfTheDate = calendar.startOfDay(for: date)
         let endOfTheDate = beginnigOfTheDate.addingTimeInterval(60*60*24-1)
-        print(beginnigOfTheDate)
-        print(endOfTheDate)
-        var keepAlive = true
-        let runLoop = RunLoop.current
         
         db.collection("location_data")
             .whereField("device_id", isEqualTo: serialNum)
@@ -31,27 +26,27 @@ extension DailyLocationInteractor: DailyLocationInteractorInterface {
             .whereField("created_at", isGreaterThanOrEqualTo: beginnigOfTheDate)
             .whereField("created_at", isLessThanOrEqualTo: endOfTheDate)
             .addSnapshotListener { (querySnapshot, error) in
-                if let error = error {
-                    print("Error getting documents: \(error)")
-                    keepAlive = false
+                if let _ = error {
+                    self.presenter.showAlert(message: "エラーが発生しました")
                 } else {
-                    for document in querySnapshot!.documents {
-                        if  let latitude = document.data()["latitude"] as? Double,
-                            let longitude = document.data()["longitude"] as? Double,
-                            let createdAt = document.data()["created_at"] as? Timestamp {
-                            locationData += [(latitude, longitude, createdAt.dateValue())]
+                    if(querySnapshot?.documents.count == 0) {
+                        self.presenter.locationDataIsEmpty()
+                    } else {
+                        var i = 0
+                        for document in querySnapshot!.documents {
+                            if  let latitude = document.data()["latitude"] as? Double,
+                                let longitude = document.data()["longitude"] as? Double,
+                                let radius = document.data()["radius"] as? Double,
+                                let createdAt = document.data()["created_at"] as? Timestamp {
+                                
+                                i += 1
+                                let lastFlag = querySnapshot?.documents.count == i
+                                self.presenter.locationDataIsGotten(data:(latitude: latitude, longitude: longitude, radius: radius, createdAt: createdAt.dateValue(), lastFlag: lastFlag))
+                            }
                         }
                     }
-                    keepAlive = false
                 }
         }
-        
-        
-        while keepAlive &&
-            runLoop.run(mode: RunLoopMode.defaultRunLoopMode, before: NSDate(timeIntervalSinceNow: 0.1) as Date) {
-        }
-        print("locationData:\(locationData)")
-
-        return locationData
     }
 }
+

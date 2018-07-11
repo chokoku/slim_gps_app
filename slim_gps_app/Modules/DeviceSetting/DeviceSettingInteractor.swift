@@ -14,7 +14,7 @@ final class DeviceSettingInteractor {
 }
 
 extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
-    func fetchAccessAuth(deviceID: String) -> [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]{
+    func getAccessAuth(deviceID: String) -> [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]{
         var accessAuth = [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]()
         
         var keepAlive = true

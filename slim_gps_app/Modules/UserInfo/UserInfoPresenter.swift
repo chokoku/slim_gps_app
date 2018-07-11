@@ -15,61 +15,42 @@ final class UserInfoPresenter {
 }
 
 extension UserInfoPresenter: UserInfoPresenterInterface {
-    func getUserInfo(completion: @escaping ([String:String?], String?) -> Void){
-        print(2)
-        var userInfo = [String:String?]()
-        var error: String?
-        let user = Auth.auth().currentUser
-
-        _interactor.fetchClientInfo(uid: user!.uid){ (userInfoFromCL: [String:String?], err: String?) in
-            if let err = err {
-                error = err
-                completion(userInfo, error)
-            } else {
-                print(4)
-                userInfo = ["email": user!.email!, "lastName": userInfoFromCL["lastName"]!, "firstName": userInfoFromCL["firstName"]!]
-                completion(userInfo, nil)
-            }
-        }
+    func getUserInfo(){
+        _interactor.getUserInfo()
     }
     
     func logout(){
         try! Auth.auth().signOut()
-        _wireframe.getMainPage()
+        _wireframe.logout()
     }
     
-    func updateUserInfo(item: String, input: String, completion: @escaping (String?) ->Void){
-        var error: String?
-        let user = Auth.auth().currentUser
-        print(8)
-        // update first name or last name
-        _interactor.updateClientInfo(uid: user!.uid, item: item, input: input){ (err: String?) in
-            if let err = err {
-                error = err
-            }
-            print(11)
-            completion(error)
-        }
+    func setUserInfoForm(userInfo: [String:String]){
+        _view!.setUserInfoForm(userInfo: userInfo)
     }
     
-    func updateUserEmail(email: String, password: String, completion: @escaping (String?) ->Void){
-        var error: String?
-        
+    func showAlert(message:String){
+        _view!.showAlert(message: message)
+    }
+    
+    // TODO this func is called twice. don't know why
+    func updateUserInfo(key: String, value: String){
+        _interactor.updateUserInfo(key: key, value: value)
+    }
+    
+    func updateUserEmail(email: String, password: String){
         let user = Auth.auth().currentUser
         Auth.auth().signIn(withEmail: user!.email!, password: password) { (user, err) in
             if let _ = err {
-                completion("パスワードが正しくありません")
+                self._view!.showAlert(message: "パスワードが正しくありません")
             } else {
-                self._interactor.updateClientEmail(email: email){ (err: String?) in
-                    if let err = err {
-                        error = err
-                    }
-                    completion(error)
-                }
+                self._interactor.updateUserEmail(email: email)
             }
         }
     }
-
+    
+    func emailIsUpdated(email: String){
+        _view!.emailIsUpdated(email: email)
+    }
 }
 
 

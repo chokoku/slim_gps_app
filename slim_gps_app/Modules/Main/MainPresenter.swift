@@ -15,16 +15,16 @@ final class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterInterface {
-    func getDeviceSettingPage( serialNum: String, name: String, mode: String ){
+    func pushDeviceSettingPage( serialNum: String, name: String, mode: String ){
         _wireframe.pushDeviceSettingPage( serialNum: serialNum, name: name, mode: mode )
     }
     
-    func getLocationDataPage( serialNum: String ){
+    func pushLocationDataPage( serialNum: String ){
         _wireframe.pushLocationDataPage( serialNum: serialNum )
     }
     
     func getDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]{
-        return _interactor.fetchDeviceInfo(uid: uid)
+        return _interactor.getDeviceInfo(uid: uid)
     }
     
 }

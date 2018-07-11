@@ -38,10 +38,9 @@ class PopupViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func OKButtonTapped(_ sender: Any) {
-                self.delegate!.date = selectedDate
-                self.dismiss(animated: false, completion: nil)
-                self.delegate!.reloadLocationData()
-                self.delegate!.showAlert()
+        self.delegate!.date = selectedDate
+        self.dismiss(animated: false, completion: nil)
+        self.delegate!.reloadLocationData()
     }
     
     // UIPickerViewの列の数

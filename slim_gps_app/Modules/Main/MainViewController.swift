@@ -41,14 +41,14 @@ class MainViewController: UIViewController {
 
     @objc func settingButtonTapped(sender : AnyObject) {
         let i = Int(sender.tag)
-        presenter.getDeviceSettingPage( serialNum: deviceInfo[i].serialNum!,
-                                        name:      deviceInfo[i].name!,
-                                        mode:      deviceInfo[i].mode! )
+        presenter.pushDeviceSettingPage( serialNum: deviceInfo[i].serialNum!,
+                                         name:      deviceInfo[i].name!,
+                                         mode:      deviceInfo[i].mode! )
     }
 
     @objc func mapViewIsTapped(sender : AnyObject){
         let i = Int(sender.tag)
-        presenter.getLocationDataPage( serialNum: deviceInfo[i].serialNum! )
+        presenter.pushLocationDataPage( serialNum: deviceInfo[i].serialNum! )
     }
     
     func addMapView(){

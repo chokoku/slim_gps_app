@@ -1,17 +1,24 @@
 import UIKit
 
-protocol LatestLocationViewInterface: class {
-}
-
-protocol LatestLocationWireframeInterface: class {
-    func popBackToMainPage()
-}
-
 protocol LatestLocationPresenterInterface: class {
-    func getLatestLocationData( serialNum: String, completion: @escaping (Double?, Double?, String?) -> Void ) // latitude, longitude, error
-    func goBackToMainPage()
+    
+    // To View
+    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double)
+    func showAlert(message: String)
+    
+    // To Interactor
+    func getLatestLocationData( serialNum: String )
+
+}
+
+protocol LatestLocationViewInterface: class {
+    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double)
+    func showAlert(message: String)
 }
 
 protocol LatestLocationInteractorInterface: class {
-    func fetchLatestLocationData( serialNum: String, completion: @escaping (Double?, Double?, String?) -> Void ) // latitude, longitude, error
+    func getLatestLocationData( serialNum: String )
+}
+
+protocol LatestLocationWireframeInterface: class {
 }

@@ -50,7 +50,7 @@ class DeviceSettingViewController: FormViewController {
                         cell.detailTextLabel?.isHidden = false
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
-                        self.presenter.changeDeviceName(deviceID: self.serialNum, name: row.value! ){ (err: String?) in
+                        self.presenter.updateDeviceName(deviceID: self.serialNum, name: row.value! ){ (err: String?) in
                             if let err = err {
                                 self.showAlert(message: err)
                             }
@@ -67,7 +67,7 @@ class DeviceSettingViewController: FormViewController {
                     cell.detailTextLabel?.textColor = UIColor.black
                 }.onChange { row in
                     let modeLabels:[String:String] = ["見守りモード(省電力)":"watching_powerSaving", "見守りモード(通常)":"watching_normal", "紛失対策モード":"lost_proof"]
-                    self.presenter.changeDeviceSetting( deviceID: self.serialNum, mode: modeLabels[row.value!]! ){ (err: String?) in
+                    self.presenter.updateDeviceSetting( deviceID: self.serialNum, mode: modeLabels[row.value!]! ){ (err: String?) in
                         if let err = err {
                             self.showAlert(message: err)
                         }
@@ -95,8 +95,8 @@ class DeviceSettingViewController: FormViewController {
     func showAccessAuthDeleteAlert(name: String, accessAuthID: String, row: BaseRow){
         let alert = UIAlertController( title: "アクセス権の削除", message: "\(name)さんを削除しますか？", preferredStyle: UIAlertControllerStyle.alert )
         let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertActionStyle.cancel, handler:nil )
-        let saveAction:UIAlertAction = UIAlertAction( title: "削除", style: UIAlertActionStyle.default,handler:{ (action) in
-            self.presenter.removeAccessAuth(accessAuthID: accessAuthID){ (err: String?) in
+        let saveAction:UIAlertAction = UIAlertAction( title: "削除", style: UIAlertActionStyle.default, handler:{ (action) in
+            self.presenter.deleteAccessAuth(accessAuthID: accessAuthID){ (err: String?) in
                 if let err = err {
                     self.showAlert(message: err)
                 } else {

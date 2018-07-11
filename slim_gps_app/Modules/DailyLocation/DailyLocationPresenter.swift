@@ -14,8 +14,19 @@ final class DailyLocationPresenter {
 }
 
 extension DailyLocationPresenter: DailyLocationPresenterInterface {
-    func getDailyLocation( serialNum: String, date: Date ) -> [(latitude: Double, longitude: Double, createdAt: Date)]{
-        let locationData:[(latitude: Double, longitude: Double, createdAt: Date)] = _interactor.fetchDailyLocation( serialNum: serialNum, date: date )
-        return locationData
+    func getDailyLocation( serialNum: String, date: Date ){
+        _interactor.getDailyLocation( serialNum: serialNum, date: date )
+    }
+    
+    func showAlert(message: String){
+        _view!.showAlert(message: message)
+    }
+    
+    func locationDataIsEmpty(){
+        _view!.locationDataIsEmpty()
+    }
+    
+    func locationDataIsGotten(data:(latitude: Double, longitude: Double, radius: Double, createdAt: Date, lastFlag: Bool)){
+        _view!.locationDataIsGotten(data:(latitude: data.latitude, longitude: data.longitude, radius: data.radius, createdAt: data.createdAt, lastFlag: data.lastFlag))
     }
 }

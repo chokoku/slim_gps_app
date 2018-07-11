@@ -1,22 +1,33 @@
 import UIKit
 
-protocol UserInfoViewInterface: class {
-}
-
 protocol UserInfoPresenterInterface: class {
-    func logout()
     
-    func getUserInfo(completion: @escaping ([String:String?], String?) -> Void)
-    func updateUserEmail(email: String, password: String, completion: @escaping (String?) -> Void)
-    func updateUserInfo(item: String, input: String, completion: @escaping (String?) ->Void)
+    // To View
+    func setUserInfoForm(userInfo: [String:String])
+    func emailIsUpdated(email: String)
+    func showAlert(message:String)
+    
+    // To Interactor
+    func getUserInfo()
+    func updateUserInfo(key: String, value: String)
+    func updateUserEmail(email: String, password: String)
+    
+    // To Wireframe
+    func logout()
 }
 
-protocol UserInfoWireframeInterface: class {
-    func getMainPage()
+protocol UserInfoViewInterface: class {
+    func setUserInfoForm(userInfo: [String:String])
+    func emailIsUpdated(email: String)
+    func showAlert(message:String)
 }
 
 protocol UserInfoInteractorInterface: class {
-    func fetchClientInfo(uid: String, completion: @escaping ([String:String?], String?) -> Void)
-    func updateClientEmail(email: String, completion: @escaping (String?) ->Void)
-    func updateClientInfo(uid: String, item: String, input: String, completion: @escaping (String?) -> Void)
+    func getUserInfo()
+    func updateUserInfo(key: String, value: String)
+    func updateUserEmail(email: String)
+}
+
+protocol UserInfoWireframeInterface: class {
+    func logout()
 }
