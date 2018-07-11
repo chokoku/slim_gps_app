@@ -26,10 +26,10 @@ extension UserInfoInteractor: UserInfoInteractorInterface {
                 completion(userInfo, error)
             } else if let document = document, document.exists {
                 if let first = document.data()!["first_name"] as? String {
-                    userInfo["first_name"] = first
+                    userInfo["firstName"] = first
                 }
                 if let last = document.data()!["last_name"] as? String {
-                    userInfo["last_name"] = last
+                    userInfo["lastName"] = last
                 }
                 completion(userInfo, nil)
             } else {

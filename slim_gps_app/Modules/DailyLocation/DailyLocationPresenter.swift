@@ -14,8 +14,8 @@ final class DailyLocationPresenter {
 }
 
 extension DailyLocationPresenter: DailyLocationPresenterInterface {
-    func getDailyLocation( serial_num: String, date: Date ) -> [(latitude: Double, longitude: Double, created_at: NSObject)]{
-        let locationData:[(latitude: Double, longitude: Double, created_at: NSObject)] = _interactor.fetchDailyLocation( serial_num: serial_num, date: date )
+    func getDailyLocation( serialNum: String, date: Date ) -> [(latitude: Double, longitude: Double, createdAt: Date)]{
+        let locationData:[(latitude: Double, longitude: Double, createdAt: Date)] = _interactor.fetchDailyLocation( serialNum: serialNum, date: date )
         return locationData
     }
 }

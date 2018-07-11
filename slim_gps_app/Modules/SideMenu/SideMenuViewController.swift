@@ -47,9 +47,9 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let _ = Auth.auth().currentUser {
-            presenter.getSideMenuPage(afterlogin_sidemenuItems[indexPath.row])
+            presenter.getSideMenuPage(index: afterlogin_sidemenuItems[indexPath.row])
         } else if ["Login","Registration","TermOfUse"].contains(beforelogin_sidemenuItems[indexPath.row]) {
-            presenter.getSideMenuPage(beforelogin_sidemenuItems[indexPath.row])
+            presenter.getSideMenuPage(index: beforelogin_sidemenuItems[indexPath.row])
         } else {
             let alertController = UIAlertController(title: "エラー", message: "ログイン後にアクセスできます　", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

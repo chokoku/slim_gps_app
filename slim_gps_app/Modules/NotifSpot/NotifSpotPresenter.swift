@@ -19,9 +19,9 @@ extension NotifSpotPresenter: NotifSpotPresenterInterface {
         _interactor.addNotifSpot(name: name, latitude: latitude, longitude: longitude, radius: radius)
     }
     
-    func showNotifSpot(notif_spot_id: String, name: String, latitude: Double, longitude: Double, radius: Double){
+    func showNotifSpot(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double){
         print(5)
-        _view!.showNotifSpot(notif_spot_id: notif_spot_id, name: name, latitude: latitude, longitude: longitude, radius: radius)
+        _view!.showNotifSpot(notifSpotID: notifSpotID, name: name, latitude: latitude, longitude: longitude, radius: radius)
     }
     
     func showAlert(message: String){
@@ -32,20 +32,20 @@ extension NotifSpotPresenter: NotifSpotPresenterInterface {
         _interactor.getNotifSpots()
     }
     
-    func updateNotifSpot(notif_spot_id: String, name: String, tag: Int){
-        _interactor.updateNotifSpot(notif_spot_id: notif_spot_id, name: name, tag: tag)
+    func updateNotifSpot(notifSpotID: String, name: String, tag: Int){
+        _interactor.updateNotifSpot(notifSpotID: notifSpotID, name: name, tag: tag)
     }
     
-    func deleteNotifSpot(notif_spot_id: String){
-        _interactor.deleteNotifSpot(notif_spot_id: notif_spot_id)
+    func deleteNotifSpot(notifSpotID: String){
+        _interactor.deleteNotifSpot(notifSpotID: notifSpotID)
     }
     
     func notifSpotIsUpdated(name: String, tag: Int){
         _view!.notifSpotIsUpdated(name: name, tag: tag)
     }
     
-    func notifSpotIsDeleted(notif_spot_id: String){
-        _view!.notifSpotIsDeleted(notif_spot_id: notif_spot_id)
+    func notifSpotIsDeleted(notifSpotID: String){
+        _view!.notifSpotIsDeleted(notifSpotID: notifSpotID)
     }
 
 }

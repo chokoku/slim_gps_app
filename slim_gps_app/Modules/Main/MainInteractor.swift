@@ -14,9 +14,9 @@ final class MainInteractor {
 }
 
 extension MainInteractor: MainInteractorInterface {
-    func fetchDeviceInfo(uid: String) -> [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]{
+    func fetchDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]{
         
-        var locationData = [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]()
+        var locationData = [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]()
     
         var keepAlive = true
         let runLoop = RunLoop.current
@@ -31,7 +31,7 @@ extension MainInteractor: MainInteractorInterface {
                     print("Error getting documents: \(error)")
                 } else {
                     for access_auth_document in access_auth_querySnapshot!.documents {
-                        let device_id = access_auth_document.data()["device_id"] as! String // serial_num
+                        let device_id = access_auth_document.data()["device_id"] as! String // serialNum
                         self.db.collection("devices").document(device_id)
                             .addSnapshotListener { (device_document, error) in
                                 if let error = error {

@@ -199,7 +199,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SES-tD-1th">
-                                <rect key="frame" x="119" y="50" width="137" height="29"/>
+                                <rect key="frame" x="119" y="30" width="137" height="29"/>
                                 <segments>
                                     <segment title="現在地"/>
                                     <segment title="移動履歴"/>
@@ -214,9 +214,9 @@
                             <constraint firstItem="Jb6-hB-7Fy" firstAttribute="trailing" secondItem="YdE-aZ-iEl" secondAttribute="trailing" id="9F9-Qo-oGZ"/>
                             <constraint firstItem="SES-tD-1th" firstAttribute="centerX" secondItem="PZo-fT-icZ" secondAttribute="centerX" id="Ke5-z4-wp4"/>
                             <constraint firstItem="YdE-aZ-iEl" firstAttribute="bottom" secondItem="Jb6-hB-7Fy" secondAttribute="bottom" id="XP5-ga-ro8"/>
+                            <constraint firstItem="SES-tD-1th" firstAttribute="top" secondItem="YdE-aZ-iEl" secondAttribute="top" constant="10" id="ZyT-J4-STi"/>
                             <constraint firstItem="Jb6-hB-7Fy" firstAttribute="top" secondItem="PZo-fT-icZ" secondAttribute="top" id="bne-FS-TqJ"/>
                             <constraint firstItem="Jb6-hB-7Fy" firstAttribute="leading" secondItem="YdE-aZ-iEl" secondAttribute="leading" id="hhw-ek-Zf9"/>
-                            <constraint firstItem="SES-tD-1th" firstAttribute="top" secondItem="YdE-aZ-iEl" secondAttribute="top" constant="30" id="lvF-ra-E6s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YdE-aZ-iEl"/>
                     </view>
@@ -280,7 +280,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="OK"/>
                                         <connections>
-                                            <action selector="OKButtonIsTapped:" destination="OYt-e0-fI4" eventType="touchUpInside" id="6WA-9W-V6h"/>
+                                            <action selector="OKButtonTapped:" destination="OYt-e0-fI4" eventType="touchUpInside" id="nQA-9M-Gp6"/>
                                         </connections>
                                     </button>
                                 </subviews>

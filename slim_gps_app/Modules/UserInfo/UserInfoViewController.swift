@@ -4,8 +4,8 @@ import Eureka
 class UserInfoViewController: FormViewController {
     var presenter: UserInfoPresenterInterface!
     var userInfoValues:[String:String?] = [:]
-    let userInfoLabels:[String:String] = ["email":"Email", "last_name":"姓", "first_name":"名"]
-    let userInfoItems:[String] = ["email", "last_name", "first_name"]
+    let userInfoLabels:[String:String] = ["email":"Email", "lastName":"姓", "firstName":"名"]
+    let userInfoItems:[String] = ["email", "lastName", "firstName"]
     
     @IBOutlet weak var userInfoTable: UITableView!
     
@@ -16,13 +16,13 @@ class UserInfoViewController: FormViewController {
             if let err = err {
                 self.showAlert(message: err)
             } else {
-//                 e.g)[( serial_num: Optional("dfasdfaeadaerq"),
-//                        admin:      Optional(true),
-//                        mode:       Optional("watching_normal"),
-//                        name:       Optional("Drrrrrrddddd"),
-//                        latitude:   Optional(35.637363999999998),
-//                        longitude:  Optional(139.69534200000001),
-//                        battery:    Optional(67) )]
+//                 e.g)[( serialNum: Optional("dfasdfaeadaerq"),
+//                        admin:     Optional(true),
+//                        mode:      Optional("watching_normal"),
+//                        name:      Optional("Drrrrrrddddd"),
+//                        latitude:  Optional(35.637363999999998),
+//                        longitude: Optional(139.69534200000001),
+//                        battery:   Optional(67) )]
                 self.userInfoValues = userInfo
                 self.setUserInfoForm()
             }
@@ -38,9 +38,9 @@ class UserInfoViewController: FormViewController {
             +++ Section("ユーザー情報")
             
             <<< TextRow(){ row in
-                row.title = userInfoLabels["last_name"]
-                row.value = userInfoValues["last_name"] ?? ""
-                row.add(rule: RuleRequired(msg: "\(userInfoLabels["last_name"]!)を入力してください"))
+                row.title = userInfoLabels["lastName"]
+                row.value = userInfoValues["lastName"] ?? ""
+                row.add(rule: RuleRequired(msg: "\(userInfoLabels["lastName"]!)を入力してください"))
                 }.cellSetup { cell, row in
                     cell.titleLabel?.textColor = .black
                 }.cellUpdate { cell, row in
@@ -55,7 +55,7 @@ class UserInfoViewController: FormViewController {
                         cell.detailTextLabel?.isHidden = false
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
-                        self.presenter.updateUserInfo(item: "last_name", input: row.value!){ (err: String?) in
+                        self.presenter.updateUserInfo(item: "lastName", input: row.value!){ (err: String?) in
                             print("err result:\(err)")
                             if let err = err {
                                 self.showAlert(message: err)
@@ -65,9 +65,9 @@ class UserInfoViewController: FormViewController {
             }
             
             <<< TextRow(){ row in
-                row.title = userInfoLabels["first_name"]
-                row.value = userInfoValues["first_name"]!
-                row.add(rule: RuleRequired(msg: "\(userInfoLabels["first_name"]!)を入力してください"))
+                row.title = userInfoLabels["firstName"]
+                row.value = userInfoValues["firstName"]!
+                row.add(rule: RuleRequired(msg: "\(userInfoLabels["firstName"]!)を入力してください"))
                 }.cellSetup { cell, row in
                     cell.titleLabel?.textColor = .black
                 }.cellUpdate { cell, row in
@@ -82,7 +82,7 @@ class UserInfoViewController: FormViewController {
                         cell.detailTextLabel?.isHidden = false
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
-                        self.presenter.updateUserInfo(item: "first_name", input: row.value!){ (err: String?) in
+                        self.presenter.updateUserInfo(item: "firstName", input: row.value!){ (err: String?) in
                             print("err result:\(err)")
                             if let err = err {
                                 self.showAlert(message: err)

@@ -13,7 +13,7 @@ final class SideMenuWireframe {
 }
 
 extension SideMenuWireframe: SideMenuWireframeInterface {
-    func pushSideMenuPage(_ index: String) {
+    func pushSideMenuPage(index: String) {
         var nextVC: UIViewController?
 
         print("move to \(index) page")

@@ -4,9 +4,9 @@ import SlideMenuControllerSwift
 class LatestLocationWireframe {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
-    func configureModule( serial_num: String ) -> UIViewController {
+    func configureModule( serialNum: String ) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "LatestLocation") as! LatestLocationViewController
-        viewController.serial_num = serial_num
+        viewController.serialNum = serialNum
         let interactor = LatestLocationInteractor()
         let presenter = LatestLocationPresenter(wireframe: self, view: viewController, interactor: interactor)
         viewController.presenter = presenter

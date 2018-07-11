@@ -7,15 +7,15 @@ protocol DeviceSettingWireframeInterface: class {
 }
 
 protocol DeviceSettingPresenterInterface: class {
-    func getAccessAuth( device_id: String ) -> [(access_auth_id: String?, first_name: String?, last_name: String?, admin: Bool?)]
-    func removeAccessAuth( access_auth_id: String, completion: @escaping (String?) -> Void )
-    func changeDeviceName( device_id: String, name:String, completion: @escaping (String?) -> Void )
-    func changeDeviceSetting( device_id: String, mode: String, completion: @escaping (String?) -> Void )
+    func getAccessAuth( deviceID: String ) -> [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]
+    func removeAccessAuth( accessAuthID: String, completion: @escaping (String?) -> Void )
+    func changeDeviceName( deviceID: String, name:String, completion: @escaping (String?) -> Void )
+    func changeDeviceSetting( deviceID: String, mode: String, completion: @escaping (String?) -> Void )
 }
 
 protocol DeviceSettingInteractorInterface: class {
-    func fetchAccessAuth( device_id: String ) -> [(access_auth_id: String?, first_name: String?, last_name: String?, admin: Bool?)]
-    func deleteAccessAuth( access_auth_id: String, completion: @escaping (String?) -> Void )
-    func updateDeviceName( device_id: String, name:String, completion: @escaping (String?) -> Void )
-    func updateDeviceSetting( device_id: String, mode: String, completion: @escaping (String?) -> Void )
+    func fetchAccessAuth( deviceID: String ) -> [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]
+    func deleteAccessAuth( accessAuthID: String, completion: @escaping (String?) -> Void )
+    func updateDeviceName( deviceID: String, name:String, completion: @escaping (String?) -> Void )
+    func updateDeviceSetting( deviceID: String, mode: String, completion: @escaping (String?) -> Void )
 }

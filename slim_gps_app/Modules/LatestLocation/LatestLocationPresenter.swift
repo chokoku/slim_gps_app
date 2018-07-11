@@ -14,8 +14,8 @@ final class LatestLocationPresenter {
 }
 
 extension LatestLocationPresenter: LatestLocationPresenterInterface {
-    func getLatestLocationData( serial_num: String, completion: @escaping (Double?, Double?, String?) -> Void ){
-        _interactor.fetchLatestLocationData(serial_num: serial_num){ (latitude: Double?, longitude: Double?, err: String?) in
+    func getLatestLocationData( serialNum: String, completion: @escaping (Double?, Double?, String?) -> Void ){
+        _interactor.fetchLatestLocationData(serialNum: serialNum){ (latitude: Double?, longitude: Double?, err: String?) in
             if let err = err {
                 completion(nil, nil, err)
             } else {

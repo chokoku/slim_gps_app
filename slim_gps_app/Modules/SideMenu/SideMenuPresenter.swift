@@ -12,8 +12,8 @@ final class SideMenuPresenter {
 }
 
 extension SideMenuPresenter: SideMenuPresenterInterface {
-    func getSideMenuPage(_ index: String){
-        _wireframe.pushSideMenuPage(index)
+    func getSideMenuPage(index: String){
+        _wireframe.pushSideMenuPage(index: index)
     }
 }
 

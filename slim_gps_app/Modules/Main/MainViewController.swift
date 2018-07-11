@@ -9,7 +9,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     var presenter: MainPresenterInterface!
-    var deviceInfo = [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]()
+    var deviceInfo = [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]()
     var user: User?
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
             subview.removeFromSuperview()
         }
         if let user = user {
-            // deviceInfo = [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
+            // deviceInfo = [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
             deviceInfo = presenter.getDeviceInfo(uid: user.uid)
             scrollView.contentSize = CGSize( width: CGFloat(self.view.bounds.width), height: CGFloat(5+(270+5)*(deviceInfo.count)) ) // scrollView doesn't scroll if this func is removed
             self.addMapView()
@@ -41,14 +41,14 @@ class MainViewController: UIViewController {
 
     @objc func settingButtonTapped(sender : AnyObject) {
         let i = Int(sender.tag)
-        presenter.getDeviceSettingPage( serial_num: deviceInfo[i].serial_num!,
-                                        name:       deviceInfo[i].name!,
-                                        mode:       deviceInfo[i].mode! )
+        presenter.getDeviceSettingPage( serialNum: deviceInfo[i].serialNum!,
+                                        name:      deviceInfo[i].name!,
+                                        mode:      deviceInfo[i].mode! )
     }
 
     @objc func mapViewIsTapped(sender : AnyObject){
         let i = Int(sender.tag)
-        presenter.getLocationDataPage( serial_num: deviceInfo[i].serial_num! )
+        presenter.getLocationDataPage( serialNum: deviceInfo[i].serialNum! )
     }
     
     func addMapView(){

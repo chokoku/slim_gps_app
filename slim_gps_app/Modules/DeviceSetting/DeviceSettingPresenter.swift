@@ -14,13 +14,13 @@ final class DeviceSettingPresenter {
 }
 
 extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
-    func getAccessAuth(device_id: String) -> [(access_auth_id: String?, first_name: String?, last_name: String?, admin: Bool?)]{
-        return _interactor.fetchAccessAuth(device_id: device_id)
+    func getAccessAuth(deviceID: String) -> [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]{
+        return _interactor.fetchAccessAuth(deviceID: deviceID)
     }
     
-    func removeAccessAuth(access_auth_id: String, completion: @escaping (String?) -> Void){
+    func removeAccessAuth(accessAuthID: String, completion: @escaping (String?) -> Void){
         var error: String?
-        _interactor.deleteAccessAuth(access_auth_id: access_auth_id){ (err: String?) in
+        _interactor.deleteAccessAuth(accessAuthID: accessAuthID){ (err: String?) in
             if let err = err {
                 error = err
             }
@@ -28,9 +28,9 @@ extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
         }
     }
     
-    func changeDeviceName(device_id: String, name: String, completion: @escaping (String?) -> Void) {
+    func changeDeviceName(deviceID: String, name: String, completion: @escaping (String?) -> Void) {
         var error: String?
-        _interactor.updateDeviceName(device_id: device_id, name: name){ (err: String?) in
+        _interactor.updateDeviceName(deviceID: deviceID, name: name){ (err: String?) in
             if let err = err {
                 error = err
             }
@@ -38,9 +38,9 @@ extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
         }
     }
     
-    func changeDeviceSetting(device_id: String, mode: String, completion: @escaping (String?) -> Void) {
+    func changeDeviceSetting(deviceID: String, mode: String, completion: @escaping (String?) -> Void) {
         var error: String?
-        _interactor.updateDeviceSetting( device_id: device_id, mode: mode ){ (err: String?) in
+        _interactor.updateDeviceSetting( deviceID: deviceID, mode: mode ){ (err: String?) in
             if let err = err {
                 error = err
             }

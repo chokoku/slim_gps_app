@@ -8,7 +8,7 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
     var mapView : GMSMapView!
     let tableHeight: CGFloat = 150
     @IBOutlet weak var notifSpotTable: UITableView!
-    var notifSpots = [(notif_spot_id: String, name: String, latitude: Double, longitude: Double, radius: Double)]()
+    var notifSpots = [(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double)]()
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLatitude: CLLocationDegrees! = 35.637730  // 38.258595
     var currentLongitude: CLLocationDegrees! = 139.691532 // 137.6850225
@@ -91,7 +91,7 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
         let saveAction:UIAlertAction = UIAlertAction( title: "保存", style: UIAlertActionStyle.default,handler:{ (action) in
             var name = alert.textFields![0].text
             if (name!.isEmpty){ name = "名無しスポット" }
-            self.presenter.updateNotifSpot(notif_spot_id: notifSpot.notif_spot_id, name: name!, tag: tag)
+            self.presenter.updateNotifSpot(notifSpotID: notifSpot.notifSpotID, name: name!, tag: tag)
         })
         alert.addAction(cancelAction)
         alert.addAction(saveAction)
@@ -100,14 +100,14 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
     
     // a cell calls this func
     func deleteNotifSpot(tag:Int) {
-        presenter.deleteNotifSpot(notif_spot_id: notifSpots[tag].notif_spot_id)
+        presenter.deleteNotifSpot(notifSpotID: notifSpots[tag].notifSpotID)
     }
 }
 
 extension NotifSpotViewController: NotifSpotViewInterface {
-    func showNotifSpot(notif_spot_id: String, name: String, latitude: Double, longitude: Double, radius: Double){
+    func showNotifSpot(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double){
         print(6)
-        notifSpots += [(notif_spot_id, name, latitude, longitude, radius)]
+        notifSpots += [(notifSpotID, name, latitude, longitude, radius)]
         let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: radius)
         circle.fillColor = UIColor(red: 0.35, green: 0, blue: 0, alpha: 0.05)
         circle.strokeColor = UIColor.red
@@ -130,8 +130,8 @@ extension NotifSpotViewController: NotifSpotViewInterface {
 //        self.notifSpotTable.reloadData()
     }
     
-    func notifSpotIsDeleted(notif_spot_id: String){
-        self.notifSpots = self.notifSpots.filter( {$0.notif_spot_id != notif_spot_id} )
+    func notifSpotIsDeleted(notifSpotID: String){
+        self.notifSpots = self.notifSpots.filter( {$0.notifSpotID != notifSpotID} )
         self.notifSpotTable.reloadData()
     }
 }

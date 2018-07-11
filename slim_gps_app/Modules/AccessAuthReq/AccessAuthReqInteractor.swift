@@ -38,11 +38,10 @@ extension AccessAuthReqInteractor: AccessAuthReqInteractorInterface {
                                             if let _ = err {
                                                 completion("エラーが発生しました")
                                             } else {
-                                                for document in querySnapshot!.documents {
+                                                for _ in querySnapshot!.documents {
                                                     // create access_auth document
                                                     self.db.collection("access_auth").addDocument(data: ["device_id": serialNum,
                                                                                                          "client_id": uid,
-                                                                                                         "owner_id": document.data()["uid"] as! String,
                                                                                                          "confirmed": false,
                                                                                                          "created_at": Date()]) { err in
                                                                                                             if let _ = err {

@@ -14,9 +14,9 @@ final class LatestLocationInteractor {
 }
 
 extension LatestLocationInteractor: LatestLocationInteractorInterface {
-    func fetchLatestLocationData( serial_num: String, completion: @escaping (Double?, Double?, String?) -> Void ) { // latitude, longitude, error
+    func fetchLatestLocationData( serialNum: String, completion: @escaping (Double?, Double?, String?) -> Void ) { // latitude, longitude, error
         db.collection("location_data")
-            .whereField("device_id", isEqualTo: serial_num)
+            .whereField("device_id", isEqualTo: serialNum)
             .order(by: "created_at", descending: true)
             .limit(to:1)
             .addSnapshotListener { (querySnapshot, err) in

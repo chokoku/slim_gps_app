@@ -7,9 +7,9 @@ protocol DailyLocationWireframeInterface: class {
 }
 
 protocol DailyLocationPresenterInterface: class {
-    func getDailyLocation( serial_num: String, date: Date ) -> [(latitude: Double, longitude: Double, created_at: NSObject)]
+    func getDailyLocation( serialNum: String, date: Date ) -> [(latitude: Double, longitude: Double, createdAt: Date)]
 }
 
 protocol DailyLocationInteractorInterface: class {
-    func fetchDailyLocation( serial_num: String, date: Date ) -> [(latitude: Double, longitude: Double, created_at: NSObject)]
+    func fetchDailyLocation( serialNum: String, date: Date ) -> [(latitude: Double, longitude: Double, createdAt: Date)]
 }

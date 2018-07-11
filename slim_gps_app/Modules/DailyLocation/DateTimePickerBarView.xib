@@ -33,7 +33,7 @@
                         <action selector="datePickerTapped:" destination="-1" eventType="touchUpInside" id="Bw3-aU-jCG"/>
                     </connections>
                 </button>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pcB-50-u93">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pcB-50-u93">
                     <rect key="frame" x="63" y="10" width="214" height="31"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="pcB-50-u93" secondAttribute="height" multiplier="7:1" id="ByJ-T4-Fda"/>

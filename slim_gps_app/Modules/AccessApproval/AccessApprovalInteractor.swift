@@ -40,9 +40,9 @@ extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
                                                 if let _ = err {
                                                     self.presenter.pushAlert(message:"エラーが発生しました")
                                                 } else {
-                                                    let first_name = requesterDocument!.data()!["first_name"] as? String
-                                                    let last_name = requesterDocument!.data()!["last_name"] as? String
-                                                    self.presenter.addRequesters(access_auth_id: accessAuthDocument2.documentID, first_name: first_name, last_name: last_name)
+                                                    let firstName = requesterDocument!.data()!["first_name"] as? String
+                                                    let lastName = requesterDocument!.data()!["last_name"] as? String
+                                                    self.presenter.addRequesters(accessAuthID: accessAuthDocument2.documentID, firstName: firstName, lastName: lastName)
                                                 }
                                         }
                                     }
@@ -54,9 +54,9 @@ extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
         
     }
     
-    func approveAccessRequest(access_auth_id: String, completion: @escaping (String?) -> Void){
+    func approveAccessRequest(accessAuthID: String, completion: @escaping (String?) -> Void){
         var error: String?
-        db.collection("access_auth").document(access_auth_id).updateData([ "confirmed": true ]){ err in
+        db.collection("access_auth").document(accessAuthID).updateData([ "confirmed": true ]){ err in
             if let _ = err {
                 error = "アクセス権を付与できませんでした"
             } else {
@@ -66,9 +66,9 @@ extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
         }
     }
     
-    func rejectAccessRequest(access_auth_id: String, completion: @escaping (String?) -> Void){
+    func rejectAccessRequest(accessAuthID: String, completion: @escaping (String?) -> Void){
         var error: String?
-        db.collection("access_auth").document(access_auth_id).delete(){ err in
+        db.collection("access_auth").document(accessAuthID).delete(){ err in
             if let _ = err {
                 error = "アクセスリクエストの拒否に失敗しました"
             }

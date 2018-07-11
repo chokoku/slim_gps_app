@@ -30,7 +30,7 @@ extension NotifSpotInteractor: NotifSpotInteractorInterface {
                             let longitude = data["longitude"] as? Double,
                             let radius = data["radius"] as? Double
                         {
-                            self.presenter.showNotifSpot(notif_spot_id: document.documentID, name: name, latitude: latitude, longitude: longitude, radius: radius)
+                            self.presenter.showNotifSpot(notifSpotID: document.documentID, name: name, latitude: latitude, longitude: longitude, radius: radius)
                         }
                     }
                 }
@@ -47,18 +47,18 @@ extension NotifSpotInteractor: NotifSpotInteractorInterface {
 //                self.presenter.showAlert(message: "通知スポットの追加に失敗しました")
 //            } else {
 //                print(4)
-//                self.presenter.showNotifSpot(notif_spot_id: ref!.documentID, name: name, latitude: latitude, longitude: longitude, radius: radius)
+//                self.presenter.showNotifSpot(notifSpotID: ref!.documentID, name: name, latitude: latitude, longitude: longitude, radius: radius)
 //            }
 //        }
         ref = db.collection("notif_spots").addDocument(data: ["client_id": user!.uid, "name": name, "latitude": latitude, "longitude": longitude, "radius": radius])
         print(4)
         print(ref!.documentID)
         sleep(1)
-        presenter.showNotifSpot(notif_spot_id: ref!.documentID, name: name, latitude: latitude, longitude: longitude, radius: radius)
+        presenter.showNotifSpot(notifSpotID: ref!.documentID, name: name, latitude: latitude, longitude: longitude, radius: radius)
     }
     
-    func updateNotifSpot(notif_spot_id: String, name: String, tag: Int){
-        db.collection("notif_spots").document(notif_spot_id).updateData([ "name": name ]) { err in
+    func updateNotifSpot(notifSpotID: String, name: String, tag: Int){
+        db.collection("notif_spots").document(notifSpotID).updateData([ "name": name ]) { err in
             if let _ = err {
                 self.presenter.showAlert(message: "通知スポットの追加に失敗しました")
             } else {
@@ -67,12 +67,12 @@ extension NotifSpotInteractor: NotifSpotInteractorInterface {
         }
     }
     
-    func deleteNotifSpot(notif_spot_id: String){
-        db.collection("notif_spots").document(notif_spot_id).delete() { err in
+    func deleteNotifSpot(notifSpotID: String){
+        db.collection("notif_spots").document(notifSpotID).delete() { err in
             if let _ = err {
                 self.presenter.showAlert(message: "通知スポットの追加に失敗しました")
             } else {
-                self.presenter.notifSpotIsDeleted(notif_spot_id: notif_spot_id)
+                self.presenter.notifSpotIsDeleted(notifSpotID: notifSpotID)
             }
         }
     }

@@ -4,16 +4,16 @@ protocol MainViewInterface: class {
 }
 
 protocol MainWireframeInterface: class {
-    func pushDeviceSettingPage( serial_num: String, name: String, mode: String )
-    func pushLocationDataPage( serial_num: String )
+    func pushDeviceSettingPage( serialNum: String, name: String, mode: String )
+    func pushLocationDataPage( serialNum: String )
 }
 
 protocol MainPresenterInterface: class {
-    func getDeviceSettingPage( serial_num: String, name: String, mode: String )
-    func getLocationDataPage( serial_num: String )
-    func getDeviceInfo(uid: String) -> [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
+    func getDeviceSettingPage( serialNum: String, name: String, mode: String )
+    func getLocationDataPage( serialNum: String )
+    func getDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
 }
 
 protocol MainInteractorInterface: class {
-    func fetchDeviceInfo(uid: String) -> [(serial_num: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
+    func fetchDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
 }

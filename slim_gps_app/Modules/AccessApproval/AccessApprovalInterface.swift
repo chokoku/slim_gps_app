@@ -1,7 +1,7 @@
 import UIKit
 
 protocol AccessApprovalViewInterface: class {
-    func addRequesters(access_auth_id:String, first_name:String?, last_name:String?)
+    func addRequesters(accessAuthID:String, firstName:String?, lastName:String?)
     func showAlert(message:String)
 }
 
@@ -10,14 +10,14 @@ protocol AccessApprovalWireframeInterface: class {
 
 protocol AccessApprovalPresenterInterface: class {
     func getRequesters()
-    func addRequesters(access_auth_id:String, first_name:String?, last_name:String?)
+    func addRequesters(accessAuthID:String, firstName:String?, lastName:String?)
     func pushAlert(message:String)
-    func approveAccessRequest(access_auth_id: String, completion: @escaping (String?) -> Void)
-    func rejectAccessRequest(access_auth_id: String, completion: @escaping (String?) -> Void)
+    func approveAccessRequest(accessAuthID: String, completion: @escaping (String?) -> Void)
+    func rejectAccessRequest(accessAuthID: String, completion: @escaping (String?) -> Void)
 }
 
 protocol AccessApprovalInteractorInterface: class {
     func fetchRequesters(uid:String)
-    func approveAccessRequest(access_auth_id: String, completion: @escaping (String?) -> Void)
-    func rejectAccessRequest(access_auth_id: String, completion: @escaping (String?) -> Void)
+    func approveAccessRequest(accessAuthID: String, completion: @escaping (String?) -> Void)
+    func rejectAccessRequest(accessAuthID: String, completion: @escaping (String?) -> Void)
 }

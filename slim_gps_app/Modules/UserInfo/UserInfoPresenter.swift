@@ -25,7 +25,7 @@ extension UserInfoPresenter: UserInfoPresenterInterface {
                 error = err
                 completion(userInfo, error)
             } else {
-                userInfo = ["email": user!.email!, "last_name": userInfoFromCL["last_name"]!, "first_name": userInfoFromCL["first_name"]!]
+                userInfo = ["email": user!.email!, "lastName": userInfoFromCL["lastName"]!, "firstName": userInfoFromCL["firstName"]!]
                 completion(userInfo, nil)
             }
         }

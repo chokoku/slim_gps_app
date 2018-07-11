@@ -7,12 +7,12 @@ import Eureka
 class DeviceSettingViewController: FormViewController {
     
     var presenter: DeviceSettingPresenterInterface!
-    var accessAuth = [(access_auth_id: String?, first_name: String?, last_name: String?, admin: Bool?)]()
+    var accessAuth = [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]()
     
     @IBOutlet weak var deviceInfoTable: UITableView!
     
     // set values from DeviceSettingWireframe
-    var serial_num: String!
+    var serialNum: String!
     var mode: String!
     var name: String!
     
@@ -20,13 +20,13 @@ class DeviceSettingViewController: FormViewController {
         super.viewDidLoad()
         self.navigationItem.title = "デバイス設定"
         
-        accessAuth = presenter.getAccessAuth(device_id: serial_num) // [(access_auth_id: String?, first_name: String?, last_name: String?, admin: Bool?)]
+        accessAuth = presenter.getAccessAuth(deviceID: serialNum) // [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]
         
         form +++ Section("一般")
             <<< TextRow(){ row in
                 row.baseCell.isUserInteractionEnabled = false
                 row.title = "シリアル番号"
-                row.value = serial_num
+                row.value = serialNum
                 }.cellSetup { cell, row in
                     cell.titleLabel?.textColor = .black
             }
@@ -50,7 +50,7 @@ class DeviceSettingViewController: FormViewController {
                         cell.detailTextLabel?.isHidden = false
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
-                        self.presenter.changeDeviceName(device_id: self.serial_num, name: row.value! ){ (err: String?) in
+                        self.presenter.changeDeviceName(deviceID: self.serialNum, name: row.value! ){ (err: String?) in
                             if let err = err {
                                 self.showAlert(message: err)
                             }
@@ -67,7 +67,7 @@ class DeviceSettingViewController: FormViewController {
                     cell.detailTextLabel?.textColor = UIColor.black
                 }.onChange { row in
                     let modeLabels:[String:String] = ["見守りモード(省電力)":"watching_powerSaving", "見守りモード(通常)":"watching_normal", "紛失対策モード":"lost_proof"]
-                    self.presenter.changeDeviceSetting( device_id: self.serial_num, mode: modeLabels[row.value!]! ){ (err: String?) in
+                    self.presenter.changeDeviceSetting( deviceID: self.serialNum, mode: modeLabels[row.value!]! ){ (err: String?) in
                         if let err = err {
                             self.showAlert(message: err)
                         }
@@ -80,23 +80,23 @@ class DeviceSettingViewController: FormViewController {
         for watcher in accessAuth {
             accessAuthSection <<< LabelRow(){ row in
                 row.title = watcher.admin! ? "管理者" : "×"
-                row.value = watcher.last_name!+" "+watcher.first_name!
+                row.value = watcher.lastName!+" "+watcher.firstName!
                 }.cellSetup { cell, row in
                     cell.textLabel?.textColor = watcher.admin! ? UIColor.black : UIColor.lightGray
                     cell.detailTextLabel?.textColor = UIColor.black
                 }.onCellSelection { cell, row in
                     if(!watcher.admin!){
-                        self.showAccessAuthDeleteAlert(name: watcher.last_name!+" "+watcher.first_name!, access_auth_id: watcher.access_auth_id!, row: row)
+                        self.showAccessAuthDeleteAlert(name: watcher.lastName!+" "+watcher.firstName!, accessAuthID: watcher.accessAuthID!, row: row)
                     }
             }
         }
     }
     
-    func showAccessAuthDeleteAlert(name: String, access_auth_id: String, row: BaseRow){
+    func showAccessAuthDeleteAlert(name: String, accessAuthID: String, row: BaseRow){
         let alert = UIAlertController( title: "アクセス権の削除", message: "\(name)さんを削除しますか？", preferredStyle: UIAlertControllerStyle.alert )
         let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertActionStyle.cancel, handler:nil )
         let saveAction:UIAlertAction = UIAlertAction( title: "削除", style: UIAlertActionStyle.default,handler:{ (action) in
-            self.presenter.removeAccessAuth(access_auth_id: access_auth_id){ (err: String?) in
+            self.presenter.removeAccessAuth(accessAuthID: accessAuthID){ (err: String?) in
                 if let err = err {
                     self.showAlert(message: err)
                 } else {

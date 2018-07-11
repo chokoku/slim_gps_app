@@ -4,13 +4,13 @@ import GoogleMaps
 class LatestLocationViewController: UIViewController {
     
     var presenter: LatestLocationPresenterInterface!
-    var serial_num: String!
+    var serialNum: String!
     var mapView : GMSMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter.getLatestLocationData( serial_num: serial_num ){ (latitude: Double?, longitude: Double?, err: String?) in
+        presenter.getLatestLocationData( serialNum: serialNum ){ (latitude: Double?, longitude: Double?, err: String?) in
             if let err = err {
                 self.showAlert(message: err)
             } else {

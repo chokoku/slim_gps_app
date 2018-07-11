@@ -4,7 +4,7 @@ class AccessApprovalViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var accessApprovalTable: UITableView!
     var presenter: AccessApprovalPresenterInterface!
-    var requesters = [(access_auth_id: String, first_name: String?, last_name: String?)]()
+    var requesters = [(accessAuthID: String, firstName: String?, lastName: String?)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +18,9 @@ class AccessApprovalViewController: UIViewController, UITableViewDelegate, UITab
         super.didReceiveMemoryWarning()
     }
     
-    func addRequesters(access_auth_id: String, first_name: String?, last_name: String?) {
-        if !access_auth_id.isEmpty{
-            requesters += [(access_auth_id, first_name, last_name)]
+    func addRequesters(accessAuthID: String, firstName: String?, lastName: String?) {
+        if !accessAuthID.isEmpty{
+            requesters += [(accessAuthID, firstName, lastName)]
             self.accessApprovalTable.reloadData()
         }
     }
@@ -33,24 +33,24 @@ class AccessApprovalViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     func approveAccessRequest(tag:Int) {
-        let access_auth_id = requesters[tag].access_auth_id
-        presenter.approveAccessRequest(access_auth_id: access_auth_id){ (err: String?) in
+        let accessAuthID = requesters[tag].accessAuthID
+        presenter.approveAccessRequest(accessAuthID: accessAuthID){ (err: String?) in
             if let err = err {
                 self.showAlert(message: err)
             } else {
-                self.requesters = self.requesters.filter( {$0.access_auth_id != access_auth_id} )
+                self.requesters = self.requesters.filter( {$0.accessAuthID != accessAuthID} )
                 self.accessApprovalTable.reloadData()
             }
         }
     }
     
     func rejectAcessRequest(tag:Int) {
-        let access_auth_id = requesters[tag].access_auth_id
-        presenter.rejectAccessRequest(access_auth_id: access_auth_id){ (err: String?) in
+        let accessAuthID = requesters[tag].accessAuthID
+        presenter.rejectAccessRequest(accessAuthID: accessAuthID){ (err: String?) in
             if let err = err {
                 self.showAlert(message: err)
             } else {
-                self.requesters = self.requesters.filter( {$0.access_auth_id != access_auth_id} )
+                self.requesters = self.requesters.filter( {$0.accessAuthID != accessAuthID} )
                 self.accessApprovalTable.reloadData()
             }
         }
@@ -64,9 +64,9 @@ class AccessApprovalViewController: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccessApprovalViewCell") as! AccessApprovalViewCell
         cell.tag = indexPath.row
         let requester = requesters[indexPath.row]
-        let last_name = requester.last_name ?? ""
-        let first_name = requester.first_name ?? ""
-        cell.nameLabel.text = last_name+" "+first_name
+        let lastName = requester.lastName ?? ""
+        let firstName = requester.firstName ?? ""
+        cell.nameLabel.text = lastName+" "+firstName
         cell.rejectButton.tag = indexPath.row
         cell.approveButton.tag = indexPath.row
         cell.delegate = self

@@ -8,10 +8,10 @@ protocol LatestLocationWireframeInterface: class {
 }
 
 protocol LatestLocationPresenterInterface: class {
-    func getLatestLocationData( serial_num: String, completion: @escaping (Double?, Double?, String?) -> Void ) // latitude, longitude, error
+    func getLatestLocationData( serialNum: String, completion: @escaping (Double?, Double?, String?) -> Void ) // latitude, longitude, error
     func goBackToMainPage()
 }
 
 protocol LatestLocationInteractorInterface: class {
-    func fetchLatestLocationData( serial_num: String, completion: @escaping (Double?, Double?, String?) -> Void ) // latitude, longitude, error
+    func fetchLatestLocationData( serialNum: String, completion: @escaping (Double?, Double?, String?) -> Void ) // latitude, longitude, error
 }
