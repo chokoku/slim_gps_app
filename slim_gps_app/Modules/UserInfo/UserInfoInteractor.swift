@@ -12,29 +12,26 @@ final class UserInfoInteractor {
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
     }
-
 }
 
 extension UserInfoInteractor: UserInfoInteractorInterface {
     func fetchClientInfo(uid: String, completion: @escaping ([String:String?], String?) -> Void) {
         var userInfo:[String:String?] = [:]
-        var error: String?
 
         db.collection("clients").document(uid).addSnapshotListener{ (document, err) in
             if let _ = err {
-                error = "エラーが発生しました"
-                completion(userInfo, error)
+                completion(userInfo, "エラーが発生しました")
             } else if let document = document, document.exists {
-                if let first = document.data()!["first_name"] as? String {
-                    userInfo["firstName"] = first
+                if let first_name = document.data()!["first_name"] as? String {
+                    userInfo["firstName"] = first_name
                 }
-                if let last = document.data()!["last_name"] as? String {
-                    userInfo["lastName"] = last
+                if let last_name = document.data()!["last_name"] as? String {
+                    userInfo["lastName"] = last_name
                 }
+                print(3)
                 completion(userInfo, nil)
             } else {
-                error = "データがありません"
-                completion(userInfo, error)
+                completion(userInfo, "データがありません")
 
             }
         }
@@ -55,11 +52,22 @@ extension UserInfoInteractor: UserInfoInteractorInterface {
     
     func updateClientInfo(uid: String, item: String, input: String, completion: @escaping (String?) ->Void){
         var error: String?
+        print(9)
 
-        db.collection("clients").document(uid).updateData([ item: input ]){ err in
+        var key = String()
+        if(item == "firstName"){
+            key = "first_name"
+        } else if(item == "lastName"){
+            key = "last_name"
+        } else {
+            completion(error)
+        }
+
+        db.collection("clients").document(uid).updateData([ key: input ]){ err in
             if let _ = err {
                 error = "ユーザー情報を更新できませんでした"
             }
+            print(10)
             completion(error)
         }
     }

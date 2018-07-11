@@ -10,12 +10,14 @@ class UserInfoViewController: FormViewController {
     @IBOutlet weak var userInfoTable: UITableView!
     
     override func viewDidLoad() {
+        print(1)
         super.viewDidLoad()
         self.navigationItem.title = "ユーザー情報"
         presenter.getUserInfo(){ (userInfo:[String:String?], err: String?) in
             if let err = err {
                 self.showAlert(message: err)
             } else {
+                print(5)
 //                 e.g)[( serialNum: Optional("dfasdfaeadaerq"),
 //                        admin:     Optional(true),
 //                        mode:      Optional("watching_normal"),
@@ -34,9 +36,11 @@ class UserInfoViewController: FormViewController {
     }
     
     func setUserInfoForm(){
+        print(6)
         form
             +++ Section("ユーザー情報")
             
+            // Set lastName textField
             <<< TextRow(){ row in
                 row.title = userInfoLabels["lastName"]
                 row.value = userInfoValues["lastName"] ?? ""
@@ -55,8 +59,9 @@ class UserInfoViewController: FormViewController {
                         cell.detailTextLabel?.isHidden = false
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
+                        print(7)
                         self.presenter.updateUserInfo(item: "lastName", input: row.value!){ (err: String?) in
-                            print("err result:\(err)")
+                            print(12)
                             if let err = err {
                                 self.showAlert(message: err)
                             }
@@ -64,6 +69,7 @@ class UserInfoViewController: FormViewController {
                     }
             }
             
+            // Set firstName textField
             <<< TextRow(){ row in
                 row.title = userInfoLabels["firstName"]
                 row.value = userInfoValues["firstName"]!
@@ -83,7 +89,6 @@ class UserInfoViewController: FormViewController {
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
                         self.presenter.updateUserInfo(item: "firstName", input: row.value!){ (err: String?) in
-                            print("err result:\(err)")
                             if let err = err {
                                 self.showAlert(message: err)
                             }
@@ -91,6 +96,7 @@ class UserInfoViewController: FormViewController {
                     }
             }
             
+            // Set email textField
             <<< LabelRow(){ row in
                 row.title = userInfoLabels["email"]
                 row.value = userInfoValues["email"] ?? ""
@@ -112,7 +118,6 @@ class UserInfoViewController: FormViewController {
                                 self.showAlert(message: "パスワードが一致しません")
                             } else {
                                 self.presenter.updateUserEmail(email: email, password: pass){ (err: String?) in
-                                    print("err result:\(err)")
                                     if let err = err {
                                         self.showAlert(message: err)
                                     } else {
@@ -138,6 +143,7 @@ class UserInfoViewController: FormViewController {
                     self.present(alert, animated: true, completion: nil)
             }
             
+            // Set logout button
             +++ Section("その他")
             <<< ButtonRow(){ row in
                 row.title = "ログアウト"

@@ -16,6 +16,7 @@ final class UserInfoPresenter {
 
 extension UserInfoPresenter: UserInfoPresenterInterface {
     func getUserInfo(completion: @escaping ([String:String?], String?) -> Void){
+        print(2)
         var userInfo = [String:String?]()
         var error: String?
         let user = Auth.auth().currentUser
@@ -25,6 +26,7 @@ extension UserInfoPresenter: UserInfoPresenterInterface {
                 error = err
                 completion(userInfo, error)
             } else {
+                print(4)
                 userInfo = ["email": user!.email!, "lastName": userInfoFromCL["lastName"]!, "firstName": userInfoFromCL["firstName"]!]
                 completion(userInfo, nil)
             }
@@ -39,11 +41,13 @@ extension UserInfoPresenter: UserInfoPresenterInterface {
     func updateUserInfo(item: String, input: String, completion: @escaping (String?) ->Void){
         var error: String?
         let user = Auth.auth().currentUser
+        print(8)
         // update first name or last name
         _interactor.updateClientInfo(uid: user!.uid, item: item, input: input){ (err: String?) in
             if let err = err {
                 error = err
             }
+            print(11)
             completion(error)
         }
     }
