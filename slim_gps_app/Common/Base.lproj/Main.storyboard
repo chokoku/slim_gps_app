@@ -521,21 +521,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="contact us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-wu-4PR">
-                                <rect key="frame" x="166" y="323" width="81" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お問い合わせ内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmn-cr-DeE">
+                                <rect key="frame" x="118" y="60" width="139" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="SDM-hG-Abe">
+                                <rect key="frame" x="20" y="121" width="335" height="140"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="GeL-3e-bfB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODt-9Q-pJa">
+                                <rect key="frame" x="137" y="301" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Uag-iJ-l9A"/>
+                                    <constraint firstAttribute="height" constant="30" id="pUu-YF-r74"/>
+                                </constraints>
+                                <state key="normal" title="送信">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendButtonTapped:" destination="SOU-h8-lKW" eventType="touchUpInside" id="Tfg-31-71K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SDM-hG-Abe" firstAttribute="centerX" secondItem="9M9-Sy-JpQ" secondAttribute="centerX" id="2qZ-UZ-ReV"/>
+                            <constraint firstItem="Rmn-cr-DeE" firstAttribute="top" secondItem="oL6-s3-hVS" secondAttribute="top" constant="40" id="7OD-1J-36j"/>
+                            <constraint firstItem="Rmn-cr-DeE" firstAttribute="centerX" secondItem="9M9-Sy-JpQ" secondAttribute="centerX" id="9dS-LI-PYJ"/>
+                            <constraint firstItem="ODt-9Q-pJa" firstAttribute="top" secondItem="SDM-hG-Abe" secondAttribute="bottom" constant="40" id="GQD-Sm-XDf"/>
+                            <constraint firstItem="SDM-hG-Abe" firstAttribute="leading" secondItem="oL6-s3-hVS" secondAttribute="leading" constant="20" id="RMS-AN-cCz"/>
+                            <constraint firstItem="ODt-9Q-pJa" firstAttribute="centerX" secondItem="9M9-Sy-JpQ" secondAttribute="centerX" id="bzv-kY-lby"/>
+                            <constraint firstItem="oL6-s3-hVS" firstAttribute="trailing" secondItem="SDM-hG-Abe" secondAttribute="trailing" constant="20" id="cRa-mP-GkC"/>
+                            <constraint firstItem="SDM-hG-Abe" firstAttribute="top" secondItem="Rmn-cr-DeE" secondAttribute="bottom" constant="40" id="q0H-s1-FpD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oL6-s3-hVS"/>
                     </view>
+                    <connections>
+                        <outlet property="contactUsTextView" destination="SDM-hG-Abe" id="wo4-66-dyN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APD-g3-sid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3882.4000000000001" y="658.92053973013503"/>
+            <point key="canvasLocation" x="4119" y="687"/>
         </scene>
         <!--Access Approval View Controller-->
         <scene sceneID="mW2-SG-wSg">

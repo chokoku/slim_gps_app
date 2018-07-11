@@ -51,6 +51,7 @@ class MainViewController: UIViewController {
         presenter.pushLocationDataPage( serialNum: deviceInfo[i].serialNum! )
     }
     
+    // TODO clear dead lock issue.
     func addMapView(){
         
         for i in 0..<deviceInfo.count {
@@ -86,9 +87,7 @@ class MainViewController: UIViewController {
                 _mapButton.backgroundColor = .clear
                 _mapButton.tag = i
                 _mapButton.addTarget(self, action: #selector(self.mapViewIsTapped(sender:)), for: .touchUpInside)
-                
-                //                let latitude = deviceInfo[i].latitude
-                //                let longitude = deviceInfo[i].longitude
+
                 let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16)
                 let _googleMapView = GMSMapView.map(withFrame: mapViewFrame, camera: camera)
                 _googleMapView.settings.scrollGestures = false

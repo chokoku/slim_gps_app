@@ -16,6 +16,7 @@ target 'slim_gps_app' do
   pod 'GooglePlaces'
   pod 'FontAwesome.swift'
   pod 'Eureka'
+  pod 'SCLAlertView'
 
   target 'slim_gps_appTests' do
     inherit! :search_paths

@@ -95,6 +95,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.0)
+  - SCLAlertView (0.8)
   - SlideMenuControllerSwift (4.0.0)
 
 DEPENDENCIES:
@@ -107,6 +108,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - SCLAlertView
   - SlideMenuControllerSwift
 
 SPEC REPOS:
@@ -133,6 +135,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - SCLAlertView
     - SlideMenuControllerSwift
 
 SPEC CHECKSUMS:
@@ -158,8 +161,9 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
 
-PODFILE CHECKSUM: 09f768f7239f2ff8784a520b8e05c185839e6af0
+PODFILE CHECKSUM: 606d35437c431499ab567cc79464ef251170ec8a
 
 COCOAPODS: 1.5.3
