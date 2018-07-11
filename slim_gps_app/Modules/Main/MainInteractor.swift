@@ -48,13 +48,13 @@ extension MainInteractor: MainInteractorInterface {
                                                 print("Error getting documents: \(error)")
                                             } else {
                                                 if(location_data_querySnapshot!.documents.count == 0){
-                                                    locationData += [(device_id,
-                                                                      access_auth_document.data()["admin"] as? Bool,
-                                                                      device_document!["mode"] as? String,
-                                                                      device_document!["name"] as? String,
-                                                                      nil,
-                                                                      nil,
-                                                                      nil )]
+                                                    locationData += [( device_id,
+                                                                       access_auth_document.data()["admin"] as? Bool,
+                                                                       device_document!["mode"] as? String,
+                                                                       device_document!["name"] as? String,
+                                                                       nil,
+                                                                       nil,
+                                                                       nil )]
                                                 } else {
                                                     for location_data_document in location_data_querySnapshot!.documents {
                                                         locationData += [(device_id,

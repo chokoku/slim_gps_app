@@ -77,6 +77,8 @@
 		067FD5D820F278990047CFC9 /* AccessApprovalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */; };
 		06A0E56120F35B2F002CFEA5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A0E55F20F34E4B002CFEA5 /* CoreLocation.framework */; };
 		06A0E56320F3A75D002CFEA5 /* NotifSpotViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */; };
+		06A0E56520F46C7F002CFEA5 /* DateTimePickerBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A0E56420F46C7F002CFEA5 /* DateTimePickerBarView.xib */; };
+		06A0E56720F4719D002CFEA5 /* DateTimePickerBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56620F4719D002CFEA5 /* DateTimePickerBarView.swift */; };
 		55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */; };
 		AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */; };
 		C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */; };
@@ -177,6 +179,8 @@
 		06A0E55D20F34E3D002CFEA5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		06A0E55F20F34E4B002CFEA5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotViewCell.swift; sourceTree = "<group>"; };
+		06A0E56420F46C7F002CFEA5 /* DateTimePickerBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTimePickerBarView.xib; sourceTree = "<group>"; };
+		06A0E56620F4719D002CFEA5 /* DateTimePickerBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerBarView.swift; sourceTree = "<group>"; };
 		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -425,6 +429,7 @@
 		067FD5B420EE11FB0047CFC9 /* LatestLocation */ = {
 			isa = PBXGroup;
 			children = (
+				067FD5B520EE126F0047CFC9 /* LatestLocationViewController.swift */,
 				067FD5B720EE127E0047CFC9 /* LatestLocationWireframe.swift */,
 				067FD5B920EE129C0047CFC9 /* LatestLocationInteractor.swift */,
 				067FD5BB20EE12A90047CFC9 /* LatestLocationPresenter.swift */,
@@ -436,13 +441,14 @@
 		067FD5BF20EE1DC20047CFC9 /* DailyLocation */ = {
 			isa = PBXGroup;
 			children = (
-				067FD5B520EE126F0047CFC9 /* LatestLocationViewController.swift */,
 				067FD5C020EE1DE40047CFC9 /* DailyLocationViewController.swift */,
 				067FD5C220EE1DEF0047CFC9 /* DailyLocationWireframe.swift */,
 				067FD5C420EE1DFD0047CFC9 /* DailyLocationInteractor.swift */,
 				067FD5C620EE1E090047CFC9 /* DailyLocationPresenter.swift */,
 				067FD5C820EE1E140047CFC9 /* DailyLocationInterface.swift */,
 				067FD5CA20EE791B0047CFC9 /* PopupViewController.swift */,
+				06A0E56420F46C7F002CFEA5 /* DateTimePickerBarView.xib */,
+				06A0E56620F4719D002CFEA5 /* DateTimePickerBarView.swift */,
 			);
 			path = DailyLocation;
 			sourceTree = "<group>";
@@ -597,6 +603,7 @@
 			files = (
 				0606B98A20DDF830003536B1 /* LaunchScreen.storyboard in Resources */,
 				067FD59B20EB092C0047CFC9 /* GoogleService-Info.plist in Resources */,
+				06A0E56520F46C7F002CFEA5 /* DateTimePickerBarView.xib in Resources */,
 				0606B98720DDF830003536B1 /* Assets.xcassets in Resources */,
 				0606B98520DDF82D003536B1 /* Main.storyboard in Resources */,
 			);
@@ -770,6 +777,7 @@
 				0630317120DE5650009F78EA /* UserInfoViewController.swift in Sources */,
 				067FD5D820F278990047CFC9 /* AccessApprovalViewCell.swift in Sources */,
 				0630316C20DE4E3A009F78EA /* SideMenuWireframe.swift in Sources */,
+				06A0E56720F4719D002CFEA5 /* DateTimePickerBarView.swift in Sources */,
 				0630317320DE5663009F78EA /* UserInfoWireframe.swift in Sources */,
 				0630316020DE38CA009F78EA /* MainWireframe.swift in Sources */,
 				0606B9C020DE1325003536B1 /* SideMenuViewController.swift in Sources */,

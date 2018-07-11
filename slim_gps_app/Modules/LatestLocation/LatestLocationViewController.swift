@@ -17,12 +17,19 @@ class LatestLocationViewController: UIViewController {
                 let latestLocationData:(latitude: Double?, longitude: Double?) = (latitude: latitude, longitude: longitude)
                 
                 if let lat = latestLocationData.latitude, let long = latestLocationData.longitude{
+                    
+                    // Configure mapView
                     let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0)
                     self.mapView = GMSMapView(frame: CGRect(x:0,y: 0, width:self.view.bounds.width, height:self.view.bounds.height))
                     self.mapView.camera = camera
+                    self.mapView.isMyLocationEnabled = true // ??
+
+                    // Set marker
                     let marker: GMSMarker = GMSMarker()
                     marker.position = CLLocationCoordinate2DMake(lat, long)
                     marker.map = self.mapView
+                    
+                    // Show mapView
                     self.view.addSubview(self.mapView)
                 } else {
                     self.presenter.goBackToMainPage()

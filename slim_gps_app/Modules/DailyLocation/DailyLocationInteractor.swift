@@ -14,8 +14,8 @@ final class DailyLocationInteractor {
 }
 
 extension DailyLocationInteractor: DailyLocationInteractorInterface {
-    func fetchDailyLocation( serial_num: String, date: Date ) -> [(latitude: Double?, longitude: Double?, created_at: NSObject?)]{
-        var locationData = [(latitude: Double?, longitude: Double?, created_at: NSObject?)]()
+    func fetchDailyLocation( serial_num: String, date: Date ) -> [(latitude: Double, longitude: Double, created_at: NSObject)]{
+        var locationData = [(latitude: Double, longitude: Double, created_at: NSObject)]()
 
         let calendar = Calendar(identifier: .gregorian)
         let beginnigOfTheDate = calendar.startOfDay(for: date)
@@ -29,7 +29,7 @@ extension DailyLocationInteractor: DailyLocationInteractorInterface {
         
         db.collection("location_data")
             .whereField("device_id", isEqualTo: serial_num)
-            .order(by: "created_at", descending: true)
+            .order(by: "created_at", descending: false)
             .whereField("created_at", isGreaterThanOrEqualTo: beginnigOfTheDate)
             .whereField("created_at", isLessThanOrEqualTo: endOfTheDate)
             .addSnapshotListener { (querySnapshot, error) in
