@@ -26,9 +26,10 @@ extension MainInteractor: MainInteractorInterface {
             .whereField("client_id", isEqualTo: uid)
             .order(by: "created_at", descending: false)
             .addSnapshotListener { (access_auth_querySnapshot, error) in
-                if( 0 == access_auth_querySnapshot!.documents.count ){ keepAlive = false }
                 if let error = error {
                     print("Error getting documents: \(error)")
+                } else if( 0 == access_auth_querySnapshot!.documents.count ){
+                    keepAlive = false
                 } else {
                     for access_auth_document in access_auth_querySnapshot!.documents {
                         let device_id = access_auth_document.data()["device_id"] as! String // serialNum

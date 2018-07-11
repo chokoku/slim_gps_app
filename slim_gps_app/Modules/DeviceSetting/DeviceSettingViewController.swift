@@ -1,9 +1,6 @@
 import UIKit
 import Eureka
 
-//import SlideMenuControllerSwift
-//import FontAwesome_swift
-
 class DeviceSettingViewController: FormViewController {
     
     var presenter: DeviceSettingPresenterInterface!
@@ -11,16 +8,17 @@ class DeviceSettingViewController: FormViewController {
     
     @IBOutlet weak var deviceInfoTable: UITableView!
     
-    // set values from DeviceSettingWireframe
+    // Set values from DeviceSettingWireframe
     var serialNum: String!
     var mode: String!
     var name: String!
     
+    // accessAuthSection in form
+    let accessAuthSection = Section("アクセス権")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "デバイス設定"
-        
-        accessAuth = presenter.getAccessAuth(deviceID: serialNum) // [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]
         
         form +++ Section("一般")
             <<< TextRow(){ row in
@@ -50,11 +48,7 @@ class DeviceSettingViewController: FormViewController {
                         cell.detailTextLabel?.isHidden = false
                         cell.detailTextLabel?.textAlignment = .left
                     } else {
-                        self.presenter.updateDeviceName(deviceID: self.serialNum, name: row.value! ){ (err: String?) in
-                            if let err = err {
-                                self.showAlert(message: err)
-                            }
-                        }
+                        self.presenter.updateDeviceName( deviceID: self.serialNum, name: row.value! )
                     }
             }
             
@@ -67,47 +61,45 @@ class DeviceSettingViewController: FormViewController {
                     cell.detailTextLabel?.textColor = UIColor.black
                 }.onChange { row in
                     let modeLabels:[String:String] = ["見守りモード(省電力)":"watching_powerSaving", "見守りモード(通常)":"watching_normal", "紛失対策モード":"lost_proof"]
-                    self.presenter.updateDeviceSetting( deviceID: self.serialNum, mode: modeLabels[row.value!]! ){ (err: String?) in
-                        if let err = err {
-                            self.showAlert(message: err)
-                        }
-                    }
+                    self.presenter.updateDeviceSetting( deviceID: self.serialNum, mode: modeLabels[row.value!]! )
             }
         
-        
-        let accessAuthSection = Section("アクセス権")
         form +++ accessAuthSection
-        for watcher in accessAuth {
-            accessAuthSection <<< LabelRow(){ row in
-                row.title = watcher.admin! ? "管理者" : "×"
-                row.value = watcher.lastName!+" "+watcher.firstName!
-                }.cellSetup { cell, row in
-                    cell.textLabel?.textColor = watcher.admin! ? UIColor.black : UIColor.lightGray
-                    cell.detailTextLabel?.textColor = UIColor.black
-                }.onCellSelection { cell, row in
-                    if(!watcher.admin!){
-                        self.showAccessAuthDeleteAlert(name: watcher.lastName!+" "+watcher.firstName!, accessAuthID: watcher.accessAuthID!, row: row)
-                    }
-            }
-        }
+        presenter.getAccessAuth(deviceID: serialNum)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     func showAccessAuthDeleteAlert(name: String, accessAuthID: String, row: BaseRow){
         let alert = UIAlertController( title: "アクセス権の削除", message: "\(name)さんを削除しますか？", preferredStyle: UIAlertControllerStyle.alert )
         let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertActionStyle.cancel, handler:nil )
         let saveAction:UIAlertAction = UIAlertAction( title: "削除", style: UIAlertActionStyle.default, handler:{ (action) in
-            self.presenter.deleteAccessAuth(accessAuthID: accessAuthID){ (err: String?) in
-                if let err = err {
-                    self.showAlert(message: err)
-                } else {
-                    row.hidden = true
-                    row.evaluateHidden()
-                }
-            }
+            self.presenter.deleteAccessAuth(accessAuthID: accessAuthID)
         })
         alert.addAction(cancelAction)
         alert.addAction(saveAction)
         present(alert, animated: true, completion: nil)
+    }
+
+}
+
+extension DeviceSettingViewController: DeviceSettingViewInterface {
+    
+    func accessAuthIsGotten(watcher:(accessAuthID: String, firstName: String, lastName: String, admin: Bool)){
+        accessAuthSection <<< LabelRow(){ row in
+            row.title = watcher.admin ? "管理者" : "×"
+            row.value = watcher.lastName+" "+watcher.firstName
+            row.tag = watcher.accessAuthID
+            }.cellSetup { cell, row in
+                cell.textLabel?.textColor = watcher.admin ? UIColor.black : UIColor.lightGray
+                cell.detailTextLabel?.textColor = UIColor.black
+            }.onCellSelection { cell, row in
+                if(!watcher.admin){
+                    self.showAccessAuthDeleteAlert(name: watcher.lastName+" "+watcher.firstName, accessAuthID: watcher.accessAuthID, row: row)
+                }
+        }
     }
     
     func showAlert(message: String){
@@ -117,11 +109,10 @@ class DeviceSettingViewController: FormViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func accessAuthIsDeleted(accessAuthID: String){
+        print(accessAuthID)
+        let row = form.rowBy(tag :accessAuthID)!
+        row.hidden = true
+        row.evaluateHidden()
     }
-}
-
-extension DeviceSettingViewController: DeviceSettingViewInterface {
-    
 }

@@ -14,38 +14,32 @@ final class DeviceSettingPresenter {
 }
 
 extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
-    func getAccessAuth(deviceID: String) -> [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]{
-        return _interactor.getAccessAuth(deviceID: deviceID)
+    func getAccessAuth(deviceID: String) {
+        _interactor.getAccessAuth(deviceID: deviceID)
     }
     
-    func deleteAccessAuth(accessAuthID: String, completion: @escaping (String?) -> Void){
-        var error: String?
-        _interactor.deleteAccessAuth(accessAuthID: accessAuthID){ (err: String?) in
-            if let err = err {
-                error = err
-            }
-            completion(error)
-        }
+    func accessAuthIsGotten(watcher:(accessAuthID: String, firstName: String, lastName: String, admin:Bool)){
+        _view!.accessAuthIsGotten(watcher:(accessAuthID: watcher.accessAuthID, firstName: watcher.firstName, lastName: watcher.lastName, admin:watcher.admin))
     }
     
-    func updateDeviceName(deviceID: String, name: String, completion: @escaping (String?) -> Void) {
-        var error: String?
-        _interactor.updateDeviceName(deviceID: deviceID, name: name){ (err: String?) in
-            if let err = err {
-                error = err
-            }
-            completion(error)
-        }
+    func deleteAccessAuth(accessAuthID: String){
+        _interactor.deleteAccessAuth(accessAuthID: accessAuthID)
     }
     
-    func updateDeviceSetting(deviceID: String, mode: String, completion: @escaping (String?) -> Void) {
-        var error: String?
-        _interactor.updateDeviceSetting( deviceID: deviceID, mode: mode ){ (err: String?) in
-            if let err = err {
-                error = err
-            }
-            completion(error)
-        }
+    func accessAuthIsDeleted(accessAuthID: String){
+        _view!.accessAuthIsDeleted(accessAuthID: accessAuthID)
+    }
+    
+    func updateDeviceName(deviceID: String, name: String) {
+        _interactor.updateDeviceName(deviceID: deviceID, name: name)
+    }
+    
+    func updateDeviceSetting(deviceID: String, mode: String) {
+        _interactor.updateDeviceSetting( deviceID: deviceID, mode: mode )
+    }
+    
+    func showAlert(message: String){
+        _view!.showAlert(message: message)
     }
 }
 
