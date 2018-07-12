@@ -1,6 +1,6 @@
 import UIKit
 
-protocol LatestLocationPresenterInterface: class {
+protocol LocationSearchingPresenterInterface: class {
     
     // To View
     func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date)
@@ -8,17 +8,19 @@ protocol LatestLocationPresenterInterface: class {
     
     // To Interactor
     func getLatestLocationData( serialNum: String )
-
+    func requestLocationSearching(device_id: String)
+    
 }
 
-protocol LatestLocationViewInterface: class {
+protocol LocationSearchingViewInterface: class {
     func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date)
     func showAlert(message: String)
 }
 
-protocol LatestLocationInteractorInterface: class {
+protocol LocationSearchingInteractorInterface: class {
     func getLatestLocationData( serialNum: String )
+    func requestLocationSearching(device_id: String)
 }
 
-protocol LatestLocationWireframeInterface: class {
+protocol LocationSearchingWireframeInterface: class {
 }

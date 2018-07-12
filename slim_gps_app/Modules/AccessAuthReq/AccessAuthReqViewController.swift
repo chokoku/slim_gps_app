@@ -3,14 +3,21 @@ import UIKit
 class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
 
     var presenter: AccessAuthReqPresenterInterface!
-    var popup:UIView!
+    let indicator = UIActivityIndicatorView()
 
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var serialNumInput: UITextField!
     @IBOutlet weak var message: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        serialNumInput.delegate = self
         self.navigationItem.title = "アクセスリクエスト"
+        
+        // Configure an indicator
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.center = self.view.center
+        indicator.color = UIColor.black
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,24 +31,17 @@ class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         } else {
-            let indicator = UIActivityIndicatorView()
-            indicator.activityIndicatorViewStyle = .whiteLarge
-            indicator.center = self.view.center
-            indicator.color = UIColor.black
+            
+            // Start the indicator
             self.view.addSubview(indicator)
             self.view.bringSubview(toFront: indicator)
             indicator.startAnimating()
-
-            presenter.submitSerialNum(serialNum: self.serialNumInput.text!){ (err: String?) in
-                indicator.stopAnimating()
-                if let err = err {
-                    self.showAlert(message: err)
-                } else {
-                    print("error2:\(err)")
-                    self.serialNumInput.text = ""
-                    self.message.text = "申請しました"
-                }
-            }
+            
+            // Disable the requestButton
+            submitButton.isEnabled = false
+            
+            // Submit serialNum
+            presenter.submitSerialNum(serialNum: self.serialNumInput.text!)
         }
     }
     
@@ -49,21 +49,31 @@ class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
         textField.resignFirstResponder()
         return true
     }
+
+}
+
+extension AccessAuthReqViewController: AccessAuthReqViewInterface {
+    
+    func accessAuthReqIsSubmitted(){
+        
+        submitButton.isEnabled = true
+        indicator.stopAnimating()
+        self.serialNumInput.text = ""
+        self.message.text = "申請しました"
+    }
     
     func showAlert(message: String){
+        
+        // Stop the indicator
+        indicator.stopAnimating()
+        
+        // Enable the requestButton
+        submitButton.isEnabled = true
+
+        // Show an alert
         let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
         let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
         alert.addAction(OKAction)
         present(alert, animated: true, completion: nil)
     }
-    
-    @objc func dismissPopUp(){
-        if popup != nil { // Dismiss the view from here
-            popup.removeFromSuperview()
-        }
-    }
-}
-
-extension AccessAuthReqViewController: AccessAuthReqViewInterface {
-    
 }

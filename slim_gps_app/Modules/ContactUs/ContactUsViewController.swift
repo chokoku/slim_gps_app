@@ -7,18 +7,17 @@ import SCLAlertView
 class ContactUsViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var contactUsTextView: UITextView!
-    var presenter: ContactUsPresenterInterface!
     let db = Firestore.firestore()
     
     @IBAction func sendButtonTapped(_ sender: Any) {
         let user = Auth.auth().currentUser
-        
-        db.collection("contact_us_forms").addDocument(data: [ "client_id": user!.uid, "message": contactUsTextView.text ]) { err in
+        let systemVersion = UIDevice.current.systemVersion
+        let model = UIDevice.current.model
+        db.collection("contact_us_forms").addDocument(data: [ "client_id": user!.uid, "message": contactUsTextView.text, "OS":"iOS\(systemVersion)", "device":"\(model)" ]) { err in
             if let _ = err {
                 self.showAlert(message:"メッセージの保存に失敗しました")
             } else {
-                self.contactUsTextView.text = nil
-                SCLAlertView().showInfo("Important info", subTitle: "You are great")
+                SCLAlertView().showSuccess("送信しました", subTitle:"")
             }
         }
     }
@@ -47,7 +46,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate {
         kbToolBar.barStyle = UIBarStyle.default  // スタイルを設定
         kbToolBar.sizeToFit()  // 画面幅に合わせてサイズを変更
         let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil) // スペーサー
-        let commitButton : UIBarButtonItem = UIBarButtonItem(title: "送信", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.commitButtonTapped))// 閉じるボタン
+        let commitButton : UIBarButtonItem = UIBarButtonItem(title: "完了", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.commitButtonTapped))// 閉じるボタン
         kbToolBar.items = [spacer, commitButton]
         contactUsTextView.inputAccessoryView = kbToolBar
     }
@@ -57,11 +56,10 @@ class ContactUsViewController: UIViewController, UITextViewDelegate {
     }
     
     // テキストビューにフォーカスが移った
-    func textViewDidBeginEditing() -> Bool {
-        print("textViewShouldBeginEditing :")
-        return true
-    }
-            
+//    func textViewDidBeginEditing() -> Bool {
+//        return true
+//    }
+    
     func showAlert(message: String){
         let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
         let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
@@ -70,14 +68,9 @@ class ContactUsViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func commitButtonTapped (){
-        print("here")
 //        contactUsTextView.resignFirstResponder()
         self.view.endEditing(true)
     }
 
 
-}
-
-extension ContactUsViewController: ContactUsViewInterface {
-    
 }

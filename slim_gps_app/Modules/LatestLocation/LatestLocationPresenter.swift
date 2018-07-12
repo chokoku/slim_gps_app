@@ -18,8 +18,8 @@ extension LatestLocationPresenter: LatestLocationPresenterInterface {
         _interactor.getLatestLocationData(serialNum: serialNum)
     }
     
-    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double){
-        _view!.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius)
+    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date){
+        _view!.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, createdAt: createdAt)
     }
     
     func showAlert(message: String){

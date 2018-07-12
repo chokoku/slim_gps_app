@@ -54,25 +54,24 @@ extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
         
     }
     
-    func approveAccessRequest(accessAuthID: String, completion: @escaping (String?) -> Void){
-        var error: String?
+    func approveAccessRequest(accessAuthID: String){
         db.collection("access_auth").document(accessAuthID).updateData([ "confirmed": true ]){ err in
             if let _ = err {
-                error = "アクセス権を付与できませんでした"
+                self.presenter.showAlert(message: "アクセス権を付与できませんでした")
             } else {
                 // TODO send notification
+                self.presenter.accessAuthIsCompleted(accessAuthID: accessAuthID)
             }
-            completion(error)
         }
     }
     
-    func rejectAccessRequest(accessAuthID: String, completion: @escaping (String?) -> Void){
-        var error: String?
+    func rejectAccessRequest(accessAuthID: String){
         db.collection("access_auth").document(accessAuthID).delete(){ err in
             if let _ = err {
-                error = "アクセスリクエストの拒否に失敗しました"
+                self.presenter.showAlert(message: "アクセスリクエストの拒否に失敗しました")
+            } else {
+                self.presenter.accessAuthIsCompleted(accessAuthID: accessAuthID)
             }
-            completion(error)
         }
     }
 }

@@ -33,7 +33,7 @@ extension SideMenuWireframe: SideMenuWireframeInterface {
         case "AccessApproval":
             nextVC = AccessApprovalWireframe().configureModule()
         case "ContactUs":
-            nextVC = ContactUsWireframe().configureModule()
+            nextVC = storyboard.instantiateViewController(withIdentifier: "ContactUs") as! LoginViewController
         case "TermOfUse":
             nextVC = storyboard.instantiateViewController(withIdentifier: "TermOfUse") as! TermOfUseViewController
         default:

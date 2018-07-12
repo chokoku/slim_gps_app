@@ -5,7 +5,8 @@ class DeviceSettingViewController: FormViewController {
     
     var presenter: DeviceSettingPresenterInterface!
     var accessAuth = [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]()
-    
+    let modeLabels:[String:String] = ["見守りモード(省電力)":"watching_powerSaving", "見守りモード(通常)":"watching_normal", "紛失対策モード":"lost_proof"]
+
     @IBOutlet weak var deviceInfoTable: UITableView!
     
     // Set values from DeviceSettingWireframe
@@ -56,12 +57,12 @@ class DeviceSettingViewController: FormViewController {
                 row.title = "モード"
                 row.selectorTitle = "モードを選択してください"
                 row.options = ["見守りモード(省電力)", "見守りモード(通常)", "紛失対策モード"]
-                row.value = "見守りモード(省電力)"    // initially selected
+                row.value = modeLabels.filter{$0.value == mode}.keys.first
                 }.cellSetup { cell, row in
                     cell.detailTextLabel?.textColor = UIColor.black
                 }.onChange { row in
-                    let modeLabels:[String:String] = ["見守りモード(省電力)":"watching_powerSaving", "見守りモード(通常)":"watching_normal", "紛失対策モード":"lost_proof"]
-                    self.presenter.updateDeviceSetting( deviceID: self.serialNum, mode: modeLabels[row.value!]! )
+                    self.mode = self.modeLabels[row.value!]!
+                    self.presenter.updateDeviceSetting( deviceID: self.serialNum, mode: self.modeLabels[row.value!]! )
             }
         
         form +++ accessAuthSection
@@ -110,7 +111,6 @@ extension DeviceSettingViewController: DeviceSettingViewInterface {
     }
     
     func accessAuthIsDeleted(accessAuthID: String){
-        print(accessAuthID)
         let row = form.rowBy(tag :accessAuthID)!
         row.hidden = true
         row.evaluateHidden()

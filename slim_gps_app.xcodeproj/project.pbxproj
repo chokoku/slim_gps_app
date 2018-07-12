@@ -30,10 +30,6 @@
 		0630317720DE5680009F78EA /* UserInfoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317620DE5680009F78EA /* UserInfoInterface.swift */; };
 		0630317920DE5691009F78EA /* UserInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317820DE5691009F78EA /* UserInfoInteractor.swift */; };
 		0630317C20DE56E2009F78EA /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317B20DE56E2009F78EA /* ContactUsViewController.swift */; };
-		0630317E20DE56F0009F78EA /* ContactUsInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317D20DE56F0009F78EA /* ContactUsInterface.swift */; };
-		0630318020DE56FE009F78EA /* ContactUsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630317F20DE56FE009F78EA /* ContactUsInteractor.swift */; };
-		0630318220DE570F009F78EA /* ContactUsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318120DE570F009F78EA /* ContactUsPresenter.swift */; };
-		0630318420DE571A009F78EA /* ContactUsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318320DE571A009F78EA /* ContactUsWireframe.swift */; };
 		0630318720DE57BF009F78EA /* NotifSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318620DE57BF009F78EA /* NotifSpotViewController.swift */; };
 		0630318920DE57DE009F78EA /* NotifSpotPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318820DE57DE009F78EA /* NotifSpotPresenter.swift */; };
 		0630318B20DE57E8009F78EA /* NotifSpotInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630318A20DE57E8009F78EA /* NotifSpotInteractor.swift */; };
@@ -79,6 +75,11 @@
 		06A0E56320F3A75D002CFEA5 /* NotifSpotViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */; };
 		06A0E56520F46C7F002CFEA5 /* DateTimePickerBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A0E56420F46C7F002CFEA5 /* DateTimePickerBarView.xib */; };
 		06A0E56720F4719D002CFEA5 /* DateTimePickerBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56620F4719D002CFEA5 /* DateTimePickerBarView.swift */; };
+		06A0E56A20F6B497002CFEA5 /* LocationSearchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56920F6B497002CFEA5 /* LocationSearchingViewController.swift */; };
+		06A0E56C20F6B4A5002CFEA5 /* LocationSearchingWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56B20F6B4A5002CFEA5 /* LocationSearchingWireframe.swift */; };
+		06A0E56E20F6B4BA002CFEA5 /* LocationSearchingInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56D20F6B4BA002CFEA5 /* LocationSearchingInterface.swift */; };
+		06A0E57020F6B4D0002CFEA5 /* LocationSearchingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */; };
+		06A0E57220F6B4DC002CFEA5 /* LocationSearchingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */; };
 		55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */; };
 		AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */; };
 		C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */; };
@@ -131,10 +132,6 @@
 		0630317620DE5680009F78EA /* UserInfoInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInterface.swift; sourceTree = "<group>"; };
 		0630317820DE5691009F78EA /* UserInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInteractor.swift; sourceTree = "<group>"; };
 		0630317B20DE56E2009F78EA /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
-		0630317D20DE56F0009F78EA /* ContactUsInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsInterface.swift; sourceTree = "<group>"; };
-		0630317F20DE56FE009F78EA /* ContactUsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsInteractor.swift; sourceTree = "<group>"; };
-		0630318120DE570F009F78EA /* ContactUsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsPresenter.swift; sourceTree = "<group>"; };
-		0630318320DE571A009F78EA /* ContactUsWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsWireframe.swift; sourceTree = "<group>"; };
 		0630318620DE57BF009F78EA /* NotifSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotViewController.swift; sourceTree = "<group>"; };
 		0630318820DE57DE009F78EA /* NotifSpotPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotPresenter.swift; sourceTree = "<group>"; };
 		0630318A20DE57E8009F78EA /* NotifSpotInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotInteractor.swift; sourceTree = "<group>"; };
@@ -181,6 +178,11 @@
 		06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotViewCell.swift; sourceTree = "<group>"; };
 		06A0E56420F46C7F002CFEA5 /* DateTimePickerBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTimePickerBarView.xib; sourceTree = "<group>"; };
 		06A0E56620F4719D002CFEA5 /* DateTimePickerBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerBarView.swift; sourceTree = "<group>"; };
+		06A0E56920F6B497002CFEA5 /* LocationSearchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingViewController.swift; sourceTree = "<group>"; };
+		06A0E56B20F6B4A5002CFEA5 /* LocationSearchingWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingWireframe.swift; sourceTree = "<group>"; };
+		06A0E56D20F6B4BA002CFEA5 /* LocationSearchingInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingInterface.swift; sourceTree = "<group>"; };
+		06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingInteractor.swift; sourceTree = "<group>"; };
+		06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingPresenter.swift; sourceTree = "<group>"; };
 		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -297,18 +299,19 @@
 			children = (
 				067FD5CC20F26DD20047CFC9 /* AccessApproval */,
 				0630319020DE580B009F78EA /* AccessAuthReq */,
+				0630317A20DE56A5009F78EA /* ContactUs */,
 				067FD5BF20EE1DC20047CFC9 /* DailyLocation */,
+				067FD59E20ED12A80047CFC9 /* DeviceSetting */,
 				067FD5B420EE11FB0047CFC9 /* LatestLocation */,
 				067FD5A920EDBB830047CFC9 /* LocationData */,
-				067FD59E20ED12A80047CFC9 /* DeviceSetting */,
+				06A0E56820F6B40E002CFEA5 /* LocationSearching */,
 				0606B9AE20DE05B3003536B1 /* Login */,
+				0606B9B020DE0687003536B1 /* Main */,
+				0630318520DE5775009F78EA /* NotifSpot */,
 				063031A220DFC40B009F78EA /* Registration */,
 				0630316720DE4DF8009F78EA /* SideMenu */,
-				0606B9B020DE0687003536B1 /* Main */,
-				0630316F20DE5634009F78EA /* UserInfo */,
-				0630318520DE5775009F78EA /* NotifSpot */,
-				0630317A20DE56A5009F78EA /* ContactUs */,
 				0630319B20DE58F8009F78EA /* TermOfUse */,
+				0630316F20DE5634009F78EA /* UserInfo */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -353,10 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				0630317B20DE56E2009F78EA /* ContactUsViewController.swift */,
-				0630317D20DE56F0009F78EA /* ContactUsInterface.swift */,
-				0630317F20DE56FE009F78EA /* ContactUsInteractor.swift */,
-				0630318120DE570F009F78EA /* ContactUsPresenter.swift */,
-				0630318320DE571A009F78EA /* ContactUsWireframe.swift */,
 			);
 			path = ContactUs;
 			sourceTree = "<group>";
@@ -464,6 +463,18 @@
 				067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */,
 			);
 			path = AccessApproval;
+			sourceTree = "<group>";
+		};
+		06A0E56820F6B40E002CFEA5 /* LocationSearching */ = {
+			isa = PBXGroup;
+			children = (
+				06A0E56920F6B497002CFEA5 /* LocationSearchingViewController.swift */,
+				06A0E56B20F6B4A5002CFEA5 /* LocationSearchingWireframe.swift */,
+				06A0E56D20F6B4BA002CFEA5 /* LocationSearchingInterface.swift */,
+				06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */,
+				06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */,
+			);
+			path = LocationSearching;
 			sourceTree = "<group>";
 		};
 		1CB666472DE4F9AF1A10A1AB /* Frameworks */ = {
@@ -699,6 +710,7 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -716,6 +728,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -756,6 +769,7 @@
 				067FD5CB20EE791B0047CFC9 /* PopupViewController.swift in Sources */,
 				0606B9B220DE074B003536B1 /* LoginViewController.swift in Sources */,
 				0630317720DE5680009F78EA /* UserInfoInterface.swift in Sources */,
+				06A0E57020F6B4D0002CFEA5 /* LocationSearchingInteractor.swift in Sources */,
 				06A0E56320F3A75D002CFEA5 /* NotifSpotViewCell.swift in Sources */,
 				0630318720DE57BF009F78EA /* NotifSpotViewController.swift in Sources */,
 				067FD5C520EE1DFD0047CFC9 /* DailyLocationInteractor.swift in Sources */,
@@ -763,24 +777,27 @@
 				067FD5D020F26E280047CFC9 /* AccessApprovalWireframe.swift in Sources */,
 				067FD5B620EE126F0047CFC9 /* LatestLocationViewController.swift in Sources */,
 				067FD5BE20EE12B60047CFC9 /* LatestLocationInterface.swift in Sources */,
+				06A0E56C20F6B4A5002CFEA5 /* LocationSearchingWireframe.swift in Sources */,
 				0630316420DE38F1009F78EA /* MainPresenter.swift in Sources */,
 				067FD5AD20EDBBB70047CFC9 /* LocationDataViewController.swift in Sources */,
+				06A0E56A20F6B497002CFEA5 /* LocationSearchingViewController.swift in Sources */,
 				067FD5BC20EE12A90047CFC9 /* LatestLocationPresenter.swift in Sources */,
 				0630319220DE58A2009F78EA /* AccessAuthReqViewController.swift in Sources */,
 				067FD5C920EE1E140047CFC9 /* DailyLocationInterface.swift in Sources */,
 				0606B98020DDF82D003536B1 /* AppDelegate.swift in Sources */,
 				067FD5AF20EDBBC90047CFC9 /* LocationDataInteractor.swift in Sources */,
 				067FD5D620F26E5D0047CFC9 /* AccessApprovalInterface.swift in Sources */,
-				0630317E20DE56F0009F78EA /* ContactUsInterface.swift in Sources */,
 				063031AB20DFE070009F78EA /* UserInfoViewCell.swift in Sources */,
 				0630316920DE4E1D009F78EA /* SideMenuPresenter.swift in Sources */,
 				0630319D20DE5904009F78EA /* TermOfUseViewController.swift in Sources */,
 				067FD5A820ED13080047CFC9 /* DeviceSettingInterface.swift in Sources */,
 				0630317120DE5650009F78EA /* UserInfoViewController.swift in Sources */,
+				06A0E56E20F6B4BA002CFEA5 /* LocationSearchingInterface.swift in Sources */,
 				067FD5D820F278990047CFC9 /* AccessApprovalViewCell.swift in Sources */,
 				0630316C20DE4E3A009F78EA /* SideMenuWireframe.swift in Sources */,
 				06A0E56720F4719D002CFEA5 /* DateTimePickerBarView.swift in Sources */,
 				0630317320DE5663009F78EA /* UserInfoWireframe.swift in Sources */,
+				06A0E57220F6B4DC002CFEA5 /* LocationSearchingPresenter.swift in Sources */,
 				0630316020DE38CA009F78EA /* MainWireframe.swift in Sources */,
 				0606B9C020DE1325003536B1 /* SideMenuViewController.swift in Sources */,
 				0606B9BC20DE1061003536B1 /* MainViewController.swift in Sources */,
@@ -794,20 +811,17 @@
 				0630318B20DE57E8009F78EA /* NotifSpotInteractor.swift in Sources */,
 				067FD5B120EDBBD70047CFC9 /* LocationDataPresenter.swift in Sources */,
 				067FD5A020ED12C00047CFC9 /* DeviceSettingWireframe.swift in Sources */,
-				0630318420DE571A009F78EA /* ContactUsWireframe.swift in Sources */,
 				0630319620DE58BF009F78EA /* AccessAuthReqInteractor.swift in Sources */,
 				0630318D20DE57F6009F78EA /* NotifSpotInterface.swift in Sources */,
 				067FD5B820EE127E0047CFC9 /* LatestLocationWireframe.swift in Sources */,
 				0630318920DE57DE009F78EA /* NotifSpotPresenter.swift in Sources */,
 				067FD5AB20EDBBA30047CFC9 /* LocationDataWireframe.swift in Sources */,
 				0630319420DE58AF009F78EA /* AccessAuthReqPresenter.swift in Sources */,
-				0630318020DE56FE009F78EA /* ContactUsInteractor.swift in Sources */,
 				0630318F20DE5806009F78EA /* NotifSpotWireframe.swift in Sources */,
 				0630316220DE38DC009F78EA /* MainInteractor.swift in Sources */,
 				067FD5D420F26E510047CFC9 /* AccessApprovalPresenter.swift in Sources */,
 				063031A620DFC48E009F78EA /* RegistrationViewController.swift in Sources */,
 				067FD5A620ED12F90047CFC9 /* DeviceSettingPresenter.swift in Sources */,
-				0630318220DE570F009F78EA /* ContactUsPresenter.swift in Sources */,
 				067FD5C120EE1DE40047CFC9 /* DailyLocationViewController.swift in Sources */,
 				0630317520DE5671009F78EA /* UserInfoPresenter.swift in Sources */,
 				0630319A20DE58D5009F78EA /* AccessAuthReqWireframe.swift in Sources */,

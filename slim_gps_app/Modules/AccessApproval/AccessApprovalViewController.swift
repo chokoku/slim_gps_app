@@ -17,43 +17,16 @@ class AccessApprovalViewController: UIViewController, UITableViewDelegate, UITab
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    func addRequesters(accessAuthID: String, firstName: String?, lastName: String?) {
-        if !accessAuthID.isEmpty{
-            requesters += [(accessAuthID, firstName, lastName)]
-            self.accessApprovalTable.reloadData()
-        }
-    }
-    
-    func showAlert(message: String){
-        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
-        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
-        alert.addAction(OKAction)
-        present(alert, animated: true, completion: nil)
-    }
 
     func approveAccessRequest(tag:Int) {
+
         let accessAuthID = requesters[tag].accessAuthID
-        presenter.approveAccessRequest(accessAuthID: accessAuthID){ (err: String?) in
-            if let err = err {
-                self.showAlert(message: err)
-            } else {
-                self.requesters = self.requesters.filter( {$0.accessAuthID != accessAuthID} )
-                self.accessApprovalTable.reloadData()
-            }
-        }
+        presenter.approveAccessRequest(accessAuthID: accessAuthID)
     }
     
     func rejectAcessRequest(tag:Int) {
         let accessAuthID = requesters[tag].accessAuthID
-        presenter.rejectAccessRequest(accessAuthID: accessAuthID){ (err: String?) in
-            if let err = err {
-                self.showAlert(message: err)
-            } else {
-                self.requesters = self.requesters.filter( {$0.accessAuthID != accessAuthID} )
-                self.accessApprovalTable.reloadData()
-            }
-        }
+        presenter.rejectAccessRequest(accessAuthID: accessAuthID)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,5 +48,22 @@ class AccessApprovalViewController: UIViewController, UITableViewDelegate, UITab
 }
 
 extension AccessApprovalViewController: AccessApprovalViewInterface {
+    func addRequesters(accessAuthID: String, firstName: String?, lastName: String?) {
+        if !accessAuthID.isEmpty{
+            requesters += [(accessAuthID, firstName, lastName)]
+            self.accessApprovalTable.reloadData()
+        }
+    }
     
+    func accessAuthIsCompleted(accessAuthID: String){
+        self.requesters = self.requesters.filter( {$0.accessAuthID != accessAuthID} )
+        self.accessApprovalTable.reloadData()
+    }
+    
+    func showAlert(message: String){
+        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
+        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
+        alert.addAction(OKAction)
+        present(alert, animated: true, completion: nil)
+    }
 }

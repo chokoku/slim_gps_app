@@ -19,8 +19,8 @@ extension MainPresenter: MainPresenterInterface {
         _wireframe.pushDeviceSettingPage( serialNum: serialNum, name: name, mode: mode )
     }
     
-    func pushLocationDataPage( serialNum: String ){
-        _wireframe.pushLocationDataPage( serialNum: serialNum )
+    func pushLocationDataPage( serialNum: String, mode: String ){
+        _wireframe.pushLocationDataPage( serialNum: serialNum, mode: mode )
     }
     
     func getDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]{

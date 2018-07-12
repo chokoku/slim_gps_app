@@ -19,7 +19,7 @@ extension NotifSpotInteractor: NotifSpotInteractorInterface {
         let user = Auth.auth().currentUser
         db.collection("notif_spots")
             .whereField("client_id", isEqualTo: user!.uid)
-            .addSnapshotListener { (querySnapshot, error) in
+            .getDocuments { (querySnapshot, error) in
                 if let _ = error {
                     self.presenter.showAlert(message: "通知スポットの取得に失敗しました")
                 } else {
@@ -37,23 +37,10 @@ extension NotifSpotInteractor: NotifSpotInteractorInterface {
         }
     }
     
-    // TODO bug
-    func addNotifSpot(name: String, latitude: Double, longitude: Double, radius: Double) -> Void {
-        print(3)
+    func addNotifSpot(name: String, latitude: Double, longitude: Double, radius: Double) {
         let user = Auth.auth().currentUser
         var ref: DocumentReference? = nil
-//        ref = db.collection("notif_spots").addDocument(data: ["client_id": user!.uid, "name": name, "latitude": latitude, "longitude": longitude, "radius": radius]) { err in
-//            if let _ = err {
-//                self.presenter.showAlert(message: "通知スポットの追加に失敗しました")
-//            } else {
-//                print(4)
-//                self.presenter.showNotifSpot(notifSpotID: ref!.documentID, name: name, latitude: latitude, longitude: longitude, radius: radius)
-//            }
-//        }
         ref = db.collection("notif_spots").addDocument(data: ["client_id": user!.uid, "name": name, "latitude": latitude, "longitude": longitude, "radius": radius])
-        print(4)
-        print(ref!.documentID)
-        sleep(1)
         presenter.showNotifSpot(notifSpotID: ref!.documentID, name: name, latitude: latitude, longitude: longitude, radius: radius)
     }
     

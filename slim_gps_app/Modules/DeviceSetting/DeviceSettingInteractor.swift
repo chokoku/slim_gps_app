@@ -24,7 +24,6 @@ extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
                     self.presenter.showAlert(message:"エラーが発生しました")
                 } else {
                     for access_auth_document in access_auth_querySnapshot!.documents {
-                        print(access_auth_document.data())
                         let client_id = access_auth_document.data()["client_id"] as! String
                         self.db.collection("clients").document( client_id ).addSnapshotListener { (client_document, error) in
                             if let client_document = client_document, client_document.exists {
@@ -60,7 +59,6 @@ extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
     }
     
     func deleteAccessAuth(accessAuthID: String) {
-        print(accessAuthID)
         db.collection("access_auth").document(accessAuthID).delete(){ err in
             if let _ = err {
                 self.presenter.showAlert(message:" アクセス権をを削除できませんでした")

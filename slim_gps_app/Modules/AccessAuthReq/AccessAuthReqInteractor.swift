@@ -15,58 +15,46 @@ final class AccessAuthReqInteractor {
 
 extension AccessAuthReqInteractor: AccessAuthReqInteractorInterface {
     
-    func updateAccessAuth(serialNum: String, uid: String, completion: @escaping (String?) -> Void ){
-        db.collection("devices").document(serialNum).getDocument { (document, err) in
+    func updateAccessAuth( serialNum: String, uid: String ){
+        db.collection("devices").document(serialNum).addSnapshotListener { (document, err) in
             if let _ = err {
-                completion("エラーが発生しました")
+                self.presenter.showAlert(message: "エラーが発生しました")
             } else {
                 if let document = document, document.exists {
                     self.db.collection("access_auth")
                         .whereField("device_id", isEqualTo: serialNum)
                         .whereField("client_id", isEqualTo: uid)
-                        .limit(to:1)
                         .getDocuments { (querySnapshot, err) in // addSnapshotListener does not work. firestore bug
                             if let _ = err {
-                                completion("エラーが発生しました")
+                                self.presenter.showAlert(message: "エラーが発生しました")
                             } else {
                                 if(querySnapshot!.documents.count == 0){
-                                    self.db.collection("access_auth")
-                                        .whereField("device_id", isEqualTo: serialNum)
-                                        .whereField("admin", isEqualTo: true)
-                                        .limit(to:1)
-                                        .getDocuments { (querySnapshot, err) in
-                                            if let _ = err {
-                                                completion("エラーが発生しました")
-                                            } else {
-                                                for _ in querySnapshot!.documents {
-                                                    // create access_auth document
-                                                    self.db.collection("access_auth").addDocument(data: ["device_id": serialNum,
-                                                                                                         "client_id": uid,
-                                                                                                         "confirmed": false,
-                                                                                                         "created_at": Date()]) { err in
-                                                                                                            if let _ = err {
-                                                                                                                completion("アクセス権の申請に失敗しました")
-                                                                                                            } else {
-                                                                                                                // TODO request notification
-                                                                                                                completion(nil)
-                                                                                                            }
-                                                    }
-                                                }
-                                            }
+                                    self.db.collection("access_auth").addDocument(data: ["admin": false,
+                                                                                         "device_id": serialNum,
+                                                                                         "client_id": uid,
+                                                                                         "confirmed": false,
+                                                                                         "created_at": Date()]) { err in
+                                                                                            if let _ = err {
+                                                                                                self.presenter.showAlert(message: "アクセス権の申請に失敗しました")
+                                                                                            } else {
+                                                                                                // TODO request notification
+                                                                                                print(4)
+                                                                                                self.presenter.accessAuthReqIsSubmitted()
+                                                                                            }
                                     }
                                 } else {
                                     for document in querySnapshot!.documents {
                                         if(document.data()["confirmed"] as! Bool){ // already approved
-                                            completion("すでにアクセス権をお持ちです")
+                                            self.presenter.showAlert(message: "すでにアクセス権をお持ちです")
                                         } else { // already requested
-                                            completion("すでに申請済みです")
+                                            self.presenter.showAlert(message: "すでに申請済みです")
                                         }
                                     }
                                 }
                             }
                     }
                 } else {
-                    completion("デバイスが存在しません")
+                    self.presenter.showAlert(message: "デバイスは存在しません")
                 }
             }
         }

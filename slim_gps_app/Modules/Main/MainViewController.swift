@@ -24,7 +24,6 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let subViews = self.scrollView.subviews
-        print(subViews)
         for subview in subViews{
             subview.removeFromSuperview()
         }
@@ -48,7 +47,7 @@ class MainViewController: UIViewController {
 
     @objc func mapViewIsTapped(sender : AnyObject){
         let i = Int(sender.tag)
-        presenter.pushLocationDataPage( serialNum: deviceInfo[i].serialNum! )
+        presenter.pushLocationDataPage( serialNum: deviceInfo[i].serialNum!, mode: deviceInfo[i].mode! )
     }
     
     // TODO clear dead lock issue.

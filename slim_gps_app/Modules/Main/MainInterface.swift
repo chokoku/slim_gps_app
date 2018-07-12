@@ -7,7 +7,7 @@ protocol MainPresenterInterface: class {
     
     // To Wireframe
     func pushDeviceSettingPage( serialNum: String, name: String, mode: String )
-    func pushLocationDataPage( serialNum: String )
+    func pushLocationDataPage( serialNum: String, mode: String )
 }
 
 protocol MainViewInterface: class {
@@ -19,5 +19,5 @@ protocol MainInteractorInterface: class {
 
 protocol MainWireframeInterface: class {
     func pushDeviceSettingPage( serialNum: String, name: String, mode: String )
-    func pushLocationDataPage( serialNum: String )
+    func pushLocationDataPage( serialNum: String, mode: String )
 }

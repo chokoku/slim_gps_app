@@ -226,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UU0-t9-Erw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3836" y="-777.66116941529242"/>
+            <point key="canvasLocation" x="4358" y="-941"/>
         </scene>
         <!--Latest Location View Controller-->
         <scene sceneID="S0w-vQ-teL">
@@ -241,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFg-lI-2IZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4729" y="-1123"/>
+            <point key="canvasLocation" x="5250" y="-1598"/>
         </scene>
         <!--Daily Location View Controller-->
         <scene sceneID="hhW-rA-O3a">
@@ -256,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGA-uX-31n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4729" y="-466"/>
+            <point key="canvasLocation" x="5250" y="-942"/>
         </scene>
         <!--Popup View Controller-->
         <scene sceneID="ZcQ-c6-3XW">
@@ -319,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4i-3l-4wV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5440.8000000000002" y="-466.41679160419795"/>
+            <point key="canvasLocation" x="5962" y="-942"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="ozW-RH-UqK">
@@ -577,6 +577,21 @@
             </objects>
             <point key="canvasLocation" x="4119" y="687"/>
         </scene>
+        <!--Location Searching View Controller-->
+        <scene sceneID="T5Z-42-aUf">
+            <objects>
+                <viewController storyboardIdentifier="LocationSearching" id="N8i-B4-J8L" customClass="LocationSearchingViewController" customModule="slim_gps_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nmd-9x-28J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mj3-YT-3FQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C3v-ho-b2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5250" y="-268"/>
+        </scene>
         <!--Access Approval View Controller-->
         <scene sceneID="mW2-SG-wSg">
             <objects>
@@ -755,6 +770,7 @@
                     <connections>
                         <outlet property="message" destination="HQ1-fY-kbk" id="7E1-Ec-7z2"/>
                         <outlet property="serialNumInput" destination="XZJ-e7-vT9" id="RfP-kH-AxC"/>
+                        <outlet property="submitButton" destination="KV3-K5-TIM" id="G8L-Xj-lFC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L42-xw-O6O" userLabel="First Responder" sceneMemberID="firstResponder"/>

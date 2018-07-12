@@ -7,7 +7,6 @@ class LocationDataViewController: UIViewController {
     weak var currentViewController: UIViewController?
     var presenter: LocationDataPresenterInterface!
     var serialNum: String!
-    var mapView : GMSMapView!
 
     override func viewDidLoad() {
         self.currentViewController = LatestLocationWireframe().configureModule( serialNum: serialNum )

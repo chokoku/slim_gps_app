@@ -15,12 +15,10 @@ final class NotifSpotPresenter {
 
 extension NotifSpotPresenter: NotifSpotPresenterInterface {
     func addNotifSpot(name: String, latitude: Double, longitude: Double, radius: Double){
-        print(2)
         _interactor.addNotifSpot(name: name, latitude: latitude, longitude: longitude, radius: radius)
     }
     
     func showNotifSpot(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double){
-        print(5)
         _view!.showNotifSpot(notifSpotID: notifSpotID, name: name, latitude: latitude, longitude: longitude, radius: radius)
     }
     

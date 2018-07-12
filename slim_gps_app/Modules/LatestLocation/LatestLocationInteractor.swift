@@ -23,11 +23,17 @@ extension LatestLocationInteractor: LatestLocationInteractorInterface {
                 if let _ = err {
                     self.presenter.showAlert(message: "位置情報の取得に失敗しました")
                 } else {
-                    for document in querySnapshot!.documents {
-                        if let latitude = document.data()["latitude"] as? Double, let longitude = document.data()["longitude"] as? Double, let radius = document.data()["radius"] as? Double {
-                            self.presenter.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius)
-                        } else {
-                            self.presenter.showAlert(message: "位置情報のデータがありません")
+                    if(querySnapshot!.documents.count == 0){
+                        self.presenter.showAlert(message: "位置情報のデータがありません")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            if  let latitude = document.data()["latitude"] as? Double,
+                                let longitude = document.data()["longitude"] as? Double,
+                                let radius = document.data()["radius"] as? Double,
+                                let createdAt = document.data()["created_at"] as? Timestamp
+                            {
+                                self.presenter.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, createdAt: createdAt.dateValue())
+                            }
                         }
                     }
                 }
