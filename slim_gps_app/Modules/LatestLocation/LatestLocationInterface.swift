@@ -7,7 +7,8 @@ protocol LatestLocationPresenterInterface: class {
     func showAlert(message: String)
     
     // To Interactor
-    func getLatestLocationData( serialNum: String )
+    func setLatestLocationListener( deviceID: String )
+    func removeSnapshotListener()
 
 }
 
@@ -17,7 +18,8 @@ protocol LatestLocationViewInterface: class {
 }
 
 protocol LatestLocationInteractorInterface: class {
-    func getLatestLocationData( serialNum: String )
+    func setLatestLocationListener( deviceID: String )
+    func removeSnapshotListener()
 }
 
 protocol LatestLocationWireframeInterface: class {

@@ -7,7 +7,8 @@ protocol LocationSearchingPresenterInterface: class {
     func showAlert(message: String)
     
     // To Interactor
-    func getLatestLocationData( serialNum: String )
+    func setLatestLocationListener( deviceID: String )
+    func removeSnapshotListener()
     func requestLocationSearching(deviceID: String)
     
 }
@@ -18,7 +19,8 @@ protocol LocationSearchingViewInterface: class {
 }
 
 protocol LocationSearchingInteractorInterface: class {
-    func getLatestLocationData( serialNum: String )
+    func setLatestLocationListener( deviceID: String )
+    func removeSnapshotListener()
     func requestLocationSearching(deviceID: String)
 }
 

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "slim_gps_app/Modules/DailyLocation/DailyLocationViewController.swift"
-            timestampString = "553123825.025942"
+            timestampString = "553254920.908563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "locationDataIsGotten(data:)"
             landmarkType = "7">
          </BreakpointContent>

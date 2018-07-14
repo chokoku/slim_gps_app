@@ -4,9 +4,9 @@ import SlideMenuControllerSwift
 class LocationSearchingWireframe {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
-    func configureModule( serialNum: String ) -> UIViewController {
+    func configureModule( deviceID: String ) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "LocationSearching") as! LocationSearchingViewController
-        viewController.serialNum = serialNum
+        viewController.deviceID = deviceID
         let interactor = LocationSearchingInteractor()
         let presenter = LocationSearchingPresenter(wireframe: self, view: viewController, interactor: interactor)
         viewController.presenter = presenter

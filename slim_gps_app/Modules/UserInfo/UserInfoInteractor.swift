@@ -18,7 +18,7 @@ extension UserInfoInteractor: UserInfoInteractorInterface {
     func getUserInfo(){
         let user = Auth.auth().currentUser
         
-        db.collection("clients").document(user!.uid).getDocument { (doc, err) in // addSnapshotListener does not work here. bug
+        db.collection("clients").document(user!.uid).getDocument { (doc, err) in
             if let _ = err {
                 self.presenter.showAlert(message:"エラーが発生しました")
             } else if let doc = doc, doc.exists {

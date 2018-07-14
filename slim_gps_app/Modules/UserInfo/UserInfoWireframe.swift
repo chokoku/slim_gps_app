@@ -26,7 +26,7 @@ extension UserInfoWireframe: UserInfoWireframeInterface {
         
         // Present slideMenuController View
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window!.rootViewController!.present(slideMenuController, animated: true)
+        appDelegate.window?.rootViewController = slideMenuController
     }
 
 }

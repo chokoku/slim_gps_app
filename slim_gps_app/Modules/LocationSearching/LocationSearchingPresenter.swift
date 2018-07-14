@@ -14,16 +14,24 @@ final class LocationSearchingPresenter {
 }
 
 extension LocationSearchingPresenter: LocationSearchingPresenterInterface {
-    func getLatestLocationData( serialNum: String ){
-        _interactor.getLatestLocationData(serialNum: serialNum)
+    func setLatestLocationListener( deviceID: String ){
+        _interactor.setLatestLocationListener(deviceID: deviceID)
+    }
+    
+    func removeSnapshotListener(){
+        _interactor.removeSnapshotListener()
     }
     
     func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date){
-        _view!.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, createdAt: createdAt)
+        if let _view = _view {
+            _view.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, createdAt: createdAt)
+        }
     }
     
     func showAlert(message: String){
-        _view!.showAlert(message: message)
+        if let _view = _view {
+            _view.showAlert(message: message)
+        }
     }
     
     func requestLocationSearching(deviceID: String){

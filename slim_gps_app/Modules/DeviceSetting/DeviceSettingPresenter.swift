@@ -19,7 +19,9 @@ extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
     }
     
     func accessAuthIsGotten(watcher:(accessAuthID: String, firstName: String, lastName: String, admin:Bool)){
-        _view!.accessAuthIsGotten(watcher:(accessAuthID: watcher.accessAuthID, firstName: watcher.firstName, lastName: watcher.lastName, admin:watcher.admin))
+        if let _view = _view {
+            _view.accessAuthIsGotten(watcher:(accessAuthID: watcher.accessAuthID, firstName: watcher.firstName, lastName: watcher.lastName, admin:watcher.admin))
+        }
     }
     
     func deleteAccessAuth(accessAuthID: String){
@@ -27,7 +29,9 @@ extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
     }
     
     func accessAuthIsDeleted(accessAuthID: String){
-        _view!.accessAuthIsDeleted(accessAuthID: accessAuthID)
+        if let _view = _view {
+            _view.accessAuthIsDeleted(accessAuthID: accessAuthID)
+        }
     }
     
     func updateDeviceName(deviceID: String, name: String) {
@@ -39,7 +43,9 @@ extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
     }
     
     func showAlert(message: String){
-        _view!.showAlert(message: message)
+        if let _view = _view {
+            _view.showAlert(message: message)
+        }
     }
 }
 

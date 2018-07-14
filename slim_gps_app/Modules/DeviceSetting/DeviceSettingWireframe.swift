@@ -4,9 +4,9 @@ import SlideMenuControllerSwift
 class DeviceSettingWireframe {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
-    func configureModule( serialNum: String, name: String, mode: String ) -> UIViewController {
+    func configureModule( deviceID: String, name: String, mode: String ) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "DeviceSetting") as! DeviceSettingViewController
-        viewController.serialNum = serialNum
+        viewController.serialNum = deviceID
         viewController.name = name
         viewController.mode = mode
 

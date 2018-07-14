@@ -4,30 +4,46 @@ import GoogleMaps
 class LocationSearchingViewController: UIViewController {
     
     var presenter: LocationSearchingPresenterInterface!
-    var serialNum: String!
+    var deviceID: String!
     var mapView : GMSMapView!
+    var marker: GMSMarker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.getLatestLocationData( serialNum: serialNum )
+        
+        // Show mapView
+        mapView = GMSMapView(frame: CGRect(x:0,y: 0, width:self.view.bounds.width, height:self.view.bounds.height))
+        mapView.isMyLocationEnabled = true
+        marker = GMSMarker()
+        self.view.addSubview(mapView)
+        
+        // Set the request Button after the mapView was added
+        setRequestButton()
+        
+        // Get latest location
+        presenter.setLatestLocationListener( deviceID: deviceID )
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.removeSnapshotListener()
     }
 }
 
 extension LocationSearchingViewController: LocationSearchingViewInterface {
     func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date){ // radius is not used
         
-        // Configure mapView
-        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 15.0)
-        self.mapView = GMSMapView(frame: CGRect(x:0,y: 0, width:self.view.bounds.width, height:self.view.bounds.height))
-        self.mapView.camera = camera
-        self.mapView.isMyLocationEnabled = true // ??
+        print("locationDataIsGotten")
 
+        // Reset mapView and marker
+        mapView.clear()
+        marker.map = nil
+        
+        // Configure camera
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 15.0)
+        self.mapView.camera = camera
+        
         // Set marker
-        let marker: GMSMarker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(latitude, longitude)
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
@@ -35,12 +51,6 @@ extension LocationSearchingViewController: LocationSearchingViewInterface {
         marker.title = f.string(from: createdAt)
         marker.map = mapView
         mapView.selectedMarker = marker
-
-        // Show mapView
-        self.view.addSubview(self.mapView)
-        
-        // Set the request Button after the mapView was added
-        setRequestButton()
     }
     
     func setRequestButton(){
@@ -65,7 +75,7 @@ extension LocationSearchingViewController: LocationSearchingViewInterface {
     }
     
     @objc func requestButtonTapped(){
-        presenter.requestLocationSearching(deviceID: serialNum)
+        presenter.requestLocationSearching(deviceID: deviceID)
     }
 }
 

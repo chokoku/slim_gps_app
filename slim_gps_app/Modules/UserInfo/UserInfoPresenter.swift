@@ -25,11 +25,15 @@ extension UserInfoPresenter: UserInfoPresenterInterface {
     }
     
     func setUserInfoForm(userInfo: [String:String]){
-        _view!.setUserInfoForm(userInfo: userInfo)
+        if let _view = _view {
+            _view.setUserInfoForm(userInfo: userInfo)
+        }
     }
     
     func showAlert(message:String){
-        _view!.showAlert(message: message)
+        if let _view = _view {
+            _view.showAlert(message: message)
+        }
     }
     
     func updateUserInfo(key: String, value: String){
@@ -40,7 +44,9 @@ extension UserInfoPresenter: UserInfoPresenterInterface {
         let user = Auth.auth().currentUser
         Auth.auth().signIn(withEmail: user!.email!, password: password) { (user, err) in
             if let _ = err {
-                self._view!.showAlert(message: "パスワードが正しくありません")
+                if let _view = self._view {
+                    _view.showAlert(message: "パスワードが正しくありません")
+                }
             } else {
                 self._interactor.updateUserEmail(email: email)
             }

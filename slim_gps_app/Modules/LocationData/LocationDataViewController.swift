@@ -6,10 +6,10 @@ class LocationDataViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     weak var currentViewController: UIViewController?
     var presenter: LocationDataPresenterInterface!
-    var serialNum: String!
+    var deviceID: String!
 
     override func viewDidLoad() {
-        self.currentViewController = LatestLocationWireframe().configureModule( serialNum: serialNum )
+        self.currentViewController = LatestLocationWireframe().configureModule( deviceID: deviceID )
         self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChildViewController(self.currentViewController!)
         self.addSubview(subView:self.currentViewController!.view, toView: self.containerView)
@@ -22,12 +22,12 @@ class LocationDataViewController: UIViewController {
     
     @IBAction func showComponent(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            let newViewController = LatestLocationWireframe().configureModule( serialNum: serialNum )
+            let newViewController = LatestLocationWireframe().configureModule( deviceID: deviceID )
             newViewController.view.translatesAutoresizingMaskIntoConstraints = false
             self.cycleFromViewController(oldViewController: self.currentViewController!, toViewController: newViewController)
             self.currentViewController = newViewController
         } else {
-            let newViewController = DailyLocationWireframe().configureModule( serialNum: serialNum )
+            let newViewController = DailyLocationWireframe().configureModule( deviceID: deviceID )
             newViewController.view.translatesAutoresizingMaskIntoConstraints = false
             self.cycleFromViewController(oldViewController: self.currentViewController!, toViewController: newViewController)
             self.currentViewController = newViewController

@@ -6,16 +6,23 @@ import SlideMenuControllerSwift
 
 final class RegistraionViewController: UIViewController, UITextFieldDelegate {
     
-
+    @IBOutlet weak var registrationButton: UIButton!
     @IBOutlet weak var lastNameText: UITextField!
     @IBOutlet weak var firstNameText: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    let indicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        // Configure an indicator
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.center = self.view.center
+        indicator.color = UIColor.black
     }
     
     @IBAction func createAccountAction(_ sender: Any) {
@@ -28,6 +35,14 @@ final class RegistraionViewController: UIViewController, UITextFieldDelegate {
                 
                 if error == nil {
                     
+                    // Disable button
+                    self.registrationButton.isEnabled = false
+                    
+                    // Start the indicator
+                    self.view.addSubview(self.indicator)
+                    self.view.bringSubview(toFront: self.indicator)
+                    self.indicator.startAnimating()
+                    
                     // Initiate DB
                     let db = Firestore.firestore()
                     let settings = db.settings
@@ -37,6 +52,10 @@ final class RegistraionViewController: UIViewController, UITextFieldDelegate {
                     // Create a client document
                     let uid = Auth.auth().currentUser!.uid
                     db.collection("clients").document(uid).setData([ "lastName": self.lastNameText.text!, "firstName": self.firstNameText.text!, "type": "individual" ]) { err in
+                        
+                        self.registrationButton.isEnabled = true
+                        self.indicator.stopAnimating() // Stop the indicator
+                        
                         if let _ = err {
                             self.showAlert(message: "ユーザーの作成に失敗しました")
                         } else {

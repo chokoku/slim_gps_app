@@ -16,20 +16,20 @@ class MainWireframe {
 }
 
 extension MainWireframe: MainWireframeInterface {
-    func pushDeviceSettingPage( serialNum: String, name: String, mode: String ){
-        let nextVC = DeviceSettingWireframe().configureModule( serialNum: serialNum, name: name, mode: mode )
+    func pushDeviceSettingPage( deviceID: String, name: String, mode: String ){
+        let nextVC = DeviceSettingWireframe().configureModule( deviceID: deviceID, name: name, mode: mode )
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let sideMenuController: SlideMenuController = appDelegate.window!.rootViewController as! SlideMenuController
         (sideMenuController.mainViewController as! UINavigationController).pushViewController(nextVC, animated: true)
         sideMenuController.closeLeft()
     }
     
-    func pushLocationDataPage( serialNum: String, mode: String ){
+    func pushLocationDataPage( deviceID: String, mode: String ){
         
         // "watching_powerSaving",
         // "watching_normal",
         // or "lost_proof"
-        let nextVC = mode == "lost_proof" ? LocationSearchingWireframe().configureModule( serialNum: serialNum ) : LocationDataWireframe().configureModule( serialNum: serialNum )
+        let nextVC = mode == "lost_proof" ? LocationSearchingWireframe().configureModule( deviceID: deviceID ) : LocationDataWireframe().configureModule( deviceID: deviceID )
         
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let sideMenuController: SlideMenuController = appDelegate.window!.rootViewController as! SlideMenuController

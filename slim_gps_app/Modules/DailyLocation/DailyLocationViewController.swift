@@ -4,24 +4,23 @@ import GoogleMaps
 class DailyLocationViewController: UIViewController {
     
     var presenter: DailyLocationPresenterInterface!
-    var serialNum: String!
+    var deviceID: String!
     var mapView : GMSMapView!
     var locationData = [(latitude: Double, longitude: Double, radius: Double, createdAt: Date)]()
     var dateTimePickerBar = DateTimePickerBarView()
     var date: Date = Date()
-    let marker: GMSMarker = GMSMarker()
+    var marker: GMSMarker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        marker = GMSMarker()
+
         loadLocationData() // load location data and set markers on mapView
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.removeSnapshotListener()
     }
 
     func loadLocationData(){
@@ -35,7 +34,7 @@ class DailyLocationViewController: UIViewController {
         self.view.addSubview(mapView)
         
         // Get locationData
-        presenter.getDailyLocation( serialNum: serialNum, date: date )
+        presenter.setDailyLocationListener( deviceID: deviceID, date: date )
     }
     
     func setMarker( locationData:(latitude: Double, longitude: Double, radius: Double, createdAt: Date) ){
@@ -51,7 +50,6 @@ class DailyLocationViewController: UIViewController {
     // TODO small bug here marker does not disappear
     func reloadLocationData(){
         mapView.removeFromSuperview()
-        dateTimePickerBar.removeFromSuperview()
         loadLocationData()
     }
     
@@ -86,9 +84,9 @@ class DailyLocationViewController: UIViewController {
 }
 
 extension DailyLocationViewController: DailyLocationViewInterface {
-    func locationDataIsGotten(data:(latitude: Double, longitude: Double, radius: Double, createdAt: Date, lastFlag: Bool)){
+    func locationDataIsGotten(data:(latitude: Double, longitude: Double, radius: Double, createdAt: Date)){
         locationData += [(data.latitude, data.longitude, data.radius, data.createdAt)]
-        
+        print(data)
         // Set tracking circles
         let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude), radius: data.radius)
         circle.fillColor = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 0.8)
@@ -96,20 +94,16 @@ extension DailyLocationViewController: DailyLocationViewInterface {
         circle.strokeWidth = 0.5
         circle.map = mapView
         
-        // After all the location data is received
-        if(data.lastFlag){
-            
-            // Set camera
-            let camera = GMSCameraPosition.camera(withLatitude: locationData.last!.latitude, longitude: locationData.last!.longitude, zoom: 16.0)
-            mapView.camera = camera
-            
-            // Set the target marker
-            setMarker(locationData: locationData.last!)
-            
-            // Configure dateTimePickerBar
-            let steps = locationData.count - 1
-            setDateTimePickerBar(isEnabled: true, maximumValue: Float(steps))
-        }
+        // Set camera
+        let camera = GMSCameraPosition.camera(withLatitude: locationData.last!.latitude, longitude: locationData.last!.longitude, zoom: 16.0)
+        mapView.camera = camera
+        
+        // Set the target marker
+        setMarker(locationData: locationData.last!)
+        
+        // Configure dateTimePickerBar
+        let steps = locationData.count - 1
+        setDateTimePickerBar(isEnabled: true, maximumValue: Float(steps))
     }
     
     func showAlert(message: String){

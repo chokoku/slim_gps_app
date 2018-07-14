@@ -7,11 +7,19 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
+    let indicator = UIActivityIndicatorView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        // Configure an indicator
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.center = self.view.center
+        indicator.color = UIColor.black
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -28,9 +36,18 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
             
         } else {
             
+            // Disable button
+            self.loginButton.isEnabled = false
+            
+            // Start the indicator
+            self.view.addSubview(self.indicator)
+            self.view.bringSubview(toFront: self.indicator)
+            self.indicator.startAnimating()
+            
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
+                    
                     let mainWireframe = MainWireframe()
                     let navigationController = mainWireframe.configureModule()
                     let sideMenuWireframe = SideMenuWireframe()
@@ -47,6 +64,9 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
                     alertController.addAction(defaultAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
+                
+                self.loginButton.isEnabled = true
+                self.indicator.stopAnimating() // Stop the indicator
             }
         }
     }

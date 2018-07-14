@@ -5,6 +5,7 @@ import FirebaseFirestore
 final class LatestLocationInteractor {
     var presenter: LatestLocationPresenterInterface!
     let db = Firestore.firestore()
+    var listener:ListenerRegistration! = nil
     
     init () {
         let settings = db.settings
@@ -14,29 +15,34 @@ final class LatestLocationInteractor {
 }
 
 extension LatestLocationInteractor: LatestLocationInteractorInterface {
-    func getLatestLocationData( serialNum: String ) {
-        db.collection("locationData")
-            .whereField("deviceID", isEqualTo: serialNum)
+    func setLatestLocationListener( deviceID: String ) {
+        listener = db.collection("locationData")
+            .whereField("deviceID", isEqualTo: deviceID)
             .order(by: "createdAt", descending: true)
             .limit(to:1)
             .addSnapshotListener { (snap, err) in
-                if let _ = err {
+                guard let snap = snap else{
                     self.presenter.showAlert(message: "位置情報の取得に失敗しました")
-                } else {
-                    if(snap!.documents.count == 0){
-                        self.presenter.showAlert(message: "位置情報のデータがありません")
-                    } else {
-                        for document in snap!.documents {
-                            if  let latitude = document.data()["latitude"] as? Double,
-                                let longitude = document.data()["longitude"] as? Double,
-                                let radius = document.data()["radius"] as? Double,
-                                let createdAt = document.data()["createdAt"] as? Timestamp
-                            {
-                                self.presenter.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, createdAt: createdAt.dateValue())
-                            }
+                    return
+                }
+                if(snap.documents.count == 0){self.presenter.showAlert(message: "位置情報がありません")}
+                snap.documentChanges.forEach{ diff in
+                    if (diff.type == .added){
+                        let docData = diff.document.data()
+                        if  let latitude = docData["latitude"] as? Double,
+                            let longitude = docData["longitude"] as? Double,
+                            let radius = docData["radius"] as? Double,
+                            let createdAt = docData["createdAt"] as? Timestamp
+                        {
+                            self.presenter.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, createdAt: createdAt.dateValue())
                         }
                     }
                 }
         }
     }
+    
+    func removeSnapshotListener(){
+        listener.remove()
+    }
+
 }

@@ -21,7 +21,9 @@ extension AccessApprovalPresenter: AccessApprovalPresenterInterface {
     }
     
     func addRequesters(accessAuthID: String, firstName: String?, lastName: String?){
-        _view!.addRequesters(accessAuthID: accessAuthID, firstName: firstName, lastName: lastName)
+        if let _view = _view{
+            _view.addRequesters(accessAuthID: accessAuthID, firstName: firstName, lastName: lastName)
+        }
     }
 
     func approveAccessRequest(accessAuthID: String){
@@ -33,10 +35,14 @@ extension AccessApprovalPresenter: AccessApprovalPresenterInterface {
     }
     
     func accessAuthIsCompleted(accessAuthID: String){
-        _view!.accessAuthIsCompleted(accessAuthID: accessAuthID)
+        if let _view = _view{
+            _view.accessAuthIsCompleted(accessAuthID: accessAuthID)
+        }
     }
     
     func showAlert(message:String){
-        _view!.showAlert(message:message)
+        if let _view = _view{
+            _view.showAlert(message:message)
+        }
     }
 }

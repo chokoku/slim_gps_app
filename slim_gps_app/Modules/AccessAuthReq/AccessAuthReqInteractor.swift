@@ -16,7 +16,7 @@ final class AccessAuthReqInteractor {
 extension AccessAuthReqInteractor: AccessAuthReqInteractorInterface {
     
     func updateAccessAuth( serialNum: String, uid: String ){
-        db.collection("devices").document(serialNum).addSnapshotListener { (deviceDoc, err) in
+        db.collection("devices").document(serialNum).getDocument { (deviceDoc, err) in
             if let _ = err {
                 self.presenter.showAlert(message: "エラーが発生しました")
             } else {
@@ -24,7 +24,7 @@ extension AccessAuthReqInteractor: AccessAuthReqInteractorInterface {
                     self.db.collection("accessAuth")
                         .whereField("deviceID", isEqualTo: serialNum)
                         .whereField("clientID", isEqualTo: uid)
-                        .getDocuments { (accessAuthSnap, err) in // addSnapshotListener does not work. firestore bug
+                        .getDocuments { (accessAuthSnap, err) in
                             if let _ = err {
                                 self.presenter.showAlert(message: "エラーが発生しました")
                             } else {

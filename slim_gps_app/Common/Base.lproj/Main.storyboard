@@ -72,6 +72,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Hkz-RT-iV2" id="DJc-po-HcM"/>
+                        <outlet property="loginButton" destination="0iU-Oo-3BV" id="aAp-Jh-PWP"/>
                         <outlet property="passwordTextField" destination="HLo-AO-Vl4" id="WPl-gc-gIV"/>
                     </connections>
                 </viewController>
@@ -167,6 +168,7 @@
                         <outlet property="firstNameText" destination="qfu-I0-WYo" id="3dZ-ec-m1R"/>
                         <outlet property="lastNameText" destination="KtG-3G-Dcx" id="r7B-7M-Ctm"/>
                         <outlet property="passwordTextField" destination="Evs-vt-yqv" id="FtN-nE-oyD"/>
+                        <outlet property="registrationButton" destination="gNG-Nq-8Xc" id="Lgq-tZ-Xql"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSa-Y5-iau" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -760,10 +762,10 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQ1-fY-kbk">
-                                <rect key="frame" x="137" y="215" width="100" height="20"/>
+                                <rect key="frame" x="87" y="215" width="200" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="B4J-GP-pxH"/>
                                     <constraint firstAttribute="height" constant="20" id="FUd-HV-OCS"/>
+                                    <constraint firstAttribute="width" constant="200" id="Jrs-kr-VVP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -15,16 +15,29 @@ final class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterInterface {
-    func pushDeviceSettingPage( serialNum: String, name: String, mode: String ){
-        _wireframe.pushDeviceSettingPage( serialNum: serialNum, name: name, mode: mode )
+    
+    func getDeviceInfo(uid: String){
+        _interactor.getDeviceInfo(uid: uid)
     }
     
-    func pushLocationDataPage( serialNum: String, mode: String ){
-        _wireframe.pushLocationDataPage( serialNum: serialNum, mode: mode )
+    func addMapView(index: Int, lastFlag: Bool, deviceID: String, admin: Bool, mode: String, name: String, latitude: Double?, longitude: Double?, battery: Int?){
+        if let _view = _view {
+            _view.addMapView(index: index, lastFlag: lastFlag, deviceID: deviceID, admin: admin, mode: mode, name: name, latitude: latitude, longitude: longitude, battery: battery)
+        }
     }
     
-    func getDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]{
-        return _interactor.getDeviceInfo(uid: uid)
+    func showAlert(message: String){
+        if let _view = _view {
+            _view.showAlert(message: message)
+        }
+    }
+    
+    func pushDeviceSettingPage( deviceID: String, name: String, mode: String ){
+        _wireframe.pushDeviceSettingPage( deviceID: deviceID, name: name, mode: mode )
+    }
+    
+    func pushLocationDataPage( deviceID: String, mode: String ){
+        _wireframe.pushLocationDataPage( deviceID: deviceID, mode: mode )
     }
     
 }

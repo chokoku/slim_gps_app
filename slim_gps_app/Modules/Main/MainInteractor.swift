@@ -14,61 +14,58 @@ final class MainInteractor {
 }
 
 extension MainInteractor: MainInteractorInterface {
-    func getDeviceInfo(uid: String) -> [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]{
-        
-        var locationData = [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]()
-    
-        var keepAlive = true
-        let runLoop = RunLoop.current
-        var i = 0
+    func getDeviceInfo(uid: String){
         
         db.collection("accessAuth")
             .whereField("clientID", isEqualTo: uid)
+            .whereField("confirmed", isEqualTo: true)
             .order(by: "createdAt", descending: false)
-            .addSnapshotListener { (accessAuthSnap, error) in
-                if let error = error {
-                    print("Error getting documents: \(error)")
-                } else if( 0 == accessAuthSnap!.documents.count ){
-                    keepAlive = false
-                } else {
+            .getDocuments { (accessAuthSnap, error) in
+                if let _ = error {
+                    self.presenter.showAlert(message:"エラーが発生しました")
+                } else if( 0 != accessAuthSnap!.documents.count ){
+                    var i = 0
                     for accessAuthDoc in accessAuthSnap!.documents {
                         let deviceID = accessAuthDoc.data()["deviceID"] as! String // serialNum
                         self.db.collection("devices").document(deviceID)
-                            .addSnapshotListener { (deviceDoc, error) in
-                                if let error = error {
-                                    print("Error getting documents: \(error)")
-//                                } else if deviceDoc is nil {
-//                                  print("Document data: \(dataDescription)")
+                            .getDocument { (deviceDoc, error) in
+                                if let _ = error {
+                                    self.presenter.showAlert(message:"エラーが発生しました")
+                                } else if deviceDoc == nil {
+                                    self.presenter.showAlert(message:"エラーが発生しました")
                                 } else {
-                                    self.db.collection("locationData") // TODO need to create locationData collection at first
+                                    self.db.collection("locationData")
                                         .whereField("deviceID", isEqualTo: deviceID)
                                         .order(by: "createdAt", descending: true)
                                         .limit(to:1)
-                                        .addSnapshotListener { (locationDataSnap, error) in
-                                            if let error = error {
-                                                print("Error getting documents: \(error)")
+                                        .getDocuments { (locationDataSnap, error) in // locationDataSnap can be []
+                                            if let _ = error {
+                                                self.presenter.showAlert(message:"エラーが発生しました")
                                             } else {
-                                                if(locationDataSnap!.documents.count == 0){
-                                                    locationData += [( deviceID,
-                                                                       accessAuthDoc.data()["admin"] as? Bool,
-                                                                       deviceDoc!["mode"] as? String,
-                                                                       deviceDoc!["name"] as? String,
-                                                                       nil,
-                                                                       nil,
-                                                                       nil )]
-                                                } else {
-                                                    for locationDataDoc in locationDataSnap!.documents {
-                                                        locationData += [(deviceID,
-                                                                          accessAuthDoc.data()["admin"] as? Bool,
-                                                                          deviceDoc!["mode"] as? String,
-                                                                          deviceDoc!["name"] as? String,
-                                                                          locationDataDoc.data()["latitude"] as? Double,
-                                                                          locationDataDoc.data()["longitude"] as? Double,
-                                                                          locationDataDoc.data()["battery"] as? Int)]
-                                                    }
-                                                }
                                                 i += 1
-                                                if( i >= accessAuthSnap!.documents.count ){ keepAlive = false }
+                                                let lastFlag: Bool = accessAuthSnap!.documents.count == i
+                                                
+                                                if(locationDataSnap!.documents.count == 0){
+                                                    self.presenter.addMapView( index: i-1, // 0 start
+                                                                               lastFlag: lastFlag,
+                                                                               deviceID: deviceID,
+                                                                               admin: accessAuthDoc.data()["admin"] as! Bool,
+                                                                               mode: deviceDoc!["mode"] as! String,
+                                                                               name: deviceDoc!["name"] as! String,
+                                                                               latitude: nil,
+                                                                               longitude: nil,
+                                                                               battery: nil )
+                                                } else {
+                                                    self.presenter.addMapView( index: i-1, // 0 start
+                                                                               lastFlag: lastFlag,
+                                                                               deviceID: deviceID,
+                                                                               admin: accessAuthDoc.data()["admin"] as! Bool,
+                                                                               mode: deviceDoc!["mode"] as! String,
+                                                                               name: deviceDoc!["name"] as! String,
+                                                                               latitude: locationDataSnap!.documents.first?.data()["latitude"] as? Double,
+                                                                               longitude: locationDataSnap!.documents.first?.data()["longitude"] as? Double,
+                                                                               battery: locationDataSnap!.documents.first?.data()["battery"] as? Int )
+                                                }
                                             }
                                     }
                                 }
@@ -76,11 +73,5 @@ extension MainInteractor: MainInteractorInterface {
                     }
                 }
         }
-        
-        while keepAlive &&
-            runLoop.run(mode: RunLoopMode.defaultRunLoopMode, before: NSDate(timeIntervalSinceNow: 0.1) as Date) {
-        }
-        
-        return locationData
     }
 }

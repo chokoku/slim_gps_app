@@ -19,13 +19,13 @@ extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
             .whereField("deviceID", isEqualTo: deviceID)
             .whereField("confirmed", isEqualTo: true)
             .order(by: "createdAt", descending: false)
-            .getDocuments { (accessAuthSnap, error) in // addSnapshotListener does not work. bug?
+            .getDocuments { (accessAuthSnap, error) in
                 if let _ = error {
                     self.presenter.showAlert(message:"エラーが発生しました")
                 } else {
                     for accessAuthDoc in accessAuthSnap!.documents {
                         let clientID = accessAuthDoc.data()["clientID"] as! String
-                        self.db.collection("clients").document( clientID ).addSnapshotListener { (clientDoc, error) in
+                        self.db.collection("clients").document( clientID ).getDocument { (clientDoc, error) in
                             if let clientDoc = clientDoc, clientDoc.exists {
                                  if let firstName = clientDoc.data()!["firstName"] as? String,
                                     let lastName = clientDoc.data()!["lastName"] as? String,

@@ -21,10 +21,14 @@ extension AccessAuthReqPresenter: AccessAuthReqPresenterInterface {
     }
     
     func accessAuthReqIsSubmitted(){
-        _view!.accessAuthReqIsSubmitted()
+        if let _view = _view{
+            _view.accessAuthReqIsSubmitted()
+        }
     }
     
     func showAlert(message:String){
-        _view!.showAlert(message:message)
+        if let _view = _view{
+            _view.showAlert(message:message)
+        }
     }
 }

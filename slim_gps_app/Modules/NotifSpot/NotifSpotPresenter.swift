@@ -19,11 +19,15 @@ extension NotifSpotPresenter: NotifSpotPresenterInterface {
     }
     
     func showNotifSpot(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double){
-        _view!.showNotifSpot(notifSpotID: notifSpotID, name: name, latitude: latitude, longitude: longitude, radius: radius)
+        if let _view = _view {
+            _view.showNotifSpot(notifSpotID: notifSpotID, name: name, latitude: latitude, longitude: longitude, radius: radius)
+        }
     }
     
     func showAlert(message: String){
-        _view!.showAlert(message: message)
+        if let _view = _view {
+            _view.showAlert(message: message)
+        }
     }
     
     func getNotifSpots(){
@@ -39,11 +43,15 @@ extension NotifSpotPresenter: NotifSpotPresenterInterface {
     }
     
     func notifSpotIsUpdated(name: String, tag: Int){
-        _view!.notifSpotIsUpdated(name: name, tag: tag)
+        if let _view = _view {
+            _view.notifSpotIsUpdated(name: name, tag: tag)
+        }
     }
     
     func notifSpotIsDeleted(notifSpotID: String){
-        _view!.notifSpotIsDeleted(notifSpotID: notifSpotID)
+        if let _view = _view {
+            _view.notifSpotIsDeleted(notifSpotID: notifSpotID)
+        }
     }
 
 }
