@@ -32,7 +32,6 @@ extension UserInfoPresenter: UserInfoPresenterInterface {
         _view!.showAlert(message: message)
     }
     
-    // TODO this func is called twice. don't know why
     func updateUserInfo(key: String, value: String){
         _interactor.updateUserInfo(key: key, value: value)
     }

@@ -65,7 +65,7 @@ extension LocationSearchingViewController: LocationSearchingViewInterface {
     }
     
     @objc func requestButtonTapped(){
-        presenter.requestLocationSearching(device_id: serialNum)
+        presenter.requestLocationSearching(deviceID: serialNum)
     }
 }
 

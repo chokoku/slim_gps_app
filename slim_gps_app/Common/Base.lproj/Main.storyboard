@@ -87,8 +87,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="姓" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KtG-3G-Dcx">
+                                <rect key="frame" x="37.5" y="70" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="7xM-73-uHg"/>
+                                    <constraint firstAttribute="height" constant="30" id="Ipf-sE-4ra"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfu-I0-WYo">
+                                <rect key="frame" x="37.5" y="130" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="6Jc-1z-5Gc"/>
+                                    <constraint firstAttribute="height" constant="30" id="vvD-r7-Cge"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9o-W7-1ab">
-                                <rect key="frame" x="37.5" y="120" width="300" height="30"/>
+                                <rect key="frame" x="37" y="190" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5up-jm-gfT"/>
                                     <constraint firstAttribute="width" constant="300" id="dbc-AO-gyy"/>
@@ -98,7 +118,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNG-Nq-8Xc">
-                                <rect key="frame" x="112" y="240" width="150" height="30"/>
+                                <rect key="frame" x="112" y="310" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.06135241687297821" green="0.86649531126022339" blue="0.58352023363113403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="bW0-Py-opd"/>
@@ -117,7 +137,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Evs-vt-yqv">
-                                <rect key="frame" x="37.5" y="180" width="300" height="30"/>
+                                <rect key="frame" x="37" y="250" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Yfx-yZ-hyz"/>
                                     <constraint firstAttribute="width" constant="300" id="ge7-vI-bZ6"/>
@@ -129,17 +149,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KtG-3G-Dcx" firstAttribute="centerX" secondItem="k23-G2-yOd" secondAttribute="centerX" id="4HT-8u-OFV"/>
+                            <constraint firstItem="qfu-I0-WYo" firstAttribute="centerX" secondItem="k23-G2-yOd" secondAttribute="centerX" id="4Mr-8t-5Gi"/>
                             <constraint firstItem="gNG-Nq-8Xc" firstAttribute="top" secondItem="Evs-vt-yqv" secondAttribute="bottom" constant="30" id="93w-Bn-08Z"/>
                             <constraint firstItem="gNG-Nq-8Xc" firstAttribute="centerX" secondItem="k23-G2-yOd" secondAttribute="centerX" id="B96-9f-Y5M"/>
+                            <constraint firstItem="y9o-W7-1ab" firstAttribute="top" secondItem="qfu-I0-WYo" secondAttribute="bottom" constant="30" id="FA9-55-VhV"/>
                             <constraint firstItem="Evs-vt-yqv" firstAttribute="top" secondItem="y9o-W7-1ab" secondAttribute="bottom" constant="30" id="OHU-dm-Yu2"/>
+                            <constraint firstItem="KtG-3G-Dcx" firstAttribute="top" secondItem="VeM-rf-vMK" secondAttribute="top" constant="50" id="Q6o-m0-edN"/>
                             <constraint firstItem="y9o-W7-1ab" firstAttribute="centerX" secondItem="k23-G2-yOd" secondAttribute="centerX" id="Voo-p6-F6q"/>
-                            <constraint firstItem="y9o-W7-1ab" firstAttribute="top" secondItem="VeM-rf-vMK" secondAttribute="top" constant="100" id="dAe-za-Nfm"/>
+                            <constraint firstItem="qfu-I0-WYo" firstAttribute="top" secondItem="KtG-3G-Dcx" secondAttribute="bottom" constant="30" id="g64-7p-jsG"/>
                             <constraint firstItem="Evs-vt-yqv" firstAttribute="centerX" secondItem="k23-G2-yOd" secondAttribute="centerX" id="vSq-q5-Gco"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VeM-rf-vMK"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="y9o-W7-1ab" id="DqV-RL-0l8"/>
+                        <outlet property="firstNameText" destination="qfu-I0-WYo" id="3dZ-ec-m1R"/>
+                        <outlet property="lastNameText" destination="KtG-3G-Dcx" id="r7B-7M-Ctm"/>
                         <outlet property="passwordTextField" destination="Evs-vt-yqv" id="FtN-nE-oyD"/>
                     </connections>
                 </viewController>

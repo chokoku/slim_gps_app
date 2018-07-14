@@ -26,8 +26,8 @@ extension LocationSearchingPresenter: LocationSearchingPresenterInterface {
         _view!.showAlert(message: message)
     }
     
-    func requestLocationSearching(device_id: String){
-        _interactor.requestLocationSearching(device_id: device_id)
+    func requestLocationSearching(deviceID: String){
+        _interactor.requestLocationSearching(deviceID: deviceID)
     }
 }
 

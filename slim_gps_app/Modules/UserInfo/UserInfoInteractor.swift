@@ -17,13 +17,12 @@ final class UserInfoInteractor {
 extension UserInfoInteractor: UserInfoInteractorInterface {
     func getUserInfo(){
         let user = Auth.auth().currentUser
-
         
-        db.collection("clients").document(user!.uid).getDocument { (document, err) in // addSnapshotListener does not work here. bug
+        db.collection("clients").document(user!.uid).getDocument { (doc, err) in // addSnapshotListener does not work here. bug
             if let _ = err {
                 self.presenter.showAlert(message:"エラーが発生しました")
-            } else if let document = document, document.exists {
-                if let firstName = document.data()!["first_name"] as? String, let lastName = document.data()!["last_name"] as? String {
+            } else if let doc = doc, doc.exists {
+                if let firstName = doc.data()!["firstName"] as? String, let lastName = doc.data()!["lastName"] as? String {
                     self.presenter.setUserInfoForm(userInfo: ["email": user!.email! , "firstName": firstName, "lastName": lastName])
                 } else {
                     self.presenter.showAlert(message:"姓名が空白です")
@@ -37,16 +36,7 @@ extension UserInfoInteractor: UserInfoInteractorInterface {
     func updateUserInfo(key: String, value: String){
         let user = Auth.auth().currentUser
 
-        var key2 = String()
-        if(key == "firstName"){
-            key2 = "first_name"
-        } else if(key == "lastName"){
-            key2 = "last_name"
-        } else {
-            self.presenter.showAlert(message:"姓名が空白です")
-        }
-
-        db.collection("clients").document(user!.uid).updateData([ key2: value ]){ err in
+        db.collection("clients").document(user!.uid).updateData([ key: value ]){ err in
             if let _ = err {
                 self.presenter.showAlert(message: "ユーザー情報を更新できませんでした")
             }

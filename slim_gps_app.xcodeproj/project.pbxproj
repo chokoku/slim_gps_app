@@ -102,6 +102,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		06F3080320F8AD3F00C3156B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0606B97C20DDF82D003536B1 /* slim_gps_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slim_gps_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0606B97F20DDF82D003536B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +196,7 @@
 		06A0E56D20F6B4BA002CFEA5 /* LocationSearchingInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingInterface.swift; sourceTree = "<group>"; };
 		06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingInteractor.swift; sourceTree = "<group>"; };
 		06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingPresenter.swift; sourceTree = "<group>"; };
+		06F307ED20F89FDB00C3156B /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -480,6 +494,7 @@
 		1CB666472DE4F9AF1A10A1AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06F307ED20F89FDB00C3156B /* Eureka.framework */,
 				06A0E55F20F34E4B002CFEA5 /* CoreLocation.framework */,
 				06A0E55D20F34E3D002CFEA5 /* MapKit.framework */,
 				0606B9BD20DE128C003536B1 /* SlideMenuControllerSwift.framework */,
@@ -516,6 +531,7 @@
 				0606B97A20DDF82D003536B1 /* Resources */,
 				759798D12293556D193F7AC0 /* [CP] Embed Pods Frameworks */,
 				40075D2089EB0F0ADBBBD8BA /* [CP] Copy Pods Resources */,
+				06F3080320F8AD3F00C3156B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -657,7 +673,7 @@
 		};
 		40075D2089EB0F0ADBBBD8BA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -697,7 +713,7 @@
 		};
 		759798D12293556D193F7AC0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -710,7 +726,6 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -728,7 +743,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",

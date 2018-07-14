@@ -23,10 +23,13 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        // Initialize Main page
         let subViews = self.scrollView.subviews
         for subview in subViews{
             subview.removeFromSuperview()
         }
+        
         if let user = user {
             // deviceInfo = [(serialNum: String?, admin: Bool?, mode: String?, name: String?, latitude: Double?, longitude: Double?, battery: Int?)]
             deviceInfo = presenter.getDeviceInfo(uid: user.uid)

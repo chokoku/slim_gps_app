@@ -15,23 +15,23 @@ final class DeviceSettingInteractor {
 
 extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
     func getAccessAuth(deviceID: String) {
-        db.collection("access_auth")
-            .whereField("device_id", isEqualTo: deviceID)
+        db.collection("accessAuth")
+            .whereField("deviceID", isEqualTo: deviceID)
             .whereField("confirmed", isEqualTo: true)
-            .order(by: "created_at", descending: false)
-            .getDocuments { (access_auth_querySnapshot, error) in // addSnapshotListener does not work. bug?
+            .order(by: "createdAt", descending: false)
+            .getDocuments { (accessAuthSnap, error) in // addSnapshotListener does not work. bug?
                 if let _ = error {
                     self.presenter.showAlert(message:"エラーが発生しました")
                 } else {
-                    for access_auth_document in access_auth_querySnapshot!.documents {
-                        let client_id = access_auth_document.data()["client_id"] as! String
-                        self.db.collection("clients").document( client_id ).addSnapshotListener { (client_document, error) in
-                            if let client_document = client_document, client_document.exists {
-                                 if let firstName = client_document.data()!["first_name"] as? String,
-                                    let lastName = client_document.data()!["last_name"] as? String,
-                                    let admin = access_auth_document.data()["admin"] as? Bool
+                    for accessAuthDoc in accessAuthSnap!.documents {
+                        let clientID = accessAuthDoc.data()["clientID"] as! String
+                        self.db.collection("clients").document( clientID ).addSnapshotListener { (clientDoc, error) in
+                            if let clientDoc = clientDoc, clientDoc.exists {
+                                 if let firstName = clientDoc.data()!["firstName"] as? String,
+                                    let lastName = clientDoc.data()!["lastName"] as? String,
+                                    let admin = accessAuthDoc.data()["admin"] as? Bool
                                  {
-                                    self.presenter.accessAuthIsGotten(watcher:(accessAuthID: access_auth_document.documentID, firstName: firstName, lastName: lastName, admin: admin))
+                                    self.presenter.accessAuthIsGotten(watcher:(accessAuthID: accessAuthDoc.documentID, firstName: firstName, lastName: lastName, admin: admin))
                                 }
                             } else {
                                 self.presenter.showAlert(message:"アクセス権のある方の情報が存在しません")
@@ -59,7 +59,7 @@ extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
     }
     
     func deleteAccessAuth(accessAuthID: String) {
-        db.collection("access_auth").document(accessAuthID).delete(){ err in
+        db.collection("accessAuth").document(accessAuthID).delete(){ err in
             if let _ = err {
                 self.presenter.showAlert(message:" アクセス権をを削除できませんでした")
             }

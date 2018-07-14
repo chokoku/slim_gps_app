@@ -8,7 +8,7 @@ protocol LocationSearchingPresenterInterface: class {
     
     // To Interactor
     func getLatestLocationData( serialNum: String )
-    func requestLocationSearching(device_id: String)
+    func requestLocationSearching(deviceID: String)
     
 }
 
@@ -19,7 +19,7 @@ protocol LocationSearchingViewInterface: class {
 
 protocol LocationSearchingInteractorInterface: class {
     func getLatestLocationData( serialNum: String )
-    func requestLocationSearching(device_id: String)
+    func requestLocationSearching(deviceID: String)
 }
 
 protocol LocationSearchingWireframeInterface: class {

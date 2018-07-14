@@ -16,33 +16,33 @@ final class AccessApprovalInteractor {
 extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
     
     func getRequesters(uid:String){
-        db.collection("access_auth")
-            .whereField("client_id", isEqualTo: uid)
+        db.collection("accessAuth")
+            .whereField("clientID", isEqualTo: uid)
             .whereField("admin", isEqualTo: true)
-            .addSnapshotListener { (accessAuthQuerySnapshot1, err) in
+            .addSnapshotListener { (accessAuthSnap1, err) in
                 if let _ = err {
                     self.presenter.showAlert(message:"エラーが発生しました")
                 } else {
-                    for accessAuthDocument1 in accessAuthQuerySnapshot1!.documents{
-                        let device_id = accessAuthDocument1.data()["device_id"] as! String
-                        self.db.collection("access_auth")
-                            .whereField("device_id", isEqualTo: device_id)
+                    for accessAuthDoc1 in accessAuthSnap1!.documents{
+                        let deviceID = accessAuthDoc1.data()["deviceID"] as! String
+                        self.db.collection("accessAuth")
+                            .whereField("deviceID", isEqualTo: deviceID)
                             .whereField("admin", isEqualTo: false)
                             .whereField("confirmed", isEqualTo: false)
-                            .addSnapshotListener { (accessAuthQuerySnapshot2, err) in
+                            .addSnapshotListener { (accessAuthSnap2, err) in
                                 if let _ = err {
                                     self.presenter.showAlert(message:"エラーが発生しました")
                                 } else {
-                                    for accessAuthDocument2 in accessAuthQuerySnapshot2!.documents{
-                                        let requester_id = accessAuthDocument2.data()["client_id"] as! String
-                                        self.db.collection("clients").document(requester_id)
+                                    for accessAuthDoc2 in accessAuthSnap2!.documents{
+                                        let requesterID = accessAuthDoc2.data()["clientID"] as! String
+                                        self.db.collection("clients").document(requesterID)
                                             .addSnapshotListener { (requesterDocument, err) in
                                                 if let _ = err {
                                                     self.presenter.showAlert(message:"エラーが発生しました")
                                                 } else {
-                                                    let firstName = requesterDocument!.data()!["first_name"] as? String
-                                                    let lastName = requesterDocument!.data()!["last_name"] as? String
-                                                    self.presenter.addRequesters(accessAuthID: accessAuthDocument2.documentID, firstName: firstName, lastName: lastName)
+                                                    let firstName = requesterDocument!.data()!["firstName"] as? String
+                                                    let lastName = requesterDocument!.data()!["lastName"] as? String
+                                                    self.presenter.addRequesters(accessAuthID: accessAuthDoc2.documentID, firstName: firstName, lastName: lastName)
                                                 }
                                         }
                                     }
@@ -55,7 +55,7 @@ extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
     }
     
     func approveAccessRequest(accessAuthID: String){
-        db.collection("access_auth").document(accessAuthID).updateData([ "confirmed": true ]){ err in
+        db.collection("accessAuth").document(accessAuthID).updateData([ "confirmed": true ]){ err in
             if let _ = err {
                 self.presenter.showAlert(message: "アクセス権を付与できませんでした")
             } else {
@@ -66,7 +66,7 @@ extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
     }
     
     func rejectAccessRequest(accessAuthID: String){
-        db.collection("access_auth").document(accessAuthID).delete(){ err in
+        db.collection("accessAuth").document(accessAuthID).delete(){ err in
             if let _ = err {
                 self.presenter.showAlert(message: "アクセスリクエストの拒否に失敗しました")
             } else {

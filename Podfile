@@ -6,6 +6,7 @@ target 'slim_gps_app' do
   use_frameworks!
 
   # Pods for slim_gps_app
+  pod 'Eureka'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore’
   pod 'Firebase/Auth'
@@ -15,7 +16,6 @@ target 'slim_gps_app' do
   pod 'GooglePlacePicker'
   pod 'GooglePlaces'
   pod 'FontAwesome.swift'
-  pod 'Eureka'
   pod 'SCLAlertView'
 
   target 'slim_gps_appTests' do

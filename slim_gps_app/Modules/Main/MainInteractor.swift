@@ -22,53 +22,53 @@ extension MainInteractor: MainInteractorInterface {
         let runLoop = RunLoop.current
         var i = 0
         
-        db.collection("access_auth")
-            .whereField("client_id", isEqualTo: uid)
-            .order(by: "created_at", descending: false)
-            .addSnapshotListener { (access_auth_querySnapshot, error) in
+        db.collection("accessAuth")
+            .whereField("clientID", isEqualTo: uid)
+            .order(by: "createdAt", descending: false)
+            .addSnapshotListener { (accessAuthSnap, error) in
                 if let error = error {
                     print("Error getting documents: \(error)")
-                } else if( 0 == access_auth_querySnapshot!.documents.count ){
+                } else if( 0 == accessAuthSnap!.documents.count ){
                     keepAlive = false
                 } else {
-                    for access_auth_document in access_auth_querySnapshot!.documents {
-                        let device_id = access_auth_document.data()["device_id"] as! String // serialNum
-                        self.db.collection("devices").document(device_id)
-                            .addSnapshotListener { (device_document, error) in
+                    for accessAuthDoc in accessAuthSnap!.documents {
+                        let deviceID = accessAuthDoc.data()["deviceID"] as! String // serialNum
+                        self.db.collection("devices").document(deviceID)
+                            .addSnapshotListener { (deviceDoc, error) in
                                 if let error = error {
                                     print("Error getting documents: \(error)")
-//                                } else if device_document is nil {
+//                                } else if deviceDoc is nil {
 //                                  print("Document data: \(dataDescription)")
                                 } else {
-                                    self.db.collection("location_data") // TODO need to create location_data collection at first
-                                        .whereField("device_id", isEqualTo: device_id)
-                                        .order(by: "created_at", descending: true)
+                                    self.db.collection("locationData") // TODO need to create locationData collection at first
+                                        .whereField("deviceID", isEqualTo: deviceID)
+                                        .order(by: "createdAt", descending: true)
                                         .limit(to:1)
-                                        .addSnapshotListener { (location_data_querySnapshot, error) in
+                                        .addSnapshotListener { (locationDataSnap, error) in
                                             if let error = error {
                                                 print("Error getting documents: \(error)")
                                             } else {
-                                                if(location_data_querySnapshot!.documents.count == 0){
-                                                    locationData += [( device_id,
-                                                                       access_auth_document.data()["admin"] as? Bool,
-                                                                       device_document!["mode"] as? String,
-                                                                       device_document!["name"] as? String,
+                                                if(locationDataSnap!.documents.count == 0){
+                                                    locationData += [( deviceID,
+                                                                       accessAuthDoc.data()["admin"] as? Bool,
+                                                                       deviceDoc!["mode"] as? String,
+                                                                       deviceDoc!["name"] as? String,
                                                                        nil,
                                                                        nil,
                                                                        nil )]
                                                 } else {
-                                                    for location_data_document in location_data_querySnapshot!.documents {
-                                                        locationData += [(device_id,
-                                                                          access_auth_document.data()["admin"] as? Bool,
-                                                                          device_document!["mode"] as? String,
-                                                                          device_document!["name"] as? String,
-                                                                          location_data_document.data()["latitude"] as? Double,
-                                                                          location_data_document.data()["longitude"] as? Double,
-                                                                          location_data_document.data()["battery"] as? Int)]
+                                                    for locationDataDoc in locationDataSnap!.documents {
+                                                        locationData += [(deviceID,
+                                                                          accessAuthDoc.data()["admin"] as? Bool,
+                                                                          deviceDoc!["mode"] as? String,
+                                                                          deviceDoc!["name"] as? String,
+                                                                          locationDataDoc.data()["latitude"] as? Double,
+                                                                          locationDataDoc.data()["longitude"] as? Double,
+                                                                          locationDataDoc.data()["battery"] as? Int)]
                                                     }
                                                 }
                                                 i += 1
-                                                if( i >= access_auth_querySnapshot!.documents.count ){ keepAlive = false }
+                                                if( i >= accessAuthSnap!.documents.count ){ keepAlive = false }
                                             }
                                     }
                                 }
