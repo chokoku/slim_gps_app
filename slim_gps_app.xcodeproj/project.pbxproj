@@ -43,7 +43,6 @@
 		0630319D20DE5904009F78EA /* TermOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630319C20DE5904009F78EA /* TermOfUseViewController.swift */; };
 		063031A620DFC48E009F78EA /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063031A520DFC48E009F78EA /* RegistrationViewController.swift */; };
 		063031AB20DFE070009F78EA /* UserInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063031AA20DFE070009F78EA /* UserInfoViewCell.swift */; };
-		067FD59B20EB092C0047CFC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 067FD59A20EB092C0047CFC9 /* GoogleService-Info.plist */; };
 		067FD5A020ED12C00047CFC9 /* DeviceSettingWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD59F20ED12C00047CFC9 /* DeviceSettingWireframe.swift */; };
 		067FD5A220ED12D50047CFC9 /* DeviceSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5A120ED12D50047CFC9 /* DeviceSettingViewController.swift */; };
 		067FD5A420ED12EC0047CFC9 /* DeviceSettingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5A320ED12EC0047CFC9 /* DeviceSettingInteractor.swift */; };
@@ -80,6 +79,7 @@
 		06A0E56E20F6B4BA002CFEA5 /* LocationSearchingInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56D20F6B4BA002CFEA5 /* LocationSearchingInterface.swift */; };
 		06A0E57020F6B4D0002CFEA5 /* LocationSearchingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */; };
 		06A0E57220F6B4DC002CFEA5 /* LocationSearchingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */; };
+		06F3084520FB49C900C3156B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06F3084420FB49C900C3156B /* GoogleService-Info.plist */; };
 		55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */; };
 		AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */; };
 		C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */; };
@@ -158,7 +158,6 @@
 		0630319C20DE5904009F78EA /* TermOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermOfUseViewController.swift; sourceTree = "<group>"; };
 		063031A520DFC48E009F78EA /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		063031AA20DFE070009F78EA /* UserInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewCell.swift; sourceTree = "<group>"; };
-		067FD59A20EB092C0047CFC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		067FD59F20ED12C00047CFC9 /* DeviceSettingWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSettingWireframe.swift; sourceTree = "<group>"; };
 		067FD5A120ED12D50047CFC9 /* DeviceSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSettingViewController.swift; sourceTree = "<group>"; };
 		067FD5A320ED12EC0047CFC9 /* DeviceSettingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSettingInteractor.swift; sourceTree = "<group>"; };
@@ -197,6 +196,8 @@
 		06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingInteractor.swift; sourceTree = "<group>"; };
 		06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchingPresenter.swift; sourceTree = "<group>"; };
 		06F307ED20F89FDB00C3156B /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06F3084420FB49C900C3156B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		06F3084620FB82BE00C3156B /* slim_gps_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = slim_gps_app.entitlements; sourceTree = "<group>"; };
 		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +264,7 @@
 		0606B97E20DDF82D003536B1 /* slim_gps_app */ = {
 			isa = PBXGroup;
 			children = (
+				06F3084620FB82BE00C3156B /* slim_gps_app.entitlements */,
 				0606B9AD20DE0594003536B1 /* Common */,
 				0606B9AF20DE0654003536B1 /* Modules */,
 			);
@@ -290,8 +292,8 @@
 		0606B9AD20DE0594003536B1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				067FD59A20EB092C0047CFC9 /* GoogleService-Info.plist */,
 				0606B97F20DDF82D003536B1 /* AppDelegate.swift */,
+				06F3084420FB49C900C3156B /* GoogleService-Info.plist */,
 				0606B98320DDF82D003536B1 /* Main.storyboard */,
 				0606B98620DDF830003536B1 /* Assets.xcassets */,
 				0606B98820DDF830003536B1 /* LaunchScreen.storyboard */,
@@ -592,6 +594,11 @@
 				TargetAttributes = {
 					0606B97B20DDF82D003536B1 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					0606B98F20DDF830003536B1 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -629,8 +636,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0606B98A20DDF830003536B1 /* LaunchScreen.storyboard in Resources */,
-				067FD59B20EB092C0047CFC9 /* GoogleService-Info.plist in Resources */,
 				06A0E56520F46C7F002CFEA5 /* DateTimePickerBarView.xib in Resources */,
+				06F3084520FB49C900C3156B /* GoogleService-Info.plist in Resources */,
 				0606B98720DDF830003536B1 /* Assets.xcassets in Resources */,
 				0606B98520DDF82D003536B1 /* Main.storyboard in Resources */,
 			);
@@ -1017,15 +1024,18 @@
 			baseConfigurationReference = 91244785A55EA9E00E0027CF /* Pods-slim_gps_app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = slim_gps_app/slim_gps_app.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T26X6QBT6Z;
+				DEVELOPMENT_TEAM = AR3FWJPD54;
 				INFOPLIST_FILE = slim_gps_app/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-app-bid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1036,15 +1046,18 @@
 			baseConfigurationReference = BFDD662F3EB156EB8EEF41B1 /* Pods-slim_gps_app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = slim_gps_app/slim_gps_app.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T26X6QBT6Z;
+				DEVELOPMENT_TEAM = AR3FWJPD54;
 				INFOPLIST_FILE = slim_gps_app/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yusukefukuhara.slim-gps-app-bid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -86,7 +86,7 @@ class DailyLocationViewController: UIViewController {
 extension DailyLocationViewController: DailyLocationViewInterface {
     func locationDataIsGotten(data:(latitude: Double, longitude: Double, radius: Double, createdAt: Date)){
         locationData += [(data.latitude, data.longitude, data.radius, data.createdAt)]
-        print(data)
+        
         // Set tracking circles
         let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude), radius: data.radius)
         circle.fillColor = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 0.8)

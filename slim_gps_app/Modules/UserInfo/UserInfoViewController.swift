@@ -14,6 +14,13 @@ class UserInfoViewController: FormViewController {
         super.viewDidLoad()
         self.navigationItem.title = "ユーザー情報"
         presenter.getUserInfo()
+        
+        // Initiate indicator
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.center = self.view.center
+        indicator.color = UIColor.black
+        self.view.addSubview(indicator)
+        self.view.bringSubview(toFront: indicator)
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,7 +105,7 @@ class UserInfoViewController: FormViewController {
                                 for row in self.form.rows {
                                     row.baseCell.isUserInteractionEnabled = false
                                 }
-                                self.startIndicator()
+                                self.indicator.startAnimating()
                                 self.presenter.updateUserEmail(email: email, password: pass)
                             }
                         }
@@ -130,14 +137,6 @@ class UserInfoViewController: FormViewController {
         }
     }
     
-    func startIndicator(){
-        indicator.activityIndicatorViewStyle = .whiteLarge
-        indicator.center = self.view.center
-        indicator.color = UIColor.black
-        self.view.addSubview(indicator)
-        self.view.bringSubview(toFront: indicator)
-        indicator.startAnimating()
-    }
 }
 
 extension UserInfoViewController: UserInfoViewInterface {

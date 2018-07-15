@@ -7,6 +7,10 @@ class LocationSearchingViewController: UIViewController {
     var deviceID: String!
     var mapView : GMSMapView!
     var marker: GMSMarker!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        presenter.requestLocationSearching(deviceID: deviceID)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +22,8 @@ class LocationSearchingViewController: UIViewController {
         self.view.addSubview(mapView)
         
         // Set the request Button after the mapView was added
-        setRequestButton()
-        
+        self.view.bringSubview(toFront: searchButton)
+
         // Get latest location
         presenter.setLatestLocationListener( deviceID: deviceID )
     }
@@ -53,18 +57,6 @@ extension LocationSearchingViewController: LocationSearchingViewInterface {
         mapView.selectedMarker = marker
     }
     
-    func setRequestButton(){
-        // Set request Button
-        let requestButton = UIButton()
-        requestButton.frame = CGRect(x: (self.view.bounds.width-100)/2, y: self.view.bounds.height-(50+20), width: 100, height: 50)
-        requestButton.layer.cornerRadius = 5.0
-        requestButton.backgroundColor = UIColor(hex: "0080FF")
-        requestButton.setTitleColor(UIColor.white, for: .normal)
-        requestButton.setTitle("位置検索", for: .normal)
-        requestButton.addTarget(self, action: #selector(requestButtonTapped), for: .touchUpInside)
-        self.view.addSubview(requestButton)
-    }
-    
     func showAlert(message: String){
         let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
         let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:{ (action) in
@@ -72,23 +64,5 @@ extension LocationSearchingViewController: LocationSearchingViewInterface {
         } )
         alert.addAction(OKAction)
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    @objc func requestButtonTapped(){
-        presenter.requestLocationSearching(deviceID: deviceID)
-    }
-}
-
-extension UIColor {
-    convenience init(hex: String, alpha: CGFloat) {
-        let v = hex.map { String($0) } + Array(repeating: "0", count: max(6 - hex.count, 0))
-        let r = CGFloat(Int(v[0] + v[1], radix: 16) ?? 0) / 255.0
-        let g = CGFloat(Int(v[2] + v[3], radix: 16) ?? 0) / 255.0
-        let b = CGFloat(Int(v[4] + v[5], radix: 16) ?? 0) / 255.0
-        self.init(red: r, green: g, blue: b, alpha: alpha)
-    }
-    
-    convenience init(hex: String) {
-        self.init(hex: hex, alpha: 1.0)
     }
 }

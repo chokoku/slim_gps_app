@@ -612,9 +612,37 @@
                     <view key="view" contentMode="scaleToFill" id="nmd-9x-28J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfJ-OL-ptV">
+                                <rect key="frame" x="137" y="597" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="IGn-Pq-8ez"/>
+                                    <constraint firstAttribute="height" constant="50" id="mrF-Uh-Qo6"/>
+                                </constraints>
+                                <state key="normal" title="位置検索">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="N8i-B4-J8L" eventType="touchUpInside" id="oX3-Ga-qhu"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mj3-YT-3FQ" firstAttribute="bottom" secondItem="XfJ-OL-ptV" secondAttribute="bottom" constant="20" id="Hvd-4U-E1q"/>
+                            <constraint firstItem="XfJ-OL-ptV" firstAttribute="centerX" secondItem="nmd-9x-28J" secondAttribute="centerX" id="krv-zJ-DDg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mj3-YT-3FQ"/>
                     </view>
+                    <connections>
+                        <outlet property="searchButton" destination="XfJ-OL-ptV" id="NQt-UA-wIF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3v-ho-b2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -18,7 +18,6 @@ extension SideMenuWireframe: SideMenuWireframeInterface {
 
         print("move to \(index) page")
         
-        // TODO bug here
         switch index {
         case "Login":
             nextVC = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
@@ -33,7 +32,7 @@ extension SideMenuWireframe: SideMenuWireframeInterface {
         case "AccessApproval":
             nextVC = AccessApprovalWireframe().configureModule()
         case "ContactUs":
-            nextVC = storyboard.instantiateViewController(withIdentifier: "ContactUs") as! LoginViewController
+            nextVC = storyboard.instantiateViewController(withIdentifier: "ContactUs") as! ContactUsViewController
         case "TermOfUse":
             nextVC = storyboard.instantiateViewController(withIdentifier: "TermOfUse") as! TermOfUseViewController
         default:

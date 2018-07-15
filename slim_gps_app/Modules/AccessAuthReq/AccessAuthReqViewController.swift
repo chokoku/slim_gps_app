@@ -25,22 +25,18 @@ class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
     }
 
     @IBAction func submitSerialNum(_ sender: Any) {
+        
+        // Start the indicator
+        self.view.addSubview(indicator)
+        self.view.bringSubview(toFront: indicator)
+        indicator.startAnimating()
+        
+        // Disable the requestButton
+        submitButton.isEnabled = false
+        
         if self.serialNumInput.text == "" {
-            let alertController = UIAlertController(title: "エラー", message: "シリアル番号を入力してください", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
+            showAlert(message: "シリアル番号を入力してください")
         } else {
-            
-            // Start the indicator
-            self.view.addSubview(indicator)
-            self.view.bringSubview(toFront: indicator)
-            indicator.startAnimating()
-            
-            // Disable the requestButton
-            submitButton.isEnabled = false
-            
-            // Submit serialNum
             presenter.submitSerialNum(serialNum: self.serialNumInput.text!)
         }
     }
@@ -55,7 +51,6 @@ class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
 extension AccessAuthReqViewController: AccessAuthReqViewInterface {
     
     func accessAuthReqIsSubmitted(){
-        
         submitButton.isEnabled = true
         indicator.stopAnimating()
         self.serialNumInput.text = ""

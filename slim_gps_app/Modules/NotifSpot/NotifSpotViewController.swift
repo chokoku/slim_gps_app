@@ -10,8 +10,8 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
     @IBOutlet weak var notifSpotTable: UITableView!
     var notifSpots = [(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double)]()
     var locationManager: CLLocationManager = CLLocationManager()
-    var currentLatitude: CLLocationDegrees! = 35.637730  // 38.258595
-    var currentLongitude: CLLocationDegrees! = 139.691532 // 137.6850225
+    var currentLatitude: CLLocationDegrees! = 38.258595 // center of Japan
+    var currentLongitude: CLLocationDegrees! = 137.6850225 // center of Japan
     var zoom: Float = 16.0 // 5.0
     
     override func viewDidLoad() {
