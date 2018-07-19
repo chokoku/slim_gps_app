@@ -2,6 +2,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+//import FirebaseFunctions
 
 final class UserInfoInteractor {
     var presenter: UserInfoPresenterInterface!
@@ -48,7 +49,6 @@ extension UserInfoInteractor: UserInfoInteractorInterface {
             if let _ = err {
                 self.presenter.showAlert(message:"ユーザー認証に失敗しました")
             } else {
-                // TODO bug firebase authentication does not update
                 self.presenter.emailIsUpdated(email: email)
             }
         }

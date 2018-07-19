@@ -14,7 +14,6 @@ class DailyLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         marker = GMSMarker()
-
         loadLocationData() // load location data and set markers on mapView
     }
     
@@ -33,6 +32,10 @@ class DailyLocationViewController: UIViewController {
         mapView = GMSMapView(frame: CGRect(x:0,y: 0, width:self.view.bounds.width, height:self.view.bounds.height))
         self.view.addSubview(mapView)
         
+        // Set default camera
+        let defaultCamera = GMSCameraPosition.camera(withLatitude: 38.258595, longitude: 137.6850225, zoom: 4.5) // center of Japan
+        mapView.camera = defaultCamera
+        
         // Get locationData
         presenter.setDailyLocationListener( deviceID: deviceID, date: date )
     }
@@ -47,7 +50,6 @@ class DailyLocationViewController: UIViewController {
         mapView.selectedMarker = marker
     }
     
-    // TODO small bug here marker does not disappear
     func reloadLocationData(){
         mapView.removeFromSuperview()
         loadLocationData()

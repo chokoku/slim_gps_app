@@ -25,7 +25,7 @@ extension LatestLocationInteractor: LatestLocationInteractorInterface {
                     self.presenter.showAlert(message: "位置情報の取得に失敗しました")
                     return
                 }
-                if(snap.documents.count == 0){self.presenter.showAlert(message: "位置情報がありません")}
+                if(snap.documents.count == 0){ self.presenter.locationDataIsEmpty(message: "位置情報がありません") }
                 snap.documentChanges.forEach{ diff in
                     if (diff.type == .added){
                         let docData = diff.document.data()

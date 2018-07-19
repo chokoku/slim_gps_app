@@ -33,6 +33,12 @@ extension LatestLocationPresenter: LatestLocationPresenterInterface {
             _view.showAlert(message: message)
         }
     }
+    
+    func locationDataIsEmpty(message: String){
+        if let _view = _view {
+            _view.locationDataIsEmpty(message: message)
+        }
+    }
 
 }
 

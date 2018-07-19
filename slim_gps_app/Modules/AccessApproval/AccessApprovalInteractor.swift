@@ -59,7 +59,6 @@ extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
             if let _ = err {
                 self.presenter.showAlert(message: "アクセス権を付与できませんでした")
             } else {
-                // TODO send notification
                 self.presenter.accessAuthIsCompleted(accessAuthID: accessAuthID)
             }
         }

@@ -37,8 +37,6 @@ extension AccessAuthReqInteractor: AccessAuthReqInteractorInterface {
                                                                                             if let _ = err {
                                                                                                 self.presenter.showAlert(message: "アクセス権の申請に失敗しました")
                                                                                             } else {
-                                                                                                // TODO request notification
-                                                                                                print(4)
                                                                                                 self.presenter.accessAuthReqIsSubmitted()
                                                                                             }
                                     }

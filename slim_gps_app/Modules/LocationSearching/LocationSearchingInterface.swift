@@ -5,6 +5,7 @@ protocol LocationSearchingPresenterInterface: class {
     // To View
     func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date)
     func showAlert(message: String)
+    func locationDataIsEmpty(message: String)
     
     // To Interactor
     func setLatestLocationListener( deviceID: String )
@@ -16,6 +17,7 @@ protocol LocationSearchingPresenterInterface: class {
 protocol LocationSearchingViewInterface: class {
     func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date)
     func showAlert(message: String)
+    func locationDataIsEmpty(message: String)
 }
 
 protocol LocationSearchingInteractorInterface: class {

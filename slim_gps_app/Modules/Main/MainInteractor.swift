@@ -26,6 +26,7 @@ extension MainInteractor: MainInteractorInterface {
                 } else if( 0 != accessAuthSnap!.documents.count ){
                     var i = 0
                     for accessAuthDoc in accessAuthSnap!.documents {
+                        Thread.sleep(forTimeInterval:0.1)
                         let deviceID = accessAuthDoc.data()["deviceID"] as! String // serialNum
                         self.db.collection("devices").document(deviceID)
                             .getDocument { (deviceDoc, error) in

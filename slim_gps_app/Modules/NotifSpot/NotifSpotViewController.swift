@@ -8,11 +8,9 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
     var mapView : GMSMapView!
     let tableHeight: CGFloat = 150
     @IBOutlet weak var notifSpotTable: UITableView!
-    var notifSpots = [(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double)]()
+    var notifSpots = [(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double, circle: GMSCircle)]()
     var locationManager: CLLocationManager = CLLocationManager()
-    var currentLatitude: CLLocationDegrees! = 38.258595 // center of Japan
-    var currentLongitude: CLLocationDegrees! = 137.6850225 // center of Japan
-    var zoom: Float = 16.0 // 5.0
+    var circles = [GMSCircle]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +35,10 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
     }
     
     func addMapView(){
-        let camera = GMSCameraPosition.camera(withLatitude: currentLatitude, longitude: currentLongitude, zoom: zoom)
+        let defaultCamera = GMSCameraPosition.camera(withLatitude: 38.258595, longitude: 137.6850225, zoom: 4.5) // center of Japan
         mapView = GMSMapView(frame: CGRect(x:0,y: 0, width:self.view.bounds.width, height:self.view.bounds.height-tableHeight))
-        mapView.camera = camera
-        mapView.animate(to: camera)
+        mapView.camera = defaultCamera
+        mapView.animate(to: defaultCamera)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
@@ -61,6 +59,10 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
         cell.editButton.tag = indexPath.row
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
@@ -100,13 +102,21 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
 
 extension NotifSpotViewController: NotifSpotViewInterface {
     func showNotifSpot(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double){
-        notifSpots += [(notifSpotID, name, latitude, longitude, radius)]
+        
+        // Set a tracking circle
         let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: radius)
         circle.fillColor = UIColor(red: 0.35, green: 0, blue: 0, alpha: 0.05)
         circle.strokeColor = UIColor.red
         circle.strokeWidth = 1
         circle.map = mapView
+        
+        // Add a notifSpot
+        notifSpots += [(notifSpotID, name, latitude, longitude, radius, circle)]
         notifSpotTable.reloadData()
+        
+        // Set a camera
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 15.0)
+        mapView.camera = camera
     }
     
     func showAlert(message: String){
@@ -122,6 +132,7 @@ extension NotifSpotViewController: NotifSpotViewInterface {
     }
     
     func notifSpotIsDeleted(notifSpotID: String){
+        notifSpots.filter( {$0.notifSpotID == notifSpotID} ).first!.circle.map = nil
         notifSpots = notifSpots.filter( {$0.notifSpotID != notifSpotID} )
         notifSpotTable.reloadData()
     }
@@ -156,11 +167,6 @@ extension NotifSpotViewController: CLLocationManagerDelegate {
     
     // when location data is given
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = manager.location {
-            currentLatitude = location.coordinate.latitude
-            currentLongitude = location.coordinate.longitude
-            zoom = 15.0
-        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

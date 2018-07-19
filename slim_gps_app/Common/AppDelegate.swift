@@ -1,6 +1,8 @@
 import UIKit
 import SlideMenuControllerSwift
 import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 import GoogleMaps
 import FirebaseMessaging
 import UserNotifications
@@ -164,7 +166,15 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 extension AppDelegate : MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
-        // TODO: If necessary send token to application server.
+        let user = Auth.auth().currentUser
+        
+        // Set db
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
+        db.collection("clients").document(user!.uid).updateData([ "fcmToken": fcmToken ]) // TODO no error 
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 

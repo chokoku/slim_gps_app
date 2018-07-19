@@ -37,5 +37,11 @@ extension LocationSearchingPresenter: LocationSearchingPresenterInterface {
     func requestLocationSearching(deviceID: String){
         _interactor.requestLocationSearching(deviceID: deviceID)
     }
+    
+    func locationDataIsEmpty(message: String){
+        if let _view = _view {
+            _view.locationDataIsEmpty(message: message)
+        }
+    }
 }
 

@@ -11,6 +11,7 @@ target 'slim_gps_app' do
   pod 'Firebase/Firestore’
   pod 'Firebase/Auth'
   pod 'Firebase/Messaging'
+  pod 'Firebase/Functions'
   pod 'SlideMenuControllerSwift'
   pod 'GoogleMaps'
   pod 'GooglePlacePicker'

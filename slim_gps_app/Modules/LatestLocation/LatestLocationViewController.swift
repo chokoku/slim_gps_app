@@ -57,6 +57,12 @@ extension LatestLocationViewController: LatestLocationViewInterface {
         alert.addAction(OKAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func locationDataIsEmpty(message: String){
+        let defaultCamera = GMSCameraPosition.camera(withLatitude: 38.258595, longitude: 137.6850225, zoom: 4.5) // center of Japan
+        mapView.camera = defaultCamera
+        showAlert(message: message)
+    }
 }
 
 
