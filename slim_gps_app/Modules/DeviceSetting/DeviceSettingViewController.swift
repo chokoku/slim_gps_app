@@ -5,7 +5,7 @@ class DeviceSettingViewController: FormViewController {
     
     var presenter: DeviceSettingPresenterInterface!
     var accessAuth = [(accessAuthID: String?, firstName: String?, lastName: String?, admin: Bool?)]()
-    let modeLabels:[String:String] = ["見守りモード(省電力)":"watching_powerSaving", "見守りモード(通常)":"watching_normal", "紛失対策モード":"lost_proof"]
+    let modeLabels:[String:String] = ["見守りモード(省電力)":"watching_powerSaving", "見守りモード(通常)":"watching_normal", "紛失対策モード":"lost_proof", "機内モード":"airplane"]
 
     @IBOutlet weak var deviceInfoTable: UITableView!
     
@@ -56,7 +56,7 @@ class DeviceSettingViewController: FormViewController {
             <<< ActionSheetRow<String>("mode") { row in
                 row.title = "モード"
                 row.selectorTitle = "モードを選択してください"
-                row.options = ["見守りモード(省電力)", "見守りモード(通常)", "紛失対策モード"]
+                row.options = ["見守りモード(省電力)", "見守りモード(通常)", "紛失対策モード", "機内モード"]
                 row.value = modeLabels.filter{$0.value == mode}.keys.first
                 }.cellSetup { cell, row in
                     cell.detailTextLabel?.textColor = UIColor.black

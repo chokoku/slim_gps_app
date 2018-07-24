@@ -2,12 +2,13 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
-//import FirebaseFunctions
+import FirebaseFunctions
 
 final class UserInfoInteractor {
     var presenter: UserInfoPresenterInterface!
     let db = Firestore.firestore()
-    
+    let functions = Functions.functions()
+
     init () {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -40,6 +41,9 @@ extension UserInfoInteractor: UserInfoInteractorInterface {
         db.collection("clients").document(user!.uid).updateData([ key: value ]){ err in
             if let _ = err {
                 self.presenter.showAlert(message: "ユーザー情報を更新できませんでした")
+            } else {
+                self.functions.httpsCallable("updateUserInfo").call(["key": key, "value": value]) { (result, error) in
+                }
             }
         }
     }
@@ -49,6 +53,8 @@ extension UserInfoInteractor: UserInfoInteractorInterface {
             if let _ = err {
                 self.presenter.showAlert(message:"ユーザー認証に失敗しました")
             } else {
+                self.functions.httpsCallable("updateUserInfo").call(["key": "email", "value": email]) { (result, error) in
+                }
                 self.presenter.emailIsUpdated(email: email)
             }
         }

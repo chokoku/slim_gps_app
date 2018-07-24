@@ -20,10 +20,6 @@ class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
         indicator.color = UIColor.black
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     @IBAction func submitSerialNum(_ sender: Any) {
         
         // Start the indicator
@@ -38,6 +34,7 @@ class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
             showAlert(message: "シリアル番号を入力してください")
         } else {
             presenter.submitSerialNum(serialNum: self.serialNumInput.text!)
+            self.serialNumInput.resignFirstResponder()
         }
     }
     

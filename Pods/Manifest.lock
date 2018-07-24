@@ -17,6 +17,9 @@ PODS:
   - Firebase/Firestore (5.4.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (= 0.12.5)
+  - Firebase/Functions (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseFunctions (= 2.1.0)
   - Firebase/Messaging (5.4.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (= 3.0.3)
@@ -43,6 +46,9 @@ PODS:
     - leveldb-library (~> 1.18)
     - nanopb (~> 0.3.8)
     - Protobuf (~> 3.1)
+  - FirebaseFunctions (2.1.0):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseInstanceID (3.1.1):
     - FirebaseCore (~> 5.0)
   - FirebaseMessaging (3.0.3):
@@ -103,6 +109,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
+  - Firebase/Functions
   - Firebase/Messaging
   - FontAwesome.swift
   - GoogleMaps
@@ -120,6 +127,7 @@ SPEC REPOS:
     - FirebaseAuth
     - FirebaseCore
     - FirebaseFirestore
+    - FirebaseFunctions
     - FirebaseInstanceID
     - FirebaseMessaging
     - FontAwesome.swift
@@ -146,6 +154,7 @@ SPEC CHECKSUMS:
   FirebaseAuth: 096e457cdd4274412a66c4a35874787e411f5a03
   FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
   FirebaseFirestore: b041e4a94601e18e82a863e0dcfa9d3e55cc2031
+  FirebaseFunctions: 0cb3bc0bbeac1daf6fea378a1064ff7f484e4c4e
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
   FontAwesome.swift: b4e4c8ccbbecb12f9b592bc533ff237af3706667
@@ -164,6 +173,6 @@ SPEC CHECKSUMS:
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
 
-PODFILE CHECKSUM: 94e26236f323b26b0021cb61cf7ebacdd54ce594
+PODFILE CHECKSUM: 1a2bd0617518a302cc5b02dbf5494e30b92b3787
 
 COCOAPODS: 1.5.3

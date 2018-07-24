@@ -174,7 +174,7 @@ extension AppDelegate : MessagingDelegate {
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
         
-        db.collection("clients").document(user!.uid).updateData([ "fcmToken": fcmToken ]) // TODO no error 
+        db.collection("clients").document(user!.uid).updateData([ "fcmToken": fcmToken ])
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 

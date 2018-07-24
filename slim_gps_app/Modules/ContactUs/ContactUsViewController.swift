@@ -17,6 +17,8 @@ class ContactUsViewController: UIViewController, UITextViewDelegate {
             if let _ = err {
                 self.showAlert(message:"メッセージの保存に失敗しました")
             } else {
+                self.contactUsTextView.text = nil
+                self.view.endEditing(true)
                 SCLAlertView().showSuccess("送信しました", subTitle:"")
             }
         }
@@ -49,10 +51,6 @@ class ContactUsViewController: UIViewController, UITextViewDelegate {
         let commitButton : UIBarButtonItem = UIBarButtonItem(title: "完了", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.commitButtonTapped))// 閉じるボタン
         kbToolBar.items = [spacer, commitButton]
         contactUsTextView.inputAccessoryView = kbToolBar
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     // テキストビューにフォーカスが移った
