@@ -49,5 +49,6 @@ extension MainInteractor: MainInteractorInterface {
                         }
                     }
                 }
+        }
     }
 }
