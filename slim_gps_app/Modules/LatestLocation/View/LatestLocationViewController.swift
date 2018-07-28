@@ -12,7 +12,7 @@ class LatestLocationViewController: UIViewController {
         super.viewDidLoad()
         
         // Show mapView
-        mapView = GMSMapView(frame: CGRect(x:0,y: 0, width:self.view.bounds.width, height:self.view.bounds.height))
+        mapView = GMSMapView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
         marker = GMSMarker()
         self.view.addSubview(self.mapView)
         
@@ -39,6 +39,13 @@ extension LatestLocationViewController: LatestLocationViewInterface {
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 15.0)
         self.mapView.camera = camera
         
+        // Set circle TODO need test
+        let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: radius)
+        circle.fillColor = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 0.8)
+        circle.strokeColor = UIColor.blue
+        circle.strokeWidth = 0.5
+        circle.map = mapView
+            
         // Set marker
         marker.position = CLLocationCoordinate2DMake(latitude, longitude)
         let f = DateFormatter()

@@ -16,11 +16,6 @@ class DailyLocationViewController: UIViewController {
         marker = GMSMarker()
         loadLocationData() // load location data and set markers on mapView
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        presenter.removeSnapshotListener()
-    }
 
     func loadLocationData(){
         
@@ -69,6 +64,8 @@ class DailyLocationViewController: UIViewController {
     func sliderValueChanged(value: Float){
         marker.map = nil
         let intValue: Int = Int(round(value))
+        print(locationData)
+        print(intValue)
         setMarker(locationData: locationData[intValue])
     }
     
@@ -82,7 +79,6 @@ class DailyLocationViewController: UIViewController {
         dateTimePickerBar.timeSlider.isEnabled = isEnabled
         self.view.addSubview(dateTimePickerBar)
     }
-    
 }
 
 extension DailyLocationViewController: DailyLocationViewInterface {
@@ -90,15 +86,11 @@ extension DailyLocationViewController: DailyLocationViewInterface {
         locationData += [(data.latitude, data.longitude, data.radius, data.createdAt)]
         
         // Set tracking circles
-        let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude), radius: data.radius)
+        let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude), radius: 5) // radius is not used
         circle.fillColor = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 0.8)
         circle.strokeColor = UIColor.blue
         circle.strokeWidth = 0.5
         circle.map = mapView
-        
-        // Set camera
-        let camera = GMSCameraPosition.camera(withLatitude: locationData.last!.latitude, longitude: locationData.last!.longitude, zoom: 16.0)
-        mapView.camera = camera
         
         // Set the target marker
         setMarker(locationData: locationData.last!)
@@ -106,6 +98,14 @@ extension DailyLocationViewController: DailyLocationViewInterface {
         // Configure dateTimePickerBar
         let steps = locationData.count - 1
         setDateTimePickerBar(isEnabled: true, maximumValue: Float(steps))
+    }
+    
+    func setBounds(){
+        var bounds = GMSCoordinateBounds()
+        for data in locationData {
+            bounds = bounds.includingCoordinate(CLLocationCoordinate2DMake(data.latitude, data.longitude))
+        }
+        mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsetsMake(120.0 , 50.0 ,120.0 ,50.0)))
     }
     
     func showAlert(message: String){

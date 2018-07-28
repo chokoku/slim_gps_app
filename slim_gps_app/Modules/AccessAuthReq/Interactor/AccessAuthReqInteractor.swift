@@ -29,11 +29,14 @@ extension AccessAuthReqInteractor: AccessAuthReqInteractorInterface {
                                 self.presenter.showAlert(message: "エラーが発生しました")
                             } else {
                                 if(accessAuthSnap!.documents.count == 0){
-                                    self.db.collection("accessAuth").addDocument(data: ["admin": false,
+                                    let ownerClientID = deviceDoc.data()!["ownerClientID"] as! String
+                                    self.db.collection("accessAuth").addDocument(data: [ "admin": false,
                                                                                          "deviceID": serialNum,
                                                                                          "clientID": uid,
                                                                                          "confirmed": false,
-                                                                                         "createdAt": Date()]) { err in
+                                                                                         "createdAt": Date(),
+                                                                                         "ownerClientID": ownerClientID
+                                                                                        ]) { err in
                                                                                             if let _ = err {
                                                                                                 self.presenter.showAlert(message: "アクセス権の申請に失敗しました")
                                                                                             } else {

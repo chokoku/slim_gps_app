@@ -2,11 +2,11 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-final class LocationSearchingInteractor {
-    var presenter: LocationSearchingPresenterInterface!
+final class LatestLocationInteractor {
+    var presenter: LatestLocationPresenterInterface!
     let db = Firestore.firestore()
     var listener:ListenerRegistration! = nil
-
+    
     init () {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -14,7 +14,8 @@ final class LocationSearchingInteractor {
     }
 }
 
-extension LocationSearchingInteractor: LocationSearchingInteractorInterface {
+extension LatestLocationInteractor: LatestLocationInteractorInterface {
+    // TODO change to update listener in devices collection
     func setLatestLocationListener( deviceID: String ) {
         listener = db.collection("locationData")
             .whereField("deviceID", isEqualTo: deviceID)
@@ -44,12 +45,5 @@ extension LocationSearchingInteractor: LocationSearchingInteractorInterface {
     func removeSnapshotListener(){
         listener.remove()
     }
-    
-    func requestLocationSearching(deviceID: String){
-        db.collection("requests").addDocument(data: ["deviceID": deviceID, "createdAt": Date()]) { err in
-            if let _ = err {
-                self.presenter.showAlert(message: "位置情報のリクエストに失敗しました")
-            }
-        }
-    }
+
 }

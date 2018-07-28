@@ -80,6 +80,7 @@
 		06A0E57020F6B4D0002CFEA5 /* LocationSearchingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */; };
 		06A0E57220F6B4DC002CFEA5 /* LocationSearchingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */; };
 		06F3084520FB49C900C3156B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06F3084420FB49C900C3156B /* GoogleService-Info.plist */; };
+		06F30875210C434600C3156B /* EntityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F30874210C434600C3156B /* EntityError.swift */; };
 		55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */; };
 		AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */; };
 		C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */; };
@@ -198,6 +199,7 @@
 		06F307ED20F89FDB00C3156B /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F3084420FB49C900C3156B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		06F3084620FB82BE00C3156B /* slim_gps_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = slim_gps_app.entitlements; sourceTree = "<group>"; };
+		06F30874210C434600C3156B /* EntityError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityError.swift; sourceTree = "<group>"; };
 		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				06F3084620FB82BE00C3156B /* slim_gps_app.entitlements */,
+				06F30873210C42F400C3156B /* Entity */,
 				0606B9AD20DE0594003536B1 /* Common */,
 				0606B9AF20DE0654003536B1 /* Modules */,
 			);
@@ -335,10 +338,10 @@
 		0606B9B020DE0687003536B1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				0606B9BB20DE1061003536B1 /* MainViewController.swift */,
-				0630315F20DE38CA009F78EA /* MainWireframe.swift */,
-				0630316120DE38DC009F78EA /* MainInteractor.swift */,
-				0630316320DE38F1009F78EA /* MainPresenter.swift */,
+				06F30862210C263F00C3156B /* Wireframe */,
+				06F30861210C263900C3156B /* Interactor */,
+				06F30860210C263500C3156B /* Presenter */,
+				06F3085F210C263100C3156B /* View */,
 				0630316520DE3C6F009F78EA /* MainInterface.swift */,
 			);
 			path = Main;
@@ -347,9 +350,9 @@
 		0630316720DE4DF8009F78EA /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				0606B9BF20DE1325003536B1 /* SideMenuViewController.swift */,
-				0630316820DE4E1D009F78EA /* SideMenuPresenter.swift */,
-				0630316B20DE4E3A009F78EA /* SideMenuWireframe.swift */,
+				06F30869210C269000C3156B /* Wireframe */,
+				06F30868210C268800C3156B /* Presenter */,
+				06F30867210C268400C3156B /* View */,
 				0630316D20DE4E49009F78EA /* SideMenuInterface.swift */,
 			);
 			path = SideMenu;
@@ -358,12 +361,11 @@
 		0630316F20DE5634009F78EA /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
-				0630317020DE5650009F78EA /* UserInfoViewController.swift */,
-				0630317220DE5663009F78EA /* UserInfoWireframe.swift */,
-				0630317420DE5671009F78EA /* UserInfoPresenter.swift */,
+				06F3086E210C26C200C3156B /* Interactor */,
+				06F3086D210C26BC00C3156B /* Wireframe */,
+				06F3086C210C26B600C3156B /* Presenter */,
+				06F3086B210C26B100C3156B /* View */,
 				0630317620DE5680009F78EA /* UserInfoInterface.swift */,
-				0630317820DE5691009F78EA /* UserInfoInteractor.swift */,
-				063031AA20DFE070009F78EA /* UserInfoViewCell.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -379,12 +381,11 @@
 		0630318520DE5775009F78EA /* NotifSpot */ = {
 			isa = PBXGroup;
 			children = (
-				0630318620DE57BF009F78EA /* NotifSpotViewController.swift */,
-				0630318820DE57DE009F78EA /* NotifSpotPresenter.swift */,
-				0630318A20DE57E8009F78EA /* NotifSpotInteractor.swift */,
+				06F30866210C266400C3156B /* Wireframe */,
+				06F30865210C265D00C3156B /* Interactor */,
+				06F30864210C265800C3156B /* Presenter */,
+				06F30863210C265400C3156B /* View */,
 				0630318C20DE57F6009F78EA /* NotifSpotInterface.swift */,
-				0630318E20DE5806009F78EA /* NotifSpotWireframe.swift */,
-				06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */,
 			);
 			path = NotifSpot;
 			sourceTree = "<group>";
@@ -392,10 +393,10 @@
 		0630319020DE580B009F78EA /* AccessAuthReq */ = {
 			isa = PBXGroup;
 			children = (
-				0630319120DE58A2009F78EA /* AccessAuthReqViewController.swift */,
-				0630319920DE58D5009F78EA /* AccessAuthReqWireframe.swift */,
-				0630319320DE58AF009F78EA /* AccessAuthReqPresenter.swift */,
-				0630319520DE58BF009F78EA /* AccessAuthReqInteractor.swift */,
+				06F3084E210C24A700C3156B /* Presenter */,
+				06F3084D210C24A100C3156B /* Wireframe */,
+				06F3084C210C249A00C3156B /* Interactor */,
+				06F3084B210C249200C3156B /* View */,
 				0630319720DE58C9009F78EA /* AccessAuthReqInterface.swift */,
 			);
 			path = AccessAuthReq;
@@ -420,10 +421,10 @@
 		067FD59E20ED12A80047CFC9 /* DeviceSetting */ = {
 			isa = PBXGroup;
 			children = (
-				067FD5A120ED12D50047CFC9 /* DeviceSettingViewController.swift */,
-				067FD59F20ED12C00047CFC9 /* DeviceSettingWireframe.swift */,
-				067FD5A320ED12EC0047CFC9 /* DeviceSettingInteractor.swift */,
-				067FD5A520ED12F90047CFC9 /* DeviceSettingPresenter.swift */,
+				06F30856210C25BF00C3156B /* Wireframe */,
+				06F30855210C25B700C3156B /* Interactor */,
+				06F30854210C25B200C3156B /* Presenter */,
+				06F30853210C25AD00C3156B /* View */,
 				067FD5A720ED13080047CFC9 /* DeviceSettingInterface.swift */,
 			);
 			path = DeviceSetting;
@@ -432,10 +433,10 @@
 		067FD5A920EDBB830047CFC9 /* LocationData */ = {
 			isa = PBXGroup;
 			children = (
-				067FD5AC20EDBBB70047CFC9 /* LocationDataViewController.swift */,
-				067FD5AA20EDBBA30047CFC9 /* LocationDataWireframe.swift */,
-				067FD5AE20EDBBC90047CFC9 /* LocationDataInteractor.swift */,
-				067FD5B020EDBBD70047CFC9 /* LocationDataPresenter.swift */,
+				06F3085A210C25E900C3156B /* Presenter */,
+				06F30859210C25E200C3156B /* Interactor */,
+				06F30858210C25DB00C3156B /* Wireframe */,
+				06F30857210C25D700C3156B /* View */,
 				067FD5B220EDBBE20047CFC9 /* LocationDataInterface.swift */,
 			);
 			path = LocationData;
@@ -444,10 +445,10 @@
 		067FD5B420EE11FB0047CFC9 /* LatestLocation */ = {
 			isa = PBXGroup;
 			children = (
-				067FD5B520EE126F0047CFC9 /* LatestLocationViewController.swift */,
-				067FD5B720EE127E0047CFC9 /* LatestLocationWireframe.swift */,
-				067FD5B920EE129C0047CFC9 /* LatestLocationInteractor.swift */,
-				067FD5BB20EE12A90047CFC9 /* LatestLocationPresenter.swift */,
+				06F30872210C293700C3156B /* Wireframe */,
+				06F30871210C293200C3156B /* Interactor */,
+				06F30870210C292D00C3156B /* Presenter */,
+				06F3086F210C292900C3156B /* View */,
 				067FD5BD20EE12B60047CFC9 /* LatestLocationInterface.swift */,
 			);
 			path = LatestLocation;
@@ -456,14 +457,11 @@
 		067FD5BF20EE1DC20047CFC9 /* DailyLocation */ = {
 			isa = PBXGroup;
 			children = (
-				067FD5C020EE1DE40047CFC9 /* DailyLocationViewController.swift */,
-				067FD5C220EE1DEF0047CFC9 /* DailyLocationWireframe.swift */,
-				067FD5C420EE1DFD0047CFC9 /* DailyLocationInteractor.swift */,
-				067FD5C620EE1E090047CFC9 /* DailyLocationPresenter.swift */,
+				06F30852210C256900C3156B /* Wireframe */,
+				06F30851210C256200C3156B /* Interactor */,
+				06F30850210C255C00C3156B /* Presenter */,
+				06F3084F210C255500C3156B /* View */,
 				067FD5C820EE1E140047CFC9 /* DailyLocationInterface.swift */,
-				067FD5CA20EE791B0047CFC9 /* PopupViewController.swift */,
-				06A0E56420F46C7F002CFEA5 /* DateTimePickerBarView.xib */,
-				06A0E56620F4719D002CFEA5 /* DateTimePickerBarView.swift */,
 			);
 			path = DailyLocation;
 			sourceTree = "<group>";
@@ -471,12 +469,11 @@
 		067FD5CC20F26DD20047CFC9 /* AccessApproval */ = {
 			isa = PBXGroup;
 			children = (
-				067FD5CD20F26DF70047CFC9 /* AccessApprovalViewController.swift */,
-				067FD5CF20F26E280047CFC9 /* AccessApprovalWireframe.swift */,
-				067FD5D120F26E400047CFC9 /* AccessApprovalInteractor.swift */,
-				067FD5D320F26E510047CFC9 /* AccessApprovalPresenter.swift */,
+				06F3084A210C242600C3156B /* Presenter */,
+				06F30849210C241E00C3156B /* Interactor */,
+				06F30848210C241500C3156B /* Wireframe */,
+				06F30847210C240C00C3156B /* View */,
 				067FD5D520F26E5D0047CFC9 /* AccessApprovalInterface.swift */,
-				067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */,
 			);
 			path = AccessApproval;
 			sourceTree = "<group>";
@@ -484,13 +481,372 @@
 		06A0E56820F6B40E002CFEA5 /* LocationSearching */ = {
 			isa = PBXGroup;
 			children = (
-				06A0E56920F6B497002CFEA5 /* LocationSearchingViewController.swift */,
-				06A0E56B20F6B4A5002CFEA5 /* LocationSearchingWireframe.swift */,
+				06F3085E210C261000C3156B /* Interactor */,
+				06F3085D210C260A00C3156B /* Wireframe */,
+				06F3085C210C260400C3156B /* Presenter */,
+				06F3085B210C260000C3156B /* View */,
 				06A0E56D20F6B4BA002CFEA5 /* LocationSearchingInterface.swift */,
-				06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */,
-				06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */,
 			);
 			path = LocationSearching;
+			sourceTree = "<group>";
+		};
+		06F30847210C240C00C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5CD20F26DF70047CFC9 /* AccessApprovalViewController.swift */,
+				067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F30848210C241500C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5CF20F26E280047CFC9 /* AccessApprovalWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F30849210C241E00C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5D120F26E400047CFC9 /* AccessApprovalInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F3084A210C242600C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5D320F26E510047CFC9 /* AccessApprovalPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F3084B210C249200C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0630319120DE58A2009F78EA /* AccessAuthReqViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F3084C210C249A00C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0630319520DE58BF009F78EA /* AccessAuthReqInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F3084D210C24A100C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				0630319920DE58D5009F78EA /* AccessAuthReqWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F3084E210C24A700C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0630319320DE58AF009F78EA /* AccessAuthReqPresenter.swift */,
+			);
+			name = Presenter;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		06F3084F210C255500C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06A0E56620F4719D002CFEA5 /* DateTimePickerBarView.swift */,
+				06A0E56420F46C7F002CFEA5 /* DateTimePickerBarView.xib */,
+				067FD5CA20EE791B0047CFC9 /* PopupViewController.swift */,
+				067FD5C020EE1DE40047CFC9 /* DailyLocationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F30850210C255C00C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5C620EE1E090047CFC9 /* DailyLocationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F30851210C256200C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5C420EE1DFD0047CFC9 /* DailyLocationInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F30852210C256900C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5C220EE1DEF0047CFC9 /* DailyLocationWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F30853210C25AD00C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5A120ED12D50047CFC9 /* DeviceSettingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F30854210C25B200C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5A520ED12F90047CFC9 /* DeviceSettingPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F30855210C25B700C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5A320ED12EC0047CFC9 /* DeviceSettingInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F30856210C25BF00C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				067FD59F20ED12C00047CFC9 /* DeviceSettingWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F30857210C25D700C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5AC20EDBBB70047CFC9 /* LocationDataViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F30858210C25DB00C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5AA20EDBBA30047CFC9 /* LocationDataWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F30859210C25E200C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5AE20EDBBC90047CFC9 /* LocationDataInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F3085A210C25E900C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5B020EDBBD70047CFC9 /* LocationDataPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F3085B210C260000C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06A0E56920F6B497002CFEA5 /* LocationSearchingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F3085C210C260400C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F3085D210C260A00C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				06A0E56B20F6B4A5002CFEA5 /* LocationSearchingWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F3085E210C261000C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F3085F210C263100C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0606B9BB20DE1061003536B1 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F30860210C263500C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0630316320DE38F1009F78EA /* MainPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F30861210C263900C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0630316120DE38DC009F78EA /* MainInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F30862210C263F00C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				0630315F20DE38CA009F78EA /* MainWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F30863210C265400C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0630318620DE57BF009F78EA /* NotifSpotViewController.swift */,
+				06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F30864210C265800C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0630318820DE57DE009F78EA /* NotifSpotPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F30865210C265D00C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0630318A20DE57E8009F78EA /* NotifSpotInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F30866210C266400C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				0630318E20DE5806009F78EA /* NotifSpotWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F30867210C268400C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0606B9BF20DE1325003536B1 /* SideMenuViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F30868210C268800C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0630316820DE4E1D009F78EA /* SideMenuPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F30869210C269000C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				0630316B20DE4E3A009F78EA /* SideMenuWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F3086B210C26B100C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0630317020DE5650009F78EA /* UserInfoViewController.swift */,
+				063031AA20DFE070009F78EA /* UserInfoViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F3086C210C26B600C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0630317420DE5671009F78EA /* UserInfoPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F3086D210C26BC00C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				0630317220DE5663009F78EA /* UserInfoWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F3086E210C26C200C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0630317820DE5691009F78EA /* UserInfoInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F3086F210C292900C3156B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5B520EE126F0047CFC9 /* LatestLocationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06F30870210C292D00C3156B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5BB20EE12A90047CFC9 /* LatestLocationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		06F30871210C293200C3156B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5B920EE129C0047CFC9 /* LatestLocationInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		06F30872210C293700C3156B /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				067FD5B720EE127E0047CFC9 /* LatestLocationWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		06F30873210C42F400C3156B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				06F30874210C434600C3156B /* EntityError.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		1CB666472DE4F9AF1A10A1AB /* Frameworks */ = {
@@ -820,6 +1176,7 @@
 				0630317320DE5663009F78EA /* UserInfoWireframe.swift in Sources */,
 				06A0E57220F6B4DC002CFEA5 /* LocationSearchingPresenter.swift in Sources */,
 				0630316020DE38CA009F78EA /* MainWireframe.swift in Sources */,
+				06F30875210C434600C3156B /* EntityError.swift in Sources */,
 				0606B9C020DE1325003536B1 /* SideMenuViewController.swift in Sources */,
 				0606B9BC20DE1061003536B1 /* MainViewController.swift in Sources */,
 				0630317920DE5691009F78EA /* UserInfoInteractor.swift in Sources */,

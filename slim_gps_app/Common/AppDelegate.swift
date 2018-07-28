@@ -166,16 +166,19 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 extension AppDelegate : MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
-        let user = Auth.auth().currentUser
         
-        // Set db
-        let db = Firestore.firestore()
-        let settings = db.settings
-        settings.areTimestampsInSnapshotsEnabled = true
-        db.settings = settings
-        
-        db.collection("clients").document(user!.uid).updateData([ "fcmToken": fcmToken ])
-        // Note: This callback is fired at each app startup and whenever a new token is generated.
+        if let user = Auth.auth().currentUser {
+            
+            // Set db
+            let db = Firestore.firestore()
+            let settings = db.settings
+            settings.areTimestampsInSnapshotsEnabled = true
+            db.settings = settings
+
+            // Set fumToken
+            db.collection("clients").document(user.uid).updateData([ "fcmToken": fcmToken ])
+            // Note: This callback is fired at each app startup and whenever a new token is generated.
+        }
     }
 
     // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.

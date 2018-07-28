@@ -227,7 +227,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SES-tD-1th">
-                                <rect key="frame" x="119" y="30" width="137" height="29"/>
+                                <rect key="frame" x="119" y="20" width="137" height="29"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="現在地"/>
                                     <segment title="移動履歴"/>
@@ -242,9 +243,9 @@
                             <constraint firstItem="Jb6-hB-7Fy" firstAttribute="trailing" secondItem="YdE-aZ-iEl" secondAttribute="trailing" id="9F9-Qo-oGZ"/>
                             <constraint firstItem="SES-tD-1th" firstAttribute="centerX" secondItem="PZo-fT-icZ" secondAttribute="centerX" id="Ke5-z4-wp4"/>
                             <constraint firstItem="YdE-aZ-iEl" firstAttribute="bottom" secondItem="Jb6-hB-7Fy" secondAttribute="bottom" id="XP5-ga-ro8"/>
-                            <constraint firstItem="SES-tD-1th" firstAttribute="top" secondItem="YdE-aZ-iEl" secondAttribute="top" constant="10" id="ZyT-J4-STi"/>
                             <constraint firstItem="Jb6-hB-7Fy" firstAttribute="top" secondItem="PZo-fT-icZ" secondAttribute="top" id="bne-FS-TqJ"/>
                             <constraint firstItem="Jb6-hB-7Fy" firstAttribute="leading" secondItem="YdE-aZ-iEl" secondAttribute="leading" id="hhw-ek-Zf9"/>
+                            <constraint firstItem="SES-tD-1th" firstAttribute="top" secondItem="YdE-aZ-iEl" secondAttribute="top" id="i3Z-7z-tfk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YdE-aZ-iEl"/>
                     </view>
@@ -632,15 +633,28 @@
                                     <action selector="searchButtonTapped:" destination="N8i-B4-J8L" eventType="touchUpInside" id="oX3-Ga-qhu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8p-Ov-2q9">
+                                <rect key="frame" x="112" y="30" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="49c-iM-DC2"/>
+                                    <constraint firstAttribute="height" constant="30" id="jNH-lx-ANI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="K8p-Ov-2q9" firstAttribute="centerX" secondItem="nmd-9x-28J" secondAttribute="centerX" id="3bD-fK-9pr"/>
                             <constraint firstItem="mj3-YT-3FQ" firstAttribute="bottom" secondItem="XfJ-OL-ptV" secondAttribute="bottom" constant="20" id="Hvd-4U-E1q"/>
+                            <constraint firstItem="K8p-Ov-2q9" firstAttribute="top" secondItem="mj3-YT-3FQ" secondAttribute="top" constant="10" id="fNU-MA-GuB"/>
                             <constraint firstItem="XfJ-OL-ptV" firstAttribute="centerX" secondItem="nmd-9x-28J" secondAttribute="centerX" id="krv-zJ-DDg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mj3-YT-3FQ"/>
                     </view>
                     <connections>
+                        <outlet property="message" destination="K8p-Ov-2q9" id="3n6-8i-6Yr"/>
                         <outlet property="searchButton" destination="XfJ-OL-ptV" id="NQt-UA-wIF"/>
                     </connections>
                 </viewController>

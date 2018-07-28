@@ -18,10 +18,6 @@ extension DailyLocationPresenter: DailyLocationPresenterInterface {
         _interactor.setDailyLocationListener( deviceID: deviceID, date: date )
     }
     
-    func removeSnapshotListener(){
-        _interactor.removeSnapshotListener()
-    }
-    
     func showAlert(message: String){
         if let _view = _view{
             _view.showAlert(message: message)
@@ -34,9 +30,10 @@ extension DailyLocationPresenter: DailyLocationPresenterInterface {
         }
     }
     
-    func locationDataIsGotten(data:(latitude: Double, longitude: Double, radius: Double, createdAt: Date)){
+    func locationDataIsGotten(data: (latitude: Double, longitude: Double, radius: Double, createdAt: Date), lastFlag: Bool){
         if let _view = _view{
             _view.locationDataIsGotten(data:(latitude: data.latitude, longitude: data.longitude, radius: data.radius, createdAt: data.createdAt))
+            if lastFlag { _view.setBounds() }
         }
     }
 }

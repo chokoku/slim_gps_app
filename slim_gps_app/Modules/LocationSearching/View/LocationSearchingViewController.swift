@@ -8,8 +8,10 @@ class LocationSearchingViewController: UIViewController {
     var mapView : GMSMapView!
     var marker: GMSMarker!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var message: UILabel!
     @IBAction func searchButtonTapped(_ sender: Any) {
         presenter.requestLocationSearching(deviceID: deviceID)
+        message.text = "位置を検索しています"
     }
     
     override func viewDidLoad() {
@@ -23,6 +25,10 @@ class LocationSearchingViewController: UIViewController {
         
         // Set the request Button after the mapView was added
         self.view.bringSubview(toFront: searchButton)
+        
+        // Init message
+        message.text = nil
+        self.view.bringSubview(toFront: message)
 
         // Get latest location
         presenter.setLatestLocationListener( deviceID: deviceID )
@@ -38,6 +44,9 @@ extension LocationSearchingViewController: LocationSearchingViewInterface {
     func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date){ // radius is not used
         
         print("locationDataIsGotten")
+        
+        // Init message
+        message.text = nil
 
         // Reset mapView and marker
         mapView.clear()
@@ -46,6 +55,13 @@ extension LocationSearchingViewController: LocationSearchingViewInterface {
         // Configure camera
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 15.0)
         self.mapView.camera = camera
+        
+        // Set circle TODO need test
+        let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: radius)
+        circle.fillColor = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 0.8)
+        circle.strokeColor = UIColor.blue
+        circle.strokeWidth = 0.5
+        circle.map = mapView
         
         // Set marker
         marker.position = CLLocationCoordinate2DMake(latitude, longitude)
