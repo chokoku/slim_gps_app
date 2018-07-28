@@ -3,7 +3,7 @@ import UIKit
 protocol LatestLocationPresenterInterface: class {
     
     // To View
-    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date)
+    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, updatedAt: Date)
     func showAlert(message: String)
     func locationDataIsEmpty(message: String)
     
@@ -14,7 +14,7 @@ protocol LatestLocationPresenterInterface: class {
 }
 
 protocol LatestLocationViewInterface: class {
-    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date)
+    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, updatedAt: Date)
     func showAlert(message: String)
     func locationDataIsEmpty(message: String)
 }

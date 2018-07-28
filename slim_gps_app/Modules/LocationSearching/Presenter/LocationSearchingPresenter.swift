@@ -22,9 +22,9 @@ extension LocationSearchingPresenter: LocationSearchingPresenterInterface {
         _interactor.removeSnapshotListener()
     }
     
-    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date){
+    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, updatedAt: Date){
         if let _view = _view {
-            _view.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, createdAt: createdAt)
+            _view.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, updatedAt: updatedAt)
         }
     }
     

@@ -27,19 +27,15 @@ class LatestLocationViewController: UIViewController {
 }
 
 extension LatestLocationViewController: LatestLocationViewInterface {
-    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, createdAt: Date){ // radius is not used
+    func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, updatedAt: Date){ // radius is not used
         
         print("locationDataIsGotten")
-
-        // Reset mapView and marker
-        mapView.clear()
-        marker.map = nil
 
         // Configure camera
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 15.0)
         self.mapView.camera = camera
         
-        // Set circle TODO need test
+        // Set circle
         let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: radius)
         circle.fillColor = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 0.8)
         circle.strokeColor = UIColor.blue
@@ -51,7 +47,7 @@ extension LatestLocationViewController: LatestLocationViewInterface {
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
         f.dateFormat = "MM/dd EEEEE h:mm"
-        marker.title = f.string(from: createdAt)
+        marker.title = f.string(from: updatedAt)
         marker.map = mapView
         mapView.selectedMarker = marker
     }
