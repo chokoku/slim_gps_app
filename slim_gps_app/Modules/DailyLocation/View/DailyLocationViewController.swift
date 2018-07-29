@@ -86,20 +86,6 @@ class DailyLocationViewController: UIViewController {
 }
 
 extension DailyLocationViewController: DailyLocationViewInterface {
-//    func showNotifSpot(latitude: Double, longitude: Double, radius: Double){
-//        
-//        // Set a tracking circle
-//        let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: radius)
-//        circle.fillColor = UIColor(red: 0.35, green: 0, blue: 0, alpha: 0.05)
-//        circle.strokeColor = UIColor.red
-//        circle.strokeWidth = 1
-//        circle.map = mapView
-//    }
-//    
-//    func giveLastNotifSpotFlag(){
-//        // Get latest location
-//        presenter.setLatestLocationListener( deviceID: deviceID )
-//    }
     
     func locationDataIsGotten(data:(latitude: Double, longitude: Double, radius: Double, createdAt: Date)){
         locationData += [(data.latitude, data.longitude, data.radius, data.createdAt)]

@@ -51,7 +51,7 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         } else if ["Login","Registration","TermOfUse"].contains(beforelogin_sidemenuItems[indexPath.row]) {
             presenter.getSideMenuPage(index: beforelogin_sidemenuItems[indexPath.row])
         } else {
-            let alertController = UIAlertController(title: "エラー", message: "ログイン後にアクセスできます　", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "お知らせ", message: "ログイン後にアクセスできます　", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
