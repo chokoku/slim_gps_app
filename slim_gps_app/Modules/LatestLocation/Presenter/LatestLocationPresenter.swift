@@ -14,6 +14,10 @@ final class LatestLocationPresenter {
 }
 
 extension LatestLocationPresenter: LatestLocationPresenterInterface {
+    func getNotifSpots(){
+        _interactor.getNotifSpots()
+    }
+    
     func setLatestLocationListener( deviceID: String ){
         _interactor.setLatestLocationListener(deviceID: deviceID)
     }
@@ -39,6 +43,17 @@ extension LatestLocationPresenter: LatestLocationPresenterInterface {
             _view.locationDataIsEmpty(message: message)
         }
     }
-
+    
+    func showNotifSpot(latitude: Double, longitude: Double, radius: Double){
+        if let _view = _view {
+            _view.showNotifSpot(latitude: latitude, longitude: longitude, radius: radius)
+        }
+    }
+    
+    func giveLastNotifSpotFlag(){
+        if let _view = _view {
+            _view.giveLastNotifSpotFlag()
+        }
+    }
 }
 

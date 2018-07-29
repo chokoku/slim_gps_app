@@ -36,8 +36,8 @@ extension MainPresenter: MainPresenterInterface {
         _wireframe.pushDeviceSettingPage( deviceID: deviceID, name: name, mode: mode )
     }
     
-    func pushLocationDataPage( deviceID: String, mode: String ){
-        _wireframe.pushLocationDataPage( deviceID: deviceID, mode: mode )
+    func pushLocationDataPage( deviceID: String, mode: String, latestLatitude: Double, latestLongitude: Double ){
+        _wireframe.pushLocationDataPage( deviceID: deviceID, mode: mode, latestLatitude: latestLatitude, latestLongitude: latestLongitude )
     }
     
 }

@@ -29,7 +29,7 @@ class LocationSearchingViewController: UIViewController {
         // Init message
         message.text = nil
         self.view.bringSubview(toFront: message)
-
+        
         // Get latest location
         presenter.setLatestLocationListener( deviceID: deviceID )
     }
@@ -41,6 +41,7 @@ class LocationSearchingViewController: UIViewController {
 }
 
 extension LocationSearchingViewController: LocationSearchingViewInterface {
+    
     func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, updatedAt: Date){ // radius is not used
         
         print("locationDataIsGotten")
@@ -54,9 +55,9 @@ extension LocationSearchingViewController: LocationSearchingViewInterface {
         
         // Set circle
         let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: radius)
-        circle.fillColor = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 0.8)
+        circle.fillColor = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 0.2)
         circle.strokeColor = UIColor.blue
-        circle.strokeWidth = 0.5
+        circle.strokeWidth = 0
         circle.map = mapView
         
         // Set marker

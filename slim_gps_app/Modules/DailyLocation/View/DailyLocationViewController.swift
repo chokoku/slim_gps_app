@@ -27,6 +27,10 @@ class DailyLocationViewController: UIViewController {
         mapView = GMSMapView(frame: CGRect(x:0,y: 0, width:self.view.bounds.width, height:self.view.bounds.height))
         self.view.addSubview(mapView)
         
+        // Relocate Google logo
+        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 70, right: 0)
+        mapView.padding = padding
+        
         // Set default camera
         let defaultCamera = GMSCameraPosition.camera(withLatitude: 38.258595, longitude: 137.6850225, zoom: 4.5) // center of Japan
         mapView.camera = defaultCamera
@@ -82,6 +86,21 @@ class DailyLocationViewController: UIViewController {
 }
 
 extension DailyLocationViewController: DailyLocationViewInterface {
+//    func showNotifSpot(latitude: Double, longitude: Double, radius: Double){
+//        
+//        // Set a tracking circle
+//        let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: radius)
+//        circle.fillColor = UIColor(red: 0.35, green: 0, blue: 0, alpha: 0.05)
+//        circle.strokeColor = UIColor.red
+//        circle.strokeWidth = 1
+//        circle.map = mapView
+//    }
+//    
+//    func giveLastNotifSpotFlag(){
+//        // Get latest location
+//        presenter.setLatestLocationListener( deviceID: deviceID )
+//    }
+    
     func locationDataIsGotten(data:(latitude: Double, longitude: Double, radius: Double, createdAt: Date)){
         locationData += [(data.latitude, data.longitude, data.radius, data.createdAt)]
         
@@ -105,7 +124,7 @@ extension DailyLocationViewController: DailyLocationViewInterface {
         for data in locationData {
             bounds = bounds.includingCoordinate(CLLocationCoordinate2DMake(data.latitude, data.longitude))
         }
-        mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsetsMake(120.0 , 50.0 ,120.0 ,50.0)))
+        mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsetsMake(160.0, 50.0, 50.0 ,50.0)))
     }
     
     func showAlert(message: String){

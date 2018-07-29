@@ -37,14 +37,16 @@ class MainViewController: UIViewController {
     @objc func settingButtonTapped(sender : AnyObject) {
         let i = Int(sender.tag) // tag accepts number only
         presenter.pushDeviceSettingPage( deviceID: deviceInfo[i].deviceID!,
-                                         name:      deviceInfo[i].name!,
-                                         mode:      deviceInfo[i].mode! )
+                                         name:     deviceInfo[i].name!,
+                                         mode:     deviceInfo[i].mode! )
     }
 
     @objc func mapViewIsTapped(sender : AnyObject){
         let i = Int(sender.tag)
         presenter.pushLocationDataPage( deviceID: deviceInfo[i].deviceID!,
-                                        mode: deviceInfo[i].mode! )
+                                        mode: deviceInfo[i].mode!,
+                                        latestLatitude: deviceInfo[i].latitude!,
+                                        latestLongitude: deviceInfo[i].longitude! )
     }
     
 }

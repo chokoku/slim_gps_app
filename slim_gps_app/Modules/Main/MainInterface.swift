@@ -11,7 +11,7 @@ protocol MainPresenterInterface: class {
     
     // To Wireframe
     func pushDeviceSettingPage( deviceID: String, name: String, mode: String )
-    func pushLocationDataPage( deviceID: String, mode: String )
+    func pushLocationDataPage( deviceID: String, mode: String, latestLatitude: Double, latestLongitude: Double )
 }
 
 protocol MainViewInterface: class {
@@ -25,5 +25,5 @@ protocol MainInteractorInterface: class {
 
 protocol MainWireframeInterface: class {
     func pushDeviceSettingPage( deviceID: String, name: String, mode: String )
-    func pushLocationDataPage( deviceID: String, mode: String )
+    func pushLocationDataPage( deviceID: String, mode: String, latestLatitude: Double, latestLongitude: Double )
 }

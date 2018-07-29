@@ -15,6 +15,35 @@ final class LatestLocationInteractor {
 }
 
 extension LatestLocationInteractor: LatestLocationInteractorInterface {
+    
+    func getNotifSpots(){
+        let user = Auth.auth().currentUser
+        db.collection("notifSpots")
+            .whereField("clientID", isEqualTo: user!.uid)
+            .getDocuments { (snap, error) in
+                if let _ = error {
+                    self.presenter.showAlert(message: "通知スポットの取得に失敗しました")
+                } else {
+                    if(snap!.documents.count == 0){ self.presenter.giveLastNotifSpotFlag() }
+                    var i = 0
+                    for document in snap!.documents {
+                        i += 1
+                        let data = document.data()
+                        if  let latitude = data["latitude"] as? Double,
+                            let longitude = data["longitude"] as? Double,
+                            let radius = data["radius"] as? Double
+                        {
+                            self.presenter.showNotifSpot(latitude: latitude, longitude: longitude, radius: radius)
+                        }
+                        if(snap!.documents.count == i){
+                            Thread.sleep(forTimeInterval:0.1)
+                            self.presenter.giveLastNotifSpotFlag()
+                        }
+                    }
+                }
+        }
+    }
+    
     func setLatestLocationListener( deviceID: String ) {
         listener = db.collection("devices").document(deviceID)
             .addSnapshotListener { snap, error in

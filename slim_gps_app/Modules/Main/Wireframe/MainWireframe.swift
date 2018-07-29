@@ -24,12 +24,13 @@ extension MainWireframe: MainWireframeInterface {
         sideMenuController.closeLeft()
     }
     
-    func pushLocationDataPage( deviceID: String, mode: String ){
+    func pushLocationDataPage( deviceID: String, mode: String, latestLatitude: Double, latestLongitude: Double ){
         
         // "watching_powerSaving",
         // "watching_normal",
         // or "lost_proof"
-        let nextVC = mode == "lost_proof" ? LocationSearchingWireframe().configureModule( deviceID: deviceID ) : LocationDataWireframe().configureModule( deviceID: deviceID )
+        let nextVC = mode == "lost_proof" ? LocationSearchingWireframe().configureModule( deviceID: deviceID ) :
+            LocationDataWireframe().configureModule( deviceID: deviceID, latestLatitude: latestLatitude, latestLongitude: latestLongitude )
         
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let sideMenuController: SlideMenuController = appDelegate.window!.rootViewController as! SlideMenuController

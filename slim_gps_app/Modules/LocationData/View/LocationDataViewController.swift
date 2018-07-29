@@ -7,9 +7,11 @@ class LocationDataViewController: UIViewController {
     weak var currentViewController: UIViewController?
     var presenter: LocationDataPresenterInterface!
     var deviceID: String!
+    var latestLatitude: Double!
+    var latestLongitude: Double!
 
     override func viewDidLoad() {
-        self.currentViewController = LatestLocationWireframe().configureModule( deviceID: deviceID )
+        self.currentViewController = LatestLocationWireframe().configureModule( deviceID: deviceID, latestLatitude: latestLatitude, latestLongitude: latestLongitude )
         self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChildViewController(self.currentViewController!)
         self.addSubview(subView:self.currentViewController!.view, toView: self.containerView)
@@ -22,7 +24,7 @@ class LocationDataViewController: UIViewController {
     
     @IBAction func showComponent(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            let newViewController = LatestLocationWireframe().configureModule( deviceID: deviceID )
+            let newViewController = LatestLocationWireframe().configureModule( deviceID: deviceID, latestLatitude: latestLatitude, latestLongitude: latestLongitude )
             newViewController.view.translatesAutoresizingMaskIntoConstraints = false
             self.cycleFromViewController(oldViewController: self.currentViewController!, toViewController: newViewController)
             self.currentViewController = newViewController

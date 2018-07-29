@@ -80,7 +80,7 @@
 		06A0E57020F6B4D0002CFEA5 /* LocationSearchingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56F20F6B4D0002CFEA5 /* LocationSearchingInteractor.swift */; };
 		06A0E57220F6B4DC002CFEA5 /* LocationSearchingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E57120F6B4DC002CFEA5 /* LocationSearchingPresenter.swift */; };
 		06F3084520FB49C900C3156B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06F3084420FB49C900C3156B /* GoogleService-Info.plist */; };
-		06F30875210C434600C3156B /* EntityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F30874210C434600C3156B /* EntityError.swift */; };
+		06F30875210C434600C3156B /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F30874210C434600C3156B /* Errors.swift */; };
 		55855C8DDC7B03A2974F8120 /* Pods_slim_gps_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */; };
 		AA8849DCC83FE3F7BE46FDBC /* Pods_slim_gps_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1BADF2E25DC84FDB41669 /* Pods_slim_gps_appTests.framework */; };
 		C55A97ABACAF4E7DD1D5B8B8 /* Pods_slim_gps_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B042245C6E81447FA6570513 /* Pods_slim_gps_appUITests.framework */; };
@@ -199,7 +199,7 @@
 		06F307ED20F89FDB00C3156B /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F3084420FB49C900C3156B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		06F3084620FB82BE00C3156B /* slim_gps_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = slim_gps_app.entitlements; sourceTree = "<group>"; };
-		06F30874210C434600C3156B /* EntityError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityError.swift; sourceTree = "<group>"; };
+		06F30874210C434600C3156B /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		51E382B07E336DAF8A590801 /* Pods_slim_gps_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slim_gps_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slim_gps_appTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -267,9 +267,9 @@
 			isa = PBXGroup;
 			children = (
 				06F3084620FB82BE00C3156B /* slim_gps_app.entitlements */,
-				06F30873210C42F400C3156B /* Entity */,
 				0606B9AD20DE0594003536B1 /* Common */,
 				0606B9AF20DE0654003536B1 /* Modules */,
+				06F30873210C42F400C3156B /* Entity */,
 			);
 			path = slim_gps_app;
 			sourceTree = "<group>";
@@ -844,7 +844,7 @@
 		06F30873210C42F400C3156B /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				06F30874210C434600C3156B /* EntityError.swift */,
+				06F30874210C434600C3156B /* Errors.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1176,7 +1176,7 @@
 				0630317320DE5663009F78EA /* UserInfoWireframe.swift in Sources */,
 				06A0E57220F6B4DC002CFEA5 /* LocationSearchingPresenter.swift in Sources */,
 				0630316020DE38CA009F78EA /* MainWireframe.swift in Sources */,
-				06F30875210C434600C3156B /* EntityError.swift in Sources */,
+				06F30875210C434600C3156B /* Errors.swift in Sources */,
 				0606B9C020DE1325003536B1 /* SideMenuViewController.swift in Sources */,
 				0606B9BC20DE1061003536B1 /* MainViewController.swift in Sources */,
 				0630317920DE5691009F78EA /* UserInfoInteractor.swift in Sources */,
