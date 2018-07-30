@@ -65,7 +65,9 @@ extension LatestLocationInteractor: LatestLocationInteractorInterface {
     }
     
     func removeSnapshotListener(){
-        listener.remove()
+        if(listener != nil) {
+            listener.remove()
+        }
     }
 
 }

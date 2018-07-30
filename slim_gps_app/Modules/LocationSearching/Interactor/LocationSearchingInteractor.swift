@@ -36,7 +36,9 @@ extension LocationSearchingInteractor: LocationSearchingInteractorInterface {
     }
     
     func removeSnapshotListener(){
-        listener.remove()
+        if(listener != nil) {
+            listener.remove()
+        }
     }
     
     func requestLocationSearching(deviceID: String){
