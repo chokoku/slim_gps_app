@@ -84,6 +84,13 @@ extension MainViewController: MainViewInterface {
         // if location data exists
         if let latitude = latitude, let longitude = longitude{
             
+            // Display battery
+            let batteryLabel = UILabel()
+            batteryLabel.frame = CGRect(x:deviceView.bounds.width-50-30, y:220, width:50, height:50)
+            batteryLabel.text = String(battery!)+"%"
+            if(battery! < 10){batteryLabel.textColor = UIColor.red}
+            deviceView.addSubview(batteryLabel)
+            
             // this mapButton is transparent
             let mapButton = UIButton()
             mapButton.frame = mapViewFrame
@@ -91,18 +98,25 @@ extension MainViewController: MainViewInterface {
             mapButton.tag = index
             mapButton.addTarget(self, action: #selector(self.mapViewIsTapped(sender:)), for: .touchUpInside)
             
+            // Set camera, latitude, longitude
             let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16)
             let googleMapView = GMSMapView.map(withFrame: mapViewFrame, camera: camera)
+            
+            // Configure google Map
             googleMapView.settings.scrollGestures = false
             googleMapView.settings.zoomGestures = false
             googleMapView.layer.cornerRadius=10
             googleMapView.isUserInteractionEnabled = false
             
+            // Set a marker on map
             let position = CLLocationCoordinate2D( latitude: latitude, longitude: longitude )
             let marker = GMSMarker(position: position)
             marker.map = googleMapView
+            
+            // Add subview
             deviceView.addSubview(mapButton)
             deviceView.addSubview(googleMapView)
+            
         } else { // if location data does not exist
             
             let emptyView = UIView.init(frame: mapViewFrame)
