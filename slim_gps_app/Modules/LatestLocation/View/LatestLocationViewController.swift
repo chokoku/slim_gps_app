@@ -80,8 +80,8 @@ extension LatestLocationViewController: LatestLocationViewInterface {
     }
     
     func showAlert(message: String){
-        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
-        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:{ (action) in
+        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertController.Style.alert )
+        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertAction.Style.cancel, handler:{ (action) in
             self.navigationController?.popViewController(animated:true)
         } )
         alert.addAction(OKAction)

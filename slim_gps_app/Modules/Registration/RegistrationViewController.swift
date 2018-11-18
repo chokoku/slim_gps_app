@@ -20,7 +20,7 @@ final class RegistraionViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         // Configure an indicator
-        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.style = .whiteLarge
         indicator.center = self.view.center
         indicator.color = UIColor.black
     }
@@ -40,7 +40,7 @@ final class RegistraionViewController: UIViewController, UITextFieldDelegate {
                     
                     // Start the indicator
                     self.view.addSubview(self.indicator)
-                    self.view.bringSubview(toFront: self.indicator)
+                    self.view.bringSubviewToFront(self.indicator)
                     self.indicator.startAnimating()
                     
                     // Initiate DB

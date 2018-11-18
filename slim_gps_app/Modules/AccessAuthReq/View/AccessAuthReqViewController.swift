@@ -15,7 +15,7 @@ class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
         self.navigationItem.title = "アクセスリクエスト"
         
         // Configure an indicator
-        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.style = .whiteLarge
         indicator.center = self.view.center
         indicator.color = UIColor.black
     }
@@ -24,7 +24,7 @@ class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
         
         // Start the indicator
         self.view.addSubview(indicator)
-        self.view.bringSubview(toFront: indicator)
+        self.view.bringSubviewToFront(indicator)
         indicator.startAnimating()
         
         // Disable the requestButton
@@ -63,8 +63,8 @@ extension AccessAuthReqViewController: AccessAuthReqViewInterface {
         submitButton.isEnabled = true
 
         // Show an alert
-        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
-        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
+        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertController.Style.alert )
+        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertAction.Style.cancel, handler:nil )
         alert.addAction(OKAction)
         present(alert, animated: true, completion: nil)
     }

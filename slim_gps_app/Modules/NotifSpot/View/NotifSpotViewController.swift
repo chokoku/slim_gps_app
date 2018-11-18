@@ -66,10 +66,10 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
     }
 
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-        let alert = UIAlertController( title: "通知スポットの追加", message: "スポット名を入力してください", preferredStyle: UIAlertControllerStyle.alert )
+        let alert = UIAlertController( title: "通知スポットの追加", message: "スポット名を入力してください", preferredStyle: UIAlertController.Style.alert )
         alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "スポット名" })
-        let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertActionStyle.cancel, handler:nil )
-        let saveAction:UIAlertAction = UIAlertAction( title: "追加", style: UIAlertActionStyle.default,handler:{ (action) in
+        let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertAction.Style.cancel, handler:nil )
+        let saveAction:UIAlertAction = UIAlertAction( title: "追加", style: UIAlertAction.Style.default,handler:{ (action) in
             var name = alert.textFields![0].text
             if (name!.isEmpty){ name = "名無しスポット" }
             self.presenter.addNotifSpot(name: name!, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: 100.0)
@@ -81,11 +81,11 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
     
     func editNotifSpot(tag: Int){
         let notifSpot = notifSpots[tag]
-        let alert = UIAlertController( title: "スポット名の編集", message: "", preferredStyle: UIAlertControllerStyle.alert )
+        let alert = UIAlertController( title: "スポット名の編集", message: "", preferredStyle: UIAlertController.Style.alert )
         alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "スポット名" })
         alert.textFields![0].text = notifSpot.name
-        let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertActionStyle.cancel, handler:nil )
-        let saveAction:UIAlertAction = UIAlertAction( title: "保存", style: UIAlertActionStyle.default,handler:{ (action) in
+        let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertAction.Style.cancel, handler:nil )
+        let saveAction:UIAlertAction = UIAlertAction( title: "保存", style: UIAlertAction.Style.default,handler:{ (action) in
             var name = alert.textFields![0].text
             if (name!.isEmpty){ name = "名無しスポット" }
             self.presenter.updateNotifSpot(notifSpotID: notifSpot.notifSpotID, name: name!, tag: tag)
@@ -120,8 +120,8 @@ extension NotifSpotViewController: NotifSpotViewInterface {
     }
     
     func showAlert(message: String){
-        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
-        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
+        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertController.Style.alert )
+        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertAction.Style.cancel, handler:nil )
         alert.addAction(OKAction)
         present(alert, animated: true, completion: nil)
     }

@@ -74,9 +74,9 @@ class DeviceSettingViewController: FormViewController {
     }
     
     func showAccessAuthDeleteAlert(name: String, accessAuthID: String, row: BaseRow){
-        let alert = UIAlertController( title: "アクセス権の削除", message: "\(name)さんを削除しますか？", preferredStyle: UIAlertControllerStyle.alert )
-        let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertActionStyle.cancel, handler:nil )
-        let saveAction:UIAlertAction = UIAlertAction( title: "削除", style: UIAlertActionStyle.default, handler:{ (action) in
+        let alert = UIAlertController( title: "アクセス権の削除", message: "\(name)さんを削除しますか？", preferredStyle: UIAlertController.Style.alert )
+        let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertAction.Style.cancel, handler:nil )
+        let saveAction:UIAlertAction = UIAlertAction( title: "削除", style: UIAlertAction.Style.default, handler:{ (action) in
             self.presenter.deleteAccessAuth(accessAuthID: accessAuthID)
         })
         alert.addAction(cancelAction)
@@ -104,8 +104,8 @@ extension DeviceSettingViewController: DeviceSettingViewInterface {
     }
     
     func showAlert(message: String){
-        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
-        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
+        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertController.Style.alert )
+        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertAction.Style.cancel, handler:nil )
         alert.addAction(OKAction)
         present(alert, animated: true, completion: nil)
     }

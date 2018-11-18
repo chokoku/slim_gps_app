@@ -17,7 +17,7 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         
         // Configure an indicator
-        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.style = .whiteLarge
         indicator.center = self.view.center
         indicator.color = UIColor.black
     }
@@ -41,7 +41,7 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
             
             // Start the indicator
             self.view.addSubview(self.indicator)
-            self.view.bringSubview(toFront: self.indicator)
+            self.view.bringSubviewToFront(self.indicator)
             self.indicator.startAnimating()
             
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in

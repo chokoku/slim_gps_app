@@ -40,7 +40,7 @@ class DateTimePickerBarView: UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         // Set datePickerButton icon
-        datePickerButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 25)
+        datePickerButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .brands)
         datePickerButton.setTitle(String.fontAwesomeIcon(name: .calendar), for: .normal)
         datePickerButton.setTitleColor(UIColor.black, for: .normal) // タイトルの色
         

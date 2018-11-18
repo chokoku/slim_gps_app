@@ -71,7 +71,7 @@ extension MainViewController: MainViewInterface {
         if(admin == true){
             let settingButton = UIButton()
             settingButton.frame = CGRect(x:deviceView.bounds.width-50, y:220, width:50, height:50)
-            settingButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 25)
+            settingButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .brands)
             settingButton.setTitle(String.fontAwesomeIcon(name: .cog), for: .normal)
             settingButton.setTitleColor( UIColor.gray, for: .normal)
             settingButton.tag = index
@@ -140,8 +140,8 @@ extension MainViewController: MainViewInterface {
     }
     
     func showAlert(message: String){
-        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
-        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:nil )
+        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertController.Style.alert )
+        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertAction.Style.cancel, handler:nil )
         alert.addAction(OKAction)
         present(alert, animated: true, completion: nil)
     }

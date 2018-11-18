@@ -24,11 +24,11 @@ class LocationSearchingViewController: UIViewController {
         self.view.addSubview(mapView)
         
         // Set the request Button after the mapView was added
-        self.view.bringSubview(toFront: searchButton)
+        self.view.bringSubviewToFront(searchButton)
         
         // Init message
         message.text = nil
-        self.view.bringSubview(toFront: message)
+        self.view.bringSubviewToFront(message)
         
         // Get latest location
         presenter.setLatestLocationListener( deviceID: deviceID )
@@ -71,8 +71,8 @@ extension LocationSearchingViewController: LocationSearchingViewInterface {
     }
     
     func showAlert(message: String){
-        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertControllerStyle.alert )
-        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertActionStyle.cancel, handler:{ (action) in
+        let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertController.Style.alert )
+        let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertAction.Style.cancel, handler:{ (action) in
             self.navigationController?.popViewController(animated:true)
         } )
         alert.addAction(OKAction)

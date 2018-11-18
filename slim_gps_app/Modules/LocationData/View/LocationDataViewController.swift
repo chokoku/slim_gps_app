@@ -13,7 +13,7 @@ class LocationDataViewController: UIViewController {
     override func viewDidLoad() {
         self.currentViewController = LatestLocationWireframe().configureModule( deviceID: deviceID, latestLatitude: latestLatitude, latestLongitude: latestLongitude )
         self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
-        self.addChildViewController(self.currentViewController!)
+        self.addChild(self.currentViewController!)
         self.addSubview(subView:self.currentViewController!.view, toView: self.containerView)
         super.viewDidLoad()
     }
@@ -37,8 +37,8 @@ class LocationDataViewController: UIViewController {
     }
     
     func cycleFromViewController(oldViewController: UIViewController, toViewController newViewController: UIViewController) {
-        oldViewController.willMove(toParentViewController:nil)
-        self.addChildViewController(newViewController)
+        oldViewController.willMove(toParent:nil)
+        self.addChild(newViewController)
         self.addSubview(subView:newViewController.view, toView:self.containerView!)
         newViewController.view.layoutIfNeeded()
     
@@ -46,8 +46,8 @@ class LocationDataViewController: UIViewController {
                         animations:{ newViewController.view.layoutIfNeeded() },
                         completion: { finished in
                             oldViewController.view.removeFromSuperview()
-                            oldViewController.removeFromParentViewController()
-                            newViewController.didMove(toParentViewController:self)
+                            oldViewController.removeFromParent()
+                            newViewController.didMove(toParent:self)
         })
     }
     

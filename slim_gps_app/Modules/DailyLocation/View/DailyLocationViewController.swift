@@ -110,12 +110,12 @@ extension DailyLocationViewController: DailyLocationViewInterface {
         for data in locationData {
             bounds = bounds.includingCoordinate(CLLocationCoordinate2DMake(data.latitude, data.longitude))
         }
-        mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsetsMake(160.0, 50.0, 50.0 ,50.0)))
+        mapView.animate(with: GMSCameraUpdate.fit(bounds, with: UIEdgeInsets.init(top: 160.0, left: 50.0, bottom: 50.0 ,right: 50.0)))
     }
     
     func showAlert(message: String){
         let alert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(OKAction)
         self.present(alert, animated: true, completion: nil)
     }
@@ -126,7 +126,7 @@ extension DailyLocationViewController: DailyLocationViewInterface {
         
         // Show Alert
         let alert = UIAlertController(title: "お知らせ", message: "位置情報のデータがありません", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(OKAction)
         self.present(alert, animated: true, completion: nil)
     }
