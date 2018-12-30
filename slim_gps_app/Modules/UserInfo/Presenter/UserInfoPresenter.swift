@@ -20,8 +20,16 @@ extension UserInfoPresenter: UserInfoPresenterInterface {
     }
     
     func logout(){
-        try! Auth.auth().signOut()
-        _wireframe.logout()
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            _wireframe.logout()
+        } catch let signOutError as NSError {
+            CommonFunc.addErrorReport(category: "UserInfo-06", description: signOutError.localizedDescription)
+//            print ("Error signing out: %@", signOutError)
+        }
+//        try! Auth.auth().signOut()
+//        _wireframe.logout()
     }
     
     func setUserInfoForm(userInfo: [String:String]){
@@ -33,6 +41,12 @@ extension UserInfoPresenter: UserInfoPresenterInterface {
     func showAlert(message:String){
         if let _view = _view {
             _view.showAlert(message: message)
+        }
+    }
+    
+    func logOutForError(message:String){
+        if let _view = _view {
+            _view.logOutForError(message: message)
         }
     }
     

@@ -70,6 +70,13 @@
 		067FD5D420F26E510047CFC9 /* AccessApprovalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D320F26E510047CFC9 /* AccessApprovalPresenter.swift */; };
 		067FD5D620F26E5D0047CFC9 /* AccessApprovalInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D520F26E5D0047CFC9 /* AccessApprovalInterface.swift */; };
 		067FD5D820F278990047CFC9 /* AccessApprovalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */; };
+		0684A3D021D24F9600F3EEA1 /* CommonFuc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0684A3CF21D24F9600F3EEA1 /* CommonFuc.swift */; };
+		0684A3D721D27DD700F3EEA1 /* TermOfUsePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0684A3D521D27DD700F3EEA1 /* TermOfUsePopupViewController.swift */; };
+		0684A3D821D27DD700F3EEA1 /* TermOfUsePopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0684A3D621D27DD700F3EEA1 /* TermOfUsePopupViewController.xib */; };
+		0684A3DB21D3D2E600F3EEA1 /* SpotInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0684A3D921D3D2E600F3EEA1 /* SpotInputViewController.swift */; };
+		0684A3DC21D3D2E600F3EEA1 /* SpotInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0684A3DA21D3D2E600F3EEA1 /* SpotInputViewController.xib */; };
+		0684A3DF21D3EA2800F3EEA1 /* EmailUpdateModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0684A3DD21D3EA2800F3EEA1 /* EmailUpdateModalViewController.swift */; };
+		0684A3E021D3EA2800F3EEA1 /* EmailUpdateModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0684A3DE21D3EA2800F3EEA1 /* EmailUpdateModalViewController.xib */; };
 		06A0E56120F35B2F002CFEA5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A0E55F20F34E4B002CFEA5 /* CoreLocation.framework */; };
 		06A0E56320F3A75D002CFEA5 /* NotifSpotViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */; };
 		06A0E56520F46C7F002CFEA5 /* DateTimePickerBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A0E56420F46C7F002CFEA5 /* DateTimePickerBarView.xib */; };
@@ -185,6 +192,13 @@
 		067FD5D320F26E510047CFC9 /* AccessApprovalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalPresenter.swift; sourceTree = "<group>"; };
 		067FD5D520F26E5D0047CFC9 /* AccessApprovalInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalInterface.swift; sourceTree = "<group>"; };
 		067FD5D720F278990047CFC9 /* AccessApprovalViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessApprovalViewCell.swift; sourceTree = "<group>"; };
+		0684A3CF21D24F9600F3EEA1 /* CommonFuc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFuc.swift; sourceTree = "<group>"; };
+		0684A3D521D27DD700F3EEA1 /* TermOfUsePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermOfUsePopupViewController.swift; sourceTree = "<group>"; };
+		0684A3D621D27DD700F3EEA1 /* TermOfUsePopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermOfUsePopupViewController.xib; sourceTree = "<group>"; };
+		0684A3D921D3D2E600F3EEA1 /* SpotInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotInputViewController.swift; sourceTree = "<group>"; };
+		0684A3DA21D3D2E600F3EEA1 /* SpotInputViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotInputViewController.xib; sourceTree = "<group>"; };
+		0684A3DD21D3EA2800F3EEA1 /* EmailUpdateModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUpdateModalViewController.swift; sourceTree = "<group>"; };
+		0684A3DE21D3EA2800F3EEA1 /* EmailUpdateModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmailUpdateModalViewController.xib; sourceTree = "<group>"; };
 		06A0E55D20F34E3D002CFEA5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		06A0E55F20F34E4B002CFEA5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifSpotViewCell.swift; sourceTree = "<group>"; };
@@ -298,6 +312,7 @@
 				0606B98620DDF830003536B1 /* Assets.xcassets */,
 				0606B98820DDF830003536B1 /* LaunchScreen.storyboard */,
 				0606B98B20DDF830003536B1 /* Info.plist */,
+				0684A3CF21D24F9600F3EEA1 /* CommonFuc.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -411,6 +426,8 @@
 			isa = PBXGroup;
 			children = (
 				063031A520DFC48E009F78EA /* RegistrationViewController.swift */,
+				0684A3D521D27DD700F3EEA1 /* TermOfUsePopupViewController.swift */,
+				0684A3D621D27DD700F3EEA1 /* TermOfUsePopupViewController.xib */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -721,6 +738,8 @@
 			children = (
 				0630318620DE57BF009F78EA /* NotifSpotViewController.swift */,
 				06A0E56220F3A75D002CFEA5 /* NotifSpotViewCell.swift */,
+				0684A3D921D3D2E600F3EEA1 /* SpotInputViewController.swift */,
+				0684A3DA21D3D2E600F3EEA1 /* SpotInputViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -778,6 +797,8 @@
 			children = (
 				0630317020DE5650009F78EA /* UserInfoViewController.swift */,
 				063031AA20DFE070009F78EA /* UserInfoViewCell.swift */,
+				0684A3DD21D3EA2800F3EEA1 /* EmailUpdateModalViewController.swift */,
+				0684A3DE21D3EA2800F3EEA1 /* EmailUpdateModalViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -879,6 +900,7 @@
 				759798D12293556D193F7AC0 /* [CP] Embed Pods Frameworks */,
 				40075D2089EB0F0ADBBBD8BA /* [CP] Copy Pods Resources */,
 				06F3080320F8AD3F00C3156B /* Embed Frameworks */,
+				0684A3CD21D1173F00F3EEA1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -897,6 +919,7 @@
 				0606B98C20DDF830003536B1 /* Sources */,
 				0606B98D20DDF830003536B1 /* Frameworks */,
 				0606B98E20DDF830003536B1 /* Resources */,
+				F27AD72FEBA6B41559ADA173 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -916,6 +939,7 @@
 				0606B99720DDF830003536B1 /* Sources */,
 				0606B99820DDF830003536B1 /* Frameworks */,
 				0606B99920DDF830003536B1 /* Resources */,
+				A94A37CCEABDEA081AAE2E6A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -985,8 +1009,11 @@
 			files = (
 				0606B98A20DDF830003536B1 /* LaunchScreen.storyboard in Resources */,
 				06A0E56520F46C7F002CFEA5 /* DateTimePickerBarView.xib in Resources */,
+				0684A3E021D3EA2800F3EEA1 /* EmailUpdateModalViewController.xib in Resources */,
+				0684A3D821D27DD700F3EEA1 /* TermOfUsePopupViewController.xib in Resources */,
 				06F3084520FB49C900C3156B /* GoogleService-Info.plist in Resources */,
 				0606B98720DDF830003536B1 /* Assets.xcassets in Resources */,
+				0684A3DC21D3D2E600F3EEA1 /* SpotInputViewController.xib in Resources */,
 				0606B98520DDF82D003536B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1008,6 +1035,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0684A3CD21D1173F00F3EEA1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 		3A17A087FA5A1F1E0C5D4347 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1033,12 +1074,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_app/Pods-slim_gps_app-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
@@ -1074,38 +1117,42 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_app/Pods-slim_gps_app-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/HydraAsync/Hydra.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hydra.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1130,6 +1177,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A94A37CCEABDEA081AAE2E6A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_appUITests/Pods-slim_gps_appUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_appUITests/Pods-slim_gps_appUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F27AD72FEBA6B41559ADA173 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-slim_gps_appTests/Pods-slim_gps_appTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1147,10 +1234,14 @@
 				067FD5D220F26E400047CFC9 /* AccessApprovalInteractor.swift in Sources */,
 				067FD5D020F26E280047CFC9 /* AccessApprovalWireframe.swift in Sources */,
 				067FD5B620EE126F0047CFC9 /* LatestLocationViewController.swift in Sources */,
+				0684A3DF21D3EA2800F3EEA1 /* EmailUpdateModalViewController.swift in Sources */,
 				067FD5BE20EE12B60047CFC9 /* LatestLocationInterface.swift in Sources */,
 				06A0E56C20F6B4A5002CFEA5 /* LocationSearchingWireframe.swift in Sources */,
 				0630316420DE38F1009F78EA /* MainPresenter.swift in Sources */,
+				0684A3D021D24F9600F3EEA1 /* CommonFuc.swift in Sources */,
+				0684A3D721D27DD700F3EEA1 /* TermOfUsePopupViewController.swift in Sources */,
 				067FD5AD20EDBBB70047CFC9 /* LocationDataViewController.swift in Sources */,
+				0684A3DB21D3D2E600F3EEA1 /* SpotInputViewController.swift in Sources */,
 				06A0E56A20F6B497002CFEA5 /* LocationSearchingViewController.swift in Sources */,
 				067FD5BC20EE12A90047CFC9 /* LatestLocationPresenter.swift in Sources */,
 				0630319220DE58A2009F78EA /* AccessAuthReqViewController.swift in Sources */,
@@ -1289,7 +1380,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1311,7 +1402,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1365,6 +1458,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1417,7 +1511,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6A9F45415950A02428680034 /* Pods-slim_gps_appTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T26X6QBT6Z;
@@ -1439,7 +1533,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BE6D9250E2CD33DDD21350C /* Pods-slim_gps_appTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T26X6QBT6Z;
@@ -1461,7 +1555,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E89F29B38C13751AD2F76AC0 /* Pods-slim_gps_appUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T26X6QBT6Z;
 				INFOPLIST_FILE = slim_gps_appUITests/Info.plist;
@@ -1482,7 +1576,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9DA7E8A044DBD5245E8FD97E /* Pods-slim_gps_appUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T26X6QBT6Z;
 				INFOPLIST_FILE = slim_gps_appUITests/Info.plist;

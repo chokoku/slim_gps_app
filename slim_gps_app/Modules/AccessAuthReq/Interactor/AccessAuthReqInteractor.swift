@@ -14,50 +14,58 @@ final class AccessAuthReqInteractor {
 }
 
 extension AccessAuthReqInteractor: AccessAuthReqInteractorInterface {
-    
-    func updateAccessAuth( serialNum: String, uid: String ){
-        db.collection("devices").document(serialNum).getDocument { (deviceDoc, err) in
-            if let _ = err {
-                self.presenter.showAlert(message: "エラーが発生しました")
-            } else {
-                if let deviceDoc = deviceDoc, deviceDoc.exists {
-                    self.db.collection("accessAuth")
-                        .whereField("deviceID", isEqualTo: serialNum)
-                        .whereField("clientID", isEqualTo: uid)
-                        .getDocuments { (accessAuthSnap, err) in
-                            if let _ = err {
-                                self.presenter.showAlert(message: "エラーが発生しました")
+    func createAccessAuthReq(serialNum: String, uid: String){
+        db.collection("deviceToClient").whereField(serialNum, isEqualTo: 1)
+            .limit(to: 1)
+            .getDocuments { (deviceToClientSnap, error) in
+                if let error = error {
+                    CommonFunc.addErrorReport(category: "AccessAuthReq-01", description: error.localizedDescription)
+                    self.presenter.showAlert(message: "エラーが発生しました")
+                } else {
+                    if(deviceToClientSnap!.documents.count == 0){
+                        CommonFunc.addErrorReport(category: "AccessAuthReq-02", description: "device does not exist")
+                        self.presenter.showAlert(message: "デバイスが存在しません")
+                    } else {
+                        self.db.collection("clients").document(uid).getDocument { (doc, error) in
+                            if let error = error {
+                                CommonFunc.addErrorReport(category: "AccessAuthReq-03", description: error.localizedDescription)
+                                self.presenter.showAlert(message:"エラーが発生しました")
                             } else {
-                                if(accessAuthSnap!.documents.count == 0){
-                                    let ownerClientID = deviceDoc.data()!["ownerClientID"] as! String
-                                    self.db.collection("accessAuth").addDocument(data: [ "admin": false,
-                                                                                         "deviceID": serialNum,
-                                                                                         "clientID": uid,
-                                                                                         "confirmed": false,
-                                                                                         "createdAt": Date(),
-                                                                                         "ownerClientID": ownerClientID
-                                                                                        ]) { err in
-                                                                                            if let _ = err {
-                                                                                                self.presenter.showAlert(message: "アクセス権の申請に失敗しました")
-                                                                                            } else {
-                                                                                                self.presenter.accessAuthReqIsSubmitted()
-                                                                                            }
-                                    }
-                                } else {
-                                    for accessAuthDoc in accessAuthSnap!.documents {
-                                        if(accessAuthDoc.data()["confirmed"] as! Bool){ // already approved
-                                            self.presenter.showAlert(message: "すでにアクセス権をお持ちです")
-                                        } else { // already requested
-                                            self.presenter.showAlert(message: "すでに申請済みです")
+                                let adminClientID = deviceToClientSnap!.documents[0].documentID
+                                self.db.collection("accessAuthReqs").document(adminClientID).collection("requests").document(uid+"AND"+serialNum)
+                                    .getDocument { (accessAuthReqDoc, error) in
+                                        if let error = error {
+                                            CommonFunc.addErrorReport(category: "AccessAuthReq-04", description: error.localizedDescription)
+                                            self.presenter.showAlert(message:"エラーが発生しました")
+                                        } else if let accessAuthReqDoc = accessAuthReqDoc, accessAuthReqDoc.exists{
+                                            self.presenter.showAlert(message:"すでに申請済みです")
+                                        } else {
+                                            if let firstName = doc!.data()!["firstName"] as? String,
+                                                let lastName = doc!.data()!["lastName"] as? String {
+                                                self.db.collection("accessAuthReqs").document(adminClientID).collection("requests").document(uid+"AND"+serialNum)
+                                                    .setData([
+                                                        "clientID": uid,
+                                                        "deviceID": serialNum,
+                                                        "firstName": firstName,
+                                                        "lastName": lastName
+                                                        ]
+                                                    ){ error in
+                                                        if let error = error {
+                                                            CommonFunc.addErrorReport(category: "AccessAuthReq-05", description: error.localizedDescription)
+                                                            self.presenter.showAlert(message: "アクセス権の申請に失敗しました")
+                                                        } else {
+                                                            self.presenter.accessAuthReqIsSubmitted()
+                                                        }
+                                                }
+                                            } else {
+                                                self.presenter.showAlert(message:"データがありません")
+                                            }
                                         }
-                                    }
                                 }
                             }
+                        }
                     }
-                } else {
-                    self.presenter.showAlert(message: "デバイスは存在しません")
                 }
-            }
         }
     }
 }

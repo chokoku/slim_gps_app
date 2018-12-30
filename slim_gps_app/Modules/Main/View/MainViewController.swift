@@ -4,6 +4,7 @@ import GoogleMaps
 import FontAwesome_swift
 import Firebase
 import FirebaseAuth
+import Crashlytics
 
 class MainViewController: UIViewController {
 
@@ -59,19 +60,20 @@ extension MainViewController: MainViewInterface {
         
         let deviceView = UIView(frame: CGRect(x: 5, y: CGFloat(5+(270+5)*index), width: self.view.bounds.width-5*2, height: 270))
         deviceView.translatesAutoresizingMaskIntoConstraints = false
-        deviceView.layer.cornerRadius=10
-        deviceView.layer.borderWidth=1
+        deviceView.layer.cornerRadius = 10
+        deviceView.layer.borderWidth = 1
         deviceView.tag = index
         
         let nameLabel:UILabel = UILabel()
         nameLabel.frame = CGRect(x: 20, y: 220, width: 100, height: 50)
         nameLabel.text = name
+        nameLabel.font = UIFont.systemFont(ofSize: 20)
         deviceView.addSubview(nameLabel)
         
         if(admin == true){
             let settingButton = UIButton()
             settingButton.frame = CGRect(x:deviceView.bounds.width-50, y:220, width:50, height:50)
-            settingButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .brands)
+            settingButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .solid) // cog can be used in style = solid
             settingButton.setTitle(String.fontAwesomeIcon(name: .cog), for: .normal)
             settingButton.setTitleColor( UIColor.gray, for: .normal)
             settingButton.tag = index
@@ -86,8 +88,9 @@ extension MainViewController: MainViewInterface {
             
             // Display battery
             let batteryLabel = UILabel()
-            batteryLabel.frame = CGRect(x:deviceView.bounds.width-50-30, y:220, width:50, height:50)
+            batteryLabel.frame = CGRect(x:deviceView.bounds.width-60-30, y:220, width:50, height:50)
             batteryLabel.text = String(battery!)+"%"
+            batteryLabel.font = UIFont.systemFont(ofSize: 20)
             if(battery! < 10){batteryLabel.textColor = UIColor.red}
             deviceView.addSubview(batteryLabel)
             

@@ -20,23 +20,24 @@ extension AccessApprovalPresenter: AccessApprovalPresenterInterface {
         _interactor.getRequesters(uid: user!.uid)
     }
     
-    func addRequesters(accessAuthID: String, firstName: String?, lastName: String?){
+    func addRequesters(accessAuthReqID: String, firstName: String?, lastName: String?, clientID: String, deviceID: String){
         if let _view = _view{
-            _view.addRequesters(accessAuthID: accessAuthID, firstName: firstName, lastName: lastName)
+            _view.addRequesters(accessAuthReqID: accessAuthReqID, firstName: firstName, lastName: lastName, clientID: clientID, deviceID: deviceID)
         }
     }
 
-    func approveAccessRequest(accessAuthID: String){
-        _interactor.approveAccessRequest(accessAuthID: accessAuthID)
+    func approveAccessRequest(accessAuthReqID: String, clientID: String, deviceID: String){
+        _interactor.approveAccessRequest(accessAuthReqID: accessAuthReqID, clientID: clientID, deviceID: deviceID)
     }
     
-    func rejectAccessRequest(accessAuthID: String){
-        _interactor.rejectAccessRequest(accessAuthID: accessAuthID)
+    func rejectAccessRequest(accessAuthReqID: String){
+        let user = Auth.auth().currentUser
+        _interactor.rejectAccessRequest(accessAuthReqID: accessAuthReqID, uid: user!.uid)
     }
     
-    func accessAuthIsCompleted(accessAuthID: String){
+    func accessAuthIsCompleted(accessAuthReqID: String){
         if let _view = _view{
-            _view.accessAuthIsCompleted(accessAuthID: accessAuthID)
+            _view.accessAuthIsCompleted(accessAuthReqID: accessAuthReqID)
         }
     }
     

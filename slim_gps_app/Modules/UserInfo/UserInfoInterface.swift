@@ -6,7 +6,8 @@ protocol UserInfoPresenterInterface: class {
     func setUserInfoForm(userInfo: [String:String])
     func emailIsUpdated(email: String)
     func showAlert(message:String)
-    
+    func logOutForError(message:String)
+
     // To Interactor
     func getUserInfo()
     func updateUserInfo(key: String, value: String)
@@ -20,6 +21,7 @@ protocol UserInfoViewInterface: class {
     func setUserInfoForm(userInfo: [String:String])
     func emailIsUpdated(email: String)
     func showAlert(message:String)
+    func logOutForError(message:String)
 }
 
 protocol UserInfoInteractorInterface: class {

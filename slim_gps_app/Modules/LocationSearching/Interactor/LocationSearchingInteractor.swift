@@ -1,6 +1,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 final class LocationSearchingInteractor {
     var presenter: LocationSearchingPresenterInterface!
@@ -19,6 +20,7 @@ extension LocationSearchingInteractor: LocationSearchingInteractorInterface {
         listener = db.collection("devices").document(deviceID)
             .addSnapshotListener { snap, error in
                 guard let doc = snap else {
+                    CommonFunc.addErrorReport(category: "LatestLocation-01", description: error!.localizedDescription)
                     self.presenter.showAlert(message: "位置情報の取得に失敗しました")
                     return
                 }
@@ -26,7 +28,7 @@ extension LocationSearchingInteractor: LocationSearchingInteractorInterface {
                 if  let latitude = docData["latestLatitude"] as? Double,
                     let longitude = docData["latestLongitude"] as? Double,
                     let radius = docData["latestRadius"] as? Double,
-                    let updatedAt = docData["updatedAt"] as? Timestamp
+                    let updatedAt = docData["updatedHbAt"] as? Timestamp
                 {
                     self.presenter.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, updatedAt: updatedAt.dateValue())
                 } else {
@@ -42,8 +44,10 @@ extension LocationSearchingInteractor: LocationSearchingInteractorInterface {
     }
     
     func requestLocationSearching(deviceID: String){
-        db.collection("requests").addDocument(data: ["deviceID": deviceID, "createdAt": Date()]) { err in
-            if let _ = err {
+        let user = Auth.auth().currentUser
+        db.collection("locationReqs").addDocument(data: ["clientID": user!.uid, "deviceID": deviceID, "createdAt": Date()]) { error in
+            if let error = error {
+                CommonFunc.addErrorReport(category: "LatestLocation-02", description: error.localizedDescription)
                 self.presenter.showAlert(message: "位置情報のリクエストに失敗しました")
             }
         }

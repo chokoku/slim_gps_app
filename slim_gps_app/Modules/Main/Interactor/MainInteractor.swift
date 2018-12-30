@@ -15,31 +15,31 @@ final class MainInteractor {
 
 extension MainInteractor: MainInteractorInterface {
     func getDeviceInfo(uid: String){
-        
-        db.collection("accessAuth")
-            .whereField("clientID", isEqualTo: uid)
-            .whereField("confirmed", isEqualTo: true)
-            .order(by: "createdAt", descending: false)
-            .getDocuments { (accessAuthSnap, error) in
-                if let _ = error {
+        db.collection("clientToDevice")
+            .whereField(uid, isGreaterThanOrEqualTo: 0)
+            .getDocuments { (clientToDeviceSnap, error) in
+                if let error = error {
+                    CommonFunc.addErrorReport(category: "Main-01", description: error.localizedDescription)
                     self.presenter.showAlert(message:"エラーが発生しました")
-                } else if( 0 != accessAuthSnap!.documents.count ){
+                } else if( clientToDeviceSnap!.documents.count != 0 ){
                     var i = 0
-                    for accessAuthDoc in accessAuthSnap!.documents {
+                    for clientToDeviceDoc in clientToDeviceSnap!.documents {
                         Thread.sleep(forTimeInterval:0.1)
-                        let deviceID = accessAuthDoc.data()["deviceID"] as! String // serialNum
+                        let deviceID = clientToDeviceDoc.documentID
                         self.db.collection("devices").document(deviceID)
                             .getDocument { (deviceDoc, error) in
-                                if let _ = error {
+                                if let error = error {
+                                    CommonFunc.addErrorReport(category: "Main-02", description: error.localizedDescription)
                                     self.presenter.showAlert(message:"エラーが発生しました")
                                 } else if deviceDoc == nil {
+                                    CommonFunc.addErrorReport(category: "Main-03", description: "deviceDoc does not exist")
                                     self.presenter.showAlert(message:"エラーが発生しました")
                                 } else {
                                     i += 1
                                     self.presenter.addMapView( index: i-1, // 0 start
-                                                               lastFlag: accessAuthSnap!.documents.count == i,
+                                                               lastFlag: clientToDeviceSnap!.documents.count == i,
                                                                deviceID: deviceID,
-                                                               admin: accessAuthDoc.data()["admin"] as! Bool,
+                                                               admin: clientToDeviceDoc.data()[uid] as! Int == 1 ? true : false,
                                                                mode: deviceDoc!["mode"] as! String,
                                                                name: deviceDoc!["name"] as! String,
                                                                latitude: deviceDoc!["latestLatitude"] as? Double,

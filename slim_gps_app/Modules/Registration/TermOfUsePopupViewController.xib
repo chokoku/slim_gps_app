@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TermOfUsePopupViewController" customModule="slim_gps_app" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="550"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHc-4i-zW4">
+                    <rect key="frame" x="0.0" y="0.0" width="380" height="550"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yjT-nv-ftG">
+                            <rect key="frame" x="0.0" y="0.0" width="380" height="550"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="yjT-nv-ftG" firstAttribute="top" secondItem="iHc-4i-zW4" secondAttribute="top" id="LC2-Ay-kzB"/>
+                        <constraint firstItem="yjT-nv-ftG" firstAttribute="height" secondItem="iHc-4i-zW4" secondAttribute="height" id="MUM-1K-UcJ"/>
+                        <constraint firstItem="yjT-nv-ftG" firstAttribute="leading" secondItem="iHc-4i-zW4" secondAttribute="leading" id="N6f-YL-uOl"/>
+                        <constraint firstAttribute="height" constant="550" id="NdT-rM-cJI"/>
+                        <constraint firstItem="yjT-nv-ftG" firstAttribute="width" secondItem="iHc-4i-zW4" secondAttribute="width" id="O2v-Uv-gzR"/>
+                        <constraint firstAttribute="trailing" secondItem="yjT-nv-ftG" secondAttribute="trailing" id="Rmd-fC-IPg"/>
+                        <constraint firstAttribute="width" constant="380" id="VZy-10-CYp"/>
+                        <constraint firstItem="yjT-nv-ftG" firstAttribute="height" secondItem="iHc-4i-zW4" secondAttribute="height" id="ajm-VD-kQW"/>
+                        <constraint firstItem="yjT-nv-ftG" firstAttribute="width" secondItem="iHc-4i-zW4" secondAttribute="width" id="i8k-SN-5fP"/>
+                        <constraint firstAttribute="bottom" secondItem="yjT-nv-ftG" secondAttribute="bottom" id="u7W-sg-Vl5"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="iHc-4i-zW4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1qf-95-Ufi"/>
+                <constraint firstItem="iHc-4i-zW4" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="L61-Yn-n0D"/>
+                <constraint firstItem="iHc-4i-zW4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dEC-oA-BzN"/>
+                <constraint firstItem="iHc-4i-zW4" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="kzr-ef-Y9k"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="9.5999999999999996" y="-22.938530734632685"/>
+        </view>
+    </objects>
+</document>

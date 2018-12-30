@@ -1,11 +1,13 @@
 import Foundation
 //import Firebase
 import FirebaseFirestore
+import FirebaseFunctions
 
 final class DeviceSettingInteractor {
     var presenter: DeviceSettingPresenterInterface!
     let db = Firestore.firestore()
-    
+    lazy var functions = Functions.functions()
+
     init () {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -15,26 +17,31 @@ final class DeviceSettingInteractor {
 
 extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
     func getAccessAuth(deviceID: String) {
-        db.collection("accessAuth")
-            .whereField("deviceID", isEqualTo: deviceID)
-            .whereField("confirmed", isEqualTo: true)
-            .order(by: "createdAt", descending: false)
-            .getDocuments { (accessAuthSnap, error) in
-                if let _ = error {
+        db.collection("deviceToClient")
+            .whereField(deviceID, isGreaterThanOrEqualTo: 0)
+            .order(by: deviceID, descending: true)
+            .getDocuments { (deviceToClientSnap, error) in
+                if let error = error {
+                    CommonFunc.addErrorReport(category: "DeviceSetting-01", description: error.localizedDescription)
                     self.presenter.showAlert(message:"エラーが発生しました")
                 } else {
-                    for accessAuthDoc in accessAuthSnap!.documents {
-                        let clientID = accessAuthDoc.data()["clientID"] as! String
+                    for deviceToClientDoc in deviceToClientSnap!.documents {
+                        let clientID = deviceToClientDoc.documentID
                         self.db.collection("clients").document( clientID ).getDocument { (clientDoc, error) in
-                            if let clientDoc = clientDoc, clientDoc.exists {
-                                 if let firstName = clientDoc.data()!["firstName"] as? String,
-                                    let lastName = clientDoc.data()!["lastName"] as? String,
-                                    let admin = accessAuthDoc.data()["admin"] as? Bool
-                                 {
-                                    self.presenter.accessAuthIsGotten(watcher:(accessAuthID: accessAuthDoc.documentID, firstName: firstName, lastName: lastName, admin: admin))
-                                }
+                            if let error = error {
+                                CommonFunc.addErrorReport(category: "DeviceSetting-02", description: error.localizedDescription)
+                                self.presenter.showAlert(message:"エラーが発生しました")
                             } else {
-                                self.presenter.showAlert(message:"アクセス権のある方の情報が存在しません")
+                                if let clientDoc = clientDoc, clientDoc.exists {
+                                    if let firstName = clientDoc.data()!["firstName"] as? String,
+                                        let lastName = clientDoc.data()!["lastName"] as? String,
+                                        let admin: Bool = deviceToClientDoc.data()[deviceID] as! Int == 1 ? true : false
+                                    {
+                                        self.presenter.accessAuthIsGotten(watcher:(clientID: clientDoc.documentID, firstName: firstName, lastName: lastName, admin: admin))
+                                    }
+                                } else {
+                                    self.presenter.showAlert(message:"アクセス権のある方の情報が存在しません")
+                                }
                             }
                         }
                     }
@@ -43,27 +50,31 @@ extension DeviceSettingInteractor: DeviceSettingInteractorInterface {
     }
     
     func updateDeviceName(deviceID: String, name:String) {
-        db.collection("devices").document(deviceID).updateData(["name": name]) { err in
-            if let _ = err {
+        db.collection("devices").document(deviceID).updateData(["name": name]) { error in
+            if let error = error {
+                CommonFunc.addErrorReport(category: "DeviceSetting-03", description: error.localizedDescription)
                 self.presenter.showAlert(message:" デバイス情報を更新できませんでした")
             }
         }
     }
     
     func updateDeviceSetting(deviceID: String, mode: String) {
-        db.collection("devices").document(deviceID).updateData(["mode": mode]){ err in
-            if let _ = err {
+        db.collection("devices").document(deviceID).updateData(["mode": mode]){ error in
+            if let error = error {
+                CommonFunc.addErrorReport(category: "DeviceSetting-04", description: error.localizedDescription)
                 self.presenter.showAlert(message:" デバイス情報を更新できませんでした")
             }
         }
     }
     
-    func deleteAccessAuth(accessAuthID: String) {
-        db.collection("accessAuth").document(accessAuthID).delete(){ err in
-            if let _ = err {
-                self.presenter.showAlert(message:" アクセス権をを削除できませんでした")
+    func deleteAccessAuth(deviceID: String, clientID: String) {
+        functions.httpsCallable("deleteAccessAuth").call(["deviceID": deviceID, "clientID": clientID]) { (result, error) in
+            if let error = error {
+                CommonFunc.addErrorReport(category: "DeviceSetting-05", description: error.localizedDescription)
+                self.presenter.showAlert(message:"アクセス権をを削除できませんでした")
+            } else {
+                self.presenter.accessAuthIsDeleted(clientID: clientID)
             }
-            self.presenter.accessAuthIsDeleted(accessAuthID:accessAuthID)
         }
     }
 }

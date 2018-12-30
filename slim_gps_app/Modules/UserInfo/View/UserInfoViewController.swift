@@ -1,5 +1,6 @@
 import UIKit
 import Eureka
+import PopupDialog
 
 class UserInfoViewController: FormViewController {
     var presenter: UserInfoPresenterInterface!
@@ -7,7 +8,8 @@ class UserInfoViewController: FormViewController {
     let userInfoLabels:[String:String] = ["email":"Email", "lastName":"姓", "firstName":"名"]
     let userInfoItems:[String] = ["email", "lastName", "firstName"]
     let indicator = UIActivityIndicatorView()
-    
+    let cellHeight:CGFloat = 60.0
+
     @IBOutlet weak var userInfoTable: UITableView!
     
     override func viewDidLoad() {
@@ -33,14 +35,20 @@ class UserInfoViewController: FormViewController {
             +++ Section("ユーザー情報")
             
             // Set lastName textField
-            <<< TextRow(){ row in
-                row.title = userInfoLabels["lastName"]
-                row.value = userInfoValues["lastName"]
-                row.add(rule: RuleRequired(msg: "\(userInfoLabels["lastName"]!)を入力してください"))
+            <<< TextRow(){ // $0 = row
+                $0.title = userInfoLabels["lastName"]
+                $0.value = userInfoValues["lastName"]
+                $0.add(rule: RuleRequired(msg: "\(userInfoLabels["lastName"]!)を入力してください"))
+                $0.validationOptions = .validatesOnChange // when the input is empty, !row.isValid
                 }.cellSetup { cell, row in
                     cell.titleLabel?.textColor = .black
                 }.cellUpdate { cell, row in
-                    if !row.isValid {
+                    cell.height = {self.cellHeight}
+                    cell.textLabel?.font = UIFont.systemFont(ofSize: 20.0)
+                    cell.textField.font = UIFont.systemFont(ofSize: 20.0)
+                    if row.value == self.userInfoLabels["lastName"] {
+                        // ignore
+                    } else if !row.isValid {
                         cell.titleLabel?.textColor = .red
                         var errors = ""
                         for error in row.validationErrors {
@@ -57,14 +65,19 @@ class UserInfoViewController: FormViewController {
             }
             
             // Set firstName textField
-            <<< TextRow(){ row in
-                row.title = userInfoLabels["firstName"]
-                row.value = userInfoValues["firstName"]!
-                row.add(rule: RuleRequired(msg: "\(userInfoLabels["firstName"]!)を入力してください"))
+            <<< TextRow(){
+                $0.title = userInfoLabels["firstName"]
+                $0.value = userInfoValues["firstName"]!
+                $0.add(rule: RuleRequired(msg: "\(userInfoLabels["firstName"]!)を入力してください"))
                 }.cellSetup { cell, row in
                     cell.titleLabel?.textColor = .black
+                    cell.textLabel?.font = UIFont.systemFont(ofSize: 20.0)
                 }.cellUpdate { cell, row in
-                    if !row.isValid {
+                    cell.height = {self.cellHeight}
+                    cell.textField.font = UIFont.systemFont(ofSize: 20.0)
+                    if row.value == self.userInfoLabels["firstName"] {
+                        // ignore
+                    } else if !row.isValid {
                         cell.titleLabel?.textColor = .red
                         var errors = ""
                         for error in row.validationErrors {
@@ -86,20 +99,26 @@ class UserInfoViewController: FormViewController {
                 row.value = userInfoValues["email"]
                 row.tag = "email"
                 }.cellSetup { cell, row in
+                    cell.height = {self.cellHeight}
                     cell.textLabel?.textColor = UIColor.black
                     cell.detailTextLabel?.textColor = UIColor.black
+                    cell.textLabel?.font = UIFont.systemFont(ofSize: 20.0)
                 }.onCellSelection { cell, row in
-                    let alert = UIAlertController(title: "Emailの更新", message: "", preferredStyle: .alert)
-                    let saveAction = UIAlertAction(title: "OK", style: .default, handler: {
-                        (action:UIAlertAction!) -> Void in
-                        // password and password confirmation are not empty
-                        let email = alert.textFields![0].text ?? ""
-                        let pass = alert.textFields![1].text ?? ""
-                        let pass_con = alert.textFields![2].text ?? ""
-                        if email.isEmpty || pass.isEmpty || pass_con.isEmpty{
+                    let vc = EmailUpdateModalViewController(nibName: "EmailUpdateModalViewController", bundle: nil)
+                    vc.email = row.value
+                    let popup = PopupDialog(viewController: vc)
+                    let btnOK = DefaultButton(title: "保存") {
+//                        var name = vc.spotName.text
+//                        if (name!.isEmpty){ name = "名無しスポット" }
+//                        self.presenter.addNotifSpot(name: name!, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: 100.0)
+                        
+                        let email = vc.emailField.text ?? ""
+                        let pass = vc.passwordField.text ?? ""
+                        let passConf = vc.passwordConfField.text ?? ""
+                        if email.isEmpty || pass.isEmpty || passConf.isEmpty{
                             self.showAlert(message: "Emailかパスワードが入力されていません")
                         } else {
-                            if(pass != pass_con){
+                            if(pass != passConf){
                                 self.showAlert(message: "パスワードが一致しません")
                             } else {
                                 for row in self.form.rows {
@@ -109,21 +128,12 @@ class UserInfoViewController: FormViewController {
                                 self.presenter.updateUserEmail(email: email, password: pass)
                             }
                         }
-                    })
-                    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
-                    alert.addAction(saveAction)
-                    alert.addAction(cancelAction)
-                    alert.addTextField(configurationHandler: { (textField) in
-                        textField.text = row.value
-                        textField.placeholder = "Emailを入力してください"
-                    })
-                    alert.addTextField(configurationHandler: { (textField) in
-                        textField.placeholder = "パスワード"
-                    })
-                    alert.addTextField(configurationHandler: { (textField) in
-                        textField.placeholder = "パスワードの確認"
-                    })
-                    self.present(alert, animated: true, completion: nil)
+                    }
+                    popup.addButton(btnOK)
+                    let btnCancel = CancelButton(title: "キャンセル") { }
+                    popup.addButton(btnCancel)
+                    popup.buttonAlignment = .horizontal
+                    self.present(popup, animated: true, completion: nil)
             }
             
             // Set logout button
@@ -131,6 +141,7 @@ class UserInfoViewController: FormViewController {
             <<< ButtonRow(){ row in
                 row.title = "ログアウト"
                 }.cellSetup { cell, row in
+                    cell.height = {self.cellHeight}
                     cell.tintColor = UIColor.lightGray
                 }.onCellSelection { cell, row in
                     self.presenter.logout()
@@ -146,6 +157,11 @@ extension UserInfoViewController: UserInfoViewInterface {
         let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertAction.Style.cancel, handler:nil )
         alert.addAction(OKAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func logOutForError(message: String){
+        self.presenter.logout()
+//        showAlert(message: message)
     }
     
     func emailIsUpdated(email: String){

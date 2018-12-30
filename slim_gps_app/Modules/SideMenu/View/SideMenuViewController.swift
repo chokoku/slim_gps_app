@@ -14,7 +14,8 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         sideMenuTable.dataSource = self
         sideMenuTable.delegate = self
-        if let _ = Auth.auth().currentUser {
+        if let user = Auth.auth().currentUser {
+            print(user)
             print("user is logged in")
         } else{
             print("user is logged out")
@@ -35,6 +36,7 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCell", for: indexPath)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
         if let _ = Auth.auth().currentUser {
             cell.textLabel!.text = sidemenuList[afterlogin_sidemenuItems[indexPath.row]]
         } else {

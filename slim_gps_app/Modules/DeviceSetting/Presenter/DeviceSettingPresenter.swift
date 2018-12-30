@@ -18,19 +18,19 @@ extension DeviceSettingPresenter: DeviceSettingPresenterInterface {
         _interactor.getAccessAuth(deviceID: deviceID)
     }
     
-    func accessAuthIsGotten(watcher:(accessAuthID: String, firstName: String, lastName: String, admin:Bool)){
+    func accessAuthIsGotten(watcher:(clientID: String, firstName: String, lastName: String, admin:Bool)){
         if let _view = _view {
-            _view.accessAuthIsGotten(watcher:(accessAuthID: watcher.accessAuthID, firstName: watcher.firstName, lastName: watcher.lastName, admin:watcher.admin))
+            _view.accessAuthIsGotten(watcher:(clientID: watcher.clientID, firstName: watcher.firstName, lastName: watcher.lastName, admin:watcher.admin))
         }
     }
     
-    func deleteAccessAuth(accessAuthID: String){
-        _interactor.deleteAccessAuth(accessAuthID: accessAuthID)
+    func deleteAccessAuth(deviceID: String, clientID: String){
+        _interactor.deleteAccessAuth(deviceID: deviceID, clientID: clientID)
     }
     
-    func accessAuthIsDeleted(accessAuthID: String){
+    func accessAuthIsDeleted(clientID: String){
         if let _view = _view {
-            _view.accessAuthIsDeleted(accessAuthID: accessAuthID)
+            _view.accessAuthIsDeleted(clientID: clientID)
         }
     }
     

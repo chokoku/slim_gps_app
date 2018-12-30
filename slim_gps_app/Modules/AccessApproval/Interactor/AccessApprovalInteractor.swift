@@ -1,11 +1,13 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseFunctions
 
 final class AccessApprovalInteractor {
     var presenter: AccessApprovalPresenterInterface!
     let db = Firestore.firestore()
-    
+    lazy var functions = Functions.functions()
+
     init () {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -16,47 +18,48 @@ final class AccessApprovalInteractor {
 extension AccessApprovalInteractor: AccessApprovalInteractorInterface {
     
     func getRequesters(uid: String){
-        db.collection("accessAuth")
-            .whereField("confirmed", isEqualTo: false)
-            .whereField("ownerClientID", isEqualTo: uid)
-            .getDocuments { (accessAuthSnap, err) in
-                if let _ = err {
+        db.collection("accessAuthReqs")
+            .document(uid)
+            .collection("requests")
+            .getDocuments { (accessAuthReqSnap, error) in
+                if let error = error {
+                    CommonFunc.addErrorReport(category: "AccessApproval-01", description: error.localizedDescription)
                     self.presenter.showAlert(message:"エラーが発生しました")
                 } else {
-                    for accessAuthDoc in accessAuthSnap!.documents{
-                        let requesterID = accessAuthDoc.data()["clientID"] as! String
-                        self.db.collection("clients").document(requesterID)
-                            .getDocument { (requesterDoc, err) in
-                                if let _ = err {
-                                    self.presenter.showAlert(message:"エラーが発生しました")
-                                } else {
-                                    let firstName = requesterDoc!.data()!["firstName"] as? String
-                                    let lastName = requesterDoc!.data()!["lastName"] as? String
-                                    self.presenter.addRequesters(accessAuthID: accessAuthDoc.documentID, firstName: firstName, lastName: lastName)
-                                }
-                        }
+                    guard accessAuthReqSnap!.count > 0 else {
+                        CommonFunc.addErrorReport(category: "AccessApproval-02", description: "accessAuthReqSnap!.count > 0 is wrong")
+                        return
+                    }
+                    for accessAuthReqDoc in accessAuthReqSnap!.documents {
+                        let accessAuthReqID = accessAuthReqDoc.documentID
+                        let firstName = accessAuthReqDoc.data()["firstName"] as? String
+                        let lastName = accessAuthReqDoc.data()["lastName"] as? String
+                        let clientID = accessAuthReqDoc.data()["clientID"] as! String
+                        let deviceID = accessAuthReqDoc.data()["deviceID"] as! String
+                        self.presenter.addRequesters(accessAuthReqID: accessAuthReqID, firstName: firstName, lastName: lastName, clientID: clientID, deviceID: deviceID)
                     }
                 }
         }
     }
     
-    func approveAccessRequest(accessAuthID: String){
-        let uid = Auth.auth().currentUser!.uid
-        db.collection("accessAuth").document(accessAuthID).updateData([ "confirmed": true, "ownerClientID": uid ]){ err in
-            if let _ = err {
-                self.presenter.showAlert(message: "アクセス権を付与できませんでした")
+    func approveAccessRequest(accessAuthReqID: String, clientID: String, deviceID: String){
+        functions.httpsCallable("approveAccessRequest").call(["accessAuthReqID": accessAuthReqID, "deviceID": deviceID, "clientID": clientID]) { (result, error) in
+            if let error = error {
+                CommonFunc.addErrorReport(category: "AccessApproval-03", description: error.localizedDescription)
+                self.presenter.showAlert(message:"アクセス権をを付与できませんでした")
             } else {
-                self.presenter.accessAuthIsCompleted(accessAuthID: accessAuthID)
+                self.presenter.accessAuthIsCompleted(accessAuthReqID: accessAuthReqID)
             }
         }
     }
     
-    func rejectAccessRequest(accessAuthID: String){
-        db.collection("accessAuth").document(accessAuthID).delete(){ err in
-            if let _ = err {
+    func rejectAccessRequest(accessAuthReqID: String, uid: String){
+        db.collection("accessAuthReqs").document(uid).collection("requests").document(accessAuthReqID).delete(){ error in
+            if let error = error {
+                CommonFunc.addErrorReport(category: "AccessApproval-04", description: error.localizedDescription)
                 self.presenter.showAlert(message: "アクセスリクエストの拒否に失敗しました")
             } else {
-                self.presenter.accessAuthIsCompleted(accessAuthID: accessAuthID)
+                self.presenter.accessAuthIsCompleted(accessAuthReqID: accessAuthReqID)
             }
         }
     }

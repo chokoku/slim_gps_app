@@ -16,7 +16,7 @@ protocol AccessAuthReqViewInterface: class {
 }
 
 protocol AccessAuthReqInteractorInterface: class {
-    func updateAccessAuth(serialNum: String, uid: String )
+    func createAccessAuthReq(serialNum: String, uid: String)
 }
 
 protocol AccessAuthReqWireframeInterface: class {

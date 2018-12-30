@@ -28,7 +28,8 @@ extension DailyLocationInteractor: DailyLocationInteractorInterface {
             .whereField("createdAt", isGreaterThanOrEqualTo: beginnigOfTheDate)
             .whereField("createdAt", isLessThanOrEqualTo: endOfTheDate)
             .getDocuments { (snap, error) in
-                if let _ = error {
+                if let error = error {
+                    CommonFunc.addErrorReport(category: "DailyLocation-01", description: error.localizedDescription)
                     self.presenter.showAlert(message:"エラーが発生しました")
                 } else {
                     if(snap!.documents.count == 0){ self.presenter.locationDataIsEmpty() }

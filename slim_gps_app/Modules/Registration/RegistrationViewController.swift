@@ -1,4 +1,5 @@
 import UIKit
+import PopupDialog
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
@@ -11,6 +12,7 @@ final class RegistraionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var firstNameText: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var termOfUseSwitch: UISwitch!
     
     let indicator = UIActivityIndicatorView()
 
@@ -30,6 +32,8 @@ final class RegistraionViewController: UIViewController, UITextFieldDelegate {
             self.showAlert(message: "Emailとパスワードを入力してください")
         } else if firstNameText.text == "" || lastNameText.text == ""  {
             self.showAlert(message: "姓名を入力してください")
+        } else if !termOfUseSwitch.isOn {
+            self.showAlert(message: "利用規約に同意してください")
         } else {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
@@ -51,12 +55,13 @@ final class RegistraionViewController: UIViewController, UITextFieldDelegate {
                     
                     // Create a client document
                     let uid = Auth.auth().currentUser!.uid
-                    db.collection("clients").document(uid).setData([ "lastName": self.lastNameText.text!, "firstName": self.firstNameText.text!, "type": "individual" ]) { err in
+                    db.collection("clients").document(uid).setData([ "lastName": self.lastNameText.text!, "firstName": self.firstNameText.text!, "type": "individual" ]) { error in
                         
                         self.registrationButton.isEnabled = true
                         self.indicator.stopAnimating() // Stop the indicator
                         
-                        if let _ = err {
+                        if let error = error {
+                            CommonFunc.addErrorReport(category: "Registraion-01", description: error.localizedDescription)
                             self.showAlert(message: "ユーザーの作成に失敗しました")
                         } else {
                             let mainWireframe = MainWireframe()
@@ -76,6 +81,16 @@ final class RegistraionViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+    
+    @IBAction func showTermOfUse() {
+        let vc = TermOfUsePopupViewController(nibName: "TermOfUsePopupViewController", bundle: nil)
+        let popup = PopupDialog(viewController: vc)
+        let buttonOK = DefaultButton(title: "OK") {
+            print("入力完了")
+        }
+        popup.addButton(buttonOK)
+        present(popup, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{

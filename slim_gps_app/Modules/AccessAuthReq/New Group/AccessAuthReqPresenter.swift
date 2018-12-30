@@ -17,7 +17,7 @@ final class AccessAuthReqPresenter {
 extension AccessAuthReqPresenter: AccessAuthReqPresenterInterface {
     func submitSerialNum(serialNum: String ){
         let user = Auth.auth().currentUser
-        _interactor.updateAccessAuth(serialNum: serialNum, uid: user!.uid)
+        _interactor.createAccessAuthReq( serialNum: serialNum, uid: user!.uid )
     }
     
     func accessAuthReqIsSubmitted(){

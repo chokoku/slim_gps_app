@@ -1,6 +1,7 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import PopupDialog
 
 class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
@@ -66,33 +67,41 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
     }
 
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-        let alert = UIAlertController( title: "通知スポットの追加", message: "スポット名を入力してください", preferredStyle: UIAlertController.Style.alert )
-        alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "スポット名" })
-        let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertAction.Style.cancel, handler:nil )
-        let saveAction:UIAlertAction = UIAlertAction( title: "追加", style: UIAlertAction.Style.default,handler:{ (action) in
-            var name = alert.textFields![0].text
-            if (name!.isEmpty){ name = "名無しスポット" }
-            self.presenter.addNotifSpot(name: name!, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: 100.0)
-        })
-        alert.addAction(cancelAction)
-        alert.addAction(saveAction)
-        present(alert, animated: true, completion: nil)
+        if(notifSpots.count >= 20){
+            showAlert(message:"通知スポットの個数が制限（20個）を超えています")
+        } else {
+            let vc = SpotInputViewController(nibName: "SpotInputViewController", bundle: nil)
+            vc.inputTitle = "通知スポットの追加"
+            let popup = PopupDialog(viewController: vc)
+            let btnOK = DefaultButton(title: "追加") {
+                var name = vc.spotName.text
+                if (name!.isEmpty){ name = "名無しスポット" }
+                self.presenter.addNotifSpot(name: name!, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: 100.0)
+            }
+            popup.addButton(btnOK)
+            let btnCancel = CancelButton(title: "キャンセル") { }
+            popup.addButton(btnCancel)
+            popup.buttonAlignment = .horizontal
+            present(popup, animated: true, completion: nil)
+        }
     }
     
     func editNotifSpot(tag: Int){
         let notifSpot = notifSpots[tag]
-        let alert = UIAlertController( title: "スポット名の編集", message: "", preferredStyle: UIAlertController.Style.alert )
-        alert.addTextField(configurationHandler: { (textField) in textField.placeholder = "スポット名" })
-        alert.textFields![0].text = notifSpot.name
-        let cancelAction:UIAlertAction = UIAlertAction( title: "キャンセル", style: UIAlertAction.Style.cancel, handler:nil )
-        let saveAction:UIAlertAction = UIAlertAction( title: "保存", style: UIAlertAction.Style.default,handler:{ (action) in
-            var name = alert.textFields![0].text
+        let vc = SpotInputViewController(nibName: "SpotInputViewController", bundle: nil)
+        vc.inputTitle = "スポット名の編集"
+        vc.originalName = notifSpot.name
+        let popup = PopupDialog(viewController: vc)
+        let btnOK = DefaultButton(title: "保存") {
+            var name = vc.spotName.text
             if (name!.isEmpty){ name = "名無しスポット" }
             self.presenter.updateNotifSpot(notifSpotID: notifSpot.notifSpotID, name: name!, tag: tag)
-        })
-        alert.addAction(cancelAction)
-        alert.addAction(saveAction)
-        present(alert, animated: true, completion: nil)
+        }
+        popup.addButton(btnOK)
+        let btnCancel = CancelButton(title: "キャンセル") { }
+        popup.addButton(btnCancel)
+        popup.buttonAlignment = .horizontal
+        present(popup, animated: true, completion: nil)
     }
     
     func deleteNotifSpot(tag:Int) {
@@ -102,7 +111,7 @@ class NotifSpotViewController: UIViewController, GMSMapViewDelegate, UITableView
 
 extension NotifSpotViewController: NotifSpotViewInterface {
     func showNotifSpot(notifSpotID: String, name: String, latitude: Double, longitude: Double, radius: Double){
-        
+
         // Set a tracking circle
         let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: radius)
         circle.fillColor = UIColor(red: 0.35, green: 0, blue: 0, alpha: 0.05)

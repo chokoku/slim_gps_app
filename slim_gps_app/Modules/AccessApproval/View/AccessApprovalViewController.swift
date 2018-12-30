@@ -4,10 +4,18 @@ class AccessApprovalViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var accessApprovalTable: UITableView!
     var presenter: AccessApprovalPresenterInterface!
-    var requesters = [(accessAuthID: String, firstName: String?, lastName: String?)]()
-    
+    var requesters = [(accessAuthReqID: String, firstName: String?, lastName: String?, clientID: String, deviceID: String)]()
+    let indicator = UIActivityIndicatorView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.accessApprovalTable.rowHeight = 80
+
+        // Configure an indicator
+        indicator.style = .whiteLarge
+        indicator.center = self.view.center
+        indicator.color = UIColor.black
+        
         accessApprovalTable.delegate = self
         accessApprovalTable.dataSource = self
         self.navigationItem.title = "アクセスの承認"
@@ -20,13 +28,26 @@ class AccessApprovalViewController: UIViewController, UITableViewDelegate, UITab
 
     func approveAccessRequest(tag:Int) {
 
-        let accessAuthID = requesters[tag].accessAuthID
-        presenter.approveAccessRequest(accessAuthID: accessAuthID)
+        // Start the indicator
+        self.view.addSubview(indicator)
+        self.view.bringSubviewToFront(indicator)
+        indicator.startAnimating()
+        
+        let accessAuthReqID = requesters[tag].accessAuthReqID
+        let clientID = requesters[tag].clientID
+        let deviceID = requesters[tag].deviceID
+        presenter.approveAccessRequest(accessAuthReqID: accessAuthReqID, clientID: clientID, deviceID: deviceID )
     }
     
     func rejectAcessRequest(tag:Int) {
-        let accessAuthID = requesters[tag].accessAuthID
-        presenter.rejectAccessRequest(accessAuthID: accessAuthID)
+        
+        // Start the indicator
+        self.view.addSubview(indicator)
+        self.view.bringSubviewToFront(indicator)
+        indicator.startAnimating()
+        
+        let accessAuthReqID = requesters[tag].accessAuthReqID
+        presenter.rejectAccessRequest(accessAuthReqID: accessAuthReqID)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,22 +66,35 @@ class AccessApprovalViewController: UIViewController, UITableViewDelegate, UITab
         cell.delegate = self
         return cell
     }
+
 }
 
 extension AccessApprovalViewController: AccessApprovalViewInterface {
-    func addRequesters(accessAuthID: String, firstName: String?, lastName: String?) {
-        if !accessAuthID.isEmpty{
-            requesters += [(accessAuthID, firstName, lastName)]
+    func addRequesters(accessAuthReqID: String, firstName: String?, lastName: String?, clientID: String, deviceID: String) {
+        
+        // Stop the indicator
+        indicator.stopAnimating()
+        
+        if !accessAuthReqID.isEmpty{
+            requesters += [(accessAuthReqID, firstName, lastName, clientID, deviceID)]
             self.accessApprovalTable.reloadData()
         }
     }
     
-    func accessAuthIsCompleted(accessAuthID: String){
-        self.requesters = self.requesters.filter( {$0.accessAuthID != accessAuthID} )
+    func accessAuthIsCompleted(accessAuthReqID: String){
+        
+        // Stop the indicator
+        indicator.stopAnimating()
+        
+        self.requesters = self.requesters.filter( {$0.accessAuthReqID != accessAuthReqID} )
         self.accessApprovalTable.reloadData()
     }
     
     func showAlert(message: String){
+        
+        // Stop the indicator
+        indicator.stopAnimating()
+        
         let alert = UIAlertController( title: " エラー", message: message, preferredStyle: UIAlertController.Style.alert )
         let OKAction:UIAlertAction = UIAlertAction( title: "OK", style: UIAlertAction.Style.cancel, handler:nil )
         alert.addAction(OKAction)

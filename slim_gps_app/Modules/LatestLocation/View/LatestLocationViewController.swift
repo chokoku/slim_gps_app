@@ -49,7 +49,6 @@ extension LatestLocationViewController: LatestLocationViewInterface {
         presenter.setLatestLocationListener( deviceID: deviceID )
     }
     
-    // TODO neet to check update initial to latest
     func locationDataIsGotten(latitude: Double, longitude: Double, radius: Double, updatedAt: Date){ // radius is not used
         
         print("locationDataIsGotten")

@@ -9,6 +9,8 @@ class AccessAuthReqViewController: UIViewController, UITextFieldDelegate  {
     @IBOutlet weak var serialNumInput: UITextField!
     @IBOutlet weak var message: UILabel!
     
+    // TODO 筐体の絵が必要。シリアル番号を明示するため
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         serialNumInput.delegate = self

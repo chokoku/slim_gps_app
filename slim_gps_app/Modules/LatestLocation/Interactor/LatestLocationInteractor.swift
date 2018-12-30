@@ -21,7 +21,8 @@ extension LatestLocationInteractor: LatestLocationInteractorInterface {
         db.collection("notifSpots")
             .whereField("clientID", isEqualTo: user!.uid)
             .getDocuments { (snap, error) in
-                if let _ = error {
+                if let error = error {
+                    CommonFunc.addErrorReport(category: "DeviceSetting-04", description: error.localizedDescription)
                     self.presenter.showAlert(message: "通知スポットの取得に失敗しました")
                 } else {
                     if(snap!.documents.count == 0){ self.presenter.giveLastNotifSpotFlag() }
@@ -48,6 +49,7 @@ extension LatestLocationInteractor: LatestLocationInteractorInterface {
         listener = db.collection("devices").document(deviceID)
             .addSnapshotListener { snap, error in
                 guard let doc = snap else {
+                    CommonFunc.addErrorReport(category: "LatestLocation-01", description: error!.localizedDescription)
                     self.presenter.showAlert(message: "位置情報の取得に失敗しました")
                     return
                 }
@@ -55,7 +57,7 @@ extension LatestLocationInteractor: LatestLocationInteractorInterface {
                 if  let latitude = docData["latestLatitude"] as? Double,
                     let longitude = docData["latestLongitude"] as? Double,
                     let radius = docData["latestRadius"] as? Double,
-                    let updatedAt = docData["updatedAt"] as? Timestamp
+                    let updatedAt = docData["updatedHbAt"] as? Timestamp
                 {
                     self.presenter.locationDataIsGotten(latitude: latitude, longitude: longitude, radius: radius, updatedAt: updatedAt.dateValue())
                 } else {

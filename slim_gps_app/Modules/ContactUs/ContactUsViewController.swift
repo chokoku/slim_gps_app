@@ -13,8 +13,9 @@ class ContactUsViewController: UIViewController, UITextViewDelegate {
         let user = Auth.auth().currentUser
         let systemVersion = UIDevice.current.systemVersion
         let model = UIDevice.current.model
-        db.collection("contactUsForms").addDocument(data: [ "clientID": user!.uid, "message": contactUsTextView.text, "OS":"iOS\(systemVersion)", "device":"\(model)" ]) { err in
-            if let _ = err {
+        db.collection("contactUsForms").addDocument(data: [ "clientID": user!.uid, "message": contactUsTextView.text, "OS":"iOS\(systemVersion)", "device":"\(model)" ]) { error in
+            if let error = error {
+                CommonFunc.addErrorReport(category: "ContactUs-01", description: error.localizedDescription)
                 self.showAlert(message:"メッセージの保存に失敗しました")
             } else {
                 self.contactUsTextView.text = nil

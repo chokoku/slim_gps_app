@@ -40,8 +40,8 @@ class DateTimePickerBarView: UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         // Set datePickerButton icon
-        datePickerButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .brands)
-        datePickerButton.setTitle(String.fontAwesomeIcon(name: .calendar), for: .normal)
+        datePickerButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 25, style: .regular)
+        datePickerButton.setTitle(String.fontAwesomeIcon(name: .calendarAlt), for: .normal)
         datePickerButton.setTitleColor(UIColor.black, for: .normal) // タイトルの色
         
         //addする。viewオブジェクトの2枚重ねになる。
