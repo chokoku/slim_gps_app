@@ -89,9 +89,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="姓" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KtG-3G-Dcx">
-                                <rect key="frame" x="37.5" y="70" width="300" height="35"/>
+                                <rect key="frame" x="37" y="70" width="301" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="SVN-On-fXP"/>
                                     <constraint firstAttribute="height" constant="35" id="vXE-al-iJt"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -99,9 +98,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfu-I0-WYo">
-                                <rect key="frame" x="37.5" y="135" width="300" height="35"/>
+                                <rect key="frame" x="37" y="135" width="301" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Itw-2j-grs"/>
                                     <constraint firstAttribute="height" constant="35" id="ogH-EK-Svd"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -109,9 +107,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9o-W7-1ab">
-                                <rect key="frame" x="37.5" y="200" width="300" height="35"/>
+                                <rect key="frame" x="37" y="200" width="301" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="7WH-DN-nqF"/>
                                     <constraint firstAttribute="height" constant="35" id="Ft9-BH-Uir"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -139,10 +136,9 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Evs-vt-yqv">
-                                <rect key="frame" x="37.5" y="265" width="300" height="35"/>
+                                <rect key="frame" x="37" y="265" width="301" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="bj2-GO-hf2"/>
-                                    <constraint firstAttribute="width" constant="300" id="uXP-ca-EZA"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -178,16 +174,24 @@
                             <constraint firstItem="qfu-I0-WYo" firstAttribute="centerX" secondItem="k23-G2-yOd" secondAttribute="centerX" id="4Mr-8t-5Gi"/>
                             <constraint firstItem="JJj-kt-ivf" firstAttribute="top" secondItem="Evs-vt-yqv" secondAttribute="bottom" constant="30" id="8Ka-7v-nd8"/>
                             <constraint firstItem="gNG-Nq-8Xc" firstAttribute="centerX" secondItem="k23-G2-yOd" secondAttribute="centerX" id="B96-9f-Y5M"/>
+                            <constraint firstItem="KtG-3G-Dcx" firstAttribute="leading" secondItem="VeM-rf-vMK" secondAttribute="leading" constant="37" id="DEt-Aw-VjE"/>
                             <constraint firstItem="y9o-W7-1ab" firstAttribute="top" secondItem="qfu-I0-WYo" secondAttribute="bottom" constant="30" id="FA9-55-VhV"/>
+                            <constraint firstItem="VeM-rf-vMK" firstAttribute="trailing" secondItem="Evs-vt-yqv" secondAttribute="trailing" constant="37" id="Mg5-Qe-r05"/>
                             <constraint firstItem="Evs-vt-yqv" firstAttribute="top" secondItem="y9o-W7-1ab" secondAttribute="bottom" constant="30" id="OHU-dm-Yu2"/>
                             <constraint firstItem="KtG-3G-Dcx" firstAttribute="top" secondItem="VeM-rf-vMK" secondAttribute="top" constant="50" id="Q6o-m0-edN"/>
+                            <constraint firstItem="Evs-vt-yqv" firstAttribute="leading" secondItem="VeM-rf-vMK" secondAttribute="leading" constant="37" id="SZF-T9-kMk"/>
                             <constraint firstItem="y9o-W7-1ab" firstAttribute="centerX" secondItem="k23-G2-yOd" secondAttribute="centerX" id="Voo-p6-F6q"/>
                             <constraint firstItem="oky-5G-n59" firstAttribute="leading" secondItem="6Cz-M5-uOt" secondAttribute="trailing" constant="5" id="aKm-i9-toF"/>
                             <constraint firstItem="qfu-I0-WYo" firstAttribute="top" secondItem="KtG-3G-Dcx" secondAttribute="bottom" constant="30" id="g64-7p-jsG"/>
                             <constraint firstItem="6Cz-M5-uOt" firstAttribute="leading" secondItem="JJj-kt-ivf" secondAttribute="trailing" constant="10" id="joP-tv-S4x"/>
+                            <constraint firstItem="VeM-rf-vMK" firstAttribute="trailing" secondItem="y9o-W7-1ab" secondAttribute="trailing" constant="37" id="kLh-Dv-t1b"/>
                             <constraint firstItem="oky-5G-n59" firstAttribute="top" secondItem="Evs-vt-yqv" secondAttribute="bottom" constant="35" id="lhX-uH-mhC"/>
+                            <constraint firstItem="VeM-rf-vMK" firstAttribute="trailing" secondItem="KtG-3G-Dcx" secondAttribute="trailing" constant="37" id="puX-B2-agH"/>
+                            <constraint firstItem="y9o-W7-1ab" firstAttribute="leading" secondItem="VeM-rf-vMK" secondAttribute="leading" constant="37" id="qpB-mH-5Jp"/>
+                            <constraint firstItem="VeM-rf-vMK" firstAttribute="trailing" secondItem="qfu-I0-WYo" secondAttribute="trailing" constant="37" id="rc1-22-Qs2"/>
                             <constraint firstItem="JJj-kt-ivf" firstAttribute="leading" secondItem="VeM-rf-vMK" secondAttribute="leading" constant="37" id="tBH-Mj-Klg"/>
                             <constraint firstItem="Evs-vt-yqv" firstAttribute="centerX" secondItem="k23-G2-yOd" secondAttribute="centerX" id="vSq-q5-Gco"/>
+                            <constraint firstItem="qfu-I0-WYo" firstAttribute="leading" secondItem="VeM-rf-vMK" secondAttribute="leading" constant="37" id="xiQ-aV-aE3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VeM-rf-vMK"/>
                     </view>
